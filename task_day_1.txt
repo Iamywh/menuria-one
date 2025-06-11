@@ -1,0 +1,4 @@
+Giorno 1:
+- Crea la cartella MENURIA_ONE
+- Inizializza Git
+- Aggiungi main.py e README.md

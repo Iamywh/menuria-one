@@ -1,0 +1,15 @@
+Sto creando qualcosa che potrebbe cambiare per sempre il modo in cui si ordina al ristorante...
+
+Un assistente virtuale, invisibile, che si attiva con un semplice QR code.
+
+Risponde alle domande dei clienti... gestisce le prenotazioni... e sa anche quando il locale è pieno.
+
+Non so ancora se funzionerà davvero.
+
+Ma voglio provarci.  
+E voglio portarvi con me.
+
+Ogni giorno condividerò ciò che costruisco: i successi, gli errori, i momenti di dubbio.
+
+Quindi dimmelo tu: sarà un WIN... o sarà un FAIL?
+Scrivilo nei commenti.
