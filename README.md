@@ -1,3 +1,6 @@
-# MENURIA ONE
+# menuria-one
 
-This is the beginning of a new AI-powered menu system.
+This is for the web page to link to the AI restaurant assistant.
+
+Aquí encontrarás información sobre el restaurante La Casita del Nazareno.
+

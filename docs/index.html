@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>MENURIA ONE</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      margin: 50px;
+      background-color: #f9f9f9;
+    }
+    #chatbox {
+      margin-top: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background-color: #fff;
+    }
+    .message {
+      text-align: left;
+      margin: 10px 0;
+    }
+    .user {
+      font-weight: bold;
+      color: #333;
+      text-align: right;
+    }
+    .bot {
+      font-style: italic;
+      color: #0078D4;
+    }
+    input, button {
+      margin-top: 20px;
+      padding: 10px;
+      font-size: 16px;
+      width: 70%;
+    }
+    button {
+      width: 25%;
+      margin-left: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🍽️ Welcome to MENURIA ONE</h1>
+  <p>I'll become your AI assistant for this restaurant.</p>
+  <p>New functionalities to come... Stay tuned!</p>
+
+  <div id="chatbox">
+    <div id="messages"></div>
+    <input type="text" id="userInput" placeholder="Ask me something..." />
+    <button onclick="sendMessage()">Send</button>
+  </div>
+
+  <script>
+    function sendMessage() {
+      const input = document.getElementById('userInput');
+      const message = input.value.trim();
+      if (!message) return;
+
+      addMessage('user', message);
+      input.value = '';
+
+      setTimeout(() => {
+        let response = simulateBotResponse(message);
+        addMessage('bot', response);
+      }, 500);
+    }
+
+    function addMessage(role, text) {
+      const messages = document.getElementById('messages');
+      const div = document.createElement('div');
+      div.className = 'message ' + role;
+      div.textContent = (role === 'user' ? "You: " : "Menuria: ") + text;
+      messages.appendChild(div);
+    }
+
+    function simulateBotResponse(msg) {
+fetch('http://127.0.0.1:5000/chat', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ message: msg })
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.response) {
+      addMessage('bot', data.response);
+    } else {
+      addMessage('bot', "Nessuna risposta valida dal server.");
+    }
+  })
+  .catch(error => {
+    console.error('Errore:', error);
+    addMessage('bot', "C'è stato un problema nella comunicazione con il server.");
+  });
+}
+
+
+  </script>
+</body>
+</html>
+<!--
+  This HTML file serves as the main interface for the MENURIA ONE AI assistant.
+  It includes a simple chat interface where users can interact with the bot.
+  The bot simulates responses based on user input related to restaurant queries.

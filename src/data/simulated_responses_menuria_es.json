@@ -1,0 +1,78 @@
+{
+    "orari": {
+        "domanda": "¿Cuáles son los horarios de apertura?",
+        "risposta": "Estamos abiertos:\n- De lunes a jueves: 10:00 – 23:00\n- Viernes y sábado: 10:00 – 00:00\n- Domingo: 10:00 – 17:00"
+    },
+    "prenotazione_telefono": {
+        "domanda": "¿Cómo puedo reservar una mesa?",
+        "risposta": "Puedes llamarnos al número 922 24 78 51 para hacer una reserva."
+    },
+    "prenotazione_terrazza": {
+        "domanda": "¿Se puede reservar la terraza en la azotea?",
+        "risposta": "¡Sí! Puedes reservar la terraza superior para uso exclusivo por 90€."
+    },
+    "posti_totali": {
+        "domanda": "¿Cuántos asientos tiene el local?",
+        "risposta": "Disponemos de:\n- Terraza principal: 24 plazas\n- Salón interior: 19 plazas\n- Pasillo: 8 plazas\n- Terraza en la azotea: 43 plazas\nTotal: 94 plazas"
+    },
+    "menu_colazione": {
+        "domanda": "¿Tienen menú de desayuno?",
+        "risposta": "¡Sí! Tenemos 28 opciones para el desayuno, incluyendo combos, sándwiches y tostadas, especialmente los Brunchs que hay que reservar con 48h de antelación!"
+    },
+    "menu_caffe": {
+        "domanda": "¿Qué tipos de café tienen?",
+        "risposta": "Ofrecemos 19 variedades de cafetería, incluyendo café solo, americano, latte macchiato y frappé."
+    },
+    "menu_cocktail": {
+        "domanda": "¿Qué cócteles tienen?",
+        "risposta": "Algunos de nuestros cócteles incluyen mojito, margarita y piña colada."
+    },
+    "menu_pranzo": {
+        "domanda": "¿Qué hay para almorzar?",
+        "risposta": "Puedes elegir entre 5 categorías: entrantes, ensaladas, hamburguesas, wok y platos con carne."
+    },
+    "torte": {
+        "domanda": "¿Tienen pasteles o postres?",
+        "risposta": "¡Sí! Tenemos pasteles caseros frescos que cambian cada día."
+    },
+    "menu_bebidas": {
+        "domanda": "¿Qué bebidas tienen?",
+        "risposta": "Ofrecemos una amplia variedad de bebidas, incluyendo refrescos, cervezas y vinos."
+    },
+    "menu_vegano": {
+        "domanda": "¿Tienen opciones veganas?",
+        "risposta": "Sí, tenemos varias opciones veganas en nuestro menú."
+    },
+    "menu_sin_gluten": {
+        "domanda": "¿Tienen opciones sin gluten?",
+        "risposta": "Sí, ofrecemos opciones sin gluten en nuestro menú."
+    },
+    "menu_sin_lactosa": {
+        "domanda": "¿Tienen opciones sin lactosa?",
+        "risposta": "Sí, tenemos opciones sin lactosa disponibles."
+    },
+    "menu_sin_nueces": {
+        "domanda": "¿Tienen opciones sin nueces?",
+        "risposta": "Sí, ofrecemos opciones sin nueces en nuestro menú."
+    },
+    "menu_sin_huevo": {
+        "domanda": "¿Tienen opciones sin huevo?",
+        "risposta": "Sí, tenemos opciones sin huevo disponibles."
+    },
+    "menu_sin_pescado": {
+        "domanda": "¿Tienen opciones sin pescado?",
+        "risposta": "Sí, ofrecemos opciones sin pescado en nuestro menú."
+    },
+    "menu_sin_carne": {
+        "domanda": "¿Tienen opciones sin carne?",
+        "risposta": "Sí, tenemos varias opciones sin carne en nuestro menú."
+    },
+    "menu_sin_lacteos": {
+        "domanda": "¿Tienen opciones sin lácteos?",
+        "risposta": "Sí, ofrecemos opciones sin lácteos en nuestro menú."
+    },
+    "tipos_de_tartas": {
+        "domanda": "¿Que tartas suelen tener?",
+        "risposta": "Varios tipos, entre las cuales voy a citar las más populares: Tarta Colibrí, Tarta de Zanahoria, Tarta de Queso, Tarta de Baileys, Tarta Maria Victoria, Tarta Red Velvet, Tarta Guinness"
+    }
+}
