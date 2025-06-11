@@ -1,16 +1,15 @@
-from flask import Flask, request, jsonify
-from flask_cors import CORS
-import json
+from flask import Flask, request, jsonify, send_from_directory
 import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='web')  # <-- cambia se la tua cartella si chiama così
+
+@app.route('/')
+def home():
+    return send_from_directory('web', 'index.html')
+import json
+from flask_cors import CORS
 CORS(app)
-
-# Percorso del file JSON con le risposte simulate
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_FILE = os.path.join(BASE_DIR, 'data', 'simulated_responses_menuria_es.json')
-
-# Carica le risposte simulate
+DATA_FILE = os.path.join(os.path.dirname(__file__), "data", "simulated_responses_menuria_es.json")
 with open(DATA_FILE, 'r', encoding='utf-8') as file:
     KNOWLEDGE_BASE = json.load(file)
 
@@ -29,5 +28,4 @@ def chat():
     return jsonify({'response': "Lo siento, no tengo una respuesta para eso. ¿Puedes intentar preguntarlo de otra forma?"})
 
 if __name__ == '__main__':
-    app.run(debug=True, host="0.0.0.0")
-
+    app.run(host='0.0.0.0', port=5000)
