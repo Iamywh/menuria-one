@@ -80,7 +80,7 @@
     }
 
     function simulateBotResponse(msg) {
-fetch('http://192.168.1.132:5000/chat', {
+fetch('/chat', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -92,12 +92,12 @@ fetch('http://192.168.1.132:5000/chat', {
     if (data.response) {
       addMessage('bot', data.response);
     } else {
-      addMessage('bot', "Nessuna risposta valida dal server.");
+      addMessage('bot', "Ninguna respuesta desde el servidor.");
     }
   })
   .catch(error => {
     console.error('Errore:', error);
-    addMessage('bot', "C'è stato un problema nella comunicazione con il server.");
+    addMessage('bot', "Hubo un problema con el servidor.");
   });
 }
 

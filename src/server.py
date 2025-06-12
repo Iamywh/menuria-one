@@ -28,7 +28,7 @@ def chat():
 
     for entry in KNOWLEDGE_BASE.values():
         if entry['domanda'].lower() in user_message:
-            return jsonify({'response': entry['risposta']})
+            return jsonify({'response': entry['risposta'].replace('\n', '<br>')})
 
     return jsonify({'response': "Lo siento, no tengo una respuesta para eso. ¿Puedes intentar preguntarlo de otra forma?"})
 
