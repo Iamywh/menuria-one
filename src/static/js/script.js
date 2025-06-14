@@ -70,3 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const counterSpan = document.getElementById('counter');
   if (counterSpan) counterSpan.innerText = count;
 });
+
+function toggleFAQSection() {
+  const faq = document.getElementById('faq');
+  faq.classList.toggle('hidden');
+}
