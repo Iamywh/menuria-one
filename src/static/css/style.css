@@ -108,3 +108,56 @@ h1 {
 #faq-popup ul li:hover {
   text-decoration: underline;
 }
+
+.visitor-counter {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: #ffcc00;
+  font-size: 14px;
+}
+
+.popup {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px;
+}
+
+.popup-content button {
+  margin-top: 15px;
+  background-color: #5c3a21;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.feedback-section {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.emoji {
+  font-size: 30px;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.emoji:hover {
+  transform: scale(1.3);
+}

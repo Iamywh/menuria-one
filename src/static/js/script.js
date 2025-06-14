@@ -47,3 +47,26 @@ function sendMessage() {
       sendMessage();
     }
 
+function closePopup() {
+  const popup = document.getElementById('welcomePopup');
+  if (popup) {
+    popup.style.display = 'none';
+    // Puoi anche salvare un flag per non mostrarlo di nuovo
+    localStorage.setItem('menuriaPopupShown', 'true');
+  }
+}
+
+function sendFeedback(type) {
+  alert("Gracias por tu opinión: " + type);
+  // Puoi poi inviarlo al backend qui se vuoi
+}
+
+// Contatore visitatori simulato (solo client-side per ora)
+document.addEventListener('DOMContentLoaded', () => {
+  let count = localStorage.getItem('visitCount');
+  if (!count) count = 1;
+  else count = parseInt(count) + 1;
+  localStorage.setItem('visitCount', count);
+  const counterSpan = document.getElementById('counter');
+  if (counterSpan) counterSpan.innerText = count;
+});
