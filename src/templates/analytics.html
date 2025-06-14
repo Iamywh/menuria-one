@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Analytics - Menuria</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <style>
+    body {
+      background-color: #fffaf2;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 40px;
+      color: #3b2f2f;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .analytics-box {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fef4e7;
+      border: 2px solid #d9b999;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+
+    .section {
+      margin-bottom: 30px;
+    }
+
+    .section h2 {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 5px;
+      margin-bottom: 10px;
+    }
+
+    .emoji {
+      font-size: 24px;
+      margin-right: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>📊 Panel de Analytics - Menuria</h1>
+
+  <div class="analytics-box">
+    <div class="section">
+      <h2>👁️ Total Visitantes</h2>
+      <p>{{ visitors }} personas han visitado la página.</p>
+    </div>
+
+    <div class="section">
+      <h2>😊 Valoraciones</h2>
+      <p>
+        <span class="emoji">😊</span> Felices: {{ ratings['happy'] }}<br>
+        <span class="emoji">😐</span> Neutras: {{ ratings['neutral'] }}<br>
+        <span class="emoji">😞</span> Tristes: {{ ratings['sad'] }}
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>📝 Comentarios Recibidos</h2>
+      {% if feedback %}
+        <ul>
+          {% for item in feedback %}
+            <li><strong>{{ item.rating }}:</strong> {{ item.message }}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No hay comentarios todavía.</p>
+      {% endif %}
+    </div>
+  </div>
+</body>
+</html>
