@@ -10,7 +10,13 @@
 <body>
   <script src="/static/js/script.js"></script>
   <h1>Restaurante<br/>La Casita del Nazareno</h1>
-  <div class="visitor-counter">👁️ Visitantes: <span id="counter">...</span></div>
+  <div class="visitor-counter-box">
+  <span class="visitor-icon">👁️</span>
+  <span class="visitor-label">Visitantes:</span>
+  <span id="counter" class="visitor-number">...</span>
+</div>
+
+
 
   <div class="menu-gallery">
     <div class="menu-frame" onclick="openPDF('Menu_Comida.pdf')"><h3>Menú Comida</h3></div>
@@ -66,5 +72,10 @@
   </div>
   
   <div class="faq-icon" onclick="toggleFAQ()">?</div>
+  <footer class="classfooter">
+  <p>&copy; 2025 Menuria Solutions S.L.</p>
+  <a href="/admin/analytics?token=menuria2025" target="_blank">📊 Analytics (Privato)</a>
+</footer>
+
 </body>
 </html>
