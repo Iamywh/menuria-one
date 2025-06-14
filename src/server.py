@@ -95,7 +95,7 @@ def rate():
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
 
-@app.route('/admin/analytics')
+@app.route('/analytics')
 def analytics():
     token = request.args.get('token')
     if token != 'menuria2025':
