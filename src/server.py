@@ -4,7 +4,7 @@ import json
 import os
 
 # Inizializza Flask usando 'docs' come cartella statica
-app = Flask(__name__, template_folder="templates")
+app = Flask(__name__, template_folder="templates", static_folder="static")
 CORS(app)  # Abilita CORS per permettere l'accesso dal browser
 
 # Serve index.html quando si apre la home del sito

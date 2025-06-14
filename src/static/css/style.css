@@ -1,0 +1,110 @@
+body {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  background: linear-gradient(#fefaf5, #f7f3ec);
+  color: #3b2f2f;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.8em;
+  margin: 20px 0 10px;
+}
+
+.menu-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 20px;
+}
+
+.menu-frame {
+  width: 180px;
+  height: 250px;
+  border: 8px solid #5c3a21;
+  background-color: #ece3d9;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  border-radius: 12px;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.menu-frame:hover {
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.7);
+  transform: scale(1.05);
+}
+
+.menu-frame h3 {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 1em;
+  color: #5c3a21;
+}
+
+.chat-section {
+  margin: 40px auto;
+  max-width: 800px;
+  background: #fff9f0;
+  border: 5px solid #d9b999;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  padding: 20px;
+}
+
+.faq-icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #ffefc1;
+  border: 2px solid #5c3a21;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 30px;
+  text-align: center;
+  line-height: 56px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.faq-icon:hover {
+  background: #fff3a5;
+  box-shadow: 0 0 15px gold;
+}
+
+#faq-popup {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  background: #fff8e7;
+  border: 2px solid #5c3a21;
+  border-radius: 12px;
+  padding: 15px;
+  width: 250px;
+  display: none;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+#faq-popup h4 {
+  margin-top: 0;
+}
+
+#faq-popup ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#faq-popup ul li {
+  margin: 10px 0;
+  cursor: pointer;
+  color: #5c3a21;
+}
+
+#faq-popup ul li:hover {
+  text-decoration: underline;
+}

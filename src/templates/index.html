@@ -1,21 +1,38 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>MENURIA ONE</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Casita del Nazareno</title>
+  <link rel="stylesheet" href="/src/static/css/style.css" />
   <style>
-    body {
-      font-family: sans-serif;
-      text-align: center;
-      background-color: #f9f9f9;
-      margin: 20px;
+    .visitor-counter {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      color: #ffcc00;
+      font-size: 14px;
     }
-    #chatbox {
-      max-width: 600px;
-      margin: 20px auto;
+    .popup {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+    .popup-content {
+      background: white;
       padding: 20px;
-      border: 1px solid #ddd;
       border-radius: 10px;
+      text-align: center;
+      max-width: 400px;
+    }
+    .popup-content button {
+      margin-top: 15px;
+      background-color: #5c3a21;
       background-color: #fff;
     }
     .message {
@@ -60,19 +77,49 @@
       display: block;
       background-color: #0078D4;
       color: white;
-      padding: 10px;
-      margin: 6px auto;
       border: none;
+      padding: 10px 20px;
       border-radius: 6px;
       cursor: pointer;
-      max-width: 90%;
     }
-    .faq-btn:hover {
-      background-color: #005ea2;
+    .feedback-section {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .emoji {
+      font-size: 30px;
+      margin: 0 10px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .emoji:hover {
+      transform: scale(1.3);
     }
   </style>
 </head>
 <body>
+  <h1>Restaurante<br/>La Casita del Nazareno</h1>
+  <div class="visitor-counter">👁️ Visitantes: <span id="counter">...</span></div>
+
+  <div class="menu-gallery">
+    <div class="menu-frame" onclick="openPDF('Menu_Comida.pdf')"><h3>Menú Comida</h3></div>
+    <div class="menu-frame" onclick="openPDF('Menu_Bebidas.pdf')"><h3>Bebidas</h3></div>
+    <div class="menu-frame" onclick="openPDF('Menu_Cafes_Frapes.pdf')"><h3>Cafés y Frappés</h3></div>
+    <div class="menu-frame" onclick="openPDF('Menu_Desayunos.pdf')"><h3>Desayunos</h3></div>
+  </div>
+
+  <div class="chat-section">
+    <h2>Chat con Menuria</h2>
+    <div id="messages" style="height: 300px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; border-radius: 8px;"></div>
+    <input type="text" id="userInput" placeholder="Escribe tu mensaje aquí..." style="width: calc(100% - 22px); padding: 10px; margin-top: 10px; border-radius: 4px; border: 1px solid #ccc;">
+    <button onclick="sendMessage()" style="padding: 10px; background-color: #5c3a21; color: white; border: none; border-radius: 4px;">Enviar</button>  
+
+    <div class="feedback-section">
+      <p>¿Te ha sido útil la charla?</p>
+      <span class="emoji" onclick="sendFeedback('sad')">😞</span>
+      <span class="emoji" onclick="sendFeedback('neutral')">😐</span>
+      <span class="emoji" onclick="sendFeedback('happy')">😊</span>
+    </div>
   <div id="visitorCount"></div>
   <h1>🍽️ Bienvenido a MENURIA ONE</h1>
   <p>Tu asistente virtual para el restaurante.</p>
@@ -92,28 +139,41 @@
 
   <div id="faq">
     <h2>Preguntas Frecuentes</h2>
+    <!-- Botones FAQ como già presenti -->
     <button class="faq-btn" onclick="ask('¿Cuáles son los horarios de apertura?')">¿Cuáles son los horarios de apertura?</button>
-    <button class="faq-btn" onclick="ask('¿Cómo puedo reservar una mesa?')">¿Cómo puedo reservar una mesa?</button>
-    <button class="faq-btn" onclick="ask('¿Se puede reservar la terraza en la azotea?')">¿Se puede reservar la terraza en la azotea?</button>
-    <button class="faq-btn" onclick="ask('¿Cuántos asientos tiene el local?')">¿Cuántos asientos tiene el local?</button>
-    <button class="faq-btn" onclick="ask('¿Tienen menú de desayuno?')">¿Tienen menú de desayuno?</button>
-    <button class="faq-btn" onclick="ask('¿Qué tipos de café tienen?')">¿Qué tipos de café tienen?</button>
-    <button class="faq-btn" onclick="ask('¿Qué cócteles tienen?')">¿Qué cócteles tienen?</button>
-    <button class="faq-btn" onclick="ask('¿Qué hay para almorzar?')">¿Qué hay para almorzar?</button>
-    <button class="faq-btn" onclick="ask('¿Tienen pasteles o postres?')">¿Tienen pasteles o postres?</button>
-    <button class="faq-btn" onclick="ask('¿Qué bebidas tienen?')">¿Qué bebidas tienen?</button>
-    <button class="faq-btn" onclick="ask('¿Tienen opciones veganas?')">¿Tienen opciones veganas?</button>
-    <button class="faq-btn" onclick="ask('¿Tienen opciones sin gluten?')">¿Tienen opciones sin gluten?</button>
-    <button class="faq-btn" onclick="ask('¿Tienen opciones sin lactosa?')">¿Tienen opciones sin lactosa?</button>
-    <button class="faq-btn" onclick="ask('¿Tienen opciones sin nueces?')">¿Tienen opciones sin nueces?</button>
-    <button class="faq-btn" onclick="ask('¿Tienen opciones sin huevo?')">¿Tienen opciones sin huevo?</button>
-    <button class="faq-btn" onclick="ask('¿Tienen opciones sin pescado?')">¿Tienen opciones sin pescado?</button>
-    <button class="faq-btn" onclick="ask('¿Tienen opciones sin carne?')">¿Tienen opciones sin carne?</button>
-    <button class="faq-btn" onclick="ask('¿Tienen opciones sin lácteos?')">¿Tienen opciones sin lácteos?</button>
-    <button class="faq-btn" onclick="ask('¿Que tartas suelen tener?')">¿Qué tartas suelen tener?</button>
+    <!-- ... altri bottoni ... -->
+  </div>
+
+  <div class="popup" id="welcomePopup">
+    <div class="popup-content">
+      <h2>👋 ¡Bienvenido a Menuria!</h2>
+      <p>Somos un pequeño equipo que ama el sector hostelero y quiere mejorarla con un toque de tecnología.</p>
+      <p>Este chat está aquí para ayudarte a encontrar lo que necesitas sin reemplazar al camarero.</p>
+      <p>Si te apetece, deja un comentario después de usarlo. ¡Buen provecho! 🥂</p>
+      <button onclick="closePopup()">Empezar</button>
+    </div>
   </div>
 
   <script>
+    function openPDF(file) {
+      window.open(`/static/menus/${file}`, '_blank');
+    }
+
+    function toggleFAQ() {
+      const popup = document.getElementById('faq-popup');
+      popup.style.display = (popup.style.display === 'block') ? 'none' : 'block';
+    }
+
+    function fillInput(text) {
+      alert(`Auto-riempimento: ${text}`);
+    }
+
+    function closePopup() {
+      document.getElementById('welcomePopup').style.display = 'none';
+    }
+
+    function sendFeedback(type) {
+      alert("Gracias por tu opinión: " + type);
     // Update visitor count when the page loads
     fetch('/visitor-count')
       .then(r => r.json())
@@ -145,6 +205,13 @@
       });
     }
 
+    document.addEventListener('DOMContentLoaded', () => {
+      let count = localStorage.getItem('visitCount');
+      if (!count) count = 1;
+      else count = parseInt(count) + 1;
+      localStorage.setItem('visitCount', count);
+      document.getElementById('counter').innerText = count;
+    });
     function addMessage(role, text) {
       const messages = document.getElementById('messages');
       const div = document.createElement('div');
@@ -168,5 +235,8 @@
     alert('¡Gracias por tu valoración!');
   }
   </script>
+
+  <script src="/static/js/script.js"></script>
+  <div class="faq-icon" onclick="toggleFAQ()">?</div>
 </body>
 </html>
