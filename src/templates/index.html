@@ -54,12 +54,31 @@
     <span class="face" onclick="rate('sad')">😞</span>
   </div>
 
-  <div id="faq">
-    <h2>Preguntas Frecuentes</h2>
-    <!-- Botones FAQ como già presenti -->
+  <div class="faq-container">
+  <h2 onclick="toggleFAQSection()">📚 Preguntas Frecuentes (clic para mostrar)</h2>
+  <div id="faq" class="faq-grid hidden">
     <button class="faq-btn" onclick="ask('¿Cuáles son los horarios de apertura?')">¿Cuáles son los horarios de apertura?</button>
-    <!-- ... altri bottoni ... -->
+    <button class="faq-btn" onclick="ask('¿Cómo puedo reservar una mesa?')">¿Cómo puedo reservar una mesa?</button>
+    <button class="faq-btn" onclick="ask('¿Se puede reservar la terraza en la azotea?')">¿Se puede reservar la terraza en la azotea?</button>
+    <button class="faq-btn" onclick="ask('¿Cuántos asientos tiene el local?')">¿Cuántos asientos tiene el local?</button>
+    <button class="faq-btn" onclick="ask('¿Tienen menú de desayuno?')">¿Tienen menú de desayuno?</button>
+    <button class="faq-btn" onclick="ask('¿Qué tipos de café tienen?')">¿Qué tipos de café tienen?</button>
+    <button class="faq-btn" onclick="ask('¿Qué cócteles tienen?')">¿Qué cócteles tienen?</button>
+    <button class="faq-btn" onclick="ask('¿Qué hay para almorzar?')">¿Qué hay para almorzar?</button>
+    <button class="faq-btn" onclick="ask('¿Tienen pasteles o postres?')">¿Tienen pasteles o postres?</button>
+    <button class="faq-btn" onclick="ask('¿Qué bebidas tienen?')">¿Qué bebidas tienen?</button>
+    <button class="faq-btn" onclick="ask('¿Tienen opciones veganas?')">¿Tienen opciones veganas?</button>
+    <button class="faq-btn" onclick="ask('¿Tienen opciones sin gluten?')">¿Tienen opciones sin gluten?</button>
+    <button class="faq-btn" onclick="ask('¿Tienen opciones sin lactosa?')">¿Tienen opciones sin lactosa?</button>
+    <button class="faq-btn" onclick="ask('¿Tienen opciones sin nueces?')">¿Tienen opciones sin nueces?</button>
+    <button class="faq-btn" onclick="ask('¿Tienen opciones sin huevo?')">¿Tienen opciones sin huevo?</button>
+    <button class="faq-btn" onclick="ask('¿Tienen opciones sin pescado?')">¿Tienen opciones sin pescado?</button>
+    <button class="faq-btn" onclick="ask('¿Tienen opciones sin carne?')">¿Tienen opciones sin carne?</button>
+    <button class="faq-btn" onclick="ask('¿Tienen opciones sin lácteos?')">¿Tienen opciones sin lácteos?</button>
+    <button class="faq-btn" onclick="ask('¿Que tartas suelen tener?')">¿Qué tartas suelen tener?</button>
   </div>
+</div>
+
 
   <div class="popup" id="welcomePopup">
     <div class="popup-content">

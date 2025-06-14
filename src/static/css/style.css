@@ -214,3 +214,48 @@ h1 {
   color: #e08e2d;
   text-decoration: underline;
 }
+.faq-container {
+  margin: 40px auto;
+  max-width: 900px;
+}
+
+.faq-container h2 {
+  cursor: pointer;
+  font-size: 1.6em;
+  color: #5c3a21;
+  background: #ffeccc;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  transition: background 0.3s;
+}
+
+.faq-container h2:hover {
+  background: #ffe099;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.faq-btn {
+  padding: 10px;
+  background-color: #fff3dc;
+  border: 1px solid #d9b999;
+  border-radius: 8px;
+  font-size: 0.95em;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.faq-btn:hover {
+  background-color: #ffe099;
+}
+
+.hidden {
+  display: none;
+}
