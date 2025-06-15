@@ -1,99 +1,96 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>La Casita del Nazareno</title>
-  <link rel="stylesheet" href="/static/css/style.css" />
+    <meta charset="UTF-8">
+    <title>Menuria One</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
 </head>
 <body>
-  <script src="/static/js/script.js" defer></script>
+    <header>
+        <h1>La Casita del Nazareno</h1>
+        <div class="visitor-count" id="visitorCounter">👀 Visitors: ...</div>
+    </header>
 
-  <h1>Restaurante<br/>La Casita del Nazareno</h1>
-
-  <!-- Menu Lingua -->
-  <div class="language-menu">
-    <label for="languageSelector">🌐 Select Language:</label>
-    <select id="languageSelector">
-      <option value="es">🇪🇸 Español</option>
-      <option value="en">🇬🇧 English</option>
-      <option value="it">🇮🇹 Italiano</option>
-      <option value="fr">🇫🇷 Français</option>
-      <option value="de">🇩🇪 Deutsch</option>
-      <option value="ru">🇷🇺 Русский</option>
-    </select>
-  </div>
-
-  <!-- Contatore Visitatori -->
-  <div class="visitor-counter-box">
-    <span class="visitor-icon">👁️</span>
-    <span class="visitor-label">Visitantes:</span>
-    <span id="counter" class="visitor-number">...</span>
-  </div>
-
-  <!-- Galleria Menu -->
-  <div class="menu-gallery">
-    <div class="menu-frame" onclick="openPDF('Menu_Comida.pdf')"><h3>Menú Comida</h3></div>
-    <div class="menu-frame" onclick="openPDF('Menu_Bebidas.pdf')"><h3>Bebidas</h3></div>
-    <div class="menu-frame" onclick="openPDF('Menu_Cafes_Frapes.pdf')"><h3>Cafés y Frappés</h3></div>
-    <div class="menu-frame" onclick="openPDF('Menu_Desayunos.pdf')"><h3>Desayunos</h3></div>
-  </div>
-
-  <!-- Sezione Chat -->
-  <div class="chat-section">
-    <h2>Chat con Menuria</h2>
-    <div id="messages" class="chat-box"></div>
-    <input type="text" id="userInput" placeholder="Escribe tu mensaje aquí...">
-    <button onclick="sendMessage()">Enviar</button>  
-
-    <!-- Feedback -->
-    <div class="feedback-section">
-      <p>¿Te ha sido útil la charla?</p>
-      <span class="emoji" onclick="sendFeedback('sad')">😞</span>
-      <span class="emoji" onclick="sendFeedback('neutral')">😐</span>
-      <span class="emoji" onclick="sendFeedback('happy')">😊</span>
+    <!-- Language Selection Popup -->
+    <div class="language-popup" id="languagePopup">
+        <div class="popup-content">
+            <h2>Select your language:</h2>
+            <div class="flag-grid">
+                <img src="{{ url_for('static', filename='img/Spain-flag.png') }}" alt="ES" onclick="setLanguage('es')">
+                <img src="{{ url_for('static', filename='img/UK-flag.png') }}" alt="EN" onclick="setLanguage('en')">
+                <img src="{{ url_for('static', filename='img/Italy-flag.png') }}" alt="IT" onclick="setLanguage('it')">
+                <img src="{{ url_for('static', filename='img/France-flag.png') }}" alt="FR" onclick="setLanguage('fr')">
+                <img src="{{ url_for('static', filename='img/Germany-flag.png') }}" alt="DE" onclick="setLanguage('de')">
+                <img src="{{ url_for('static', filename='img/Russia-flag.png') }}" alt="RU" onclick="setLanguage('ru')">
+            </div>
+        </div>
     </div>
-  </div>
 
-  <!-- FAQ Interattivo -->
-  <div class="faq-container">
-    <h2 onclick="toggleFAQSection()">📚 Preguntas Frecuentes (clic para mostrar)</h2>
-    <div id="faq" class="faq-grid hidden"></div>
-  </div>
+    <!-- Menu Buttons Section -->
+    <main>
+        <section class="menu-section">
+            <div class="menu-box" onclick="openPDF('Menu_Desayunos.pdf')">
+                <h3>Desayunos</h3>
+            </div>
+            <div class="menu-box" onclick="openPDF('Menu_Comida.pdf')">
+                <h3>Comida</h3>
+            </div>
+            <div class="menu-box" onclick="openPDF('Menu_Bebidas.pdf')">
+                <h3>Bebidas</h3>
+            </div>
+            <div class="menu-box" onclick="openPDF('Menu_Cafes_Frapes.pdf')">
+                <h3>Cafés & Frappés</h3>
+            </div>
+        </section>
+    </main>
 
-  <!-- Popup Lingua -->
-  <div class="language-popup" id="languagePopup">
-    <div class="popup-content">
-      <h2>Select:</h2>
-      <div class="flag-grid">
-        <img src="/static/img/Spain-flag.png" alt="ES" onclick="setLanguage('es')">
-        <img src="/static/img/UK-flag.png" alt="EN" onclick="setLanguage('en')">
-        <img src="/static/img/Italy-flag.png" alt="IT" onclick="setLanguage('it')">
-        <img src="/static/img/France-flag.png" alt="FR" onclick="setLanguage('fr')">
-        <img src="/static/img/Germany-flag.png" alt="DE" onclick="setLanguage('de')">
-        <img src="/static/img/Russia-flag.png" alt="RU" onclick="setLanguage('ru')">
-      </div>
+    <!-- Chatbot Interface -->
+    <section class="chatbot-container">
+        <div id="chatWindow" class="chat-window"></div>
+        <input type="text" id="userInput" placeholder="Escribe tu mensaje..." />
+        <button onclick="sendMessage()">Enviar</button>
+    </section>
+
+    <!-- Customer Satisfaction Feedback -->
+    <div class="satisfaction-box">
+        <p>¿Cómo ha sido tu experiencia?</p>
+        <div class="rating-options">
+            <span onclick="sendRating('happy')">😊</span>
+            <span onclick="sendRating('neutral')">😐</span>
+            <span onclick="sendRating('sad')">😞</span>
+        </div>
     </div>
+
+    <!-- FAQ Toggle Icon -->
+    <div class="faq-toggle" onclick="toggleFAQSection()">❓</div>
+
+    <!-- FAQ Popup -->
+    <div class="faq-container">
+  <h2 onclick="toggleFAQSection()">📚 Preguntas Frecuentes (clic para mostrar)</h2>
+  <div id="faq" class="faq-grid hidden">
+    <button class="faq-btn" onclick="ask('¿Cuáles son los horarios de apertura?')">¿Cuáles son los horarios de apertura?</button>
+    <button class="faq-btn" onclick="ask('¿Cómo puedo reservar una mesa?')">¿Cómo puedo reservar una mesa?</button>
+    <button class="faq-btn" onclick="ask('¿Se puede reservar la terraza en la azotea?')">¿Se puede reservar la terraza en la azotea?</button>
+    <button class="faq-btn" onclick="ask('¿Cuántos asientos tiene el local?')">¿Cuántos asientos tiene el local?</button>
+    <button class="faq-btn" onclick="ask('¿Tienen menú de desayuno?')">¿Tienen menú de desayuno?</button>
+    <button class="faq-btn" onclick="ask('¿Qué tipos de café tienen?')">¿Qué tipos de café tienen?</button>
+    <button class="faq-btn" onclick="ask('¿Qué cócteles tienen?')">¿Qué cócteles tienen?</button>
+    <button class="faq-btn" onclick="ask('¿Qué hay para almorzar?')">¿Qué hay para almorzar?</button>
+    <button class="faq-btn" onclick="ask('¿Tienen pasteles o postres?')">¿Tienen pasteles o postres?</button>
+    <button class="faq-btn" onclick="ask('¿Qué bebidas tienen?')">¿Qué bebidas tienen?</button>
+    <button class="faq-btn" onclick="ask('¿Tienen opciones veganas?')">¿Tienen opciones veganas?</button>
+    <button class="faq-btn" onclick="ask('¿Tienen opciones sin gluten?')">¿Tienen opciones sin gluten?</button>
+    <button class="faq-btn" onclick="ask('¿Tienen opciones sin lactosa?')">¿Tienen opciones sin lactosa?</button>
+    <button class="faq-btn" onclick="ask('¿Tienen opciones sin nueces?')">¿Tienen opciones sin nueces?</button>
+    <button class="faq-btn" onclick="ask('¿Tienen opciones sin huevo?')">¿Tienen opciones sin huevo?</button>
+    <button class="faq-btn" onclick="ask('¿Tienen opciones sin pescado?')">¿Tienen opciones sin pescado?</button>
+    <button class="faq-btn" onclick="ask('¿Tienen opciones sin carne?')">¿Tienen opciones sin carne?</button>
+    <button class="faq-btn" onclick="ask('¿Tienen opciones sin lácteos?')">¿Tienen opciones sin lácteos?</button>
+    <button class="faq-btn" onclick="ask('¿Que tartas suelen tener?')">¿Qué tartas suelen tener?</button>
   </div>
+</div>
 
-  <!-- Popup Benvenuto -->
-  <div class="popup" id="welcomePopup">
-    <div class="popup-content">
-      <h2>👋 ¡Bienvenido a Menuria!</h2>
-      <p>Somos un pequeño equipo que ama el sector hostelero y quiere mejorarla con un toque de tecnología.</p>
-      <p>Este chat está aquí para ayudarte a encontrar lo que necesitas sin reemplazar al camarero.</p>
-      <p>Si te apetece, deja un comentario después de usarlo. ¡Buen provecho! 🥂</p>
-      <button onclick="closeWelcomePopup()">Empezar</button>
-    </div>
-  </div>
-
-  <!-- Icona FAQ -->
-  <div class="faq-icon" onclick="toggleFAQ()">?</div>
-
-  <!-- Footer -->
-  <footer class="classfooter">
-    <p>&copy; 2025 Menuria Solutions S.L.</p>
-    <a href="/analytics?token=menuria2025" target="_blank">📊 Analytics (Privato)</a>
-  </footer>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
