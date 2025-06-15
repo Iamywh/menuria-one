@@ -4,7 +4,7 @@ import json
 import os
 import datetime
 
-app = Flask(__name__, template_folder="src/templates", static_folder="src/static")
+app = Flask(__name__, template_folder="/templates", static_folder="/static")
 CORS(app)
 
 # === Percorsi
