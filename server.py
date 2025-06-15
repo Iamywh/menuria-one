@@ -14,6 +14,9 @@ LANG_RESPONSES_DIR = os.path.join(DATA_DIR, 'lang_responses')
 COUNT_FILE = os.path.join(DATA_DIR, 'visitor_count.txt')
 RATING_FILE = os.path.join(DATA_DIR, 'rating_counts.json')
 FEEDBACK_LOG = os.path.join(DATA_DIR, 'feedback.json')
+# === Crea le cartelle mancanti (se non esistono)
+os.makedirs(DATA_DIR, exist_ok=True)
+os.makedirs(LANG_RESPONSES_DIR, exist_ok=True)
 
 # === Funzioni
 def load_knowledge_bases():
