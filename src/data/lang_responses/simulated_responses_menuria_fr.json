@@ -1,0 +1,78 @@
+{
+  "orari": {
+    "domanda": "Quels sont les horaires d'ouverture ?",
+    "risposta": "Nous sommes ouverts :\n- Du lundi au jeudi : 10h00 – 23h00\n- Vendredi et samedi : 10h00 – 00h00\n- Dimanche : 10h00 – 17h00"
+  },
+  "prenotazione_telefono": {
+    "domanda": "Comment puis-je réserver une table ?",
+    "risposta": "Vous pouvez nous appeler au 922 24 78 51 pour réserver une table."
+  },
+  "prenotazione_terrazza": {
+    "domanda": "Peut-on réserver la terrasse sur le toit ?",
+    "risposta": "Oui ! Vous pouvez réserver la terrasse supérieure en exclusivité pour 90€."
+  },
+  "posti_totali": {
+    "domanda": "Combien de places assises y a-t-il ?",
+    "risposta": "Nous avons :\n- Terrasse principale : 24 places\n- Salle intérieure : 19 places\n- Couloir : 8 places\n- Terrasse sur le toit : 43 places\nTotal : 94 places"
+  },
+  "menu_colazione": {
+    "domanda": "Avez-vous un menu petit-déjeuner ?",
+    "risposta": "Oui ! Nous proposons 28 options de petit-déjeuner, y compris des combos, des sandwiches et des toasts. Les brunchs doivent être réservés 48h à l'avance !"
+  },
+  "menu_caffe": {
+    "domanda": "Quels types de café proposez-vous ?",
+    "risposta": "Nous proposons 19 variétés de cafés, dont espresso, café allongé, latte macchiato et frappé."
+  },
+  "menu_cocktail": {
+    "domanda": "Quels cocktails avez-vous ?",
+    "risposta": "Parmi nos cocktails : mojito, margarita et piña colada."
+  },
+  "menu_pranzo": {
+    "domanda": "Que proposez-vous pour le déjeuner ?",
+    "risposta": "Vous pouvez choisir parmi 5 catégories : entrées, salades, burgers, wok et plats de viande."
+  },
+  "torte": {
+    "domanda": "Avez-vous des gâteaux ou desserts ?",
+    "risposta": "Oui ! Nous avons des gâteaux faits maison, différents chaque jour."
+  },
+  "menu_bebidas": {
+    "domanda": "Quelles boissons avez-vous ?",
+    "risposta": "Nous offrons un large choix de boissons, dont sodas, bières et vins."
+  },
+  "menu_vegano": {
+    "domanda": "Avez-vous des options véganes ?",
+    "risposta": "Oui, nous proposons plusieurs options véganes sur notre menu."
+  },
+  "menu_senza_glutine": {
+    "domanda": "Avez-vous des options sans gluten ?",
+    "risposta": "Oui, nous avons des plats sans gluten disponibles."
+  },
+  "menu_senza_lattosio": {
+    "domanda": "Avez-vous des options sans lactose ?",
+    "risposta": "Oui, nous proposons des plats sans lactose."
+  },
+  "menu_senza_noci": {
+    "domanda": "Avez-vous des options sans noix ?",
+    "risposta": "Oui, nous avons des options sans noix dans notre menu."
+  },
+  "menu_senza_uova": {
+    "domanda": "Avez-vous des options sans œufs ?",
+    "risposta": "Oui, des plats sans œufs sont disponibles."
+  },
+  "menu_senza_pesce": {
+    "domanda": "Avez-vous des options sans poisson ?",
+    "risposta": "Oui, nous avons des plats sans poisson."
+  },
+  "menu_senza_carne": {
+    "domanda": "Avez-vous des options sans viande ?",
+    "risposta": "Oui, plusieurs options végétariennes sont disponibles."
+  },
+  "menu_senza_latticini": {
+    "domanda": "Avez-vous des options sans produits laitiers ?",
+    "risposta": "Oui, nous proposons des plats sans produits laitiers."
+  },
+  "tipi_di_torte": {
+    "domanda": "Quels types de gâteaux avez-vous ?",
+    "risposta": "Plusieurs variétés parmi les plus populaires : Gâteau Colibri, Gâteau à la carotte, Cheesecake, Gâteau au Baileys, Maria Victoria, Red Velvet, Gâteau Guinness."
+  }
+}

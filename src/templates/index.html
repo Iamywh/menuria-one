@@ -1,22 +1,57 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <div class="language-selector">
+  <label for="langSelect">🌍</label>
+  <select id="langSelect" onchange="changeLanguageFromSelector(this)">
+    <option value="es">ES</option>
+    <option value="it">IT</option>
+    <option value="ru">RU</option>
+    <option value="en">EN</option>
+    <option value="fr">FR</option>
+    <option value="de">DE</option>
+  </select>
+</div>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>La Casita del Nazareno</title>
   <link rel="stylesheet" href="/static/css/style.css" />
-  
 </head>
 <body>
+  <div id="languagePopup">
+  <div class="popup-content">
+    <h2>Select:</h2>
+    <div class="flag-grid">
+      <img src="/static/img/Spain-flag.png" onclick="chooseLanguage('es')" alt="Español">
+      <img src="/static/img/Italy-flag.png" onclick="chooseLanguage('it')" alt="Italiano">
+      <img src="/static/img/Russia-flag.png" onclick="chooseLanguage('ru')" alt="Русский">
+      <img src="/static/img/UK-flag.png" onclick="chooseLanguage('en')" alt="English">
+      <img src="/static/img/France-flag.png" onclick="chooseLanguage('fr')" alt="Français">
+      <img src="/static/img/Germany-flag.png" onclick="chooseLanguage('de')" alt="Deutsch">
+    </div>
+  </div>
+</div>
+
+  <!-- Menu selezione lingua -->
+  <div id="language-switcher" class="language-switcher">
+    <select onchange="changeLanguage(this.value)">
+      <option value="es">🇪🇸</option>
+      <option value="en">🇬🇧</option>
+      <option value="it">🇮🇹</option>
+      <option value="fr">🇫🇷</option>
+      <option value="de">🇩🇪</option>
+      <option value="ru">🇷🇺</option>
+    </select>
+  </div>
+
   <script src="/static/js/script.js"></script>
   <h1>Restaurante<br/>La Casita del Nazareno</h1>
   <div class="visitor-counter-box">
-  <span class="visitor-icon">👁️</span>
-  <span class="visitor-label">Visitantes:</span>
-  <span id="counter" class="visitor-number">...</span>
-</div>
-
-
+    <span class="visitor-icon">👁️</span>
+    <span class="visitor-label">Visitantes:</span>
+    <span id="counter" class="visitor-number">...</span>
+  </div>
 
   <div class="menu-gallery">
     <div class="menu-frame" onclick="openPDF('Menu_Comida.pdf')"><h3>Menú Comida</h3></div>
@@ -37,6 +72,8 @@
       <span class="emoji" onclick="sendFeedback('neutral')">😐</span>
       <span class="emoji" onclick="sendFeedback('happy')">😊</span>
     </div>
+  </div>
+
   <div id="visitorCount"></div>
   <h1>🍽️ Bienvenido a MENURIA ONE</h1>
   <p>Tu asistente virtual para el restaurante.</p>
@@ -55,30 +92,11 @@
   </div>
 
   <div class="faq-container">
-  <h2 onclick="toggleFAQSection()">📚 Preguntas Frecuentes (clic para mostrar)</h2>
-  <div id="faq" class="faq-grid hidden">
-    <button class="faq-btn" onclick="ask('¿Cuáles son los horarios de apertura?')">¿Cuáles son los horarios de apertura?</button>
-    <button class="faq-btn" onclick="ask('¿Cómo puedo reservar una mesa?')">¿Cómo puedo reservar una mesa?</button>
-    <button class="faq-btn" onclick="ask('¿Se puede reservar la terraza en la azotea?')">¿Se puede reservar la terraza en la azotea?</button>
-    <button class="faq-btn" onclick="ask('¿Cuántos asientos tiene el local?')">¿Cuántos asientos tiene el local?</button>
-    <button class="faq-btn" onclick="ask('¿Tienen menú de desayuno?')">¿Tienen menú de desayuno?</button>
-    <button class="faq-btn" onclick="ask('¿Qué tipos de café tienen?')">¿Qué tipos de café tienen?</button>
-    <button class="faq-btn" onclick="ask('¿Qué cócteles tienen?')">¿Qué cócteles tienen?</button>
-    <button class="faq-btn" onclick="ask('¿Qué hay para almorzar?')">¿Qué hay para almorzar?</button>
-    <button class="faq-btn" onclick="ask('¿Tienen pasteles o postres?')">¿Tienen pasteles o postres?</button>
-    <button class="faq-btn" onclick="ask('¿Qué bebidas tienen?')">¿Qué bebidas tienen?</button>
-    <button class="faq-btn" onclick="ask('¿Tienen opciones veganas?')">¿Tienen opciones veganas?</button>
-    <button class="faq-btn" onclick="ask('¿Tienen opciones sin gluten?')">¿Tienen opciones sin gluten?</button>
-    <button class="faq-btn" onclick="ask('¿Tienen opciones sin lactosa?')">¿Tienen opciones sin lactosa?</button>
-    <button class="faq-btn" onclick="ask('¿Tienen opciones sin nueces?')">¿Tienen opciones sin nueces?</button>
-    <button class="faq-btn" onclick="ask('¿Tienen opciones sin huevo?')">¿Tienen opciones sin huevo?</button>
-    <button class="faq-btn" onclick="ask('¿Tienen opciones sin pescado?')">¿Tienen opciones sin pescado?</button>
-    <button class="faq-btn" onclick="ask('¿Tienen opciones sin carne?')">¿Tienen opciones sin carne?</button>
-    <button class="faq-btn" onclick="ask('¿Tienen opciones sin lácteos?')">¿Tienen opciones sin lácteos?</button>
-    <button class="faq-btn" onclick="ask('¿Que tartas suelen tener?')">¿Qué tartas suelen tener?</button>
+    <h2 onclick="toggleFAQSection()">📚 Preguntas Frecuentes (clic para mostrar)</h2>
+    <div id="faq" class="faq-grid hidden">
+      <!-- Pulsanti FAQ caricati dinamicamente -->
+    </div>
   </div>
-</div>
-
 
   <div class="popup" id="welcomePopup">
     <div class="popup-content">
@@ -89,12 +107,11 @@
       <button onclick="closePopup()">Empezar</button>
     </div>
   </div>
-  
+
   <div class="faq-icon" onclick="toggleFAQ()">?</div>
   <footer class="classfooter">
-  <p>&copy; 2025 Menuria Solutions S.L.</p>
-  <a href="/analytics?token=menuria2025" target="_blank">📊 Analytics (Privato)</a>
-</footer>
-
+    <p>&copy; 2025 Menuria Solutions S.L.</p>
+    <a href="/analytics?token=menuria2025" target="_blank">📊 Analytics (Privato)</a>
+  </footer>
 </body>
 </html>

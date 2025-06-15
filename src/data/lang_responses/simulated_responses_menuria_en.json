@@ -1,0 +1,78 @@
+{
+  "orari": {
+    "domanda": "What are the opening hours?",
+    "risposta": "We are open:\n- Monday to Thursday: 10:00 AM – 11:00 PM\n- Friday and Saturday: 10:00 AM – 12:00 AM\n- Sunday: 10:00 AM – 5:00 PM"
+  },
+  "prenotazione_telefono": {
+    "domanda": "How can I book a table?",
+    "risposta": "You can call us at 922 24 78 51 to make a reservation."
+  },
+  "prenotazione_terrazza": {
+    "domanda": "Can I reserve the rooftop terrace?",
+    "risposta": "Yes! You can reserve the rooftop terrace for exclusive use for €90."
+  },
+  "posti_totali": {
+    "domanda": "How many seats are there?",
+    "risposta": "We have:\n- Main terrace: 24 seats\n- Indoor room: 19 seats\n- Hallway: 8 seats\n- Rooftop terrace: 43 seats\nTotal: 94 seats"
+  },
+  "menu_colazione": {
+    "domanda": "Do you have a breakfast menu?",
+    "risposta": "Yes! We have 28 breakfast options, including combos, sandwiches, and toast. Brunches must be reserved 48 hours in advance!"
+  },
+  "menu_caffe": {
+    "domanda": "What types of coffee do you have?",
+    "risposta": "We offer 19 coffee varieties, including espresso, americano, latte macchiato, and frappé."
+  },
+  "menu_cocktail": {
+    "domanda": "What cocktails do you have?",
+    "risposta": "Some of our cocktails include mojito, margarita, and piña colada."
+  },
+  "menu_pranzo": {
+    "domanda": "What do you have for lunch?",
+    "risposta": "You can choose from 5 categories: starters, salads, burgers, wok dishes, and meat plates."
+  },
+  "torte": {
+    "domanda": "Do you have cakes or desserts?",
+    "risposta": "Yes! We have fresh homemade cakes that change daily."
+  },
+  "menu_bebidas": {
+    "domanda": "What drinks do you have?",
+    "risposta": "We offer a wide variety of drinks, including soft drinks, beers, and wines."
+  },
+  "menu_vegano": {
+    "domanda": "Do you have vegan options?",
+    "risposta": "Yes, we have several vegan options on our menu."
+  },
+  "menu_sin_gluten": {
+    "domanda": "Do you have gluten-free options?",
+    "risposta": "Yes, we offer gluten-free options on our menu."
+  },
+  "menu_sin_lactosa": {
+    "domanda": "Do you have lactose-free options?",
+    "risposta": "Yes, we have lactose-free options available."
+  },
+  "menu_sin_nueces": {
+    "domanda": "Do you have nut-free options?",
+    "risposta": "Yes, we offer nut-free options on our menu."
+  },
+  "menu_sin_huevo": {
+    "domanda": "Do you have egg-free options?",
+    "risposta": "Yes, we have egg-free options available."
+  },
+  "menu_sin_pescado": {
+    "domanda": "Do you have fish-free options?",
+    "risposta": "Yes, we offer fish-free options on our menu."
+  },
+  "menu_sin_carne": {
+    "domanda": "Do you have meat-free options?",
+    "risposta": "Yes, we have several meat-free options on our menu."
+  },
+  "menu_sin_lacteos": {
+    "domanda": "Do you have dairy-free options?",
+    "risposta": "Yes, we offer dairy-free options on our menu."
+  },
+  "tipos_de_tartas": {
+    "domanda": "What kinds of cakes do you usually have?",
+    "risposta": "Several types, including our most popular ones: Hummingbird Cake, Carrot Cake, Cheesecake, Baileys Cake, Maria Victoria Cake, Red Velvet Cake, Guinness Cake"
+  }
+}

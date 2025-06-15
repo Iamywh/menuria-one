@@ -1,0 +1,78 @@
+{
+  "orari": {
+    "domanda": "Wie sind die Öffnungszeiten?",
+    "risposta": "Wir haben geöffnet:\n- Montag bis Donnerstag: 10:00 – 23:00 Uhr\n- Freitag und Samstag: 10:00 – 00:00 Uhr\n- Sonntag: 10:00 – 17:00 Uhr"
+  },
+  "prenotazione_telefono": {
+    "domanda": "Wie kann ich einen Tisch reservieren?",
+    "risposta": "Du kannst uns unter der Nummer 922 24 78 51 anrufen, um einen Tisch zu reservieren."
+  },
+  "prenotazione_terrazza": {
+    "domanda": "Kann man die Dachterrasse reservieren?",
+    "risposta": "Ja! Die obere Terrasse kann exklusiv für 90 € reserviert werden."
+  },
+  "posti_totali": {
+    "domanda": "Wie viele Sitzplätze gibt es im Restaurant?",
+    "risposta": "Wir haben:\n- Hauptterrasse: 24 Plätze\n- Innenraum: 19 Plätze\n- Flur: 8 Plätze\n- Dachterrasse: 43 Plätze\nInsgesamt: 94 Plätze"
+  },
+  "menu_colazione": {
+    "domanda": "Gibt es ein Frühstücksmenü?",
+    "risposta": "Ja! Wir bieten 28 Frühstücksoptionen an, darunter Kombis, Sandwiches und Toasts. Unsere Brunchs müssen 48 Stunden im Voraus reserviert werden!"
+  },
+  "menu_caffe": {
+    "domanda": "Welche Kaffeesorten gibt es?",
+    "risposta": "Wir haben 19 verschiedene Kaffeevarianten, darunter Espresso, Americano, Latte Macchiato und Frappé."
+  },
+  "menu_cocktail": {
+    "domanda": "Welche Cocktails bieten Sie an?",
+    "risposta": "Einige unserer Cocktails sind Mojito, Margarita und Piña Colada."
+  },
+  "menu_pranzo": {
+    "domanda": "Was gibt es zum Mittagessen?",
+    "risposta": "Du kannst aus 5 Kategorien wählen: Vorspeisen, Salate, Burger, Wok-Gerichte und Fleischgerichte."
+  },
+  "torte": {
+    "domanda": "Gibt es Kuchen oder Desserts?",
+    "risposta": "Ja! Wir haben täglich frische, hausgemachte Kuchen im Angebot."
+  },
+  "menu_bebidas": {
+    "domanda": "Welche Getränke gibt es?",
+    "risposta": "Wir bieten eine große Auswahl an Getränken, darunter Softdrinks, Bier und Wein."
+  },
+  "menu_vegano": {
+    "domanda": "Gibt es vegane Optionen?",
+    "risposta": "Ja, wir haben mehrere vegane Gerichte im Menü."
+  },
+  "menu_senza_glutine": {
+    "domanda": "Gibt es glutenfreie Optionen?",
+    "risposta": "Ja, wir bieten glutenfreie Gerichte an."
+  },
+  "menu_senza_lattosio": {
+    "domanda": "Gibt es laktosefreie Optionen?",
+    "risposta": "Ja, laktosefreie Gerichte sind verfügbar."
+  },
+  "menu_senza_noci": {
+    "domanda": "Gibt es Gerichte ohne Nüsse?",
+    "risposta": "Ja, wir haben nussfreie Optionen im Menü."
+  },
+  "menu_senza_uova": {
+    "domanda": "Gibt es Gerichte ohne Ei?",
+    "risposta": "Ja, wir bieten auch eifreie Speisen an."
+  },
+  "menu_senza_pesce": {
+    "domanda": "Gibt es Gerichte ohne Fisch?",
+    "risposta": "Ja, fischfreie Optionen sind vorhanden."
+  },
+  "menu_senza_carne": {
+    "domanda": "Gibt es Gerichte ohne Fleisch?",
+    "risposta": "Ja, mehrere fleischfreie Optionen sind verfügbar."
+  },
+  "menu_senza_latticini": {
+    "domanda": "Gibt es Gerichte ohne Milchprodukte?",
+    "risposta": "Ja, wir haben auch milchfreie Optionen."
+  },
+  "tipi_di_torte": {
+    "domanda": "Welche Kuchen gibt es normalerweise?",
+    "risposta": "Eine Auswahl unserer beliebtesten Kuchen: Kolibri-Kuchen, Karottenkuchen, Käsekuchen, Baileys-Kuchen, Maria-Victoria-Kuchen, Red Velvet, Guinness-Kuchen."
+  }
+}

@@ -75,3 +75,35 @@ function toggleFAQSection() {
   const faq = document.getElementById('faq');
   faq.classList.toggle('hidden');
 }
+// Mostra popup lingua se non è stata ancora scelta
+window.addEventListener('load', () => {
+  const selectedLang = localStorage.getItem('lang');
+  if (!selectedLang) {
+    document.getElementById('languagePopup').style.display = 'flex';
+  } else {
+    setLanguage(selectedLang);
+  }
+});
+
+// Imposta lingua da bandierina
+function chooseLanguage(langCode) {
+  localStorage.setItem('lang', langCode);
+  setLanguage(langCode);
+  document.getElementById('languagePopup').style.display = 'none';
+}
+
+// Imposta lingua da menu selettore
+function changeLanguageFromSelector(selectElement) {
+  const langCode = selectElement.value;
+  localStorage.setItem('lang', langCode);
+  setLanguage(langCode);
+}
+
+// Funzione centrale per applicare la lingua (può essere estesa per traduzioni future)
+function setLanguage(lang) {
+  console.log("Lingua attiva:", lang);
+  document.documentElement.lang = lang;
+  const langSelector = document.getElementById('langSelect');
+  if (langSelector) langSelector.value = lang;
+  // Qui puoi caricare testi dinamici o file JSON se vuoi traduzioni automatiche future
+}

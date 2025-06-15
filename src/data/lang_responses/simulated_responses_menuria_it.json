@@ -1,0 +1,78 @@
+{
+  "orari": {
+    "domanda": "Quali sono gli orari di apertura?",
+    "risposta": "Siamo aperti:\n- Da lunedì a giovedì: 10:00 – 23:00\n- Venerdì e sabato: 10:00 – 00:00\n- Domenica: 10:00 – 17:00"
+  },
+  "prenotazione_telefono": {
+    "domanda": "Come posso prenotare un tavolo?",
+    "risposta": "Puoi chiamarci al numero 922 24 78 51 per effettuare una prenotazione."
+  },
+  "prenotazione_terrazza": {
+    "domanda": "È possibile prenotare la terrazza sul tetto?",
+    "risposta": "Sì! Puoi prenotare la terrazza superiore per uso esclusivo al costo di 90€."
+  },
+  "posti_totali": {
+    "domanda": "Quanti posti ha il locale?",
+    "risposta": "Abbiamo:\n- Terrazza principale: 24 posti\n- Sala interna: 19 posti\n- Corridoio: 8 posti\n- Terrazza sul tetto: 43 posti\nTotale: 94 posti"
+  },
+  "menu_colazione": {
+    "domanda": "Avete un menù colazioni?",
+    "risposta": "Sì! Abbiamo 28 opzioni per la colazione, tra cui combinazioni, panini e toast. I brunch vanno prenotati con 48h di anticipo!"
+  },
+  "menu_caffe": {
+    "domanda": "Che tipi di caffè avete?",
+    "risposta": "Offriamo 19 varietà di caffetteria, tra cui caffè espresso, americano, latte macchiato e frappé."
+  },
+  "menu_cocktail": {
+    "domanda": "Quali cocktail avete?",
+    "risposta": "Alcuni dei nostri cocktail includono mojito, margarita e piña colada."
+  },
+  "menu_pranzo": {
+    "domanda": "Cosa c'è per pranzo?",
+    "risposta": "Puoi scegliere tra 5 categorie: antipasti, insalate, hamburger, wok e piatti di carne."
+  },
+  "torte": {
+    "domanda": "Avete torte o dolci?",
+    "risposta": "Sì! Abbiamo torte fatte in casa fresche che cambiano ogni giorno."
+  },
+  "menu_bebidas": {
+    "domanda": "Che bevande avete?",
+    "risposta": "Offriamo una vasta gamma di bevande, tra cui bibite, birre e vini."
+  },
+  "menu_vegano": {
+    "domanda": "Avete opzioni vegane?",
+    "risposta": "Sì, abbiamo diverse opzioni vegane nel nostro menù."
+  },
+  "menu_senza_glutine": {
+    "domanda": "Avete opzioni senza glutine?",
+    "risposta": "Sì, offriamo opzioni senza glutine nel nostro menù."
+  },
+  "menu_senza_lattosio": {
+    "domanda": "Avete opzioni senza lattosio?",
+    "risposta": "Sì, abbiamo opzioni senza lattosio disponibili."
+  },
+  "menu_senza_noci": {
+    "domanda": "Avete opzioni senza noci?",
+    "risposta": "Sì, offriamo opzioni senza noci nel nostro menù."
+  },
+  "menu_senza_uova": {
+    "domanda": "Avete opzioni senza uova?",
+    "risposta": "Sì, abbiamo opzioni senza uova disponibili."
+  },
+  "menu_senza_pesce": {
+    "domanda": "Avete opzioni senza pesce?",
+    "risposta": "Sì, offriamo opzioni senza pesce nel nostro menù."
+  },
+  "menu_senza_carne": {
+    "domanda": "Avete opzioni senza carne?",
+    "risposta": "Sì, abbiamo diverse opzioni senza carne nel nostro menù."
+  },
+  "menu_senza_latticini": {
+    "domanda": "Avete opzioni senza latticini?",
+    "risposta": "Sì, offriamo opzioni senza latticini nel nostro menù."
+  },
+  "tipi_di_torte": {
+    "domanda": "Che torte avete di solito?",
+    "risposta": "Vari tipi, tra cui le più popolari: Torta Colibrì, Torta di Carote, Cheesecake, Torta al Baileys, Torta Maria Victoria, Red Velvet, Torta Guinness"
+  }
+}

@@ -1,0 +1,57 @@
+{
+    "orari_apertura": {
+        "lunedi_giovedi": "10:00 - 23:00",
+        "venerdi_sabato": "10:00 - 00:00",
+        "domenica": "10:00 - 17:00"
+    },
+    "prenotazioni": {
+        "telefono": "922 24 78 51",
+        "terrazza_superiore_uso_esclusivo": "90€",
+        "coperti": {
+            "terrazzo_principale": {
+                "tavoli": 6,
+                "posti_per_tavolo": 4,
+                "totale": 24
+            },
+            "saletta_interna": {
+                "tavoli": {
+                    "3p": 3,
+                    "5p": 2
+                },
+                "totale": 19
+            },
+            "corridoio": {
+                "tavoli": {
+                    "3p": 1,
+                    "5p": 1
+                },
+                "totale": 8
+            },
+            "terrazza_tetto": {
+                "fuori_coperta": {
+                    "tavoli": {
+                        "5p": 2,
+                        "6p": 2
+                    },
+                    "totale": 22
+                },
+                "sotto_coperta": {
+                    "tavoli": {
+                        "3p": 3,
+                        "5p": 1,
+                        "7p": 1
+                    },
+                    "totale": 21
+                }
+            }
+        }
+    },
+    "menu": {
+        "colazione": 28,
+        "caffetteria": 19,
+        "cocktail": 3,
+        "pranzo_cena": 5,
+        "bevande": 74,
+        "torte_fresche_giornaliere": true
+    }
+}
