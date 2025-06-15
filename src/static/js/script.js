@@ -1,109 +1,133 @@
-function openPDF(file) {
-  window.open(`/static/menus/${file}`, '_blank');
+// ================== GESTIONE LINGUA ===================
+function setLanguage(langCode) {
+  localStorage.setItem("selectedLanguage", langCode);
+  location.reload(); // Ricarica per applicare traduzioni
 }
 
-function toggleFAQ() {
-  const popup = document.getElementById('faq-popup');
-  popup.style.display = (popup.style.display === 'block') ? 'none' : 'block';
+function getLanguage() {
+  return localStorage.getItem("selectedLanguage") || "es";
 }
 
-function fillInput(text) {
-  // Integrazione con l'input del chatbot se presente
-  alert(`Auto-riempimento: ${text}`);
+// ================== VISITOR COUNT =====================
+function updateVisitorCounter() {
+  fetch("/visitor-count")
+    .then((response) => response.json())
+    .then((data) => {
+      document.getElementById("counter").textContent = data.count;
+    })
+    .catch((err) => console.error("Visitor count error:", err));
 }
 
+// ================== CHAT CONVERSAZIONE =================
 function sendMessage() {
-      const input = document.getElementById('userInput');
-      const message = input.value.trim();
-      if (!message) return;
-      addMessage('user', message);
-      input.value = '';
+  const input = document.getElementById("userInput");
+  const message = input.value.trim();
+  if (!message) return;
 
-      fetch('/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: message })
-      })
-      .then(response => response.json())
-      .then(data => {
-        addMessage('bot', data.response);
-      })
-      .catch(() => {
-        addMessage('bot', "Hubo un problema al comunicarse con el servidor.");
+  appendMessage("user", message);
+  input.value = "";
+
+  const lang = getLanguage();
+
+  fetch("/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message, lang }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      appendMessage("bot", data.response);
+    })
+    .catch((err) => {
+      console.error("Errore invio:", err);
+      appendMessage("bot", "Error en la comunicación.");
+    });
+}
+
+function appendMessage(sender, text) {
+  const container = document.getElementById("messages");
+  const msg = document.createElement("div");
+  msg.className = `message ${sender}`;
+  msg.innerHTML = `<p>${text}</p>`;
+  container.appendChild(msg);
+  container.scrollTop = container.scrollHeight;
+}
+
+// ================== FAQ DINAMICHE =====================
+function loadFAQs() {
+  const lang = getLanguage();
+  const faqPath = `/static/data/faqs/faq_${lang}.json`;
+
+  fetch(faqPath)
+    .then((res) => res.json())
+    .then((faqs) => {
+      const container = document.getElementById("faq");
+      container.innerHTML = "";
+      Object.entries(faqs).forEach(([key, value]) => {
+        const btn = document.createElement("button");
+        btn.className = "faq-btn";
+        btn.innerText = value.domanda;
+        btn.onclick = () => sendFAQ(value.domanda);
+        container.appendChild(btn);
       });
-    }
-
-    function addMessage(role, text) {
-      const messages = document.getElementById('messages');
-      const div = document.createElement('div');
-      div.className = 'message ' + role;
-      div.textContent = (role === 'user' ? 'Tú: ' : 'Menuria: ') + text;
-      messages.appendChild(div);
-      messages.scrollTop = messages.scrollHeight;
-    }
-
-    function ask(question) {
-      document.getElementById('userInput').value = question;
-      sendMessage();
-    }
-
-function closePopup() {
-  const popup = document.getElementById('welcomePopup');
-  if (popup) {
-    popup.style.display = 'none';
-    // Puoi anche salvare un flag per non mostrarlo di nuovo
-    localStorage.setItem('menuriaPopupShown', 'true');
-  }
+    })
+    .catch((err) => console.warn("FAQ non caricate:", err));
 }
-
-function sendFeedback(type) {
-  alert("Gracias por tu opinión: " + type);
-  // Puoi poi inviarlo al backend qui se vuoi
-}
-
-// Contatore visitatori simulato (solo client-side per ora)
-document.addEventListener('DOMContentLoaded', () => {
-  let count = localStorage.getItem('visitCount');
-  if (!count) count = 1;
-  else count = parseInt(count) + 1;
-  localStorage.setItem('visitCount', count);
-  const counterSpan = document.getElementById('counter');
-  if (counterSpan) counterSpan.innerText = count;
-});
 
 function toggleFAQSection() {
-  const faq = document.getElementById('faq');
-  faq.classList.toggle('hidden');
+  document.getElementById("faq").classList.toggle("hidden");
 }
-// Mostra popup lingua se non è stata ancora scelta
-window.addEventListener('load', () => {
-  const selectedLang = localStorage.getItem('lang');
-  if (!selectedLang) {
-    document.getElementById('languagePopup').style.display = 'flex';
-  } else {
-    setLanguage(selectedLang);
+
+function sendFAQ(question) {
+  document.getElementById("userInput").value = question;
+  sendMessage();
+}
+
+// ================== FEEDBACK ==========================
+function sendFeedback(rating) {
+  const lang = getLanguage();
+
+  fetch("/rate", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      rating,
+      lang,
+    }),
+  })
+    .then((res) => res.json())
+    .then(() => alert("¡Gracias por tu feedback!"))
+    .catch((err) => console.error("Feedback error:", err));
+}
+
+// ================== POPUP DI BENVENUTO =================
+function closeWelcomePopup() {
+  const popup = document.getElementById("welcomePopup");
+  popup.style.display = "none";
+  localStorage.setItem("welcomeShown", "true");
+}
+
+function showWelcomeIfNeeded() {
+  const shown = localStorage.getItem("welcomeShown");
+  if (!shown) {
+    document.getElementById("welcomePopup").style.display = "block";
   }
+}
+
+// ================== AVVIO ==============================
+document.addEventListener("DOMContentLoaded", () => {
+  const lang = getLanguage();
+
+  // Imposta lingua attiva nel selettore
+  const selector = document.getElementById("languageSelector");
+  if (selector) {
+    selector.value = lang;
+    selector.addEventListener("change", () => {
+      setLanguage(selector.value);
+    });
+  }
+
+  updateVisitorCounter();
+  loadFAQs();
+  showWelcomeIfNeeded();
 });
-
-// Imposta lingua da bandierina
-function chooseLanguage(langCode) {
-  localStorage.setItem('lang', langCode);
-  setLanguage(langCode);
-  document.getElementById('languagePopup').style.display = 'none';
-}
-
-// Imposta lingua da menu selettore
-function changeLanguageFromSelector(selectElement) {
-  const langCode = selectElement.value;
-  localStorage.setItem('lang', langCode);
-  setLanguage(langCode);
-}
-
-// Funzione centrale per applicare la lingua (può essere estesa per traduzioni future)
-function setLanguage(lang) {
-  console.log("Lingua attiva:", lang);
-  document.documentElement.lang = lang;
-  const langSelector = document.getElementById('langSelect');
-  if (langSelector) langSelector.value = lang;
-  // Qui puoi caricare testi dinamici o file JSON se vuoi traduzioni automatiche future
-}

@@ -1,58 +1,37 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <div class="language-selector">
-  <label for="langSelect">🌍</label>
-  <select id="langSelect" onchange="changeLanguageFromSelector(this)">
-    <option value="es">ES</option>
-    <option value="it">IT</option>
-    <option value="ru">RU</option>
-    <option value="en">EN</option>
-    <option value="fr">FR</option>
-    <option value="de">DE</option>
-  </select>
-</div>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>La Casita del Nazareno</title>
   <link rel="stylesheet" href="/static/css/style.css" />
 </head>
 <body>
-  <div id="languagePopup">
-  <div class="popup-content">
-    <h2>Select:</h2>
-    <div class="flag-grid">
-      <img src="/static/img/Spain-flag.png" onclick="chooseLanguage('es')" alt="Español">
-      <img src="/static/img/Italy-flag.png" onclick="chooseLanguage('it')" alt="Italiano">
-      <img src="/static/img/Russia-flag.png" onclick="chooseLanguage('ru')" alt="Русский">
-      <img src="/static/img/UK-flag.png" onclick="chooseLanguage('en')" alt="English">
-      <img src="/static/img/France-flag.png" onclick="chooseLanguage('fr')" alt="Français">
-      <img src="/static/img/Germany-flag.png" onclick="chooseLanguage('de')" alt="Deutsch">
-    </div>
-  </div>
-</div>
+  <script src="/static/js/script.js" defer></script>
 
-  <!-- Menu selezione lingua -->
-  <div id="language-switcher" class="language-switcher">
-    <select onchange="changeLanguage(this.value)">
-      <option value="es">🇪🇸</option>
-      <option value="en">🇬🇧</option>
-      <option value="it">🇮🇹</option>
-      <option value="fr">🇫🇷</option>
-      <option value="de">🇩🇪</option>
-      <option value="ru">🇷🇺</option>
+  <h1>Restaurante<br/>La Casita del Nazareno</h1>
+
+  <!-- Menu Lingua -->
+  <div class="language-menu">
+    <label for="languageSelector">🌐 Select Language:</label>
+    <select id="languageSelector">
+      <option value="es">🇪🇸 Español</option>
+      <option value="en">🇬🇧 English</option>
+      <option value="it">🇮🇹 Italiano</option>
+      <option value="fr">🇫🇷 Français</option>
+      <option value="de">🇩🇪 Deutsch</option>
+      <option value="ru">🇷🇺 Русский</option>
     </select>
   </div>
 
-  <script src="/static/js/script.js"></script>
-  <h1>Restaurante<br/>La Casita del Nazareno</h1>
+  <!-- Contatore Visitatori -->
   <div class="visitor-counter-box">
     <span class="visitor-icon">👁️</span>
     <span class="visitor-label">Visitantes:</span>
     <span id="counter" class="visitor-number">...</span>
   </div>
 
+  <!-- Galleria Menu -->
   <div class="menu-gallery">
     <div class="menu-frame" onclick="openPDF('Menu_Comida.pdf')"><h3>Menú Comida</h3></div>
     <div class="menu-frame" onclick="openPDF('Menu_Bebidas.pdf')"><h3>Bebidas</h3></div>
@@ -60,12 +39,14 @@
     <div class="menu-frame" onclick="openPDF('Menu_Desayunos.pdf')"><h3>Desayunos</h3></div>
   </div>
 
+  <!-- Sezione Chat -->
   <div class="chat-section">
     <h2>Chat con Menuria</h2>
-    <div id="messages" style="height: 300px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; border-radius: 8px;"></div>
-    <input type="text" id="userInput" placeholder="Escribe tu mensaje aquí..." style="width: calc(100% - 22px); padding: 10px; margin-top: 10px; border-radius: 4px; border: 1px solid #ccc;">
-    <button onclick="sendMessage()" style="padding: 10px; background-color: #5c3a21; color: white; border: none; border-radius: 4px;">Enviar</button>  
+    <div id="messages" class="chat-box"></div>
+    <input type="text" id="userInput" placeholder="Escribe tu mensaje aquí...">
+    <button onclick="sendMessage()">Enviar</button>  
 
+    <!-- Feedback -->
     <div class="feedback-section">
       <p>¿Te ha sido útil la charla?</p>
       <span class="emoji" onclick="sendFeedback('sad')">😞</span>
@@ -74,41 +55,42 @@
     </div>
   </div>
 
-  <div id="visitorCount"></div>
-  <h1>🍽️ Bienvenido a MENURIA ONE</h1>
-  <p>Tu asistente virtual para el restaurante.</p>
-
-  <div id="chatbox">
-    <div id="messages"></div>
-    <input type="text" id="userInput" placeholder="Pregúntame algo..." />
-    <button class="send" onclick="sendMessage()">Enviar</button>
-  </div>
-
-  <div id="rating">
-    <p>¿Cómo calificarías nuestro asistente?</p>
-    <span class="face" onclick="rate('happy')">😊</span>
-    <span class="face" onclick="rate('neutral')">😐</span>
-    <span class="face" onclick="rate('sad')">😞</span>
-  </div>
-
+  <!-- FAQ Interattivo -->
   <div class="faq-container">
     <h2 onclick="toggleFAQSection()">📚 Preguntas Frecuentes (clic para mostrar)</h2>
-    <div id="faq" class="faq-grid hidden">
-      <!-- Pulsanti FAQ caricati dinamicamente -->
+    <div id="faq" class="faq-grid hidden"></div>
+  </div>
+
+  <!-- Popup Lingua -->
+  <div class="language-popup" id="languagePopup">
+    <div class="popup-content">
+      <h2>Select:</h2>
+      <div class="flag-grid">
+        <img src="/static/img/Spain-flag.png" alt="ES" onclick="setLanguage('es')">
+        <img src="/static/img/UK-flag.png" alt="EN" onclick="setLanguage('en')">
+        <img src="/static/img/Italy-flag.png" alt="IT" onclick="setLanguage('it')">
+        <img src="/static/img/France-flag.png" alt="FR" onclick="setLanguage('fr')">
+        <img src="/static/img/Germany-flag.png" alt="DE" onclick="setLanguage('de')">
+        <img src="/static/img/Russia-flag.png" alt="RU" onclick="setLanguage('ru')">
+      </div>
     </div>
   </div>
 
+  <!-- Popup Benvenuto -->
   <div class="popup" id="welcomePopup">
     <div class="popup-content">
       <h2>👋 ¡Bienvenido a Menuria!</h2>
       <p>Somos un pequeño equipo que ama el sector hostelero y quiere mejorarla con un toque de tecnología.</p>
       <p>Este chat está aquí para ayudarte a encontrar lo que necesitas sin reemplazar al camarero.</p>
       <p>Si te apetece, deja un comentario después de usarlo. ¡Buen provecho! 🥂</p>
-      <button onclick="closePopup()">Empezar</button>
+      <button onclick="closeWelcomePopup()">Empezar</button>
     </div>
   </div>
 
+  <!-- Icona FAQ -->
   <div class="faq-icon" onclick="toggleFAQ()">?</div>
+
+  <!-- Footer -->
   <footer class="classfooter">
     <p>&copy; 2025 Menuria Solutions S.L.</p>
     <a href="/analytics?token=menuria2025" target="_blank">📊 Analytics (Privato)</a>

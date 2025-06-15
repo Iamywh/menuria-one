@@ -1,333 +1,201 @@
+/* Reset */
 body {
   margin: 0;
-  font-family: 'Playfair Display', serif;
-  background: linear-gradient(#fefaf5, #f7f3ec);
-  color: #3b2f2f;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fff8f0;
+  color: #3a2b1d;
+  padding: 20px;
 }
 
+/* Titolo */
 h1 {
   text-align: center;
-  font-size: 2.8em;
-  margin: 20px 0 10px;
+  color: #5c3a21;
+  font-size: 2rem;
+  margin-bottom: 10px;
 }
 
+/* Selettore Lingua */
+.language-menu {
+  text-align: right;
+  margin-bottom: 10px;
+}
+
+/* Contatore visitatori */
+.visitor-counter-box {
+  text-align: right;
+  margin-bottom: 20px;
+}
+.visitor-icon {
+  font-size: 1.2em;
+}
+.visitor-number {
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+/* Galleria Menu */
 .menu-gallery {
   display: flex;
   justify-content: center;
-  gap: 20px;
   flex-wrap: wrap;
-  margin: 20px;
+  gap: 15px;
+  margin-bottom: 30px;
 }
-
 .menu-frame {
   width: 180px;
-  height: 250px;
-  border: 8px solid #5c3a21;
-  background-color: #ece3d9;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  height: 100px;
+  border: 4px solid #5c3a21;
   border-radius: 12px;
-  position: relative;
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
-}
-
-.menu-frame:hover {
-  box-shadow: 0 0 30px rgba(255, 215, 0, 0.7);
-  transform: scale(1.05);
-}
-
-.menu-frame h3 {
-  position: absolute;
-  bottom: 10px;
-  width: 100%;
-  text-align: center;
-  font-size: 1em;
-  color: #5c3a21;
-}
-
-.chat-section {
-  margin: 40px auto;
-  max-width: 800px;
-  background: #fff9f0;
-  border: 5px solid #d9b999;
-  border-radius: 16px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.1);
-  padding: 20px;
-}
-
-.faq-icon {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #ffefc1;
-  border: 2px solid #5c3a21;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  font-size: 30px;
-  text-align: center;
-  line-height: 56px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.faq-icon:hover {
-  background: #fff3a5;
-  box-shadow: 0 0 15px gold;
-}
-
-#faq-popup {
-  position: fixed;
-  bottom: 100px;
-  right: 20px;
-  background: #fff8e7;
-  border: 2px solid #5c3a21;
-  border-radius: 12px;
-  padding: 15px;
-  width: 250px;
-  display: none;
-  box-shadow: 0 0 20px rgba(0,0,0,0.2);
-}
-
-#faq-popup h4 {
-  margin-top: 0;
-}
-
-#faq-popup ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-#faq-popup ul li {
-  margin: 10px 0;
-  cursor: pointer;
-  color: #5c3a21;
-}
-
-#faq-popup ul li:hover {
-  text-decoration: underline;
-}
-
-.visitor-counter {
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  color: #ffcc00;
-  font-size: 14px;
-}
-
-.popup {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6);
+  background-color: #fff4e6;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 999;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.menu-frame:hover {
+  box-shadow: 0 0 10px gold;
 }
 
-.popup-content {
-  background: white;
+/* Chat */
+.chat-section {
+  border: 2px solid #ccc;
   padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  max-width: 400px;
+  border-radius: 12px;
+  margin-bottom: 30px;
 }
-
-.popup-content button {
-  margin-top: 15px;
+.chat-box {
+  height: 200px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background-color: #fff;
+}
+input#userInput {
+  width: calc(100% - 22px);
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+button {
+  padding: 10px 15px;
   background-color: #5c3a21;
   color: white;
-  padding: 10px 20px;
   border: none;
-  border-radius: 6px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #7b4a29;
+}
+
+/* Feedback Emoji */
+.feedback-section {
+  text-align: center;
+  margin-top: 15px;
+}
+.feedback-section .emoji {
+  font-size: 1.8em;
+  margin: 0 10px;
   cursor: pointer;
 }
 
-.feedback-section p {
-  font-weight: bold;
-  font-size: 16px;
-  margin-bottom: 10px;
-  color: #5c3a21;
-}
-
-.emoji {
-  font-size: 2.2rem;
-  margin: 0 12px;
-  transition: transform 0.3s, filter 0.2s;
-}
-
-.emoji:hover {
-  transform: scale(1.5);
-  filter: brightness(110%);
-}
-
-.visitor-counter-box {
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  background-color: #fff3a5;
-  border: 2px solid #5c3a21;
-  border-radius: 8px;
-  padding: 5px 12px;
-  display: flex;
-  align-items: center;
-  font-size: 15px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-.visitor-icon {
-  font-size: 18px;
-  margin-right: 6px;
-}
-
-.visitor-label {
-  font-weight: bold;
-  margin-right: 6px;
-  color: #5c3a21;
-}
-
-.visitor-number {
-  color: #2b2b2b;
-}
-
-.classfooter {
-  background-color: #fdf2e9;
-  color: #5c3a21;
-  text-align: center;
-  font-size: 14px;
-  padding: 15px;
-  margin-top: 50px;
-  border-top: 2px solid #d9b999;
-}
-
-.classfooter a {
-  color: #5c3a21;
-  text-decoration: none;
-  font-weight: bold;
-  margin-left: 10px;
-}
-
-.classfooter a:hover {
-  color: #e08e2d;
-  text-decoration: underline;
-}
+/* FAQ */
 .faq-container {
-  margin: 40px auto;
-  max-width: 900px;
+  margin: 30px 0;
 }
-
-.faq-container h2 {
-  cursor: pointer;
-  font-size: 1.6em;
-  color: #5c3a21;
-  background: #ffeccc;
-  padding: 10px;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  transition: background 0.3s;
-}
-
-.faq-container h2:hover {
-  background: #ffe099;
-}
-
 .faq-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 15px;
-  margin-top: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
 }
-
 .faq-btn {
   padding: 10px;
-  background-color: #fff3dc;
-  border: 1px solid #d9b999;
-  border-radius: 8px;
-  font-size: 0.95em;
+  background-color: #ffeccc;
+  border: 1px solid #d0a96e;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background 0.3s;
+  font-weight: bold;
 }
-
 .faq-btn:hover {
-  background-color: #ffe099;
+  background-color: #fff3da;
 }
-
 .hidden {
   display: none;
 }
-/* Popup Lingua */
-#languagePopup {
+
+/* Popup Base */
+.popup,
+.language-popup {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(60, 40, 20, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
 }
-
-#languagePopup .popup-content {
-  background-color: #fff5e6;
-  border-radius: 15px;
+.popup-content {
+  background: white;
   padding: 30px;
-  text-align: center;
+  border-radius: 12px;
   max-width: 400px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  text-align: center;
 }
 
-#languagePopup h2 {
-  margin-bottom: 20px;
-  font-size: 22px;
-  color: #5c3a21;
-}
-
+/* Popup Lingua */
 .flag-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 15px;
-  justify-items: center;
-  margin-top: 10px;
+  margin-top: 20px;
 }
-
 .flag-grid img {
-  width: 50px;
+  width: 60px;
   height: auto;
   cursor: pointer;
   transition: transform 0.2s;
-  border: 2px solid transparent;
-  border-radius: 6px;
 }
-
 .flag-grid img:hover {
   transform: scale(1.1);
-  border-color: #5c3a21;
 }
 
-/* Selettore lingua in alto a destra */
-.language-selector {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 14px;
-  color: #5c3a21;
-  background: #fff5e6;
-  padding: 5px 10px;
-  border-radius: 6px;
-  box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
-  z-index: 1000;
+/* Icona FAQ */
+.faq-icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #5c3a21;
+  color: white;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  cursor: pointer;
+  box-shadow: 0 0 10px #0003;
 }
 
-.language-selector select {
-  font-size: 14px;
-  border: none;
-  background: transparent;
+/* Footer */
+footer.classfooter {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 0.9em;
+}
+footer a {
   color: #5c3a21;
-  outline: none;
+  text-decoration: none;
+}
+footer a:hover {
+  text-decoration: underline;
 }

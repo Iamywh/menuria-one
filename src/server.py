@@ -7,49 +7,76 @@ import datetime
 app = Flask(__name__, template_folder="templates", static_folder="static")
 CORS(app)
 
-# Percorso base (un livello sopra questo file)
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+# === Percorsi
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+DATA_DIR = os.path.join(BASE_DIR, 'data')
+LANG_RESPONSES_DIR = os.path.join(DATA_DIR, 'lang_responses')
+COUNT_FILE = os.path.join(DATA_DIR, 'visitor_count.txt')
+RATING_FILE = os.path.join(DATA_DIR, 'rating_counts.json')
+FEEDBACK_LOG = os.path.join(DATA_DIR, 'feedback.json')
 
-@app.route('/')
-def home():
-    return render_template('index.html')
+# === Funzioni
+def load_knowledge_bases():
+    bases = {}
+    if not os.path.exists(LANG_RESPONSES_DIR):
+        return bases
+    for filename in os.listdir(LANG_RESPONSES_DIR):
+        if filename.endswith('.json'):
+            lang_code = filename.replace("simulated_responses_menuria_", "").replace(".json", "")
+            with open(os.path.join(LANG_RESPONSES_DIR, filename), 'r', encoding='utf-8') as f:
+                bases[lang_code] = json.load(f)
+    return bases
 
-# Load KB
-DATA_FILE = os.path.join(BASE_DIR, "data", "lang_responses", "simulated_responses_menuria_es.json")
-with open(DATA_FILE, 'r', encoding='utf-8') as file:
-    KNOWLEDGE_BASE = json.load(file)
+def get_fallback(lang):
+    fallback = {
+        "es": "Lo siento, no tengo una respuesta para eso.",
+        "en": "Sorry, I don't have an answer for that.",
+        "it": "Mi dispiace, non ho una risposta per questo.",
+        "fr": "Désolé, je n’ai pas de réponse à cela.",
+        "de": "Es tut mir leid, ich habe keine Antwort darauf.",
+        "ru": "Извините, у меня нет ответа на это."
+    }
+    return fallback.get(lang, fallback["en"])
 
-# Visitor counter
-COUNT_FILE = os.path.join(BASE_DIR, "data", "visitor_count.txt")
+# === Caricamento KB
+KNOWLEDGE_BASES = load_knowledge_bases()
+
+# === Inizializzazione file
 if not os.path.exists(COUNT_FILE):
     with open(COUNT_FILE, 'w') as f:
         f.write('0')
 
-# Rating counter
-RATING_FILE = os.path.join(BASE_DIR, "data", "rating_counts.json")
 if not os.path.exists(RATING_FILE):
     with open(RATING_FILE, 'w') as f:
         json.dump({'happy': 0, 'neutral': 0, 'sad': 0}, f)
 
-# Feedback log
-FEEDBACK_LOG = os.path.join(BASE_DIR, "data", "feedback.json")
 if not os.path.exists(FEEDBACK_LOG):
     with open(FEEDBACK_LOG, 'w') as f:
         f.write('[]')
 
+# === Rotte
+@app.route('/')
+def home():
+    return render_template('index.html')
+
 @app.route('/chat', methods=['POST'])
 def chat():
     data = request.get_json()
-    user_message = data.get('message', '').lower()
+    user_message = data.get('message', '').strip().lower()
+    lang = data.get('lang', 'es').lower()
 
     if not user_message:
-        return jsonify({'response': "No he recibido ningún mensaje. ¿Podrías repetirlo, por favor?"}), 400
+        return jsonify({'response': get_fallback(lang)})
 
-    for entry in KNOWLEDGE_BASE.values():
-        if entry['domanda'].lower() in user_message:
+    knowledge = KNOWLEDGE_BASES.get(lang)
+    if not knowledge:
+        return jsonify({'response': "Idioma no soportado / Language not supported"}), 400
+
+    for entry in knowledge.values():
+        if entry['domanda'].lower() in user_message or user_message in entry['domanda'].lower():
             return jsonify({'response': entry['risposta']})
 
-    return jsonify({'response': "Lo siento, no tengo una respuesta para eso. ¿Puedes intentar preguntarlo de otra forma?"})
+    return jsonify({'response': get_fallback(lang)})
 
 @app.route('/visitor-count', methods=['GET'])
 def visitor_count():
@@ -68,21 +95,21 @@ def visitor_count():
 def rate():
     data = request.get_json()
     rating = data.get('rating')
-    lang = data.get('lang', 'unknown')  # puoi passare la lingua dal frontend
+    lang = data.get('lang', 'unknown')
 
-    # Aggiorna conteggi rating
+    if rating not in ['happy', 'neutral', 'sad']:
+        return jsonify({'error': 'Invalid rating'}), 400
+
     with open(RATING_FILE, 'r+') as f:
         counts = json.load(f)
-        if rating in counts:
-            counts[rating] += 1
+        counts[rating] += 1
         f.seek(0)
         json.dump(counts, f)
         f.truncate()
 
-    # Log singolo feedback
     feedback_entry = {
         "rating": rating,
-        "lang": lang,
+        "language": lang,
         "timestamp": datetime.datetime.now().isoformat()
     }
     with open(FEEDBACK_LOG, 'r+') as f:
@@ -114,5 +141,6 @@ def analytics():
 
     return render_template('analytics.html', visitors=visitor_count, ratings=ratings, feedback=feedback_list)
 
+# === Avvio
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
