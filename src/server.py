@@ -15,7 +15,7 @@ def home():
     return render_template('index.html')
 
 # Load KB
-DATA_FILE = os.path.join(BASE_DIR, "data", "simulated_responses_menuria_es.json")
+DATA_FILE = os.path.join(BASE_DIR, "data", "lang_responses", "simulated_responses_menuria_es.json")
 with open(DATA_FILE, 'r', encoding='utf-8') as file:
     KNOWLEDGE_BASE = json.load(file)
 
