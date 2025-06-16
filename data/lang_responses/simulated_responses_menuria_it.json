@@ -16,7 +16,7 @@
     "risposta": "Abbiamo:\n- Terrazza principale: 24 posti\n- Sala interna: 19 posti\n- Corridoio: 8 posti\n- Terrazza sul tetto: 43 posti\nTotale: 94 posti"
   },
   "menu_colazione": {
-    "domanda": "Avete un menù colazioni?",
+    "domanda": "Avete un menù per la colazione?",
     "risposta": "Sì! Abbiamo 28 opzioni per la colazione, tra cui combinazioni, panini e toast. I brunch vanno prenotati con 48h di anticipo!"
   },
   "menu_caffe": {
@@ -52,7 +52,7 @@
     "risposta": "Sì, abbiamo opzioni senza lattosio disponibili."
   },
   "menu_senza_noci": {
-    "domanda": "Avete opzioni senza noci?",
+    "domanda": "Avete opzioni senza frutta a guscio?",
     "risposta": "Sì, offriamo opzioni senza noci nel nostro menù."
   },
   "menu_senza_uova": {

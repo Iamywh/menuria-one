@@ -8,11 +8,11 @@
     "risposta": "Vous pouvez nous appeler au 922 24 78 51 pour réserver une table."
   },
   "prenotazione_terrazza": {
-    "domanda": "Peut-on réserver la terrasse sur le toit ?",
+    "domanda": "Est-il possible de réserver la terrasse sur le toit ?",
     "risposta": "Oui ! Vous pouvez réserver la terrasse supérieure en exclusivité pour 90€."
   },
   "posti_totali": {
-    "domanda": "Combien de places assises y a-t-il ?",
+    "domanda": "Combien de places assises y a-t-il dans le restaurant ?",
     "risposta": "Nous avons :\n- Terrasse principale : 24 places\n- Salle intérieure : 19 places\n- Couloir : 8 places\n- Terrasse sur le toit : 43 places\nTotal : 94 places"
   },
   "menu_colazione": {
@@ -24,7 +24,7 @@
     "risposta": "Nous proposons 19 variétés de cafés, dont espresso, café allongé, latte macchiato et frappé."
   },
   "menu_cocktail": {
-    "domanda": "Quels cocktails avez-vous ?",
+    "domanda": "Quels cocktails proposez-vous ?",
     "risposta": "Parmi nos cocktails : mojito, margarita et piña colada."
   },
   "menu_pranzo": {
@@ -32,11 +32,11 @@
     "risposta": "Vous pouvez choisir parmi 5 catégories : entrées, salades, burgers, wok et plats de viande."
   },
   "torte": {
-    "domanda": "Avez-vous des gâteaux ou desserts ?",
+    "domanda": "Avez-vous des gâteaux ou des desserts ?",
     "risposta": "Oui ! Nous avons des gâteaux faits maison, différents chaque jour."
   },
   "menu_bebidas": {
-    "domanda": "Quelles boissons avez-vous ?",
+    "domanda": "Quelles boissons proposez-vous ?",
     "risposta": "Nous offrons un large choix de boissons, dont sodas, bières et vins."
   },
   "menu_vegano": {
@@ -72,7 +72,7 @@
     "risposta": "Oui, nous proposons des plats sans produits laitiers."
   },
   "tipi_di_torte": {
-    "domanda": "Quels types de gâteaux avez-vous ?",
+    "domanda": "Quels types de gâteaux proposez-vous généralement ?",
     "risposta": "Plusieurs variétés parmi les plus populaires : Gâteau Colibri, Gâteau à la carotte, Cheesecake, Gâteau au Baileys, Maria Victoria, Red Velvet, Gâteau Guinness."
   }
 }
