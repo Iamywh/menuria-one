@@ -2,95 +2,96 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Menuria One</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
+    <title id="pageTitle">Menuria One</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/Menuria One Logo.jpg') }}">
 </head>
 <body>
     <header>
-        <h1>La Casita del Nazareno</h1>
-        <div class="visitor-count" id="visitorCounter">👀 Visitors: ...</div>
+        <h1 id="titolo">Restaurante La Casita del Nazareno</h1>
+        <div class="language-flags">
+            <img src="{{ url_for('static', filename='img/flags/Spain-flag.png') }}" alt="ES" onclick="setLanguage('es')" class="active">
+            <img src="{{ url_for('static', filename='img/flags/UK-flag.png') }}" alt="EN" onclick="setLanguage('en')">
+            <img src="{{ url_for('static', filename='img/flags/Italy-flag.png') }}" alt="IT" onclick="setLanguage('it')">
+            <img src="{{ url_for('static', filename='img/flags/France-flag.png') }}" alt="FR" onclick="setLanguage('fr')">
+            <img src="{{ url_for('static', filename='img/flags/Germany-flag.png') }}" alt="DE" onclick="setLanguage('de')">
+            <img src="{{ url_for('static', filename='img/flags/Russia-flag.png') }}" alt="RU" onclick="setLanguage('ru')">
+        </div>
+        <div class="visitor-count">👀 <span id="visitorLabel">Visitors:</span> <span id="visitorCounter">...</span></div>
+        <div class="analytics-link">
+            <a href="/analytics" target="_blank" id="analyticsLink">📊 Analytics</a>
+        </div>
     </header>
-
-    <!-- Language Selection Popup -->
-    <div class="language-popup" id="languagePopup">
-        <div class="popup-content">
-            <h2>Select your language:</h2>
-            <div class="flag-grid">
-                <img src="{{ url_for('static', filename='img/Spain-flag.png') }}" alt="ES" onclick="setLanguage('es')">
-                <img src="{{ url_for('static', filename='img/UK-flag.png') }}" alt="EN" onclick="setLanguage('en')">
-                <img src="{{ url_for('static', filename='img/Italy-flag.png') }}" alt="IT" onclick="setLanguage('it')">
-                <img src="{{ url_for('static', filename='img/France-flag.png') }}" alt="FR" onclick="setLanguage('fr')">
-                <img src="{{ url_for('static', filename='img/Germany-flag.png') }}" alt="DE" onclick="setLanguage('de')">
-                <img src="{{ url_for('static', filename='img/Russia-flag.png') }}" alt="RU" onclick="setLanguage('ru')">
-            </div>
+       <!-- Menu Section con anteprime -->
+    <main>
+        <section class="menu-gallery" id="menuGallery"></section>
+    </main>
+    
+    <!-- Popup benvenuto -->
+    <div id="welcomePopup" class="popup-overlay" style="display: none;">
+        <div class="popup-box">
+            <h2 id="popup_welcome">¡Bienvenido a Menuria!</h2>
+            <p id="popup_text_1">Somos un pequeño equipo que ama el sector hostelero y quiere mejorarla con un toque de tecnología.</p>
+            <p id="popup_text_2">Este chat está aquí para ayudarte a encontrar lo que necesitas sin reemplazar al camarero.</p>
+            <p id="popup_text_3">Si te apetece, deja un comentario después de usarlo. ¡Buen provecho!</p>
+            <button onclick="closeWelcomePopup()" id="popup_button">Cerrar</button>
         </div>
     </div>
-
-    <!-- Menu Buttons Section -->
-    <main>
-        <section class="menu-section">
-            <div class="menu-box" onclick="openPDF('Menu_Desayunos.pdf')">
-                <h3>Desayunos</h3>
-            </div>
-            <div class="menu-box" onclick="openPDF('Menu_Comida.pdf')">
-                <h3>Comida</h3>
-            </div>
-            <div class="menu-box" onclick="openPDF('Menu_Bebidas.pdf')">
-                <h3>Bebidas</h3>
-            </div>
-            <div class="menu-box" onclick="openPDF('Menu_Cafes_Frapes.pdf')">
-                <h3>Cafés & Frappés</h3>
-            </div>
-        </section>
-    </main>
-
+    
     <!-- Chatbot Interface -->
     <section class="chatbot-container">
-        <div id="chatWindow" class="chat-window"></div>
-        <input type="text" id="userInput" placeholder="Escribe tu mensaje..." />
-        <button onclick="sendMessage()">Enviar</button>
+        <div id="chatWindow" class="chat-window">
+            <div class="chat-header">
+                <h2 id="chat_titolo">Chatbot</h2>
+                <button onclick="toggleChatWindow()">🤖</button>
+            </div>
+            <div class="chat-body">
+                <p id="welcomeMessage">¡Hola! Soy el chatbot de La Casita del Nazareno. ¿En qué puedo ayudarte hoy?</p>
+                <div id="messages"></div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="userInput" placeholder="Escribe tu mensaje..." />
+                <button onclick="sendMessage()" id="boton_enviar">Enviar</button>
+            </div>
+        </div>
     </section>
 
     <!-- Customer Satisfaction Feedback -->
     <div class="satisfaction-box">
-        <p>¿Cómo ha sido tu experiencia?</p>
+        <p id="rating_pregunta">¿Cómo calificarías nuestro asistente?</p>
         <div class="rating-options">
-            <span onclick="sendRating('happy')">😊</span>
-            <span onclick="sendRating('neutral')">😐</span>
-            <span onclick="sendRating('sad')">😞</span>
+            <span class="emoji emoji-happy" onclick="sendFeedback('happy')">😊</span>
+            <span class="emoji emoji-neutral" onclick="sendFeedback('neutral')">😐</span>
+            <span class="emoji emoji-sad" onclick="sendFeedback('sad')">😞</span>
         </div>
     </div>
 
-    <!-- FAQ Toggle Icon -->
-    <div class="faq-toggle" onclick="toggleFAQSection()">❓</div>
-
     <!-- FAQ Popup -->
     <div class="faq-container">
-  <h2 onclick="toggleFAQSection()">📚 Preguntas Frecuentes (clic para mostrar)</h2>
-  <div id="faq" class="faq-grid hidden">
-    <button class="faq-btn" onclick="ask('¿Cuáles son los horarios de apertura?')">¿Cuáles son los horarios de apertura?</button>
-    <button class="faq-btn" onclick="ask('¿Cómo puedo reservar una mesa?')">¿Cómo puedo reservar una mesa?</button>
-    <button class="faq-btn" onclick="ask('¿Se puede reservar la terraza en la azotea?')">¿Se puede reservar la terraza en la azotea?</button>
-    <button class="faq-btn" onclick="ask('¿Cuántos asientos tiene el local?')">¿Cuántos asientos tiene el local?</button>
-    <button class="faq-btn" onclick="ask('¿Tienen menú de desayuno?')">¿Tienen menú de desayuno?</button>
-    <button class="faq-btn" onclick="ask('¿Qué tipos de café tienen?')">¿Qué tipos de café tienen?</button>
-    <button class="faq-btn" onclick="ask('¿Qué cócteles tienen?')">¿Qué cócteles tienen?</button>
-    <button class="faq-btn" onclick="ask('¿Qué hay para almorzar?')">¿Qué hay para almorzar?</button>
-    <button class="faq-btn" onclick="ask('¿Tienen pasteles o postres?')">¿Tienen pasteles o postres?</button>
-    <button class="faq-btn" onclick="ask('¿Qué bebidas tienen?')">¿Qué bebidas tienen?</button>
-    <button class="faq-btn" onclick="ask('¿Tienen opciones veganas?')">¿Tienen opciones veganas?</button>
-    <button class="faq-btn" onclick="ask('¿Tienen opciones sin gluten?')">¿Tienen opciones sin gluten?</button>
-    <button class="faq-btn" onclick="ask('¿Tienen opciones sin lactosa?')">¿Tienen opciones sin lactosa?</button>
-    <button class="faq-btn" onclick="ask('¿Tienen opciones sin nueces?')">¿Tienen opciones sin nueces?</button>
-    <button class="faq-btn" onclick="ask('¿Tienen opciones sin huevo?')">¿Tienen opciones sin huevo?</button>
-    <button class="faq-btn" onclick="ask('¿Tienen opciones sin pescado?')">¿Tienen opciones sin pescado?</button>
-    <button class="faq-btn" onclick="ask('¿Tienen opciones sin carne?')">¿Tienen opciones sin carne?</button>
-    <button class="faq-btn" onclick="ask('¿Tienen opciones sin lácteos?')">¿Tienen opciones sin lácteos?</button>
-    <button class="faq-btn" onclick="ask('¿Que tartas suelen tener?')">¿Qué tartas suelen tener?</button>
-  </div>
-</div>
+      <h2 onclick="toggleFAQSection()" id="faq_titulo">📚 Preguntas Frecuentes (clic para mostrar)</h2>
+      <div id="faq" class="faq-grid hidden">
+        <button class="faq-btn" id="faq_1" onclick="ask('¿Cuáles son los horarios de apertura?')">¿Cuáles son los horarios de apertura?</button>
+        <button class="faq-btn" id="faq_2" onclick="ask('¿Cómo puedo reservar una mesa?')">¿Cómo puedo reservar una mesa?</button>
+        <button class="faq-btn" id="faq_3" onclick="ask('¿Se puede reservar la terraza en la azotea?')">¿Se puede reservar la terraza en la azotea?</button>
+        <button class="faq-btn" id="faq_4" onclick="ask('¿Cuántos asientos tiene el local?')">¿Cuántos asientos tiene el local?</button>
+        <button class="faq-btn" id="faq_5" onclick="ask('¿Tienen menú de desayuno?')">¿Tienen menú de desayuno?</button>
+        <button class="faq-btn" id="faq_6" onclick="ask('¿Qué tipos de café tienen?')">¿Qué tipos de café tienen?</button>
+        <button class="faq-btn" id="faq_7" onclick="ask('¿Qué cócteles tienen?')">¿Qué cócteles tienen?</button>
+        <button class="faq-btn" id="faq_8" onclick="ask('¿Qué hay para almorzar?')">¿Qué hay para almorzar?</button>
+        <button class="faq-btn" id="faq_9" onclick="ask('¿Tienen pasteles o postres?')">¿Tienen pasteles o postres?</button>
+        <button class="faq-btn" id="faq_10" onclick="ask('¿Qué bebidas tienen?')">¿Qué bebidas tienen?</button>
+        <button class="faq-btn" id="faq_11" onclick="ask('¿Tienen opciones veganas?')">¿Tienen opciones veganas?</button>
+        <button class="faq-btn" id="faq_12" onclick="ask('¿Tienen opciones sin gluten?')">¿Tienen opciones sin gluten?</button>
+        <button class="faq-btn" id="faq_13" onclick="ask('¿Tienen opciones sin lactosa?')">¿Tienen opciones sin lactosa?</button>
+        <button class="faq-btn" id="faq_14" onclick="ask('¿Tienen opciones sin nueces?')">¿Tienen opciones sin nueces?</button>
+        <button class="faq-btn" id="faq_15" onclick="ask('¿Tienen opciones sin huevo?')">¿Tienen opciones sin huevo?</button>
+        <button class="faq-btn" id="faq_16" onclick="ask('¿Tienen opciones sin pescado?')">¿Tienen opciones sin pescado?</button>
+        <button class="faq-btn" id="faq_17" onclick="ask('¿Tienen opciones sin carne?')">¿Tienen opciones sin carne?</button>
+        <button class="faq-btn" id="faq_18" onclick="ask('¿Tienen opciones sin lácteos?')">¿Tienen opciones sin lácteos?</button>
+        <button class="faq-btn" id="faq_19" onclick="ask('¿Que tartas suelen tener?')">¿Qué tartas suelen tener?</button>
+      </div>
+    </div>
 
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>

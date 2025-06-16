@@ -1,0 +1,47 @@
+[
+  {
+    "timestamp": "2025-06-16T00:01:54.437520",
+    "rating": "happy",
+    "language": "es"
+  },
+  {
+    "timestamp": "2025-06-16T00:01:57.903547",
+    "rating": "neutral",
+    "language": "es"
+  },
+  {
+    "timestamp": "2025-06-16T00:05:08.974148",
+    "rating": "happy",
+    "language": "es"
+  },
+  {
+    "timestamp": "2025-06-16T00:37:46.290867",
+    "rating": "happy",
+    "language": "es"
+  },
+  {
+    "timestamp": "2025-06-16T00:42:31.909180",
+    "rating": "happy",
+    "language": "es"
+  },
+  {
+    "timestamp": "2025-06-16T00:50:01.081128",
+    "rating": "happy",
+    "language": "es"
+  },
+  {
+    "timestamp": "2025-06-16T01:08:47.938498",
+    "rating": "happy",
+    "language": "es"
+  },
+  {
+    "timestamp": "2025-06-16T01:52:43.644433",
+    "rating": "happy",
+    "language": "en"
+  },
+  {
+    "timestamp": "2025-06-16T02:26:09.884034",
+    "rating": "happy",
+    "language": "es"
+  }
+]

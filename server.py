@@ -1,10 +1,10 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, send_from_directory
 from flask_cors import CORS
 import json
 import os
 import datetime
 
-app = Flask(__name__, template_folder="/templates", static_folder="/static")
+app = Flask(__name__, template_folder="templates", static_folder="static")
 CORS(app)
 
 # === Percorsi
@@ -81,7 +81,7 @@ def chat():
 
     return jsonify({'response': get_fallback(lang)})
 
-@app.route('/visitor-count', methods=['GET'])
+@app.route('/data/visitor-count', methods=['GET'])
 def visitor_count():
     with open(COUNT_FILE, 'r+') as f:
         try:
@@ -99,33 +99,40 @@ def rate():
     data = request.get_json()
     rating = data.get('rating')
     lang = data.get('lang', 'unknown')
+    timestamp = datetime.datetime.now().isoformat()
 
     if rating not in ['happy', 'neutral', 'sad']:
         return jsonify({'error': 'Invalid rating'}), 400
 
+    # Aggiorna contatore
     with open(RATING_FILE, 'r+') as f:
-        counts = json.load(f)
+        try:
+            counts = json.load(f)
+        except:
+            counts = {'happy': 0, 'neutral': 0, 'sad': 0}
         counts[rating] += 1
         f.seek(0)
         json.dump(counts, f)
         f.truncate()
 
-    feedback_entry = {
-        "rating": rating,
-        "language": lang,
-        "timestamp": datetime.datetime.now().isoformat()
+    # Log dettagliato
+    entry = {
+        'timestamp': timestamp,
+        'rating': rating,
+        'language': lang
     }
-    with open(FEEDBACK_LOG, 'r+') as f:
-        try:
-            logs = json.load(f)
-        except json.JSONDecodeError:
-            logs = []
-        logs.append(feedback_entry)
-        f.seek(0)
-        json.dump(logs, f, indent=2)
-        f.truncate()
+    try:
+        with open(FEEDBACK_LOG, 'r+') as f:
+            feedback = json.load(f)
+            feedback.append(entry)
+            f.seek(0)
+            json.dump(feedback, f, indent=2)
+            f.truncate()
+    except:
+        with open(FEEDBACK_LOG, 'w') as f:
+            json.dump([entry], f, indent=2)
 
-    return jsonify({'status': 'ok'})
+    return jsonify({'success': True})
 
 @app.route('/analytics')
 def analytics():
@@ -143,6 +150,10 @@ def analytics():
         feedback_list = json.load(f)
 
     return render_template('analytics.html', visitors=visitor_count, ratings=ratings, feedback=feedback_list)
+
+@app.route('/data/lang.json')
+def get_lang():
+    return send_from_directory('data', 'lang.json')
 
 # === Avvio
 if __name__ == '__main__':

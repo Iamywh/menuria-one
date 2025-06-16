@@ -116,8 +116,8 @@ button:hover {
 }
 .faq-btn {
   padding: 10px;
-  background-color: #ffeccc;
-  border: 1px solid #d0a96e;
+  background-color: #573b0c;
+  border: 1px solid #0e0b06;
   border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
@@ -137,18 +137,19 @@ button:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(60, 40, 20, 0.8);
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
 }
+
 .popup-content {
-  background: white;
+  background: #fff;
   padding: 30px;
   border-radius: 12px;
-  max-width: 400px;
   text-align: center;
+  max-width: 500px;
 }
 
 /* Popup Lingua */
@@ -198,4 +199,173 @@ footer a {
 }
 footer a:hover {
   text-decoration: underline;
+}
+
+
+/* === Menu Frame (cornice legno) === */
+.menu-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 220px;
+  margin: 10px;
+}
+
+.menu-frame {
+  width: 220px;
+  height: 120px;
+  border: 6px solid #8B5A2B;
+  border-radius: 16px;
+  background-color: #fff4e6;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.menu-frame:hover {
+  box-shadow: 0 0 18px gold;
+  transform: scale(1.05);
+}
+
+/* === Emoji Feedback - MIGLIORATO === */
+.emoji {
+  font-size: 3rem;
+  margin: 0 15px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.emoji:hover {
+  transform: scale(1.25); /* Ingrandimento del 25% */
+}
+.emoji-happy { color: green; }
+.emoji-neutral { color: goldenrod; }
+.emoji-sad { color: red; }
+
+/* Specifica anche per le emoji nella satisfaction-box */
+.satisfaction-box .emoji {
+  font-size: 3rem;
+  margin: 0 15px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.satisfaction-box .emoji:hover {
+  transform: scale(1.25); /* Ingrandimento del 25% */
+}
+
+/* === Chat Area === */
+.chatbot-container {
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto 30px auto;
+  background: #fff;
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  padding: 15px;
+}
+.chat-window {
+  height: 300px;
+  border: 1px solid #999;
+  overflow-y: auto;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: #fdfdfd;
+  border-radius: 8px;
+}
+
+/* === Visitor Counter === */
+.visitor-count {
+  text-align: right;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 5px 20px 15px 0;
+}
+.analytics-link {
+  text-align: right;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+.analytics-link a {
+  text-decoration: none;
+  color: #5c3a21;
+  font-weight: bold;
+}
+.analytics-link a:hover {
+  text-shadow: 0 0 5px gold;
+}
+
+/* === Popup Overlay - CORRETTO === */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.popup-box {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  margin: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  /* RIMOSSO position: relative !important che causava problemi */
+}
+
+/* Aggiungi anche stili per la satisfaction-box */
+.satisfaction-box {
+  text-align: center;
+  margin: 20px 0;
+  padding: 20px;
+  background-color: #fff4e6;
+  border-radius: 12px;
+}
+
+.rating-options {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.menu-preview {
+  width: 100%;
+  height: 100%;
+  border: none;
+  pointer-events: none; /* evita il click interno */
+}
+.menu-caption {
+  margin-top: 4px;
+  font-size: 0.9em;
+  text-align: center;
+  color: #333;
+}
+.language-flags {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    gap: 8px;
+    z-index: 10000;
+}
+
+.language-flags img {
+    width: 24px;
+    height: 16px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    transition: transform 0.2s;
+}
+
+.language-flags img:hover {
+    transform: scale(1.1);
 }
