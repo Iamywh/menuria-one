@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify, render_template, send_from_directory
 from flask_cors import CORS
+from livereload import Server
 import json
 import os
 import datetime
@@ -14,7 +15,8 @@ LANG_RESPONSES_DIR = os.path.join(DATA_DIR, 'lang_responses')
 COUNT_FILE = os.path.join(DATA_DIR, 'visitor_count.txt')
 RATING_FILE = os.path.join(DATA_DIR, 'rating_counts.json')
 FEEDBACK_LOG = os.path.join(DATA_DIR, 'feedback.json')
-# === Crea le cartelle mancanti (se non esistono)
+
+# === Crea cartelle se mancano
 os.makedirs(DATA_DIR, exist_ok=True)
 os.makedirs(LANG_RESPONSES_DIR, exist_ok=True)
 
@@ -41,10 +43,10 @@ def get_fallback(lang):
     }
     return fallback.get(lang, fallback["en"])
 
-# === Caricamento KB
+# === Carica knowledge base
 KNOWLEDGE_BASES = load_knowledge_bases()
 
-# === Inizializzazione file
+# === Inizializza file dati
 if not os.path.exists(COUNT_FILE):
     with open(COUNT_FILE, 'w') as f:
         f.write('0')
@@ -81,8 +83,12 @@ def chat():
 
     return jsonify({'response': get_fallback(lang)})
 
+@app.route('/data/lang.json')
+def serve_lang_json():
+    return send_from_directory(DATA_DIR, 'lang.json')
+
 @app.route('/data/visitor-count', methods=['GET'])
-def visitor_count():
+def serve_visitor_count():
     with open(COUNT_FILE, 'r+') as f:
         try:
             count = int(f.read())
@@ -104,7 +110,6 @@ def rate():
     if rating not in ['happy', 'neutral', 'sad']:
         return jsonify({'error': 'Invalid rating'}), 400
 
-    # Aggiorna contatore
     with open(RATING_FILE, 'r+') as f:
         try:
             counts = json.load(f)
@@ -115,12 +120,12 @@ def rate():
         json.dump(counts, f)
         f.truncate()
 
-    # Log dettagliato
     entry = {
         'timestamp': timestamp,
         'rating': rating,
         'language': lang
     }
+
     try:
         with open(FEEDBACK_LOG, 'r+') as f:
             feedback = json.load(f)
@@ -151,10 +156,23 @@ def analytics():
 
     return render_template('analytics.html', visitors=visitor_count, ratings=ratings, feedback=feedback_list)
 
-@app.route('/data/lang.json')
-def get_lang():
-    return send_from_directory('data', 'lang.json')
+@app.route('/menus')
+def menus():
+    return render_template('menus.html')  # creeremo menus.html
+
+@app.route('/restaurant')
+def restaurant():
+    return render_template('restaurant.html')  # creeremo restaurant.html
+
+@app.route('/gallery')
+def gallery():
+    return render_template('gallery.html')  # creeremo gallery.html
+
 
 # === Avvio
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    server = Server(app.wsgi_app)
+    server.watch('templates/*.html')
+    server.watch('static/css/*.css')
+    server.watch('static/js/*.js')
+    server.serve(port=5000, debug=True)

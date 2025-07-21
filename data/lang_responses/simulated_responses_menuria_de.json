@@ -74,5 +74,33 @@
   "tipi_di_torte": {
     "domanda": "Welche Kuchen gibt es normalerweise?",
     "risposta": "Eine Auswahl unserer beliebtesten Kuchen: Kolibri-Kuchen, Karottenkuchen, Käsekuchen, Baileys-Kuchen, Maria-Victoria-Kuchen, Red Velvet, Guinness-Kuchen."
+  },
+  "mascota_permitida": {
+    "domanda": "Kann ich mein Haustier mitbringen?",
+    "risposta": "Ja, dein Haustier ist in unserem Innenraum, auf der Terrasse und auf der Dachterrasse willkommen. Wir lieben Tiere!"
+  },
+  "mascota_agua": {
+    "domanda": "Haben Sie Wasser für mein Haustier?",
+    "risposta": "Ja, wir haben Wasser für dein Haustier."
+  },
+  "sillas_de_ruedas": {
+    "domanda": "Gibt es einen barrierefreien Zugang?",
+    "risposta": "Ja, wir haben einen barrierefreien Zugang zur Hauptterrasse und zum Innenraum."
+  },
+  "entrega_domicilio": {
+    "domanda": "Bieten Sie einen Lieferservice an?",
+    "risposta": "Nein, wir bieten derzeit keinen Lieferservice an, aber du kannst Essen zum Mitnehmen bestellen."
+  },
+  "servicio_catering": {
+    "domanda": "Bieten Sie Catering-Dienste an?",
+    "risposta": "Ja, wir bieten Catering-Dienste für verschiedene Anlässe an. Bitte kontaktiere uns für weitere Informationen."
+  },
+  "para_llevar": {
+    "domanda": "Bieten Sie Essen zum Mitnehmen an?",
+    "risposta": "Ja, du kannst jedes Gericht von unserer Speisekarte zum Mitnehmen bestellen."
+  },
+  "valet": {
+    "domanda": "Bieten Sie einen Parkservice an?",
+    "risposta": "Nein, wir haben keinen Parkservice, aber es gibt Parkmöglichkeiten in der Nähe."
   }
 }

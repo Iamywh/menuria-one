@@ -1,0 +1,106 @@
+{
+    "orari": {
+        "domanda": "Quais são os horários de abertura?",
+        "risposta": "Estamos abertos:\n- De segunda a quinta: 10:00 – 23:00\n- Sexta e sábado: 10:00 – 00:00\n- Domingo: 10:00 – 17:00"
+    },
+    "prenotazione_telefono": {
+        "domanda": "Como posso reservar uma mesa?",
+        "risposta": "Podes ligar para o número 922 24 78 51 para fazer uma reserva."
+    },
+    "prenotazione_terrazza": {
+        "domanda": "É possível reservar o terraço na cobertura?",
+        "risposta": "Sim! Podes reservar o terraço superior para uso exclusivo por 90€."
+    },
+    "posti_totali": {
+        "domanda": "Quantos lugares tem o restaurante?",
+        "risposta": "Temos:\n- Terraço principal: 24 lugares\n- Sala interior: 19 lugares\n- Corredor: 8 lugares\n- Terraço na cobertura: 43 lugares\nTotal: 94 lugares"
+    },
+    "menu_colazione": {
+        "domanda": "Têm menu de pequeno-almoço?",
+        "risposta": "Sim! Temos 28 opções para o pequeno-almoço, incluindo menus, sanduíches e torradas — especialmente os Brunchs, que precisam de reserva com 48h de antecedência!"
+    },
+    "menu_caffe": {
+        "domanda": "Que tipos de café têm?",
+        "risposta": "Oferecemos 19 variedades de cafetaria, incluindo café expresso, americano, latte macchiato e frappé."
+    },
+    "menu_cocktail": {
+        "domanda": "Que cocktails têm?",
+        "risposta": "Alguns dos nossos cocktails incluem mojito, margarita e piña colada."
+    },
+    "menu_pranzo": {
+        "domanda": "O que há para o almoço?",
+        "risposta": "Podes escolher entre 5 categorias: entradas, saladas, hambúrgueres, wok e pratos com carne."
+    },
+    "torte": {
+        "domanda": "Têm bolos ou sobremesas?",
+        "risposta": "Sim! Temos bolos caseiros frescos que mudam todos os dias."
+    },
+    "menu_bebidas": {
+        "domanda": "Que bebidas têm?",
+        "risposta": "Oferecemos uma grande variedade de bebidas, incluindo refrigerantes, cervejas e vinhos."
+    },
+    "menu_vegano": {
+        "domanda": "Têm opções veganas?",
+        "risposta": "Sim, temos várias opções veganas no nosso menu."
+    },
+    "menu_sin_gluten": {
+        "domanda": "Têm opções sem glúten?",
+        "risposta": "Sim, oferecemos opções sem glúten no nosso menu."
+    },
+    "menu_sin_lactosa": {
+        "domanda": "Têm opções sem lactose?",
+        "risposta": "Sim, temos opções sem lactose disponíveis."
+    },
+    "menu_sin_nueces": {
+        "domanda": "Têm opções sem frutos secos?",
+        "risposta": "Sim, oferecemos opções sem frutos secos no nosso menu."
+    },
+    "menu_sin_huevo": {
+        "domanda": "Têm opções sem ovo?",
+        "risposta": "Sim, temos opções sem ovo disponíveis."
+    },
+    "menu_sin_pescado": {
+        "domanda": "Têm opções sem peixe?",
+        "risposta": "Sim, oferecemos opções sem peixe no nosso menu."
+    },
+    "menu_sin_carne": {
+        "domanda": "Têm opções sem carne?",
+        "risposta": "Sim, temos várias opções sem carne no nosso menu."
+    },
+    "menu_sin_lacteos": {
+        "domanda": "Têm opções sem laticínios?",
+        "risposta": "Sim, oferecemos opções sem laticínios no nosso menu."
+    },
+    "tipos_de_tartas": {
+        "domanda": "Que bolos costumam ter?",
+        "risposta": "Vários tipos, entre os quais citamos os mais populares: Bolo Colibri, Bolo de Cenoura, Cheesecake, Bolo de Baileys, Bolo Maria Victoria, Red Velvet, Bolo Guinness."
+    },
+    "mascota_permitida": {
+        "domanda": "Posso trazer o meu animal de estimação?",
+        "risposta": "Sim, o teu animal de estimação é bem-vindo na nossa sala, terraço exterior e azotea. Adoramos animais!"
+    },
+    "mascota_agua": {
+        "domanda": "Têm água para o meu animal de estimação?",
+        "risposta": "Sim, temos água fresca disponível para o teu animal de estimação."
+    },
+    "acceso_sillas_ruedas": {
+        "domanda": "Há acesso para cadeiras de rodas?",
+        "risposta": "Sim, o restaurante é acessível para cadeiras de rodas."
+    },
+    "servicio_entrega": {
+        "domanda": "Têm serviço de entrega ao domicílio?",
+        "risposta": "Não, nós não temos serviço de entrega ao domicílio no momento, mas podes pedir para levar."
+    },
+    "servicio_catering": {
+        "domanda": "Têm serviços de catering?",
+        "risposta": "Sim, oferecemos serviços de catering para eventos. Contacte-nos para mais detalhes."
+    },
+    "para_llevar": {
+        "domanda": "Oferecem comida para levar?",
+        "risposta": "Sim, podes pedir qualquer prato do nosso menu para levar."
+    },
+    "valet": {
+        "domanda": "Há serviço de valet?",
+        "risposta": "Não, nos não temos serviço de valet no momento, mas podes estacionar na rua."
+    }
+}

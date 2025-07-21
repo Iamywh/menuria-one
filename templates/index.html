@@ -7,26 +7,113 @@
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/Menuria One Logo.jpg') }}">
 </head>
 <body>
-    <header>
-        <h1 id="titolo">Restaurante La Casita del Nazareno</h1>
-        <div class="language-flags">
-            <img src="{{ url_for('static', filename='img/flags/Spain-flag.png') }}" alt="ES" onclick="setLanguage('es')" class="active">
-            <img src="{{ url_for('static', filename='img/flags/UK-flag.png') }}" alt="EN" onclick="setLanguage('en')">
-            <img src="{{ url_for('static', filename='img/flags/Italy-flag.png') }}" alt="IT" onclick="setLanguage('it')">
-            <img src="{{ url_for('static', filename='img/flags/France-flag.png') }}" alt="FR" onclick="setLanguage('fr')">
-            <img src="{{ url_for('static', filename='img/flags/Germany-flag.png') }}" alt="DE" onclick="setLanguage('de')">
-            <img src="{{ url_for('static', filename='img/flags/Russia-flag.png') }}" alt="RU" onclick="setLanguage('ru')">
-        </div>
-        <div class="visitor-count">👀 <span id="visitorLabel">Visitors:</span> <span id="visitorCounter">...</span></div>
-        <div class="analytics-link">
-            <a href="/analytics" target="_blank" id="analyticsLink">📊 Analytics</a>
+    <header class="top-header">
+        <div class="top-row">
+            <!-- Bandiere -->
+            <div class="left-section language-flags">
+                <img src="{{ url_for('static', filename='img/flags/Spain-flag.png') }}" alt="ES" onclick="setLanguage('es')" class="active">
+                <img src="{{ url_for('static', filename='img/flags/UK-flag.png') }}" alt="EN" onclick="setLanguage('en')">
+                <img src="{{ url_for('static', filename='img/flags/Italy-flag.png') }}" alt="IT" onclick="setLanguage('it')">
+                <img src="{{ url_for('static', filename='img/flags/France-flag.png') }}" alt="FR" onclick="setLanguage('fr')">
+                <img src="{{ url_for('static', filename='img/flags/Germany-flag.png') }}" alt="DE" onclick="setLanguage('de')">
+                <img src="{{ url_for('static', filename='img/flags/Portugal-flag.png') }}" alt="PT" onclick="setLanguage('pt')">
+                <img src="{{ url_for('static', filename='img/flags/Russia-flag.png') }}" alt="RU" onclick="setLanguage('ru')">
+            </div>
+
+            <!-- Titolo -->
+            <div class="center-section">
+                <h1 id="titolo">Restaurante La Casita del Nazareno</h1>
+            </div>
+
+            <!-- Visitors + Analytics -->
+            <div class="header-right">
+                <div class="visitor-count">👥 Visitors: <span id="visitorCounter">0</span></div>
+                <div class="analytics-link"><a href="/analytics" id="analyticsLink" target="_blank">📊 Analytics</a></div>
+            </div>
         </div>
     </header>
-       <!-- Menu Section con anteprime -->
-    <main>
-        <section class="menu-gallery" id="menuGallery"></section>
-    </main>
-    
+    <!-- Sezione Bottoni Principali -->
+    <div class="menu-gallery">
+        <div class="menu-frame" onclick="window.location.href='/menus'">
+            <span>🍽️ Menù</span>
+        </div>
+        <div class="menu-frame" onclick="window.location.href='/restaurant'">
+            <span>🏠 Il Ristorante</span>
+        </div>
+        <div class="menu-frame" onclick="window.location.href='/gallery'">
+            <span>📸 Galleria</span>
+        </div>
+    </div>
+    <!-- FAQ Carousel Nuovo -->
+    <section class="faq-carousel-section">
+        <h2 id="faqTitle">❓ Preguntas Frecuentes</h2>
+
+        <!-- Bottoni categoria -->
+        <div class="faq-categories-tabs">
+            <button class="faq-tab active" onclick="showFaqCategory('venue', this)">📍 Locale</button>
+            <button class="faq-tab" onclick="showFaqCategory('menu', this)">🍽️ Menù</button>
+            <button class="faq-tab" onclick="showFaqCategory('servizi', this)">🛎️ Servizi</button>
+        </div>
+
+        <!-- Contenitori Carousel -->
+        <div class="faq-carousel-wrapper">
+            <!-- Freccia sinistra -->
+            <div class="faq-arrow left" onclick="scrollFAQ(-1)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                    <path d="M15 18l-6-6 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+
+            <!-- Area Scrollabile -->
+            <div class="faq-carousel-box" id="faq-carousel-box">
+                <!-- Categoria: Locale -->
+                <div class="faq-category-box" id="faq-venue">
+                    <button class="faq-btn" onclick="ask('¿Cuáles son los horarios de apertura?')">¿Cuáles son los horarios de apertura?</button>
+                    <button class="faq-btn" onclick="ask('¿Cómo puedo reservar una mesa?')">¿Cómo puedo reservar una mesa?</button>
+                    <button class="faq-btn" onclick="ask('¿Se puede reservar la terraza en la azotea?')">¿Se puede reservar la terraza en la azotea?</button>
+                    <button class="faq-btn" onclick="ask('¿Cuántos asientos tiene el local?')">¿Cuántos asientos tiene el local?</button>
+                </div>
+
+                <!-- Categoria: Menù -->
+                <div class="faq-category-box hidden" id="faq-menu">
+                    <button class="faq-btn" onclick="ask('¿Tienen menú de desayuno?')">¿Tienen menú de desayuno?</button>
+                    <button class="faq-btn" onclick="ask('¿Qué tipos de café tienen?')">¿Qué tipos de café tienen?</button>
+                    <button class="faq-btn" onclick="ask('¿Qué cócteles tienen?')">¿Qué cócteles tienen?</button>
+                    <button class="faq-btn" onclick="ask('¿Qué hay para almorzar?')">¿Qué hay para almorzar?</button>
+                    <button class="faq-btn" onclick="ask('¿Tienen pasteles o postres?')">¿Tienen pasteles o postres?</button>
+                    <button class="faq-btn" onclick="ask('¿Qué bebidas tienen?')">¿Qué bebidas tienen?</button>
+                    <button class="faq-btn" onclick="ask('¿Tienen opciones veganas?')">¿Tienen opciones veganas?</button>
+                    <button class="faq-btn" onclick="ask('¿Tienen opciones sin gluten?')">¿Tienen opciones sin gluten?</button>
+                    <button class="faq-btn" onclick="ask('¿Tienen opciones sin lactosa?')">¿Tienen opciones sin lactosa?</button>
+                    <button class="faq-btn" onclick="ask('¿Tienen opciones sin nueces?')">¿Tienen opciones sin nueces?</button>
+                    <button class="faq-btn" onclick="ask('¿Tienen opciones sin huevo?')">¿Tienen opciones sin huevo?</button>
+                    <button class="faq-btn" onclick="ask('¿Tienen opciones sin pescado?')">¿Tienen opciones sin pescado?</button>
+                    <button class="faq-btn" onclick="ask('¿Tienen opciones sin carne?')">¿Tienen opciones sin carne?</button>
+                    <button class="faq-btn" onclick="ask('¿Tienen opciones sin lácteos?')">¿Tienen opciones sin lácteos?</button>
+                    <button class="faq-btn" onclick="ask('¿Que tartas suelen tener?')">¿Qué tartas suelen tener?</button>
+                </div>
+
+                <!-- Categoria: Servizi -->
+                <div class="faq-category-box hidden" id="faq-servizi">
+                    <button class="faq-btn" onclick="ask('¿Puedo llevar a mi mascota?')">¿Puedo llevar a mi mascota?</button>
+                    <button class="faq-btn" onclick="ask('¿tienen agua para mi mascota?')">¿tienen agua para mi mascota?</button>
+                    <button class="faq-btn" onclick="ask('¿Tienen acceso para sillas de ruedas?')">¿Tienen acceso para sillas de ruedas?</button>
+                    <button class="faq-btn" onclick="ask('¿Tienen servicio de entrega a domicilio?')">¿Tienen servicio de entrega a domicilio?</button>
+                    <button class="faq-btn" onclick="ask('¿Tienen servicio de catering?')">¿Tienen servicio de catering?</button>
+                    <button class="faq-btn" onclick="ask('¿Tienen servicio de comida para llevar?')">¿Tienen servicio de comida para llevar?</button>
+                    <button class="faq-btn" onclick="ask('¿Tienen servicio de aparcacoches?')">¿Tienen servicio de aparcacoches?</button>
+                </div>
+            </div>
+
+            <!-- Freccia destra -->
+            <div class="faq-arrow-right" onclick="scrollFAQ(1)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                    <path d="M9 6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
     <!-- Popup benvenuto -->
     <div id="welcomePopup" class="popup-overlay" style="display: none;">
         <div class="popup-box">
@@ -37,7 +124,7 @@
             <button onclick="closeWelcomePopup()" id="popup_button">Cerrar</button>
         </div>
     </div>
-    
+
     <!-- Chatbot Interface -->
     <section class="chatbot-container">
         <div id="chatWindow" class="chat-window">
@@ -66,31 +153,25 @@
         </div>
     </div>
 
-    <!-- FAQ Popup -->
-    <div class="faq-container">
-      <h2 onclick="toggleFAQSection()" id="faq_titulo">📚 Preguntas Frecuentes (clic para mostrar)</h2>
-      <div id="faq" class="faq-grid hidden">
-        <button class="faq-btn" id="faq_1" onclick="ask('¿Cuáles son los horarios de apertura?')">¿Cuáles son los horarios de apertura?</button>
-        <button class="faq-btn" id="faq_2" onclick="ask('¿Cómo puedo reservar una mesa?')">¿Cómo puedo reservar una mesa?</button>
-        <button class="faq-btn" id="faq_3" onclick="ask('¿Se puede reservar la terraza en la azotea?')">¿Se puede reservar la terraza en la azotea?</button>
-        <button class="faq-btn" id="faq_4" onclick="ask('¿Cuántos asientos tiene el local?')">¿Cuántos asientos tiene el local?</button>
-        <button class="faq-btn" id="faq_5" onclick="ask('¿Tienen menú de desayuno?')">¿Tienen menú de desayuno?</button>
-        <button class="faq-btn" id="faq_6" onclick="ask('¿Qué tipos de café tienen?')">¿Qué tipos de café tienen?</button>
-        <button class="faq-btn" id="faq_7" onclick="ask('¿Qué cócteles tienen?')">¿Qué cócteles tienen?</button>
-        <button class="faq-btn" id="faq_8" onclick="ask('¿Qué hay para almorzar?')">¿Qué hay para almorzar?</button>
-        <button class="faq-btn" id="faq_9" onclick="ask('¿Tienen pasteles o postres?')">¿Tienen pasteles o postres?</button>
-        <button class="faq-btn" id="faq_10" onclick="ask('¿Qué bebidas tienen?')">¿Qué bebidas tienen?</button>
-        <button class="faq-btn" id="faq_11" onclick="ask('¿Tienen opciones veganas?')">¿Tienen opciones veganas?</button>
-        <button class="faq-btn" id="faq_12" onclick="ask('¿Tienen opciones sin gluten?')">¿Tienen opciones sin gluten?</button>
-        <button class="faq-btn" id="faq_13" onclick="ask('¿Tienen opciones sin lactosa?')">¿Tienen opciones sin lactosa?</button>
-        <button class="faq-btn" id="faq_14" onclick="ask('¿Tienen opciones sin nueces?')">¿Tienen opciones sin nueces?</button>
-        <button class="faq-btn" id="faq_15" onclick="ask('¿Tienen opciones sin huevo?')">¿Tienen opciones sin huevo?</button>
-        <button class="faq-btn" id="faq_16" onclick="ask('¿Tienen opciones sin pescado?')">¿Tienen opciones sin pescado?</button>
-        <button class="faq-btn" id="faq_17" onclick="ask('¿Tienen opciones sin carne?')">¿Tienen opciones sin carne?</button>
-        <button class="faq-btn" id="faq_18" onclick="ask('¿Tienen opciones sin lácteos?')">¿Tienen opciones sin lácteos?</button>
-        <button class="faq-btn" id="faq_19" onclick="ask('¿Que tartas suelen tener?')">¿Qué tartas suelen tener?</button>
-      </div>
-    </div>
+    <!-- Footer Ristorante -->
+    <footer class="restaurant-footer">
+        <h3>Contactanos - Restaurante La Casita del Nazareno</h3>
+        <div class="social-links">
+            <a href="https://facebook.com">👍</a>
+            <a href="https://instagram.com">📸</a>
+            <a href="https://twitter.com">🐦</a>
+        </div>
+    </footer>
+
+    <!-- Footer Menuria -->
+    <footer class="menuria-footer">
+        <h3>Contactanos - Menuria</h3>
+        <div class="social-links">
+            <a href="https://facebook.com">👍</a>
+            <a href="https://instagram.com">📸</a>
+            <a href="https://twitter.com">🐦</a>
+        </div>
+    </footer>
 
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>

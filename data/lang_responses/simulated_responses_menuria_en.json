@@ -74,5 +74,33 @@
   "tipos_de_tartas": {
     "domanda": "What kinds of cakes do you usually have?",
     "risposta": "Several types, including our most popular ones: Hummingbird Cake, Carrot Cake, Cheesecake, Baileys Cake, Maria Victoria Cake, Red Velvet Cake, Guinness Cake"
+  },
+  "mascota_permitida": {
+    "domanda": "Can I bring my pet?",
+    "risposta": "Yes, pets are welcome in the dining room, on the terrace and on the rooftop terrace."
+  },
+  "mascota_agua": {
+    "domanda": "Do you have water for my pet?",
+    "risposta": "Yes, we provide water for pets."
+  },
+  "sillas_de_ruedas": {
+    "domanda": "Is there wheelchair access?",
+    "risposta": "Yes, we have wheelchair access to the main terrace and indoor room."
+  },
+  "entrega_domicilio": {
+    "domanda": "Do you offer home delivery?",
+    "risposta": "No, at the moment we do not offer home delivery, but you can order for takeout."
+  },
+  "servicio_catering": {
+    "domanda": "Do you have catering services?",
+    "risposta": "Yes, we offer catering services for events. Contact us for more details."
+  },
+  "para_llevar": {
+    "domanda": "Do you offer takeout?",
+    "risposta": "Yes, you can order any dish from our menu for takeout."
+  },
+  "valet": {
+    "domanda": "Do you have valet parking?",
+    "risposta": "Yes, we offer valet parking services for our customers."
   }
 }

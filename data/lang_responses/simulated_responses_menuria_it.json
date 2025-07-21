@@ -74,5 +74,33 @@
   "tipi_di_torte": {
     "domanda": "Che torte avete di solito?",
     "risposta": "Vari tipi, tra cui le più popolari: Torta Colibrì, Torta di Carote, Cheesecake, Torta al Baileys, Torta Maria Victoria, Red Velvet, Torta Guinness"
+  },
+  "mascota_permitida": {
+    "domanda": "Posso portare il mio animale domestico?",
+    "risposta": "Sì, il tuo animale domestico è benvenuto nella nostra sala, terrazza esterna e sul tetto. Ci piacciono gli animali!"
+  },
+  "mascota_agua": {
+    "domanda": "Hanno acqua per il mio animale domestico?",
+    "risposta": "Sì, abbiamo acqua fresca disponibile per il tuo animale domestico."
+  },
+  "accesso_disabili": {
+    "domanda": "Avete accesso per disabili?",
+    "risposta": "Sì, il locale è accessibile alle persone con disabilità."
+  },
+  "servizio_consegna": {
+    "domanda": "Avete un servizio di consegna a domicilio?",
+    "risposta": "Non al momento, ma puoi ordinare da asporto."
+  },
+  "servizio_catering": {
+    "domanda": "Avete un servizio di catering?",
+    "risposta": "Sì, offriamo un servizio di catering per i vostri eventi."
+  },
+  "para_llevar": {
+    "domanda": "Proponete piatti da asporto?",
+    "risposta": "Sì, puoi ordinare qualsiasi piatto del nostro menù da asporto."
+  },
+  "valet": {
+    "domanda": "Avete un servizio di parcheggio?",
+    "risposta": "Non ne abbiamo, ma c'è un parcheggio gratuito nelle vicinanze."
   }
 }

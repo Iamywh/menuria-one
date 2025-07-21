@@ -74,5 +74,33 @@
   "tipi_di_torte": {
     "domanda": "Quels types de gâteaux proposez-vous généralement ?",
     "risposta": "Plusieurs variétés parmi les plus populaires : Gâteau Colibri, Gâteau à la carotte, Cheesecake, Gâteau au Baileys, Maria Victoria, Red Velvet, Gâteau Guinness."
+  },
+  "mascota_permitida": {
+    "domanda": "Puis-je amener mon animal de compagnie ?",
+    "risposta": "Oui, votre animal de compagnie est le bienvenu dans notre salle, sur la terrasse extérieure et sur la terrasse sur le toit. Nous aimons les animaux !"
+  },
+  "mascota_agua": {
+    "domanda": "Avez-vous de l'eau pour mon animal de compagnie ?",
+    "risposta": "Oui, nous avons de l'eau fraîche pour votre animal de compagnie."
+  },
+  "sillas_de_ruedas": {
+    "domanda": "Y a-t-il un accès pour les fauteuils roulants ?",
+    "risposta": "Oui, nous avons un accès pour les fauteuils roulants à la terrasse principale et à la salle intérieure."
+  },
+  "servicio_entrega": {
+    "domanda": "Proposez-vous un service de livraison à domicile ?",
+    "risposta": "Non, nous n'offrons pas de service de livraison à domicile pour le moment, mais vous pouvez commander des plats à emporter."
+  },
+  "servicio_catering": {
+    "domanda": "Avez-vous un service de traiteur ?",
+    "risposta": "Oui, nous proposons un service de traiteur pour vos événements."
+  },
+  "para_llevar": {
+    "domanda": "Proposez-vous des plats à emporter ?",
+    "risposta": "Oui, vous pouvez commander n'importe quel plat de notre menu à emporter."
+  },
+  "valet": {
+    "domanda": "Avez-vous un service de voiturier ?",
+    "risposta": "Non, nous n'avons pas de service de voiturier, mais il y a un parking à proximité."
   }
 }
