@@ -171,8 +171,4 @@ def gallery():
 
 # === Avvio
 if __name__ == '__main__':
-    server = Server(app.wsgi_app)
-    server.watch('templates/*.html')
-    server.watch('static/css/*.css')
-    server.watch('static/js/*.js')
-    server.serve(port=5000, debug=True)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 10000)))
