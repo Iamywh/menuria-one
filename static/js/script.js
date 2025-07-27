@@ -8,7 +8,6 @@ fetch("/data/lang.json")
   .then(data => {
     languageData = data;
     loadLanguageContent();
-    showWelcomePopup();
   })
   .catch(error => {
     console.error("Errore nel caricamento delle traduzioni:", error);
@@ -22,7 +21,7 @@ function loadLanguageContent() {
   if (titolo && lang.titolo) titolo.innerText = lang.titolo;
 
   const visitorLabel = document.getElementById("visitorLabel");
-  if (visitorLabel && lang.visitors_label) visitorLabel.innerText = lang.visitors_label;
+  if (visitorLabel && lang.visitorLabel) visitorLabel.innerText = lang.visitorLabel;
 
   const analyticsLink = document.getElementById("analyticsLink");
   if (analyticsLink && lang.analytics_link) analyticsLink.innerText = lang.analytics_link;
@@ -48,6 +47,21 @@ function loadLanguageContent() {
   const welcomeMessage = document.getElementById("welcomeMessage");
   if (welcomeMessage && lang.welcomeMessage) welcomeMessage.innerText = lang.welcomeMessage;
 
+  const rfoot1 = document.getElementById("rFoot1");
+  if (rfoot1 && lang.rFoot1) rfoot1.innerText = lang.rFoot1;
+
+  const rfoot2 = document.getElementById("rFoot2");
+  if (rfoot2 && lang.rFoot2) rfoot2.innerText = lang.rFoot2;
+
+  const menuFrame1 = document.getElementById("menuFrame1");
+  if (menuFrame1 && lang.menuFrame1) menuFrame1.innerText = lang.menuFrame1;
+
+  const menuFrame2 = document.getElementById("menuFrame2");
+  if (menuFrame2 && lang.menuFrame2) menuFrame2.innerText = lang.menuFrame2;
+
+  const menuFrame3 = document.getElementById("menuFrame3");
+  if (menuFrame3 && lang.menuFrame3) menuFrame3.innerText = lang.menuFrame3;
+
   const placeholderMensaje = document.getElementById("userInput");
   if (placeholderMensaje && lang.placeholder_mensaje) {
     placeholderMensaje.placeholder = lang.placeholder_mensaje;
@@ -59,8 +73,14 @@ function loadLanguageContent() {
   const ratingPregunta = document.getElementById("rating_pregunta");
   if (ratingPregunta && lang.rating_pregunta) ratingPregunta.innerText = lang.rating_pregunta;
 
-  const faqTitulo = document.getElementById("faq_titulo");
-  if (faqTitulo && lang.faq_titulo) faqTitulo.innerText = lang.faq_titulo;
+  const faqTitle = document.getElementById("faqTitle");
+  if (faqTitle && lang.faqTitle) faqTitle.innerText = lang.faqTitle;
+
+  const tabMap = { venue: 'tab_venue', menu: 'tab_menu', servizi: 'tab_servizi' };
+  Object.entries(tabMap).forEach(([cat, key]) => {
+    const el = document.getElementById('tab_' + cat);
+    if (el && lang[key]) el.textContent = lang[key];
+  });
 
   for (let i = 1; i <= 26; i++) {
     const faqBtn = document.getElementById(`faq_${i}`);
@@ -175,7 +195,7 @@ function sendFeedback(rating) {
     });
 }
 
-document.getElementById("clearChatBtn").addEventListener("click", function() {
+/*document.getElementById("clearChatBtn").addEventListener("click", function() {
   const chatBox = document.getElementById("messages");
   if (chatBox) {
     chatBox.innerHTML = "";
@@ -184,7 +204,7 @@ document.getElementById("clearChatBtn").addEventListener("click", function() {
     systemMsg.innerText = "Chat reset!";
     chatBox.appendChild(systemMsg);
   }
-});
+}); */
 
 function toggleFAQ() {
   const faq = document.getElementById("faq");
@@ -195,10 +215,10 @@ function toggleFAQSection() {
   toggleFAQ();
 }
 
-function toggleChatWindow() {
+/*function toggleChatWindow() {
   const chatWindow = document.getElementById("chatWindow");
   if (chatWindow) chatWindow.classList.toggle("hidden");
-}
+} */
 
 function openPDF(filename) {
   const lang = currentLanguage || "es";
@@ -260,15 +280,12 @@ function loadMenuPreviews() {
   });
 }
 
-function showFaqCategory(category) {
-  const categories = ['venue', 'menu', 'servizi'];
-
-  categories.forEach(cat => {
-    const element = document.getElementById('faq-' + cat);
-    if (element) {
-      element.classList.remove('active');
-      element.classList.add('hidden');
-    }
+function showFaqCategory(category, btn){
+  // Mostra/Nasconde i box FAQ
+  document.querySelectorAll('.faq-category-box').forEach(box=>{
+    const match = box.id === `faq-${category}`;
+    box.classList.toggle('active', match);
+    box.classList.toggle('hidden', !match);
   });
 
   const target = document.getElementById('faq-' + category);
@@ -289,3 +306,18 @@ function scrollFAQ(direction) {
   const scrollAmount = 300;
   container.scrollBy({ left: scrollAmount * direction, behavior: 'smooth' });
 }
+function selectLanguagePopup(lang) {
+    currentLanguage = lang;
+    loadLanguageContent();
+    loadMenuPreviews();
+    document.getElementById("languagePopup").style.display = "none";
+    showWelcomePopup();
+  }
+
+function showLanguagePopupOnLoad() {
+  const welcomePopup = document.getElementById("welcomePopup");
+    if (welcomePopup) welcomePopup.style.display = "none";
+    const languagePopup = document.getElementById("languagePopup");
+    if (languagePopup) languagePopup.style.display = "flex";
+}
+

@@ -10,7 +10,7 @@
     "boton_enviar": "Enviar",
     "feedback_pregunta": "¿Te ha sido útil la charla?",
     "rating_pregunta": "¿Cómo calificarías nuestro asistente?",
-    "faq_titulo": "Preguntas Frecuentes (clic para mostrar)",
+    "faqTitle": "Preguntas Frecuentes (clic para mostrar)",
     "popup_welcome": "¡Bienvenido a Menuria!",
     "popup_text_1": "Somos un pequeño equipo que ama el sector hostelero y quiere mejorarla con un toque de tecnología.",
     "popup_text_2": "Este chat está aquí para ayudarte a encontrar lo que necesitas sin reemplazar al camarero.",
@@ -44,7 +44,15 @@
     "faq_24": "¿Tienen servicio de catering?",
     "faq_25": "¿Tienen servicio de comida para llevar?",
     "faq_26": "¿Tienen servicio de aparcacoches?",
-    "welcomeMessage": "¡Hola! Soy el chatbot de La Casita del Nazareno. ¿En qué puedo ayudarte hoy?"
+    "welcomeMessage": "¡Hola! Soy el chatbot de La Casita del Nazareno. ¿En qué puedo ayudarte hoy?",
+    "tab_servizi": "🛎️ Servicios",
+    "tab_menu": "🍽️ Menú",
+    "tab_venue": "📍 Local",
+    "rFoot2": "Contáctanos - Menuria",
+    "rFoot1": "Contáctanos - Restaurante La Casita del Nazareno",
+    "menuFrame1": "🍽️ Menú",
+    "menuFrame2": "🏠 El Restaurante",
+    "menuFrame3": "📸 Galería"
   },
   "it": {
     "titolo": "Ristorante La Casita del Nazareno",
@@ -57,7 +65,7 @@
     "boton_enviar": "Invia",
     "feedback_pregunta": "La chat ti è stata utile?",
     "rating_pregunta": "Come valuteresti il nostro assistente?",
-    "faq_titulo": "Domande Frequenti (clicca per mostrare)",
+    "faqTitle": "Domande Frequenti (clicca per mostrare)",
     "popup_welcome": "Benvenuto su Menuria!",
     "popup_text_1": "Siamo un piccolo team che ama il settore della ristorazione e vuole migliorarla con un tocco di tecnologia.",
     "popup_text_2": "Questa chat è qui per aiutarti a trovare ciò che ti serve, senza sostituire il cameriere.",
@@ -91,7 +99,15 @@
     "faq_24": "Hanno un servizio di catering?",
     "faq_25": "Hanno un servizio da asporto?",
     "faq_26": "Hanno un servizio di parcheggio?",
-    "welcomeMessage": "Ciao! Sono il chatbot de La Casita del Nazareno. Come posso aiutarti oggi?"
+    "welcomeMessage": "Ciao! Sono il chatbot de La Casita del Nazareno. Come posso aiutarti oggi?",
+    "tab_servizi": "🛎️ Servizi",
+    "tab_menu": "🍽️ Menù",
+    "tab_venue": "📍 Locale",
+    "rFoot2": "Contattaci - Menuria",
+    "rFoot1": "Contattaci - Ristorante La Casita del Nazareno",
+    "menuFrame1": "🍽️ Menù",
+    "menuFrame2": "🏠 Il Ristorante",
+    "menuFrame3": "📸 Galleria"
   },
   "en": {
     "titolo": "Restaurant La Casita del Nazareno",
@@ -104,7 +120,7 @@
     "boton_enviar": "Send",
     "feedback_pregunta": "Was this chat helpful?",
     "rating_pregunta": "How would you rate our assistant?",
-    "faq_titulo": "Frequently Asked Questions (click to show)",
+    "faqTitle": "Frequently Asked Questions (click to show)",
     "popup_welcome": "Welcome to Menuria!",
     "popup_text_1": "We're a small team who loves the hospitality industry and wants to improve it with a touch of tech.",
     "popup_text_2": "This chat is here to help you find what you need without replacing the waiter.",
@@ -138,7 +154,15 @@
     "faq_24": "Do you have catering services?",
     "faq_25": "Do you offer takeout?",
     "faq_26": "Do you have valet parking?",
-    "welcomeMessage": "Hello! I'm the chatbot for La Casita del Nazareno. How can I assist you today?"
+    "welcomeMessage": "Hello! I'm the chatbot for La Casita del Nazareno. How can I assist you today?",
+    "tab_servizi": "🛎️ Services",
+    "tab_menu": "🍽️ Menu",
+    "tab_venue": "📍 Venue",
+    "rFoot2": "Contact Us - Menuria",
+    "rFoot1": "Contact Us - Restaurant La Casita del Nazareno",
+    "menuFrame1": "🍽️ Menu",
+    "menuFrame2": "🏠 The Restaurant",
+    "menuFrame3": "📸 Gallery"
   },
   "fr": {
     "titolo": "Restaurant La Casita del Nazareno",
@@ -151,7 +175,7 @@
     "boton_enviar": "Envoyer",
     "feedback_pregunta": "Le chat vous a-t-il été utile ?",
     "rating_pregunta": "Comment évalueriez-vous notre assistant ?",
-    "faq_titulo": "Questions Fréquemment Posées (cliquez pour afficher)",
+    "faqTitle": "Questions Fréquemment Posées (cliquez pour afficher)",
     "popup_welcome": "Bienvenue chez Menuria !",
     "popup_text_1": "Nous sommes une petite équipe passionnée par la restauration et souhaitons l'améliorer avec une touche de technologie.",
     "popup_text_2": "Ce chat est là pour vous aider à trouver ce dont vous avez besoin sans remplacer le serveur.",
@@ -185,7 +209,15 @@
     "faq_24": "Avez-vous des services de traiteur ?",
     "faq_25": "Proposez-vous des plats à emporter ?",
     "faq_26": "Avez-vous un service de voiturier ?",
-    "welcomeMessage": "Bonjour ! Je suis le chatbot de La Casita del Nazareno. Comment puis-je vous aider aujourd'hui ?"
+    "welcomeMessage": "Bonjour ! Je suis le chatbot de La Casita del Nazareno. Comment puis-je vous aider aujourd'hui ?",
+    "tab_servizi": "🛎️ Services",
+    "tab_menu": "🍽️ Menu",
+    "tab_venue": "📍 Lieu",
+    "rFoot2": "Contactez-nous - Menuria",
+    "rFoot1": "Contactez-nous - Restaurant La Casita del Nazareno",
+    "menuFrame1": "🍽️ Menu",
+    "menuFrame2": "🏠 Le Restaurant",
+    "menuFrame3": "📸 Galerie"
   },
   "de": {
     "titolo": "Restaurant La Casita del Nazareno",
@@ -198,7 +230,7 @@
     "boton_enviar": "Senden",
     "feedback_pregunta": "War der Chat hilfreich?",
     "rating_pregunta": "Bewerten Sie bitte unsersen Assistent:",
-    "faq_titulo": "Häufige Fragen (zum Anzeigen klicken)",
+    "faqTitle": "Häufige Fragen (zum Anzeigen klicken)",
     "popup_welcome": "Willkommen bei Menuria!",
     "popup_text_1": "Wir sind ein kleines Team, das die Gastronomie liebt und sie mit einem Hauch Technologie verbessern möchte.",
     "popup_text_2": "Dieser Chat hilft dir, das Gesuchte zu finden – ohne den Kellner zu ersetzen.",
@@ -232,7 +264,15 @@
     "faq_24": "Haben Sie Catering-Services?",
     "faq_25": "Bieten Sie Takeout an?",
     "faq_26": "Haben Sie einen Parkservice?",
-    "welcomeMessage": "Hallo! Ich bin der Chatbot von La Casita del Nazareno. Wie kann ich dir heute helfen?"
+    "welcomeMessage": "Hallo! Ich bin der Chatbot von La Casita del Nazareno. Wie kann ich dir heute helfen?",
+    "tab_servizi": "🛎️ Services",
+    "tab_menu": "🍽️ Menü",
+    "tab_venue": "📍 Lokal",
+    "rFoot2": "Kontaktiere uns - Menuria",
+    "rFoot1": "Kontaktiere uns - Restaurant La Casita del Nazareno",
+    "menuFrame1": "🍽️ Menü",
+    "menuFrame2": "🏠 Das Restaurant",
+    "menuFrame3": "📸 Galerie"
   },
   "pt": {
   "titolo": "Restaurante La Casita del Nazareno",
@@ -245,7 +285,7 @@
   "boton_enviar": "Enviar",
   "feedback_pregunta": "A conversa foi útil?",
   "rating_pregunta": "Como classificarias o nosso assistente?",
-  "faq_titulo": "Perguntas Frequentes (clica para mostrar)",
+  "faqTitle": "Perguntas Frequentes (clica para mostrar)",
   "popup_welcome": "Bem-vindo à Menuria!",
   "popup_text_1": "Somos uma pequena equipa apaixonada pela restauração e queremos melhorá-la com um toque de tecnologia.",
   "popup_text_2": "Este chat está aqui para te ajudar a encontrar o que precisas sem substituir o empregado.",
@@ -279,7 +319,15 @@
   "faq_24": "Têm serviços de catering?",
   "faq_25": "Oferecem comida para levar?",
   "faq_26": "Têm serviço de valet?",
-  "welcomeMessage": "Olá! Sou o chatbot da La Casita del Nazareno. Em que posso ajudar-te hoje?"
+  "welcomeMessage": "Olá! Sou o chatbot da La Casita del Nazareno. Em que posso ajudar-te hoje?",
+  "tab_servizi": "🛎️ Serviços",
+  "tab_menu": "🍽️ Menu",
+  "tab_venue": "📍 Local",
+  "rFoot2": "Contacta-nos - Menuria",
+  "rFoot1": "Contacta-nos - Restaurante La Casita del Nazareno",
+  "menuFrame1": "🍽️ Menu",
+  "menuFrame2": "🏠 O Restaurante",
+  "menuFrame3": "📸 Galeria"
 },
   "ru": {
     "titolo": "Ресторан La Casita del Nazareno",
@@ -292,7 +340,7 @@
     "boton_enviar": "Отправить",
     "feedback_pregunta": "Был ли чат полезен?",
     "rating_pregunta": "Как бы вы оценили нашего помощника?",
-    "faq_titulo": "Часто задаваемые вопросы (нажмите, чтобы показать)",
+    "faqTitle": "Часто задаваемые вопросы (нажмите, чтобы показать)",
     "popup_welcome": "Добро пожаловать в Менурию!",
     "popup_text_1": "Мы небольшая команда, которая любит ресторанный бизнес и хочет улучшить его с помощью технологий.",
     "popup_text_2": "Этот чат поможет вам найти нужную информацию, не заменяя официанта.",
@@ -326,6 +374,14 @@
     "faq_24": "Есть ли у вас услуги кейтеринга?",
     "faq_25": "Предлагаете ли вы еду на вынос?",
     "faq_26": "Есть ли у вас услуги парковщика?",
-    "welcomeMessage": "Здравствуйте! Я чат-бот ресторана La Casita del Nazareno. Как я могу помочь вам сегодня?"
+    "welcomeMessage": "Здравствуйте! Я чат-бот ресторана La Casita del Nazareno. Как я могу помочь вам сегодня?",
+    "tab_servizi": "🛎️ Услуги",
+    "tab_menu": "🍽️ Меню",
+    "tab_venue": "📍 Место",
+    "rFoot2": "Свяжитесь с нами - Menuria",
+    "rFoot1": "Свяжитесь с нами - Ресторан La Casita del Nazareno",
+    "menuFrame1": "🍽️ Меню",
+    "menuFrame2": "🏠 Ресторан",
+    "menuFrame3": "📸 Галерея"
   }
 }
