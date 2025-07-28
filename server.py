@@ -15,6 +15,10 @@ LANG_RESPONSES_DIR = os.path.join(DATA_DIR, 'lang_responses')
 COUNT_FILE = os.path.join(DATA_DIR, 'visitor_count.txt')
 RATING_FILE = os.path.join(DATA_DIR, 'rating_counts.json')
 FEEDBACK_LOG = os.path.join(DATA_DIR, 'feedback.json')
+MENUS_HTML = os.path.join(BASE_DIR, 'templates', 'menus.html')
+RESTAURANT_HTML = os.path.join(BASE_DIR, 'templates', 'restaurant.html')
+GALLERY_HTML = os.path.join(BASE_DIR, 'templates', 'gallery.html')
+
 
 # === Crea cartelle se mancano
 os.makedirs(DATA_DIR, exist_ok=True)
@@ -159,6 +163,7 @@ def analytics():
 @app.route('/menus')
 def menus():
     return render_template('menus.html')  # creeremo menus.html
+    
 
 @app.route('/restaurant')
 def restaurant():

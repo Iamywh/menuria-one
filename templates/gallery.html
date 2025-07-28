@@ -2,10 +2,167 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Galleria Fotografica</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería - La Casita</title>
+  <link rel="stylesheet" href="gallery.css">
+  <script defer src="gallery.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #121212;
+      color: #f1f1f1;
+    }
+
+    .gallery-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background-color: #1e1e1e;
+      border-bottom: 1px solid #333;
+    }
+
+    .lang-switch img {
+      width: 28px;
+      height: 20px;
+      margin-left: 10px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .lang-switch img:hover {
+      transform: scale(1.1);
+    }
+
+    .go-home a {
+      color: #f1f1f1;
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+
+    .gallery-intro {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .gallery-intro h1 {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      color: #ffc107;
+    }
+
+    .gallery-intro p {
+      font-size: 1.1rem;
+      color: #ccc;
+    }
+
+    .gallery-section {
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .gallery-section h2 {
+      font-size: 2rem;
+      margin-bottom: 25px;
+      border-left: 5px solid #ffc107;
+      padding-left: 10px;
+      color: #ffc107;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 10px 30px rgba(255, 193, 7, 0.3);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      background: #1e1e1e;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería - La Casita</title>
+  <link rel="stylesheet" href="gallery.css">
+  <script defer src="gallery.js"></script>
 </head>
 <body>
-  <h1>📸 Galleria Fotografica</h1>
-  <p>Immagini di piatti, location, eventi, e tanto altro.</p>
+  <!-- HEADER CON BANDIERINE E GO HOME -->
+  <header class="gallery-header">
+    <div class="lang-switch">
+      <img src="flags/it.png" alt="IT" onclick="setLangAndReload('it')">
+      <img src="flags/es.png" alt="ES" onclick="setLangAndReload('es')">
+      <img src="flags/en.png" alt="EN" onclick="setLangAndReload('en')">
+    </div>
+    <div class="go-home">
+      <a href="/index.html" data-i18n="go_home">🏠 Torna alla Home</a>
+    </div>
+  </header>
+
+  <!-- TITOLO PRINCIPALE -->
+  <section class="gallery-intro">
+    <h1 data-i18n="gallery_titolo">La nostra Galleria</h1>
+    <p data-i18n="gallery_descrizione">Esplora i nostri piatti, cocktail, caffè e dolci in una collezione fotografica elegante.</p>
+  </section>
+
+  <!-- GALLERIA A SEZIONI -->
+  <section class="gallery-section" id="piatti">
+    <h2 data-i18n="gallery_piatti">I nostri piatti</h2>
+    <div class="gallery-grid">
+      <img src="gallery/piatto1.jpg" alt="piatto1">
+      <img src="gallery/piatto2.jpg" alt="piatto2">
+      <img src="gallery/piatto3.jpg" alt="piatto3">
+    </div>
+  </section>
+
+  <section class="gallery-section" id="cocktail">
+    <h2 data-i18n="gallery_cocktail">I nostri cocktail</h2>
+    <div class="gallery-grid">
+      <img src="gallery/cocktail1.jpg" alt="cocktail1">
+      <img src="gallery/cocktail2.jpg" alt="cocktail2">
+      <img src="gallery/cocktail3.jpg" alt="cocktail3">
+    </div>
+  </section>
+
+  <section class="gallery-section" id="caffe">
+    <h2 data-i18n="gallery_caffe">I nostri caffè</h2>
+    <div class="gallery-grid">
+      <img src="gallery/caffe1.jpg" alt="caffe1">
+      <img src="gallery/caffe2.jpg" alt="caffe2">
+      <img src="gallery/caffe3.jpg" alt="caffe3">
+    </div>
+  </section>
+
+  <section class="gallery-section" id="torte">
+    <h2 data-i18n="gallery_torte">Le nostre torte</h2>
+    <div class="gallery-grid">
+      <img src="gallery/torta1.jpg" alt="torta1">
+      <img src="gallery/torta2.jpg" alt="torta2">
+      <img src="gallery/torta3.jpg" alt="torta3">
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2025 La Casita del Nazareno</p>
+  </footer>
 </body>
 </html>

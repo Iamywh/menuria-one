@@ -2,10 +2,249 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Il Ristorante</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Il Ristorante - La Casita</title>
+  <link rel="stylesheet" href="ristorante.css">
+  <script defer src="ristorante.js"></script>
+  <style>
+    :root {
+      --main-color: #603913;
+      --accent-color: #f9dec9;
+      --text-color: #333;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fffaf4;
+      color: var(--text-color);
+    }
+
+    .lang-header {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      padding: 10px 20px;
+      background: #f5f1ed;
+    }
+
+    .lang-header img {
+      width: 30px;
+      height: 20px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .lang-header img:hover {
+      transform: scale(1.1);
+    }
+
+    .banner {
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+    }
+
+    .banner-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .intro-section {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .intro-section h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: var(--main-color);
+    }
+
+    .intro-section p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    .info-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      max-width: 900px;
+      margin: 40px auto;
+      gap: 20px;
+      padding: 0 20px;
+    }
+
+    .map-box, .review-box {
+      flex: 1 1 40%;
+      min-width: 300px;
+    }
+
+    .map-box iframe {
+      width: 100%;
+      height: 250px;
+      border: none;
+      border-radius: 10px;
+    }
+
+    .review-box h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    .review-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: var(--main-color);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.2s ease;
+    }
+
+    .review-btn:hover {
+      background: #4a2d0f;
+    }
+
+    .promo-gallery {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .promo-gallery h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--main-color);
+    }
+
+    .promo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+    }
+
+    .promo-btn {
+      padding: 15px;
+      font-size: 1rem;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s;
+    }
+
+    .promo-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .color1 { background-color: #FF8A65; }
+    .color2 { background-color: #9575CD; }
+    .color3 { background-color: #4DB6AC; }
+    .color4 { background-color: #FFB74D; }
+
+    .go-home {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    .go-home a {
+      text-decoration: none;
+      color: var(--main-color);
+      font-size: 1.2rem;
+    }
+
+    .footer {
+      background: #f0ece7;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+  </style>
+  <head>
+    <meta charset="UTF-8">
+    <title id="pageTitle">Menuria One</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/Menuria One Logo.jpg') }}">
 </head>
+<header class="top-header">
+        <div class="top-row">
+            <!-- Bandiere -->
+            <div class="left-section language-flags">
+                <img src="{{ url_for('static', filename='img/flags/Spain-flag.png') }}" alt="ES" onclick="setLanguage('es')" class="active">
+                <img src="{{ url_for('static', filename='img/flags/UK-flag.png') }}" alt="EN" onclick="setLanguage('en')">
+                <img src="{{ url_for('static', filename='img/flags/Italy-flag.png') }}" alt="IT" onclick="setLanguage('it')">
+                <img src="{{ url_for('static', filename='img/flags/France-flag.png') }}" alt="FR" onclick="setLanguage('fr')">
+                <img src="{{ url_for('static', filename='img/flags/Germany-flag.png') }}" alt="DE" onclick="setLanguage('de')">
+                <img src="{{ url_for('static', filename='img/flags/Portugal-flag.png') }}" alt="PT" onclick="setLanguage('pt')">
+                <img src="{{ url_for('static', filename='img/flags/Russia-flag.png') }}" alt="RU" onclick="setLanguage('ru')">
+            </div>
+</div>
+</header>
 <body>
-  <h1>🏠 Info sul Ristorante</h1>
-  <p>Servizi, brunch, eventi privati, offerte stagionali…</p>
+   <!-- BANNER CON IMMAGINE DELLA TERRAZZA -->
+  <section class="banner">
+    <img src="images/terrazza-casita.jpg" alt="La Casita - Terrazza" class="banner-img">
+  </section>
+
+  <!-- PARAGRAFO CENTRALE DESCRITTIVO -->
+  <section class="intro-section">
+    <h1 data-i18n="ristorante_titolo">Nuestro Restaurante</h1>
+    <p data-i18n="ristorante_descrizione">
+      Bienvenidos a La Casita del Nazareno, un lugar donde cada detalle te invita a frenar, saborear y sentirte en casa. Nuestro restaurante nace de una idea sencilla pero profunda: unir la riqueza de la cocina española con la delicadeza y profundidad de la tradición asiática, creando un abrazo culinario que cuenta historias de sabores, culturas y personas.<br>
+
+Ofrecemos una cocina fusión auténtica, donde el respeto por el ingrediente se encuentra con la creatividad de un equipo joven y dinámico. Aquí no encontrarás platos transformados por la moda, sino reinterpretaciones sinceras que celebran la esencia de cada receta. Un ramen hecho con paciencia y caldo real, tapas inspiradas en las calles de Bangkok, baos que abrazan al jamón ibérico. Cada plato es un punto de encuentro entre mundos, unidos por la pasión y la intención.<br>
+
+Pero La Casita no es solo un restaurante. Es un hogar. Y como todo hogar de verdad, tiene un alma hecha de objetos, historias y memoria. Al pasear por su interior notarás que nada es casual. Las alacenas de madera maciza, las máquinas de coser Singer antiguas, las planchas de carbón, los cuadros vintage, el gramófono... cada pieza es original, elegida con cariño, y cuenta un tiempo donde el detalle valía más que la prisa. Es un homenaje a la lentitud, a la belleza vivida, a la nostalgia que acaricia sin doler.<br>
+
+Queríamos crear un espacio que no se sintiera como un restaurante, sino como la casa de la abuela, donde siempre te reciben con una manta cálida y algo cocinándose en la olla. Aquí, cada cliente no es un número, sino un invitado especial. Nuestro equipo joven y entusiasta cuida cada detalle: desde intolerancias alimentarias hasta preferencias musicales, desde la sonrisa inicial hasta ayudarte a encontrar la mesa perfecta. Porque para nosotros, la hospitalidad es empatía, no protocolo.<br>
+
+Y luego está la terraza. Aislada del ruido, escondida entre tejados, iluminada con luces cálidas y perfumada con hierbas aromáticas. Una burbuja de paz, donde el tiempo se dilata y el mundo exterior se apaga. Ya sea un almuerzo al sol o una cena al atardecer, la terraza de La Casita regala una atmósfera íntima y única, hecha de charlas sinceras, brindis espontáneos y silencios cómodos.<br>
+
+Nuestra ubicación es otro pequeño secreto. A unos pasos de todo, pero protegida del caos urbano, como si la ciudad nos hubiera olvidado a propósito para dejarnos respirar. Aquí se viene a desconectar, pero también a reconectar. Ya sea una pausa rápida o una noche para recordar, La Casita te recibe sin preguntar, y te despide con gratitud.<br>
+
+Somos jóvenes, sí. Pero creemos en la vieja idea de hospitalidad, esa que se mide con la mirada, con la atención y con el aroma de un plato que sabe a casa. En un mundo cada vez más artificial, elegimos la sinceridad. Y si después de visitarnos te sientes un poco menos solo, un poco más lleno y un poco más feliz, entonces habremos hecho bien nuestro trabajo.<br>
+
+Bienvenido a casa.<br>
+Bienvenido a La Casita del Nazareno.
+    </p>
+  </section>
+
+  <!-- MAPPA E RECENSIONI -->
+  <section class="info-section">
+    <div class="map-box">
+      <iframe src="https://www.google.com/maps/embed?..." allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="review-box">
+      <h3 data-i18n="recensioni_titolo">Déjanos una reseña</h3>
+      <a href="https://g.page/r/CasitaReview" target="_blank" class="review-btn" data-i18n="recensioni_link">Ir a Google Reviews</a>
+    </div>
+  </section>
+
+  <!-- PROMO GALLERY STILE MENU -->
+  <section class="promo-gallery">
+    <h2 data-i18n="promo_titolo">Nuestras Promociones</h2>
+    <div class="promo-grid">
+      <button class="promo-btn color1" onclick="openPromo('cerveza')">Cubo de Cerveza</button>
+      <button class="promo-btn color2" onclick="openPromo('cocktail')">Cocktail Special</button>
+      <button class="promo-btn color3" onclick="openPromo('pack')">Cocktail Pack</button>
+      <button class="promo-btn color4" onclick="openPromo('voucher')">Voucher Regalo</button>
+    </div>
+  </section>
+
+  <!-- PULSANTE GO HOME E FOOTER -->
+  <div class="go-home">
+    <a href="index.html" class="go-home-link" data-i18n="go_home">Volver a la página principal</a>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; 2025 La Casita del Nazareno</p>
+  </footer>
 </body>
 </html>

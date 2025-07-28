@@ -13,6 +13,9 @@ fetch("/data/lang.json")
     console.error("Errore nel caricamento delle traduzioni:", error);
   });
 
+  localStorage.setItem("lang", "es"); // es, it, en, etc.
+
+
 function loadLanguageContent() {
   if (!languageData[currentLanguage]) return;
   const lang = languageData[currentLanguage];
