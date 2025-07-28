@@ -1,11 +1,272 @@
-<!DOCTYPE html>
-<html lang="es">
+<!-- Sezione Menú completa -->
+<section id="menu-section">
+  <style>
+    #menu-section {
+      background: linear-gradient(to right, #faf8f3, #f7f5ee);
+      padding: 40px 20px;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .menu-title {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 40px;
+      color: #5c3a21;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .menu-btn {
+      padding: 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: transform 0.2s ease, box-shadow 0.2s;
+    }
+
+    .menu-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    }
+
+    .color1 { background-color: #ff6f61; }
+    .color2 { background-color: #f8b400; }
+    .color3 { background-color: #6a9fb5; }
+    .color4 { background-color: #62c370; }
+    .color5 { background-color: #d65db1; }
+    .color6 { background-color: #ff9671; }
+    .color7 { background-color: #845ec2; }
+    .color8 { background-color: #2c73d2; }
+    .color9 { background-color: #008f7a; }
+
+    .menu-comida-wrapper {
+      position: relative;
+    }
+
+    .submenu {
+      position: absolute;
+      top: 105%;
+      left: 0;
+      background: white;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      border-radius: 12px;
+      overflow: hidden;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .submenu button {
+      padding: 10px 15px;
+      border: none;
+      background: #f7f5ee;
+      font-size: 0.95rem;
+      cursor: pointer;
+      border-bottom: 1px solid #e0dcd1;
+    }
+
+    .submenu button:hover {
+      background-color: #f0e7d8;
+    }
+
+    .menu-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .menu-detail-box {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 600px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      animation: fadeInUp 0.3s ease;
+      position: relative;
+    }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 1.5rem;
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: #888;
+    }
+
+    .hidden { display: none; }
+
+    #menuItemsList {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 20px;
+    }
+
+    #menuItemsList li {
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+      font-size: 1.05rem;
+    }
+  </style>
 <head>
-  <meta charset="UTF-8">
-  <title>Menù</title>
+    <meta charset="UTF-8">
+    <title id="pageTitle">Menuria One</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/Menuria One Logo.jpg') }}">
 </head>
-<body>
-  <h1>📖 Tutti i nostri menù</h1>
-  <!-- Qui inserirai il carousel con i menu in HTML -->
-</body>
-</html>
+<header class="top-header">
+        <div class="top-row">
+            <!-- Bandiere -->
+            <div class="left-section language-flags">
+                <img src="{{ url_for('static', filename='img/flags/Spain-flag.png') }}" alt="ES" onclick="setLanguage('es')" class="active">
+                <img src="{{ url_for('static', filename='img/flags/UK-flag.png') }}" alt="EN" onclick="setLanguage('en')">
+                <img src="{{ url_for('static', filename='img/flags/Italy-flag.png') }}" alt="IT" onclick="setLanguage('it')">
+                <img src="{{ url_for('static', filename='img/flags/France-flag.png') }}" alt="FR" onclick="setLanguage('fr')">
+                <img src="{{ url_for('static', filename='img/flags/Germany-flag.png') }}" alt="DE" onclick="setLanguage('de')">
+                <img src="{{ url_for('static', filename='img/flags/Portugal-flag.png') }}" alt="PT" onclick="setLanguage('pt')">
+                <img src="{{ url_for('static', filename='img/flags/Russia-flag.png') }}" alt="RU" onclick="setLanguage('ru')">
+            </div>
+</div>
+</header>
+<section id="menu-section">
+  <h1 class="menu-title">🍽️ Nuestros Menús</h1>
+
+  <div class="menu-grid">
+    <button class="menu-btn color1" onclick="openMenu('desayunos')">Desayunos</button>
+    <button class="menu-btn color2" onclick="openMenu('brunch')">Brunch</button>
+    <button class="menu-btn color3" onclick="openMenu('cafes')">Cafés</button>
+    <button class="menu-btn color4" onclick="openMenu('bebidas')">Bebidas</button>
+    <button class="menu-btn color5" onclick="openMenu('cockteles')">Cócteles</button>
+    <button class="menu-btn color6" onclick="openMenu('vinos')">Vinos</button>
+    <button class="menu-btn color7" onclick="openMenu('batidos')">Batidos</button>
+    <button class="menu-btn color8" onclick="openMenu('smoothies')">Smoothies</button>
+    <div class="menu-comida-wrapper">
+      <button class="menu-btn color9" onclick="toggleSubmenu()">Comida ▼</button>
+      <div id="submenu-comida" class="submenu hidden">
+        <button onclick="openMenu('entrantes')">Entrantes</button>
+        <button onclick="openMenu('ensaladas')">Ensaladas</button>
+        <button onclick="openMenu('carne')">Platos con carne</button>
+        <button onclick="openMenu('hamburguesas')">Hamburguesas</button>
+        <button onclick="openMenu('woks')">Woks</button>
+        <button onclick="openMenu('tostas')">Tostas</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="menu-overlay hidden" id="menuOverlay">
+    <div class="menu-detail-box" id="menuDetail">
+      <button class="close-btn" onclick="closeMenu()">✖</button>
+      <h2 id="menuDetailTitle"></h2>
+      <ul id="menuItemsList"></ul>
+    </div>
+  </div>
+  <script>
+    const menusData = {
+      desayunos: {
+        title: "Menú Desayunos",
+        items: ["Tostada con tomate", "Croissant", "Zumo natural", "Café con leche"]
+      },
+      brunch: {
+        title: "Menú Brunch",
+        items: ["Huevos benedictinos", "Bagel de salmón", "Smoothie de frutas"]
+      },
+      cafes: {
+        title: "Menú Cafés",
+        items: ["Café solo", "Café cortado", "Café bombón"]
+      },
+      bebidas: {
+        title: "Menú Bebidas",
+        items: ["Agua mineral", "Refrescos", "Tés variados"]
+      },
+      cockteles: {
+        title: "Menú Cócteles",
+        items: ["Mojito", "Caipirinha", "Piña colada"]
+      },
+      vinos: {
+        title: "Menú Vinos",
+        items: ["Tinto Rioja", "Blanco Verdejo", "Rosado"]
+      },
+      batidos: {
+        title: "Menú Batidos",
+        items: ["Chocolate", "Fresa", "Vainilla"]
+      },
+      smoothies: {
+        title: "Menú Smoothies",
+        items: ["Mango", "Frutas del bosque", "Plátano y espinaca"]
+      },
+      entrantes: {
+        title: "Entrantes",
+        items: ["Pan con alioli", "Queso frito", "Croquetas"]
+      },
+      ensaladas: {
+        title: "Ensaladas",
+        items: ["César", "Vegana", "Griega"]
+      },
+      carne: {
+        title: "Platos con carne",
+        items: ["Solomillo", "Pollo al curry", "Costillas BBQ"]
+      },
+      hamburguesas: {
+        title: "Hamburguesas",
+        items: ["Clásica", "Doble cheddar", "Vegana"]
+      },
+      woks: {
+        title: "Woks",
+        items: ["Wok de pollo", "Wok de gambas", "Wok vegetal"]
+      },
+      tostas: {
+        title: "Tostas",
+        items: ["Tosta de jamón", "Tosta caprese", "Tosta de aguacate"]
+      }
+    };
+
+    function toggleSubmenu() {
+      const submenu = document.getElementById("submenu-comida");
+      submenu.classList.toggle("hidden");
+    }
+
+    function openMenu(key) {
+      const menu = menusData[key];
+      if (!menu) return;
+      document.getElementById("menuOverlay").classList.remove("hidden");
+      document.getElementById("menuDetailTitle").textContent = menu.title;
+      const list = document.getElementById("menuItemsList");
+      list.innerHTML = "";
+      menu.items.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        list.appendChild(li);
+      });
+
+      // chiudi submenu se era aperto
+      document.getElementById("submenu-comida").classList.add("hidden");
+    }
+
+    function closeMenu() {
+      document.getElementById("menuOverlay").classList.add("hidden");
+    }
+  </script>
+</section>
