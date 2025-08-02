@@ -185,6 +185,9 @@
                 <img src="{{ url_for('static', filename='img/flags/Portugal-flag.png') }}" alt="PT" onclick="setLanguage('pt')">
                 <img src="{{ url_for('static', filename='img/flags/Russia-flag.png') }}" alt="RU" onclick="setLanguage('ru')">
             </div>
+      <div class="go-home">
+      <a href="templates/index.html" data-i18n="go_home">🏠 Home</a>
+    </div>
 </div>
 </header>
 <body>
@@ -219,12 +222,25 @@ Bienvenido a La Casita del Nazareno.
   <!-- MAPPA E RECENSIONI -->
   <section class="info-section">
     <div class="map-box">
-      <iframe src="https://www.google.com/maps/embed?..." allowfullscreen loading="lazy"></iframe>
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.962845002315!2d-16.2540635!3d28.4681558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xc41cc8226cf2427%3A0xcaabe0c991a864b7!2sLa%20Casita!5e0!3m2!1sit!2ses!4v1692568987654!5m2!1sit!2ses" 
+        width="100%" 
+        height="300" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
     </div>
-    <div class="review-box">
-      <h3 data-i18n="recensioni_titolo">Déjanos una reseña</h3>
-      <a href="https://g.page/r/CasitaReview" target="_blank" class="review-btn" data-i18n="recensioni_link">Ir a Google Reviews</a>
-    </div>
+    <div class="review-btn-container">
+  <a href="https://search.google.com/local/writereview?placeid=ChIJJyTPJoLMQQwRt2Sokcngq8o" 
+     target="_blank" 
+     rel="noopener noreferrer" 
+     class="review-button">
+    📝 Dejanos una reseña Google
+  </a>
+</div>
+
   </section>
 
   <!-- PROMO GALLERY STILE MENU -->

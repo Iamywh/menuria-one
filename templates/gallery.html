@@ -98,6 +98,81 @@
       color: #aaa;
       font-size: 0.9rem;
     }
+    #gallery {
+  padding: 20px;
+  overflow: hidden;
+  background-color: #111;
+}
+
+.gallery-row {
+  display: flex;
+  gap: 16px;
+  overflow: hidden;
+  padding: 10px 0;
+}
+
+.gallery-row img {
+  height: 220px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.gallery-row img:hover {
+  transform: scale(1.05);
+}
+
+/* Animazioni */
+.scroll-right {
+  animation: scrollRight 40s linear infinite;
+}
+
+.scroll-left {
+  animation: scrollLeft 40s linear infinite;
+}
+
+@keyframes scrollRight {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes scrollLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(100%); }
+}
+#lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+#lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+#close-lightbox {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 32px;
+  color: #fff;
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  .gallery-row img {
+    height: 150px;
+  }
+}
   </style>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -107,16 +182,23 @@
 </head>
 <body>
   <!-- HEADER CON BANDIERINE E GO HOME -->
-  <header class="gallery-header">
-    <div class="lang-switch">
-      <img src="flags/it.png" alt="IT" onclick="setLangAndReload('it')">
-      <img src="flags/es.png" alt="ES" onclick="setLangAndReload('es')">
-      <img src="flags/en.png" alt="EN" onclick="setLangAndReload('en')">
+  <header class="top-header">
+        <div class="lang-switch">
+            <!-- Bandiere -->
+            <div class="left-section language-flags">
+                <img src="{{ url_for('static', filename='img/flags/Spain-flag.png') }}" alt="ES" onclick="setLanguage('es')" class="active">
+                <img src="{{ url_for('static', filename='img/flags/UK-flag.png') }}" alt="EN" onclick="setLanguage('en')">
+                <img src="{{ url_for('static', filename='img/flags/Italy-flag.png') }}" alt="IT" onclick="setLanguage('it')">
+                <img src="{{ url_for('static', filename='img/flags/France-flag.png') }}" alt="FR" onclick="setLanguage('fr')">
+                <img src="{{ url_for('static', filename='img/flags/Germany-flag.png') }}" alt="DE" onclick="setLanguage('de')">
+                <img src="{{ url_for('static', filename='img/flags/Portugal-flag.png') }}" alt="PT" onclick="setLanguage('pt')">
+                <img src="{{ url_for('static', filename='img/flags/Russia-flag.png') }}" alt="RU" onclick="setLanguage('ru')">
+            </div>
+      <div class="go-home">
+      <a href="templates/index.html" data-i18n="go_home">🏠 Home</a>
     </div>
-    <div class="go-home">
-      <a href="/index.html" data-i18n="go_home">🏠 Torna alla Home</a>
-    </div>
-  </header>
+</div>
+</header>
 
   <!-- TITOLO PRINCIPALE -->
   <section class="gallery-intro">
@@ -125,44 +207,71 @@
   </section>
 
   <!-- GALLERIA A SEZIONI -->
-  <section class="gallery-section" id="piatti">
-    <h2 data-i18n="gallery_piatti">I nostri piatti</h2>
-    <div class="gallery-grid">
-      <img src="gallery/piatto1.jpg" alt="piatto1">
-      <img src="gallery/piatto2.jpg" alt="piatto2">
-      <img src="gallery/piatto3.jpg" alt="piatto3">
-    </div>
-  </section>
+ <section class="gallery-section" id="piatti">
+  <h2 data-i18n="gallery_piatti">I nostri piatti</h2>
+  <div class="gallery-row scroll-right">
+    <img src="static/img/galleries/platos/croquetas.jpg" alt="piatto1">
+    <img src="static/img/galleries/platos/tostachampiñones.jpg" alt="piatto2">
+    <img src="static/img/galleries/platos/tostamozzarella.jpg" alt="piatto3">
+    <img src="static/img/galleries/platos/tostasolomillo.jpg" alt="piatto4">
+  </div>
+</section>
 
-  <section class="gallery-section" id="cocktail">
-    <h2 data-i18n="gallery_cocktail">I nostri cocktail</h2>
-    <div class="gallery-grid">
-      <img src="gallery/cocktail1.jpg" alt="cocktail1">
-      <img src="gallery/cocktail2.jpg" alt="cocktail2">
-      <img src="gallery/cocktail3.jpg" alt="cocktail3">
-    </div>
-  </section>
+<section class="gallery-section" id="cocktail">
+  <h2 data-i18n="gallery_cocktail">I nostri cocktail</h2>
+  <div class="gallery-row scroll-left">
+    <img src="static/img/galleries/cocktail/Bluelemondrop.jpg" alt="cocktail1">
+    <img src="static/img/galleries/cocktail/Mojito-classic.jpg" alt="cocktail2">
+    <img src="static/img/galleries/cocktail/Mojito-classic+strawberry.jpg" alt="cocktail3">
+    <img src="static/img/galleries/cocktail/Mojito-strawberry.jpg" alt="cocktail4">
+  </div>
+</section>
 
-  <section class="gallery-section" id="caffe">
-    <h2 data-i18n="gallery_caffe">I nostri caffè</h2>
-    <div class="gallery-grid">
-      <img src="gallery/caffe1.jpg" alt="caffe1">
-      <img src="gallery/caffe2.jpg" alt="caffe2">
-      <img src="gallery/caffe3.jpg" alt="caffe3">
-    </div>
-  </section>
-
-  <section class="gallery-section" id="torte">
+<section class="gallery-section" id="torte">
     <h2 data-i18n="gallery_torte">Le nostre torte</h2>
-    <div class="gallery-grid">
-      <img src="gallery/torta1.jpg" alt="torta1">
-      <img src="gallery/torta2.jpg" alt="torta2">
-      <img src="gallery/torta3.jpg" alt="torta3">
+    <div class="gallery-row scroll-right">
+      <img src="static\img\galleries\tartas\Tkinder.jpg" alt="torta1">
+      <img src="static\img\galleries\tartas\Tcolibri.jpg" alt="torta2">
+      <img src="static\img\galleries\tartas\Tchocoframbuesa.jpg" alt="torta3">
+      <img src="static\img\galleries\tartas\angelsfood.jpg" alt="torta4">
     </div>
   </section>
+
+<section class="gallery-section" id="caffe">
+  <h2 data-i18n="gallery_caffe">I nostri caffè</h2>
+  <div class="gallery-row scroll-right">
+    <img src="gallery/caffe1.jpg" alt="caffe1">
+    <img src="gallery/caffe2.jpg" alt="caffe2">
+    <img src="gallery/caffe3.jpg" alt="caffe3">
+  </div>
+</section>
 
   <footer class="footer">
     <p>&copy; 2025 La Casita del Nazareno</p>
   </footer>
+  <!-- Lightbox container -->
+<div id="lightbox" style="display:none;">
+  <span id="close-lightbox">✖</span>
+  <img id="lightbox-img" src="" alt="Zoomed">
+</div>
+
+<script>
+  const images = document.querySelectorAll('.gallery-row img');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const closeBtn = document.getElementById('close-lightbox');
+
+  images.forEach(img => {
+    img.addEventListener('click', () => {
+      lightbox.style.display = 'flex';
+      lightboxImg.src = img.src;
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+  });
+</script>
+
 </body>
 </html>
