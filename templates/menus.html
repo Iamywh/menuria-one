@@ -1,275 +1,628 @@
-<!-- Sezione Menú completa -->
-<section id="menu-section">
-  <style>
-    #menu-section {
-      background: linear-gradient(to right, #faf8f3, #f7f5ee);
-      padding: 40px 20px;
-      font-family: 'Segoe UI', sans-serif;
-    }
-
-    .menu-title {
-      text-align: center;
-      font-size: 2.8rem;
-      margin-bottom: 40px;
-      color: #5c3a21;
-    }
-
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 20px;
-      max-width: 960px;
-      margin: 0 auto;
-    }
-
-    .menu-btn {
-      padding: 20px;
-      font-size: 1rem;
-      border: none;
-      border-radius: 15px;
-      cursor: pointer;
-      color: white;
-      font-weight: bold;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      transition: transform 0.2s ease, box-shadow 0.2s;
-    }
-
-    .menu-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-    }
-
-    .color1 { background-color: #ff6f61; }
-    .color2 { background-color: #f8b400; }
-    .color3 { background-color: #6a9fb5; }
-    .color4 { background-color: #62c370; }
-    .color5 { background-color: #d65db1; }
-    .color6 { background-color: #ff9671; }
-    .color7 { background-color: #845ec2; }
-    .color8 { background-color: #2c73d2; }
-    .color9 { background-color: #008f7a; }
-
-    .menu-comida-wrapper {
-      position: relative;
-    }
-
-    .submenu {
-      position: absolute;
-      top: 105%;
-      left: 0;
-      background: white;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-      border-radius: 12px;
-      overflow: hidden;
-      z-index: 10;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .submenu button {
-      padding: 10px 15px;
-      border: none;
-      background: #f7f5ee;
-      font-size: 0.95rem;
-      cursor: pointer;
-      border-bottom: 1px solid #e0dcd1;
-    }
-
-    .submenu button:hover {
-      background-color: #f0e7d8;
-    }
-
-    .menu-overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.6);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 999;
-    }
-
-    .menu-detail-box {
-      background: white;
-      padding: 30px;
-      border-radius: 20px;
-      width: 90%;
-      max-width: 600px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-      animation: fadeInUp 0.3s ease;
-      position: relative;
-    }
-
-    @keyframes fadeInUp {
-      from { transform: translateY(40px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 1.5rem;
-      border: none;
-      background: none;
-      cursor: pointer;
-      color: #888;
-    }
-
-    .hidden { display: none; }
-
-    #menuItemsList {
-      list-style: none;
-      padding-left: 0;
-      margin-top: 20px;
-    }
-
-    #menuItemsList li {
-      padding: 8px 0;
-      border-bottom: 1px solid #eee;
-      font-size: 1.05rem;
-    }
-  </style>
+<!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title id="pageTitle">Menuria One</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/Menuria One Logo.jpg') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menuria One</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Nunito', Arial, sans-serif;
+            color: #25506e;
+            margin: 0;
+            padding: 0;
+            transition: background 0.7s cubic-bezier(.73,.23,.5,1.07);
+            min-height: 100vh;
+        }
+        
+        .top-header {
+            background: rgba(255,255,255,0.9);
+            padding: 10px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        
+        .language-flags {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .language-flags img {
+            width: 24px;
+            height: 16px;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: transform 0.2s;
+        }
+        
+        .language-flags img:hover {
+            transform: scale(1.1);
+        }
+        
+        .language-flags img.active {
+            border: 2px solid #2b7da9;
+        }
+        
+        .go-home a {
+            text-decoration: none;
+            color: #25506e;
+            font-weight: 700;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+        
+        .go-home a:hover {
+            background: rgba(43, 125, 169, 0.1);
+        }
+        
+        .container {
+            max-width: 480px;
+            margin: 20px auto 0 auto;
+            background: rgba(255,255,255,0.95);
+            border-radius: 22px;
+            box-shadow: 0 4px 24px 0 #aad6ef44;
+            padding: 34px 28px 34px 28px;
+            border: 2px solid #cbe5f9;
+            min-height: 530px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 13px;
+        }
+        
+        .logo img {
+            width: 110px;
+            border-radius: 50%;
+            border: 2px solid #eed9be;
+            background: #fff8e7;
+            box-shadow: 0 2px 10px #e0e0e022;
+        }
+        
+        .menu-title {
+            text-align: center;
+            font-size: 1.7em;
+            color: #2b7da9;
+            font-weight: 900;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            transition: color 0.4s;
+        }
+        
+        .slide-in {
+            animation: slideIn 0.65s cubic-bezier(.71,-0.01,.26,.98);
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(50px) scale(0.93);}
+            to   { opacity: 1; transform: translateY(0) scale(1);}
+        }
+        
+        .menu-note {
+            text-align: center;
+            font-size: 1.05em;
+            color: #548dd3;
+            margin-bottom: 16px;
+            font-style: italic;
+            letter-spacing: 0.1em;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 9px;
+            font-size: 1.07em;
+            margin-bottom: 12px;
+        }
+        
+        th, td {
+            background: #e5f5ff;
+            padding: 8px 14px;
+            border-radius: 12px;
+            border: none;
+        }
+        
+        th {
+            color: #388fbd;
+            font-size: 1em;
+            font-weight: 700;
+            text-align: left;
+            background: #d2eeff;
+            border-bottom: 2px solid #ade1fa;
+        }
+        
+        td.price {
+            text-align: right;
+            color: #309bd1;
+            font-weight: 700;
+            background: #e7f7fa;
+            letter-spacing: 0.5px;
+            font-size: 1em;
+        }
+        
+        td .ingredientes {
+            display: block;
+            font-size: 0.93em;
+            color: #888;
+            font-weight: 400;
+            margin-top: 2px;
+        }
+        
+        .cocktail-mode th, .cocktail-mode td {
+            background: #292b2f !important;
+            color: #fff !important;
+            border: none;
+        }
+        
+        .cocktail-mode td.price {
+            color: #fff9b5 !important;
+            background: #222428 !important;
+        }
+        
+        .cocktail-mode th {
+            color: #e8e8e8 !important;
+            background: #181a1c !important;
+            border-bottom: 2px solid #666 !important;
+        }
+        
+        .cocktail-mode .menu-title,
+        .cocktail-mode .menu-note {
+            color: #fff !important;
+        }
+        
+        .menu-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 14px 0 0 0;
+        }
+        
+        .arrow-btn {
+            background: #d2eeff;
+            color: #2b7da9;
+            border: none;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            font-size: 2em;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 9px #b8d7ee44;
+            transition: background 0.2s, transform 0.18s;
+            outline: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+        }
+        
+        .arrow-btn:active {
+            background: #99d1f1;
+            transform: scale(0.93);
+        }
+        
+        .cocktail-mode .arrow-btn {
+            background: #25272c;
+            color: #fff;
+            border: 2px solid #444;
+        }
+        
+        .note {
+            margin-top: 18px;
+            text-align: center;
+            font-size: 0.93em;
+            color: #639dc7;
+            font-style: italic;
+        }
+        
+        .menu-mode th, .menu-mode td {
+            background: #e5f5ff;
+            color: #333;
+        }
+        
+        .menu-mode td.price {
+            color: #309bd1;
+            background: #e7f7fa;
+        }
+        
+        .menu-mode th {
+            color: #388fbd;
+            background: #d2eeff;
+            border-bottom: 2px solid #ade1fa;
+        }
+        
+        .menu-mode .menu-title,
+        .menu-mode .menu-note {
+            color: #25506e;
+        }
+    </style>
 </head>
-<header class="top-header">
+<body>
+    <header class="top-header">
         <div class="top-row">
-            <!-- Bandiere -->
             <div class="left-section language-flags">
-                <img src="{{ url_for('static', filename='img/flags/Spain-flag.png') }}" alt="ES" onclick="setLanguage('es')" class="active">
-                <img src="{{ url_for('static', filename='img/flags/UK-flag.png') }}" alt="EN" onclick="setLanguage('en')">
-                <img src="{{ url_for('static', filename='img/flags/Italy-flag.png') }}" alt="IT" onclick="setLanguage('it')">
-                <img src="{{ url_for('static', filename='img/flags/France-flag.png') }}" alt="FR" onclick="setLanguage('fr')">
-                <img src="{{ url_for('static', filename='img/flags/Germany-flag.png') }}" alt="DE" onclick="setLanguage('de')">
-                <img src="{{ url_for('static', filename='img/flags/Portugal-flag.png') }}" alt="PT" onclick="setLanguage('pt')">
-                <img src="{{ url_for('static', filename='img/flags/Russia-flag.png') }}" alt="RU" onclick="setLanguage('ru')">
+                <img src="https://flagcdn.com/24x18/es.png" alt="ES" onclick="setLanguage('es')" class="active">
+                <img src="https://flagcdn.com/24x18/gb.png" alt="EN" onclick="setLanguage('en')">
+                <img src="https://flagcdn.com/24x18/it.png" alt="IT" onclick="setLanguage('it')">
+                <img src="https://flagcdn.com/24x18/fr.png" alt="FR" onclick="setLanguage('fr')">
+                <img src="https://flagcdn.com/24x18/de.png" alt="DE" onclick="setLanguage('de')">
+                <img src="https://flagcdn.com/24x18/pt.png" alt="PT" onclick="setLanguage('pt')">
+                <img src="https://flagcdn.com/24x18/ru.png" alt="RU" onclick="setLanguage('ru')">
             </div>
-      <div class="go-home">
-      <a href="templates/index.html" data-i18n="go_home">🏠 Home</a>
+            <div class="go-home">
+                <a href="#" data-i18n="go_home">🏠 Home</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container" id="menuContainer">
+        <div class="logo">
+            <img src="https://via.placeholder.com/110x110/fff8e7/eed9be?text=Logo" alt="Logo La Casita" />
+        </div>
+        <div class="menu-title" id="menuTitle"></div>
+        <div class="menu-note" id="menuNote"></div>
+        <table id="menuTable"></table>
+        <div class="menu-nav">
+            <button class="arrow-btn" id="prevBtn" title="Menú anterior">&#8592;</button>
+            <span id="menuIndicator" style="font-weight:700;color:#3f5d77;"></span>
+            <button class="arrow-btn" id="nextBtn" title="Menú siguiente">&#8594;</button>
+        </div>
+        <div class="note">
+            Precios IVA incluido · Ambiente familiar y casero
+        </div>
     </div>
-</div>
-</header>
-<section id="menu-section">
-  <h1 class="menu-title">🍽️ Nuestros Menús</h1>
 
-  <div class="menu-grid">
-    <button class="menu-btn color1" onclick="openMenu('desayunos')">Desayunos</button>
-    <button class="menu-btn color2" onclick="openMenu('brunch')">Brunch</button>
-    <button class="menu-btn color3" onclick="openMenu('cafes')">Cafés</button>
-    <button class="menu-btn color4" onclick="openMenu('bebidas')">Bebidas</button>
-    <button class="menu-btn color5" onclick="openMenu('cockteles')">Cócteles</button>
-    <button class="menu-btn color6" onclick="openMenu('vinos')">Vinos</button>
-    <button class="menu-btn color7" onclick="openMenu('batidos')">Batidos</button>
-    <button class="menu-btn color8" onclick="openMenu('smoothies')">Smoothies</button>
-    <div class="menu-comida-wrapper">
-      <button class="menu-btn color9" onclick="toggleSubmenu()">Comida ▼</button>
-      <div id="submenu-comida" class="submenu hidden">
-        <button onclick="openMenu('entrantes')">Entrantes</button>
-        <button onclick="openMenu('ensaladas')">Ensaladas</button>
-        <button onclick="openMenu('carne')">Platos con carne</button>
-        <button onclick="openMenu('hamburguesas')">Hamburguesas</button>
-        <button onclick="openMenu('woks')">Woks</button>
-        <button onclick="openMenu('tostas')">Tostas</button>
-      </div>
-    </div>
-  </div>
+    <script>
+        const menus = [
+            {
+                title: "Menú de Bebidas",
+                bg: "#f4fbff",
+                accent: "#2b7da9",
+                note: "Refrescos, aguas y bebidas para todos los gustos.",
+                mode: "",
+                items: [
+                    { nombre: "Agua Pequeña", ingredientes: "", precio: "1,50 €" },
+                    { nombre: "Agua Grande", ingredientes: "", precio: "2,60 €" },
+                    { nombre: "Agua Pequeña con Gas", ingredientes: "", precio: "1,70 €" },
+                    { nombre: "Agua Grande con Gas", ingredientes: "", precio: "2,60 €" },
+                    { nombre: "Refrescos", ingredientes: "", precio: "2,60 €" },
+                    { nombre: "Appletiser", ingredientes: "", precio: "2,00 €" },
+                    { nombre: "Tónica", ingredientes: "", precio: "1,60 €" },
+                    { nombre: "Tónica de fresa", ingredientes: "", precio: "1,70 €" },
+                    { nombre: "Ginger ale - ginger beer", ingredientes: "", precio: "2,00 €" },
+                    { nombre: "Caña", ingredientes: "", precio: "1,80 €" },
+                    { nombre: "Jarra", ingredientes: "", precio: "2,50 €" },
+                    { nombre: "Dorada pilsen", ingredientes: "", precio: "2,50 €" },
+                    { nombre: "Dorada especial", ingredientes: "", precio: "2,80 €" },
+                    { nombre: "Dorada tostada", ingredientes: "", precio: "2,80 €" },
+                    { nombre: "Dorada sin con limon", ingredientes: "", precio: "2,70 €" },
+                    { nombre: "Dorada sin alcohol", ingredientes: "", precio: "2,50 €" },
+                    { nombre: "Corona", ingredientes: "", precio: "3,00 €" },
+                    { nombre: "Sidra Kopparberg", ingredientes: "", precio: "3,50 €" },
+                    { nombre: "Tinto de verano", ingredientes: "", precio: "3,50 €" },
+                    { nombre: "Blanco de verano", ingredientes: "", precio: "3,50 €" }
+                ]
+            },
+            {
+                title: "Menú de Cocktails",
+                bg: "#222428",
+                accent: "#fff",
+                note: "Nuestros cócteles clásicos y modernos, preparados con pasión.",
+                mode: "cocktail-mode",
+                items: [
+                    { nombre: "Combinado clásico", ingredientes: "Licores clásicos + soda", precio: "8,00 €" },
+                    { nombre: "Combinado Premium", ingredientes: "Licores Premium + soda", precio: "10,00 €" },
+                    { nombre: "Mojito", ingredientes: "Ron blanco, zumo limón exprimido, azúcar líquido, hierba buena, agua con gas", precio: "8,00 €" },
+                    { nombre: "Mojito sabores", ingredientes: "Ron blanco, zumo limón exprimido, azúcar líquido, hierba buena, agua con gas, sirope sabor", precio: "8,50 €" },
+                    { nombre: "Margarita", ingredientes: "Tequila, zumo limón exprimido, azúcar líquido", precio: "9,00 €" },
+                    { nombre: "Margarita sabores", ingredientes: "Tequila, zumo limón exprimido, azúcar líquido, sirope sabor", precio: "9,50 €" },
+                    { nombre: "Moscow Mule", ingredientes: "Vodka, zumo limón exprimido, ginger beer", precio: "7,00 €" },
+                    { nombre: "Daiquiri", ingredientes: "Ron blanco, zumo limón exprimido, azúcar líquido", precio: "8,00 €" },
+                    { nombre: "Daiquiri sabores", ingredientes: "Ron blanco, zumo limón exprimido, azúcar líquido, sirope sabor", precio: "8,50 €" },
+                    { nombre: "Caipirinha", ingredientes: "Cachaça, zumo de limón exprimido, azúcar líquido, agua con gas", precio: "7,00 €" },
+                    { nombre: "Tequila sunrise", ingredientes: "Tequila, zumo naranja, granadina", precio: "7,00 €" },
+                    { nombre: "Negroni", ingredientes: "Ginebra, vermut, Campari", precio: "9,00 €" },
+                    { nombre: "Aperol spritz", ingredientes: "Aperol, cava, agua con gas", precio: "8,50 €" },
+                    { nombre: "Piña colada", ingredientes: "Zumo piña, sirope coco, hielo pilé, ron blanco", precio: "8,00 €" },
+                    { nombre: "Copa", ingredientes: "De cualquier licor", precio: "5,00 €" },
+                    { nombre: "Chupito", ingredientes: "De cualquier licor", precio: "3,00 €" },
+                    { nombre: "Chupito la casita", ingredientes: "", precio: "4,00 €" },
+                    { nombre: "Copa de vino Blanco", ingredientes: "Seco - Verdejo; Afrutado", precio: "3,70 €" },
+                    { nombre: "Copa de vino tinto", ingredientes: "Rioja o tempranillo o ribera", precio: "3,70 €" }
+                ]
+            },
+            {
+                title: "Menú de Cafés",
+                bg: "#fff6e3",
+                accent: "#ba7b36",
+                note: "Cafés y especialidades calientes para cada momento del día.",
+                mode: "",
+                items: [
+                    { nombre: "Café Solo", ingredientes: "café", precio: "1,50 €" },
+                    { nombre: "Café Americano", ingredientes: "café + agua caliente", precio: "1,60 €" },
+                    { nombre: "Café cortado", ingredientes: "café + leche", precio: "1,60 €" },
+                    { nombre: "Café Cortado largo", ingredientes: "café + leche", precio: "1,80 €" },
+                    { nombre: "Café leche y leche", ingredientes: "café + leche + leche condensada", precio: "1,50 €" },
+                    { nombre: "Café bombon", ingredientes: "café + leche condensada", precio: "1,60 €" },
+                    { nombre: "Café con leche", ingredientes: "café + leche", precio: "1,90 €" },
+                    { nombre: "Café irlandés", ingredientes: "café + azúcar moreno + whiskey + nata", precio: "4,00 €" },
+                    { nombre: "Café affogato", ingredientes: "café + bolita de helado", precio: "3,20 €" },
+                    { nombre: "Barraquito", ingredientes: "café + leche + leche condensada", precio: "2,00 €" },
+                    { nombre: "Barraquito con licor", ingredientes: "café + leche + leche condensada + licor 43", precio: "2,20 €" },
+                    { nombre: "Cappuccino", ingredientes: "café + leche + cacao", precio: "2,50 €" },
+                    { nombre: "Cappuccino kinder", ingredientes: "café + leche + cacao + salsa chocolate", precio: "2,80 €" },
+                    { nombre: "Latte macchiato", ingredientes: "café + leche", precio: "2,30 €" },
+                    { nombre: "Caramel latte", ingredientes: "café + leche + sirope caramelo", precio: "2,80 €" },
+                    { nombre: "Chocolate a la taza", ingredientes: "chocolate + leche", precio: "3,50 €" },
+                    { nombre: "Leche con gofio", ingredientes: "leche + gofio en polvo", precio: "2,50 €" },
+                    { nombre: "Té orgánico", ingredientes: "verde con flores, verde con arándanos, verde con gengibre y limón, infusión del bosque, negro chai, negro con cacao y almendras, fresa y vainilla, darjeeling", precio: "2,50 €" },
+                    { nombre: "Té roibos", ingredientes: "roibos naranja, roibos dulce, manzanilla", precio: "2,80 €" }
+                ]
+            },
+            {
+                title: "Menú de Batidos",
+                bg: "#efe3ff",
+                accent: "#aa70d0",
+                note: "Batidos frescos, cremosos y llenos de sabor.",
+                mode: "",
+                items: [
+                    { nombre: "Oreo", ingredientes: "", precio: "4,50 €" },
+                    { nombre: "Chocolate", ingredientes: "", precio: "4,50 €" },
+                    { nombre: "Vainilla", ingredientes: "", precio: "4,50 €" },
+                    { nombre: "Fresa", ingredientes: "", precio: "4,50 €" },
+                    { nombre: "Mango", ingredientes: "", precio: "4,50 €" },
+                    { nombre: "Gofio", ingredientes: "", precio: "4,50 €" },
+                    { nombre: "Frapé de Café", ingredientes: "", precio: "4,00 €" },
+                    { nombre: "Frapé de Barraquito", ingredientes: "", precio: "4,50 €" },
+                    { nombre: "Frapé de Barraquito Especial", ingredientes: "", precio: "5,00 €" },
+                    { nombre: "Frapé de Bayleis", ingredientes: "", precio: "7,00 €" }
+                ]
+            },
+            {
+                title: "Menú de Smoothies",
+                bg: "#d3f8e2",
+                accent: "#33a475",
+                note: "Smoothies naturales con frutas y verduras frescas.",
+                mode: "",
+                items: [
+                    { nombre: "1. Berry Passion", ingredientes: "frambuesa, arándano, plátano", precio: "5,35 €" },
+                    { nombre: "2. Strawberry Split", ingredientes: "fresa, cereza, plátano, papaya", precio: "5,35 €" },
+                    { nombre: "3. Jump to the Beet", ingredientes: "mango, remolacha, zanahoria", precio: "5,35 €" },
+                    { nombre: "4. Caribbean Kiss", ingredientes: "melón, fresa, mango, limón", precio: "5,35 €" },
+                    { nombre: "5. Mango Paradise", ingredientes: "mango, piña, maracuyá, limón", precio: "5,35 €" },
+                    { nombre: "6. Kiwi Cooler", ingredientes: "melón, mango, piña, kiwi", precio: "5,35 €" },
+                    { nombre: "7. Papaya Sunrise", ingredientes: "papaya, mango, piña, limón", precio: "5,35 €" },
+                    { nombre: "8. Tropi Colada", ingredientes: "plátano, coco, piña", precio: "5,35 €" }
+                ]
+            },
+            {
+                title: "Menú de Zumos Naturales",
+                bg: "#f5ffe3",
+                accent: "#9ebe40",
+                note: "Zumos recién exprimidos, llenos de vitaminas.",
+                mode: "",
+                items: [
+                    { nombre: "Limonada casera", ingredientes: "", precio: "3,50 €" },
+                    { nombre: "Zumo de naranja", ingredientes: "", precio: "4,50 €" },
+                    { nombre: "Zumo de fresa", ingredientes: "", precio: "5,00 €" },
+                    { nombre: "Zumo de mango", ingredientes: "", precio: "5,00 €" },
+                    { nombre: "Zumo de 2 frutas", ingredientes: "", precio: "8,00 €" }
+                ]
+            },
+            {
+                title: "Menú de Entrantes",
+                bg: "#fffaf4",
+                accent: "#2b7da9",
+                note: "Pequeños placeres para empezar bien.",
+                mode: "",
+                items: [
+                    { nombre: "Saquitos", ingredientes: "Langostino, manzana dulce, salsa teriyaki", precio: "2,90 €" },
+                    { nombre: "Croqueta de pollo", ingredientes: "pollo y huancaina", precio: "1,90 €" },
+                    { nombre: "Croqueta de espinaca", ingredientes: "espinacas y almogrote", precio: "1,90 €" },
+                    { nombre: "Rollitos de pato", ingredientes: "pato confitado + salsa thai", precio: "11,90 €" },
+                    { nombre: "Rollitos de verdura", ingredientes: "pimiento + zanahoria + salsa thai", precio: "11,60 €" },
+                    { nombre: "Ensaladilla la casita", ingredientes: "batata, ventresca, cebolla, langostinos salteados en salsa teriyaki", precio: "9,10 € / 13,90 €" },
+                    { nombre: "Nachos la casita", ingredientes: "totopos, salsa cheddar, pico de gallo, judias, guacamole, jalapeños", precio: "8,70 € / 13,10 €" },
+                    { nombre: "Huevos rotos con Ibérico", ingredientes: "huevos + iberico + papas", precio: "14,30 €" },
+                    { nombre: "Ceviche de Langostinos", ingredientes: "langostinos + leche de tigre + mango + millo + cebolla roja", precio: "14,10 €" }
+                ]
+            },
+            {
+                title: "Menú de Tostas",
+                bg: "#f3f9f3",
+                accent: "#438c4a",
+                note: "Rebanadas creativas, sabrosas y ligeras.",
+                mode: "",
+                items: [
+                    { nombre: "Champiñones", ingredientes: "champiñones, calabacines, cebolla caramelizada, tomate cherry", precio: "11,40 €" },
+                    { nombre: "Mozzarella", ingredientes: "mozzarella, tomate seco, albahaca, aceite de oliva virgen extra", precio: "11,80 €" },
+                    { nombre: "Salmón", ingredientes: "salmón ahumado, salsa tártara, arucula", precio: "12,60 €" },
+                    { nombre: "Solomillo", ingredientes: "solomillo de ternera sobre una crema de pimientos dulces con cebolla caramelizada y escamas de queso", precio: "13,10 €" }
+                ]
+            },
+            {
+                title: "Menú de Ensaladas",
+                bg: "#e5f5f8",
+                accent: "#298da8",
+                note: "Frescas, saludables y llenas de color.",
+                mode: "",
+                items: [
+                    { nombre: "El chef", ingredientes: "ventresca, vinagreta de mango, mix de lechuga, cebolla roja, tomates cherry", precio: "12,10 €" },
+                    { nombre: "La Jefa", ingredientes: "rodajas de tomate con aceite de oliva virgen, mozzarella, sal, tomillo, pan tostado", precio: "12,10 €" },
+                    { nombre: "De pollo", ingredientes: "tiras de pollo crujiente, mix de lechuga, parmesano, picatostes, cebolla morada y tomates cherry, salsa cesar", precio: "13,70 €" },
+                    { nombre: "Ensalada Thai", ingredientes: "langostinos, mix de lechuga, tomates cherry, fideos de arroz, cacahuetes, cebolla morada, vinagreta agripicante", precio: "14,10 €" },
+                    { nombre: "Ensalada ahumados", ingredientes: "salmón, atun, pez mantequilla ahumados, mix de lechugas, tomate cherry, cebolla, vinagreta de limon y cilantros", precio: "14,80 €" }
+                ]
+            },
+            {
+                title: "Menú de Burgers",
+                bg: "#fdf2e9",
+                accent: "#b3541e",
+                note: "Jugosas y caseras, hechas con amor.",
+                mode: "",
+                items: [
+                    { nombre: "Calabacín", ingredientes: "calabacin empanado en frutos secos, rucula, tomates secos, mayonesa de wasabi, cebolla caramelizada, papas fritas", precio: "13,10 €" },
+                    { nombre: "Ternera", ingredientes: "ternera 170gr, pimiento piquillo, rucula, cebolla caramelizada, mayonesa de eneldo, papas fritas", precio: "14,10 €" },
+                    { nombre: "Tradicional", ingredientes: "ternera 170gr, cebolla morada, mix de lechuga, tomate natural, alioli casero, papas fritas", precio: "13,50 €" },
+                    { nombre: "de Pollo", ingredientes: "pollo de corral crujiente, cebolla morada, mix de lechuga, tomate natural, alioli casero, papas fritas", precio: "13,30 €" }
+                ]
+            },
+            {
+                title: "Menú de Wok",
+                bg: "#f9f6f1",
+                accent: "#8d4c96",
+                note: "Salteados al momento, fusión de sabores.",
+                mode: "",
+                items: [
+                    { nombre: "Verduras", ingredientes: "salteado de verduras, salsa teriyaki, noodles de arroz", precio: "13,80 €" },
+                    { nombre: "Pollo", ingredientes: "salteado de verduras, salsa teriyaki, noodles de arroz, pollo crujiente", precio: "14,20 €" },
+                    { nombre: "Langostinos", ingredientes: "salteado de verduras, salsa teriyaki, noodles de arroz, langostino salteado en salsa teriyaki", precio: "14,70 €" },
+                    { nombre: "Ternera", ingredientes: "salteado de verduras, salsa teriyaki, noodles de arroz, solomillo de ternera", precio: "15,10 €" }
+                ]
+            },
+            {
+                title: "Menú de Platos de carne",
+                bg: "#fae5e9",
+                accent: "#aa2d45",
+                note: "Sabores intensos y texturas únicas.",
+                mode: "",
+                items: [
+                    { nombre: "Huevos rotos con Ibérico", ingredientes: "huevos + iberico + papas", precio: "14,30 €" },
+                    { nombre: "Ternera Anticucho", ingredientes: "ternera salteada en salsa anticucho, papas negras, tomate cherry, manzana", precio: "15,90 €" },
+                    { nombre: "Arroz frito con ternera", ingredientes: "arroz frito, verduras salteadas, ternera, salsa de ostras, aceite de sésamo, huevo frito", precio: "14,60 €" },
+                    { nombre: "Poke bowl mexicano", ingredientes: "arroz basmati, pollo de corral marinado en chipotle, pico de gallo, guacamole, frijoles negros, cilantro, chips de plátano", precio: "13,70 €" },
+                    { nombre: "Opción infantil", ingredientes: "pollo crujiente, papas fritas", precio: "12,90 €" }
+                ]
+            },
+            {
+                title: "Menú de Tartas",
+                bg: "#b4a7d6",
+                accent: "#6a329f",
+                note: "Sabores dulces y texturas suaves.",
+                mode: "",
+                items: [
+                    { nombre: "Tarta Maria Victoria", ingredientes: "chocolate, harina, huevos, azúcar", precio: "4,50 €" },
+                    { nombre: "Tarta Guinness", ingredientes: "queso crema, galletas, mantequilla, azúcar", precio: "4,50 €" },
+                    { nombre: "Tarta Baileys", ingredientes: "frutas de temporada, crema pastelera, masa quebrada", precio: "4,50 €" },
+                    { nombre: "Tarta Choco Velvet", ingredientes: "chocolate, harina, huevos, azúcar", precio: "4,50 €" },
+                    { nombre: "Tarta Red Velvet", ingredientes: "chocolate, harina, huevos, azúcar", precio: "4,50 €" },
+                    { nombre: "Tarta Blue Velvet", ingredientes: "chocolate, harina, huevos, azúcar", precio: "4,50 €" },
+                    { nombre: "Tarta Ferrero", ingredientes: "chocolate, harina, huevos, azúcar", precio: "4,50 €" },
+                    { nombre: "Tarta Kinder", ingredientes: "chocolate, harina, huevos, azúcar", precio: "4,50 €" },
+                    { nombre: "Tarta Zanahoria y Especias", ingredientes: "zanahoria, nuez, canela, azúcar", precio: "4,50 €" },
+                    { nombre: "Tarta de Calabaza y Especias", ingredientes: "calabaza, nuez, canela, azúcar", precio: "4,50 €" },
+                    { nombre: "Tarta de Gofio y Naranja", ingredientes: "gofio, naranja, canela, azúcar", precio: "4,50 €" },
+                    { nombre: "Tarta de Manzana", ingredientes: "manzana, canela, azúcar", precio: "4,50 €" },
+                    { nombre: "Tarta de Maracuyá", ingredientes: "chocolate, harina, huevos, azúcar", precio: "4,50 €" },
+                    { nombre: "Tarta de Yuzu", ingredientes: "chocolate, harina, huevos, azúcar", precio: "4,50 €" },
+                    { nombre: "Tarta Colibrí", ingredientes: "chocolate, harina, huevos, azúcar", precio: "4,50 €" },
+                    { nombre: "Tarta de ChocoFrambuesa", ingredientes: "chocolate, harina, huevos, azúcar", precio: "4,50 €" },
+                    { nombre: "Tarta de Oreo", ingredientes: "chocolate, harina, huevos, azúcar", precio: "4,50 €" },
+                    { nombre: "Cheese Cake", ingredientes: "chocolate, harina, huevos, azúcar", precio: "4,50 €" },
+                    { nombre: "Pie de Calabaza", ingredientes: "chocolate, harina, huevos, azúcar", precio: "4,50 €" }
+                ]
+            }
+        ];
 
-  <div class="menu-overlay hidden" id="menuOverlay">
-    <div class="menu-detail-box" id="menuDetail">
-      <button class="close-btn" onclick="closeMenu()">✖</button>
-      <h2 id="menuDetailTitle"></h2>
-      <ul id="menuItemsList"></ul>
-    </div>
-  </div>
-  <script>
-    const menusData = {
-      desayunos: {
-        title: "Menú Desayunos",
-        items: ["Tostada con tomate", "Croissant", "Zumo natural", "Café con leche"]
-      },
-      brunch: {
-        title: "Menú Brunch",
-        items: ["Huevos benedictinos", "Bagel de salmón", "Smoothie de frutas"]
-      },
-      cafes: {
-        title: "Menú Cafés",
-        items: ["Café solo", "Café cortado", "Café bombón"]
-      },
-      bebidas: {
-        title: "Menú Bebidas",
-        items: ["Agua mineral", "Refrescos", "Tés variados"]
-      },
-      cockteles: {
-        title: "Menú Cócteles",
-        items: ["Mojito", "Caipirinha", "Piña colada"]
-      },
-      vinos: {
-        title: "Menú Vinos",
-        items: ["Tinto Rioja", "Blanco Verdejo", "Rosado"]
-      },
-      batidos: {
-        title: "Menú Batidos",
-        items: ["Chocolate", "Fresa", "Vainilla"]
-      },
-      smoothies: {
-        title: "Menú Smoothies",
-        items: ["Mango", "Frutas del bosque", "Plátano y espinaca"]
-      },
-      entrantes: {
-        title: "Entrantes",
-        items: ["Pan con alioli", "Queso frito", "Croquetas"]
-      },
-      ensaladas: {
-        title: "Ensaladas",
-        items: ["César", "Vegana", "Griega"]
-      },
-      carne: {
-        title: "Platos con carne",
-        items: ["Solomillo", "Pollo al curry", "Costillas BBQ"]
-      },
-      hamburguesas: {
-        title: "Hamburguesas",
-        items: ["Clásica", "Doble cheddar", "Vegana"]
-      },
-      woks: {
-        title: "Woks",
-        items: ["Wok de pollo", "Wok de gambas", "Wok vegetal"]
-      },
-      tostas: {
-        title: "Tostas",
-        items: ["Tosta de jamón", "Tosta caprese", "Tosta de aguacate"]
-      }
-    };
+        let currentMenu = 0;
+        const menuTitle = document.getElementById("menuTitle");
+        const menuTable = document.getElementById("menuTable");
+        const menuNote = document.getElementById("menuNote");
+        const menuIndicator = document.getElementById("menuIndicator");
+        const menuContainer = document.getElementById("menuContainer");
 
-    function toggleSubmenu() {
-      const submenu = document.getElementById("submenu-comida");
-      submenu.classList.toggle("hidden");
-    }
+        function renderMenu(idx) {
+            const m = menus[idx];
+            
+            // Cambia sfondo
+            document.body.style.background = m.bg;
+            
+            // Cambia classe per cocktail mode
+            menuContainer.classList.remove("cocktail-mode", "menu-mode");
+            menuContainer.classList.add(m.mode || "menu-mode");
+            
+            // Titolo + slide effetto
+            menuTitle.textContent = m.title;
+            menuTitle.style.color = m.accent;
+            menuTitle.classList.remove("slide-in");
+            void menuTitle.offsetWidth; // restart animation
+            menuTitle.classList.add("slide-in");
+            
+            // Nota
+            menuNote.textContent = m.note;
+            menuNote.style.color = m.mode ? "#fff" : "#548dd3";
+            
+            // Costruisci tabella
+            const categoryHeader = m.title || "Categoría";
+            let html = `
+                <thead>
+                    <tr>
+                        <th>${categoryHeader}</th>
+                        <th class="price">Precio</th>
+                    </tr>
+                </thead>
+                <tbody>
+            `;
+            
+            for (const row of m.items) {
+                html += `<tr>
+                    <td>${row.nombre}${row.ingredientes ? `<span class="ingredientes">${row.ingredientes}</span>` : ""}</td>
+                    <td class="price">${row.precio}</td>
+                </tr>`;
+            }
+            
+            html += "</tbody>";
+            menuTable.innerHTML = html;
+            
+            // Indicatore menu
+            menuIndicator.textContent = `${idx+1} / ${menus.length}`;
+        }
 
-    function openMenu(key) {
-      const menu = menusData[key];
-      if (!menu) return;
-      document.getElementById("menuOverlay").classList.remove("hidden");
-      document.getElementById("menuDetailTitle").textContent = menu.title;
-      const list = document.getElementById("menuItemsList");
-      list.innerHTML = "";
-      menu.items.forEach(item => {
-        const li = document.createElement("li");
-        li.textContent = item;
-        list.appendChild(li);
-      });
+        document.getElementById("prevBtn").onclick = function(){
+            currentMenu = (currentMenu - 1 + menus.length) % menus.length;
+            renderMenu(currentMenu);
+        };
+        
+        document.getElementById("nextBtn").onclick = function(){
+            currentMenu = (currentMenu + 1) % menus.length;
+            renderMenu(currentMenu);
+        };
 
-      // chiudi submenu se era aperto
-      document.getElementById("submenu-comida").classList.add("hidden");
-    }
+        // Swipe touch per mobile
+        let xStart = null;
+        menuTable.addEventListener('touchstart', function(e){
+            xStart = e.touches[0].clientX;
+        });
+        
+        menuTable.addEventListener('touchend', function(e){
+            if(xStart == null) return;
+            let xEnd = e.changedTouches[0].clientX;
+            if(xEnd - xStart > 40) document.getElementById("prevBtn").click();
+            if(xStart - xEnd > 40) document.getElementById("nextBtn").click();
+            xStart = null;
+        });
 
-    function closeMenu() {
-      document.getElementById("menuOverlay").classList.add("hidden");
-    }
-  </script>
-</section>
+        // Funzione placeholder per setLanguage
+        function setLanguage(lang) {
+            console.log('Language selected:', lang);
+            // Qui puoi implementare la logica per cambiare lingua
+        }
+
+        // Inizializzazione
+        window.onload = () => {
+            renderMenu(currentMenu);
+        };
+    </script>
+</body>
+</html>

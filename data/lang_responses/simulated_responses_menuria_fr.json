@@ -1,7 +1,7 @@
 {
   "orari": {
     "domanda": "Quels sont les horaires d'ouverture ?",
-    "risposta": "Nous sommes ouverts :\n- Du lundi au jeudi : 10h00 – 23h00\n- Vendredi et samedi : 10h00 – 00h00\n- Dimanche : 10h00 – 17h00"
+    "risposta": "Nous sommes ouverts :\n- Du lundi au jeudi : 10h00 – 23h00\n- Vendredi et samedi : 10h00 – 00h00\n- Dimanche : Fermé"
   },
   "prenotazione_telefono": {
     "domanda": "Comment puis-je réserver une table ?",

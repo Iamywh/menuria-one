@@ -1,7 +1,7 @@
 {
   "orari": {
     "domanda": "Wie sind die Öffnungszeiten?",
-    "risposta": "Wir haben geöffnet:\n- Montag bis Donnerstag: 10:00 – 23:00 Uhr\n- Freitag und Samstag: 10:00 – 00:00 Uhr\n- Sonntag: 10:00 – 17:00 Uhr"
+    "risposta": "Wir haben geöffnet:\n- Montag bis Donnerstag: 10:00 – 23:00 Uhr\n- Freitag und Samstag: 10:00 – 00:00 Uhr\n- Sonntag: Geschlossen"
   },
   "prenotazione_telefono": {
     "domanda": "Wie kann ich einen Tisch reservieren?",

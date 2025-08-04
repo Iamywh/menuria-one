@@ -1,7 +1,7 @@
 {
     "orari": {
         "domanda": "Quais são os horários de abertura?",
-        "risposta": "Estamos abertos:\n- De segunda a quinta: 10:00 – 23:00\n- Sexta e sábado: 10:00 – 00:00\n- Domingo: 10:00 – 17:00"
+        "risposta": "Estamos abertos:\n- De segunda a quinta: 10:00 – 23:00\n- Sexta e sábado: 10:00 – 00:00\n- Domingo: Fechado"
     },
     "prenotazione_telefono": {
         "domanda": "Como posso reservar uma mesa?",

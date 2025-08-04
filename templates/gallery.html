@@ -59,7 +59,7 @@
 
     .gallery-section {
       padding: 40px 20px;
-      max-width: 1200px;
+      max-width: fit-content;
       margin: 0 auto;
     }
 
@@ -107,13 +107,14 @@
 .gallery-row {
   display: flex;
   gap: 16px;
-  overflow: hidden;
   padding: 10px 0;
 }
 
 .gallery-row img {
   height: 220px;
   border-radius: 10px;
+  min-width: 250px;
+  flex-shrink: 0;
   cursor: pointer;
   transition: transform 0.3s ease;
 }
@@ -214,6 +215,16 @@
     <img src="static/img/galleries/platos/tostachampiñones.jpg" alt="piatto2">
     <img src="static/img/galleries/platos/tostamozzarella.jpg" alt="piatto3">
     <img src="static/img/galleries/platos/tostasolomillo.jpg" alt="piatto4">
+    <img src="static/img/galleries/platos/Wokternera.jpg" alt="piatto5">
+    <img src="static/img/galleries/platos/Wokpollo.jpg" alt="piatto6">
+    <img src="static/img/galleries/platos/Woklangostinos.jpg" alt="piatto7">
+    <img src="static/img/galleries/platos/saquitos.jpg" alt="piatto8">
+    <img src="static/img/galleries/platos/Hcalabacin.jpg" alt="piatto9">
+    <img src="static/img/galleries/platos/Hternera.jpg" alt="piatto10">
+    <img src="static/img/galleries/platos/Htradicional.jpg" alt="piatto11">
+    <img src="static/img/galleries/platos/huevosrotos.png" alt="piatto12">
+    <img src="static/img/galleries/platos/Nachos.jpg" alt="piatto13">
+    <img src="static/img/galleries/platos/rollitos-verdura.jpg" alt="piatto14">
   </div>
 </section>
 
@@ -230,10 +241,11 @@
 <section class="gallery-section" id="torte">
     <h2 data-i18n="gallery_torte">Nuestras tartas</h2>
     <div class="gallery-row scroll-right">
-      <img src="static\img\galleries\tartas\Tkinder.jpg" alt="torta1">
-      <img src="static\img\galleries\tartas\Tcolibri.jpg" alt="torta2">
-      <img src="static\img\galleries\tartas\Tchocoframbuesa.jpg" alt="torta3">
-      <img src="static\img\galleries\tartas\angelsfood.jpg" alt="torta4">
+      <img src="static/img/galleries/tartas/Tkinder.jpg" alt="torta1">
+      <img src="static/img/galleries/tartas/Tcolibri.jpg" alt="torta2">
+      <img src="static/img/galleries/tartas/Tchocoframbuesa.png" alt="torta3">
+      <img src="static/img/galleries/tartas/angelsfood.jpg" alt="torta4">
+      <img src="static/img/galleries/tartas/Tmanzana.png" alt="torta5">
     </div>
   </section>
 

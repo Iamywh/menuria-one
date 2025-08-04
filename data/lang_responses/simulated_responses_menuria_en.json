@@ -1,7 +1,7 @@
 {
   "orari": {
     "domanda": "What are the opening hours?",
-    "risposta": "We are open:\n- Monday to Thursday: 10:00 AM – 11:00 PM\n- Friday and Saturday: 10:00 AM – 12:00 AM\n- Sunday: 10:00 AM – 5:00 PM"
+    "risposta": "We are open:\n- Monday to Thursday: 10:00 AM – 11:00 PM\n- Friday and Saturday: 10:00 AM – 12:00 AM\n- Sunday: Closed"
   },
   "prenotazione_telefono": {
     "domanda": "How can I book a table?",

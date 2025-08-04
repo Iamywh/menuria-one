@@ -166,7 +166,53 @@
       text-align: center;
       font-size: 0.9rem;
     }
-  </style>
+
+    .promo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.promo-card {
+  background-color: #fff8ef;
+  border: 1px solid #e0d2c2;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+}
+
+.promo-card:hover {
+  transform: scale(1.02);
+}
+
+.promo-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.promo-content {
+  padding: 15px;
+}
+
+.promo-content h3 {
+  margin-top: 0;
+  font-size: 1.3rem;
+  color: #603913;
+}
+
+.promo-content p {
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+.promo-price {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #d35400;
+}
+</style>
   <head>
     <meta charset="UTF-8">
     <title id="pageTitle">Menuria One</title>
@@ -193,7 +239,7 @@
 <body>
    <!-- BANNER CON IMMAGINE DELLA TERRAZZA -->
   <section class="banner">
-    <img src="images/terrazza-casita.jpg" alt="La Casita - Terrazza" class="banner-img">
+    <img src="static/img/bannerlacasita.png" alt="La Casita - Terrazza" class="banner-img">
   </section>
 
   <!-- PARAGRAFO CENTRALE DESCRITTIVO -->
@@ -205,8 +251,6 @@
 Ofrecemos una cocina fusión auténtica, donde el respeto por el ingrediente se encuentra con la creatividad de un equipo joven y dinámico. Aquí no encontrarás platos transformados por la moda, sino reinterpretaciones sinceras que celebran la esencia de cada receta. Un ramen hecho con paciencia y caldo real, tapas inspiradas en las calles de Bangkok, baos que abrazan al jamón ibérico. Cada plato es un punto de encuentro entre mundos, unidos por la pasión y la intención.<br>
 
 Pero La Casita no es solo un restaurante. Es un hogar. Y como todo hogar de verdad, tiene un alma hecha de objetos, historias y memoria. Al pasear por su interior notarás que nada es casual. Las alacenas de madera maciza, las máquinas de coser Singer antiguas, las planchas de carbón, los cuadros vintage, el gramófono... cada pieza es original, elegida con cariño, y cuenta un tiempo donde el detalle valía más que la prisa. Es un homenaje a la lentitud, a la belleza vivida, a la nostalgia que acaricia sin doler.<br>
-
-Queríamos crear un espacio que no se sintiera como un restaurante, sino como la casa de la abuela, donde siempre te reciben con una manta cálida y algo cocinándose en la olla. Aquí, cada cliente no es un número, sino un invitado especial. Nuestro equipo joven y entusiasta cuida cada detalle: desde intolerancias alimentarias hasta preferencias musicales, desde la sonrisa inicial hasta ayudarte a encontrar la mesa perfecta. Porque para nosotros, la hospitalidad es empatía, no protocolo.<br>
 
 Y luego está la terraza. Aislada del ruido, escondida entre tejados, iluminada con luces cálidas y perfumada con hierbas aromáticas. Una burbuja de paz, donde el tiempo se dilata y el mundo exterior se apaga. Ya sea un almuerzo al sol o una cena al atardecer, la terraza de La Casita regala una atmósfera íntima y única, hecha de charlas sinceras, brindis espontáneos y silencios cómodos.<br>
 
@@ -243,16 +287,37 @@ Bienvenido a La Casita del Nazareno.
 
   </section>
 
-  <!-- PROMO GALLERY STILE MENU -->
   <section class="promo-gallery">
-    <h2 data-i18n="promo_titolo">Nuestras Promociones</h2>
-    <div class="promo-grid">
-      <button class="promo-btn color1" onclick="openPromo('cerveza')">Cubo de Cerveza</button>
-      <button class="promo-btn color2" onclick="openPromo('cocktail')">Cocktail Special</button>
-      <button class="promo-btn color3" onclick="openPromo('pack')">Cocktail Pack</button>
-      <button class="promo-btn color4" onclick="openPromo('voucher')">Voucher Regalo</button>
+  <h2 data-i18n="promo_titolo">Nuestras Promociones</h2>
+  <div class="promo-grid">
+
+    <!-- PROMO 1: CUBO DE CERVEZA -->
+    <div class="promo-card">
+      <img src="static/img/galleries/Promos/promocubo.png" alt="Cubo de Cerveza">
+      <div class="promo-content">
+        <h3 data-i18n="promo_cubo_titolo">Cubo de Cerveza</h3>
+        <p data-i18n="promo_cubo_desc">
+          5 cervezas frías en un cubo con hielo + 1/2 ración de nachos.<br> Ideal para compartir con amigos en la terraza. ¡Refrescante y a buen precio!
+        </p>
+        <span class="promo-price">20,00€</span>
+      </div>
     </div>
-  </section>
+
+    <!-- Altre promo simili: cocktail special, gift voucher... -->
+    <div class="promo-card">
+      <img src="static/img/galleries/Promos/promotardeo.png" alt="Promo Tardeo">
+      <div class="promo-content">
+        <h3 data-i18n="promo_tardeo_titolo">Promo Tardeo</h3>
+        <p data-i18n="promo_tardeo_desc">
+          2 cócteles + 1/2 ración de nachos.<br> Perfecto para disfrutar de una tarde con amigos.
+        </p>
+        <span class="promo-price">18,00€</span>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
 
   <!-- PULSANTE GO HOME E FOOTER -->
   <div class="go-home">

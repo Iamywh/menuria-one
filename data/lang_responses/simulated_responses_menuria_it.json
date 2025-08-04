@@ -1,7 +1,7 @@
 {
   "orari": {
     "domanda": "Quali sono gli orari di apertura?",
-    "risposta": "Siamo aperti:\n- Da lunedì a giovedì: 10:00 – 23:00\n- Venerdì e sabato: 10:00 – 00:00\n- Domenica: 10:00 – 17:00"
+    "risposta": "Siamo aperti:\n- Da lunedì a giovedì: 10:00 – 23:00\n- Venerdì e sabato: 10:00 – 00:00\n- Domenica: Chiuso"
   },
   "prenotazione_telefono": {
     "domanda": "Come posso prenotare un tavolo?",
