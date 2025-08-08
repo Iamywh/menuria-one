@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galería | Menuria</title>
+  <link rel="stylesheet" href="/gallery/gallery.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css" />
+  
+</head>
+<body>
+  <header class="top-header">
+  <div class="top-row">
+    <div class="left-section language-flags">
+      <img src="/static/img/flags/Spain-flag.png" alt="ES" onclick="setLanguage('es')" class="active">
+      <img src="/static/img/flags/UK-flag.png" alt="EN" onclick="setLanguage('en')">
+      <img src="/static/img/flags/Italy-flag.png" alt="IT" onclick="setLanguage('it')">
+      <img src="/static/img/flags/France-flag.png" alt="FR" onclick="setLanguage('fr')">
+      <img src="/static/img/flags/Germany-flag.png" alt="DE" onclick="setLanguage('de')">
+      <img src="/static/img/flags/Portugal-flag.png" alt="PT" onclick="setLanguage('pt')">
+      <img src="/static/img/flags/Russia-flag.png" alt="RU" onclick="setLanguage('ru')">
+    </div>
+    <div class="center-section">
+      <h1 class="main-title">Restaurante La Casita del Nazareno</h1>
+    </div>
+    <div class="right-section">
+  <a href="/home/index.html" class="home-button">🏠 Home</a>
+</div>
+  </div>
+</header>
+
+<section class="gallery-header">
+  <h2>Nuestra Galería</h2>
+  <p>Descubre nuestros platos, cócteles, tartas y cafés en una experiencia visual única.</p>
+  <div class="filter-buttons">
+    <button data-filter="all" class="active">Todos</button>
+    <button data-filter="platos">Platos</button>
+    <button data-filter="cocktail">Cocktails</button>
+    <button data-filter="tartas">Tartas</button>
+    <button data-filter="cafe">Cafés</button>
+  </div>
+</section>
+
+  <main id="lightgallery" class="gallery-grid">
+    <!-- Piatti -->
+    <a href="static/img/galleries/platos/croquetas.jpg" class="gallery-item platos" data-sub-html="Croquetas"><img src="static/img/galleries/platos/croquetas.jpg" alt="Croquetas"></a>
+    <a href="static/img/galleries/platos/tostachampiñones.jpg" class="gallery-item platos" data-sub-html="Tosta Champiñones"><img src="static/img/galleries/platos/tostachampiñones.jpg" alt="Tosta Champiñones"></a>
+    <a href="static/img/galleries/platos/tostamozzarella.jpg" class="gallery-item platos" data-sub-html="Tosta Mozzarella"><img src="static/img/galleries/platos/tostamozzarella.jpg" alt="Tosta Mozzarella"></a>
+    <a href="static/img/galleries/platos/tostasolomillo.jpg" class="gallery-item platos" data-sub-html="Tosta Solomillo"><img src="static/img/galleries/platos/tostasolomillo.jpg" alt="Tosta Solomillo"></a>
+    <a href="static/img/galleries/platos/Wokternera.jpg" class="gallery-item platos" data-sub-html="Wok Ternera"><img src="static/img/galleries/platos/Wokternera.jpg" alt="Wok Ternera"></a>
+    <a href="static/img/galleries/platos/Wokpollo.jpg" class="gallery-item platos" data-sub-html="Wok Pollo"><img src="static/img/galleries/platos/Wokpollo.jpg" alt="Wok Pollo"></a>
+    <a href="static/img/galleries/platos/Woklangostinos.jpg" class="gallery-item platos" data-sub-html="Wok Langostinos"><img src="static/img/galleries/platos/Woklangostinos.jpg" alt="Wok Langostinos"></a>
+    <a href="static/img/galleries/platos/saquitos.jpg" class="gallery-item platos" data-sub-html="Saquitos"><img src="static/img/galleries/platos/saquitos.jpg" alt="Saquitos"></a>
+    <a href="static/img/galleries/platos/Hcalabacin.jpg" class="gallery-item platos" data-sub-html="Hamburguesa Calabacín"><img src="static/img/galleries/platos/Hcalabacin.jpg" alt="H Calabacin"></a>
+    <a href="static/img/galleries/platos/Hternera.jpg" class="gallery-item platos" data-sub-html="Hamburguesa Ternera"><img src="static/img/galleries/platos/Hternera.jpg" alt="H Ternera"></a>
+    <a href="static/img/galleries/platos/Htradicional.jpg" class="gallery-item platos" data-sub-html="Hamburguesa Tradicional"><img src="static/img/galleries/platos/Htradicional.jpg" alt="H Tradicional"></a>
+    <a href="static/img/galleries/platos/Hpollo.jpg" class="gallery-item platos" data-sub-html="Hamburguesa Pollo"><img src="static/img/galleries/platos/Hpollo.jpg" alt="H Pollo"></a>
+    <a href="static/img/galleries/platos/Nachos.jpg" class="gallery-item platos" data-sub-html="Nachos"><img src="static/img/galleries/platos/Nachos.jpg" alt="Nachos"></a>
+    <a href="static/img/galleries/platos/rollitos-verdura.jpg" class="gallery-item platos" data-sub-html="Rollitos de Verdura"><img src="static/img/galleries/platos/rollitos-verdura.jpg" alt="Rollitos Verdura"></a>
+    <a href="static/img/galleries/platos/huevosrotos.png" class="gallery-item platos" data-sub-html="Huevos Rotos"><img src="static/img/galleries/platos/huevosrotos.png" alt="Huevos Rotos"></a>
+    <a href="static/img/galleries/platos/PokeMexicano.jpg" class="gallery-item platos" data-sub-html="Poke Mexicano"><img src="static/img/galleries/platos/PokeMexicano.jpg" alt="Poke Mexicano"></a>
+    <a href="static/img/galleries/platos/Thai.jpg" class="gallery-item platos" data-sub-html="Thai"><img src="static/img/galleries/platos/Thai.jpg" alt="Thai"></a>
+
+    <!-- Cocktail -->
+    <a href="static/img/galleries/cocktail/Bluelemondrop.jpg" class="gallery-item cocktail" data-sub-html="Blue Lemon Drop"><img src="static/img/galleries/cocktail/Bluelemondrop.jpg" alt="Blue Lemon Drop"></a>
+    <a href="static/img/galleries/cocktail/Mojito-classic.jpg" class="gallery-item cocktail" data-sub-html="Mojito Clásico"><img src="static/img/galleries/cocktail/Mojito-classic.jpg" alt="Mojito Classic"></a>
+    <a href="static/img/galleries/cocktail/Mojito-classic+strawberry.jpg" class="gallery-item cocktail" data-sub-html="Mojito Fresa"><img src="static/img/galleries/cocktail/Mojito-classic+strawberry.jpg" alt="Mojito Fresa"></a>
+    <a href="static/img/galleries/cocktail/Mojito-strawberry.jpg" class="gallery-item cocktail" data-sub-html="Mojito Strawberry"><img src="static/img/galleries/cocktail/Mojito-strawberry.jpg" alt="Mojito Strawberry"></a>
+    <a href="static/img/galleries/cocktail/BatidoOreo.jpg" class="gallery-item cocktail" data-sub-html="Batido Oreo"><img src="static/img/galleries/cocktail/BatidoOreo.jpg" alt="Batido Oreo"></a>
+
+    <!-- Torte -->
+    <a href="static/img/galleries/tartas/Tkinder.jpg" class="gallery-item tartas" data-sub-html="Tarta Kinder"><img src="static/img/galleries/tartas/Tkinder.jpg" alt="Tarta Kinder"></a>
+    <a href="static/img/galleries/tartas/Tcolibri.jpg" class="gallery-item tartas" data-sub-html="Tarta Colibrí"><img src="static/img/galleries/tartas/Tcolibri.jpg" alt="Tarta Colibri"></a>
+    <a href="static/img/galleries/tartas/Tchocoframbuesa.png" class="gallery-item tartas" data-sub-html="Tarta Chocoframbuesa"><img src="static/img/galleries/tartas/Tchocoframbuesa.png" alt="Tarta Chocoframbuesa"></a>
+    <a href="static/img/galleries/tartas/angelsfood.jpg" class="gallery-item tartas" data-sub-html="Tarta Angels Food"><img src="static/img/galleries/tartas/angelsfood.jpg" alt="Angels Food"></a>
+    <a href="static/img/galleries/tartas/Tmanzana.png" class="gallery-item tartas" data-sub-html="Tarta Manzana"><img src="static/img/galleries/tartas/Tmanzana.png" alt="Tarta Manzana"></a>
+    <a href="static/img/galleries/tartas/Tpolvito.jpg" class="gallery-item tartas" data-sub-html="Tarta Polvito"><img src="static/img/galleries/tartas/Tpolvito.jpg" alt="Tarta Polvito"></a>
+
+    <!-- Caffè -->
+    <a href="gallery/caffe1.jpg" class="gallery-item cafe" data-sub-html="Café 1"><img src="gallery/caffe1.jpg" alt="Caffè 1"></a>
+    <a href="gallery/caffe2.jpg" class="gallery-item cafe" data-sub-html="Café 2"><img src="gallery/caffe2.jpg" alt="Caffè 2"></a>
+    <a href="gallery/caffe3.jpg" class="gallery-item cafe" data-sub-html="Café 3"><img src="gallery/caffe3.jpg" alt="Caffè 3"></a>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script>
+  <script src="/gallery/gallery.js"></script>
+</body>
+ <!-- Footer Ristorante -->
+    <footer class="restaurant-footer">
+        <h3 id="rFoot1">Contactanos - Restaurante La Casita del Nazareno</h3>
+        <div class="social-links">
+            <a href="https://facebook.com">👍</a>
+            <a href="https://instagram.com">📸</a>
+            <a href="https://twitter.com">🐦</a>
+        </div>
+    </footer>
+
+    <!-- Footer Menuria -->
+    <footer class="menuria-footer">
+        <h3 id="rFoot2">Contactanos - Menuria</h3>
+        <div class="social-links">
+            <a href="https://facebook.com">👍</a>
+            <a href="https://instagram.com">📸</a>
+            <a href="https://twitter.com">🐦</a>
+        </div>
+    </footer>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Casita</title>
+  <link rel="stylesheet" href="/restaurant/restaurant.css">
+  <script defer src="/restaurant/restaurant.js"></script>
+ <header class="top-header">
+  <div class="top-row">
+    <div class="left-section language-flags">
+      <img src="/static/img/flags/Spain-flag.png" alt="ES" onclick="setLanguage('es')" class="active">
+      <img src="/static/img/flags/UK-flag.png" alt="EN" onclick="setLanguage('en')">
+      <img src="/static/img/flags/Italy-flag.png" alt="IT" onclick="setLanguage('it')">
+      <img src="/static/img/flags/France-flag.png" alt="FR" onclick="setLanguage('fr')">
+      <img src="/static/img/flags/Germany-flag.png" alt="DE" onclick="setLanguage('de')">
+      <img src="/static/img/flags/Portugal-flag.png" alt="PT" onclick="setLanguage('pt')">
+      <img src="/static/img/flags/Russia-flag.png" alt="RU" onclick="setLanguage('ru')">
+    </div>
+    <div class="center-section">
+      <h1 class="main-title">Restaurante La Casita del Nazareno</h1>
+    </div>
+    <div class="right-section">
+  <a href="/home/index.html" class="home-button">🏠 Home</a>
+</div>
+  </div>
+</header>
+<body>
+   <!-- BANNER CON IMMAGINE DELLA TERRAZZA -->
+  <section class="banner">
+    <img src="static/img/bannerlacasita.jpg" alt="La Casita - Terrazza" class="banner-img">
+  </section>
+
+  <!-- PARAGRAFO CENTRALE DESCRITTIVO -->
+  <section class="intro-section">
+    <h1 data-i18n="ristorante_titolo">Nuestro Restaurante</h1>
+    <p data-i18n="ristorante_descrizione">
+      Bienvenidos a La Casita del Nazareno, un lugar donde cada detalle te invita a frenar, saborear y sentirte en casa. Nuestro restaurante nace de una idea sencilla pero profunda: unir la riqueza de la cocina española con la delicadeza y profundidad de la tradición asiática, creando un abrazo culinario que cuenta historias de sabores, culturas y personas.<br>
+
+Ofrecemos una cocina fusión auténtica, donde el respeto por el ingrediente se encuentra con la creatividad de un equipo joven y dinámico. Aquí no encontrarás platos transformados por la moda, sino reinterpretaciones sinceras que celebran la esencia de cada receta. Un ramen hecho con paciencia y caldo real, tapas inspiradas en las calles de Bangkok, baos que abrazan al jamón ibérico. Cada plato es un punto de encuentro entre mundos, unidos por la pasión y la intención.<br>
+
+Pero La Casita no es solo un restaurante. Es un hogar. Y como todo hogar de verdad, tiene un alma hecha de objetos, historias y memoria. Al pasear por su interior notarás que nada es casual. Las alacenas de madera maciza, las máquinas de coser Singer antiguas, las planchas de carbón, los cuadros vintage, el gramófono... cada pieza es original, elegida con cariño, y cuenta un tiempo donde el detalle valía más que la prisa. Es un homenaje a la lentitud, a la belleza vivida, a la nostalgia que acaricia sin doler.<br>
+
+Y luego está la terraza. Aislada del ruido, escondida entre tejados, iluminada con luces cálidas y perfumada con hierbas aromáticas. Una burbuja de paz, donde el tiempo se dilata y el mundo exterior se apaga. Ya sea un almuerzo al sol o una cena al atardecer, la terraza de La Casita regala una atmósfera íntima y única, hecha de charlas sinceras, brindis espontáneos y silencios cómodos.<br>
+
+Nuestra ubicación es otro pequeño secreto. A unos pasos de todo, pero protegida del caos urbano, como si la ciudad nos hubiera olvidado a propósito para dejarnos respirar. Aquí se viene a desconectar, pero también a reconectar. Ya sea una pausa rápida o una noche para recordar, La Casita te recibe sin preguntar, y te despide con gratitud.<br>
+
+Somos jóvenes, sí. Pero creemos en la vieja idea de hospitalidad, esa que se mide con la mirada, con la atención y con el aroma de un plato que sabe a casa. En un mundo cada vez más artificial, elegimos la sinceridad. Y si después de visitarnos te sientes un poco menos solo, un poco más lleno y un poco más feliz, entonces habremos hecho bien nuestro trabajo.<br>
+
+Bienvenido a casa.<br>
+Bienvenido a La Casita del Nazareno.
+    </p>
+  </section>
+
+  <!-- MAPPA E RECENSIONI -->
+  <section class="info-section">
+    <div class="map-box">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.962845002315!2d-16.2540635!3d28.4681558!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xc41cc8226cf2427%3A0xcaabe0c991a864b7!2sLa%20Casita!5e0!3m2!1sit!2ses!4v1692568987654!5m2!1sit!2ses" 
+        width="100%" 
+        height="300" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+    <div class="review-btn-container">
+  <a href="https://search.google.com/local/writereview?placeid=ChIJJyTPJoLMQQwRt2Sokcngq8o" 
+     target="_blank" 
+     rel="noopener noreferrer" 
+     class="review-button">
+    📝 Dejanos una reseña Google
+  </a>
+</div>
+
+  </section>
+
+  <section class="promo-gallery">
+  <h2 data-i18n="promo_titolo">Nuestras Promociones</h2>
+  <div class="promo-grid">
+
+    <!-- PROMO 1: CUBO DE CERVEZA -->
+    <div class="promo-card">
+      <img src="static/img/galleries/Promos/promocubo.png" alt="Cubo de Cerveza">
+      <div class="promo-content">
+        <h3 data-i18n="promo_cubo_titolo">Cubo de Cerveza</h3>
+        <p data-i18n="promo_cubo_desc">
+          5 cervezas frías en un cubo con hielo + 1/2 ración de nachos.<br> Ideal para compartir con amigos en la terraza. ¡Refrescante y a buen precio!
+        </p>
+        <span class="promo-price">20,00€</span>
+      </div>
+    </div>
+
+    <!-- Altre promo simili: cocktail special, gift voucher... -->
+    <div class="promo-card">
+      <img src="static/img/galleries/Promos/promotardeo.png" alt="Promo Tardeo">
+      <div class="promo-content">
+        <h3 data-i18n="promo_tardeo_titolo">Promo Tardeo</h3>
+        <p data-i18n="promo_tardeo_desc">
+          2 cócteles + 1/2 ración de nachos.<br> Perfecto para disfrutar de una tarde con amigos.
+        </p>
+        <span class="promo-price">18,00€</span>
+      </div>
+    </div>
+    
+</section>
+</body>
+
+   <!-- Footer Ristorante -->
+    <footer class="restaurant-footer">
+        <h3 id="rFoot1">Contactanos - Restaurante La Casita del Nazareno</h3>
+        <div class="social-links">
+            <a href="https://facebook.com">👍</a>
+            <a href="https://instagram.com">📸</a>
+            <a href="https://twitter.com">🐦</a>
+        </div>
+    </footer>
+
+    <!-- Footer Menuria -->
+    <footer class="menuria-footer">
+        <h3 id="rFoot2">Contactanos - Menuria</h3>
+        <div class="social-links">
+            <a href="https://facebook.com">👍</a>
+            <a href="https://instagram.com">📸</a>
+            <a href="https://twitter.com">🐦</a>
+        </div>
+    </footer>
+</html>

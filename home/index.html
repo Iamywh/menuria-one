@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title id="pageTitle">Menuria One</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/Menuria One Logo.jpg') }}">
+    <link rel="stylesheet" href="home.css">
+    <link rel="icon" type="image/png" href="static/img/Menuria One Logo.jpg">
 </head>
 <body>
     <!-- 🌐 Popup di selezione lingua iniziale -->
@@ -26,13 +26,13 @@
         <div class="top-row">
             <!-- Bandiere -->
             <div class="left-section language-flags">
-                <img src="{{ url_for('static', filename='img/flags/Spain-flag.png') }}" alt="ES" onclick="setLanguage('es')" class="active">
-                <img src="{{ url_for('static', filename='img/flags/UK-flag.png') }}" alt="EN" onclick="setLanguage('en')">
-                <img src="{{ url_for('static', filename='img/flags/Italy-flag.png') }}" alt="IT" onclick="setLanguage('it')">
-                <img src="{{ url_for('static', filename='img/flags/France-flag.png') }}" alt="FR" onclick="setLanguage('fr')">
-                <img src="{{ url_for('static', filename='img/flags/Germany-flag.png') }}" alt="DE" onclick="setLanguage('de')">
-                <img src="{{ url_for('static', filename='img/flags/Portugal-flag.png') }}" alt="PT" onclick="setLanguage('pt')">
-                <img src="{{ url_for('static', filename='img/flags/Russia-flag.png') }}" alt="RU" onclick="setLanguage('ru')">
+                <img src="/static/img/flags/Spain-flag.png" alt="ES" onclick="setLanguage('es')" class="active">
+                <img src="/static/img/flags/UK-flag.png" alt="EN" onclick="setLanguage('en')">
+                <img src="/static/img/flags/Italy-flag.png" alt="IT" onclick="setLanguage('it')">
+                <img src="/static/img/flags/France-flag.png" alt="FR" onclick="setLanguage('fr')">
+                <img src="/static/img/flags/Germany-flag.png" alt="DE" onclick="setLanguage('de')">
+                <img src="/static/img/flags/Portugal-flag.png" alt="PT" onclick="setLanguage('pt')">
+                <img src="/static/img/flags/Russia-flag.png" alt="RU" onclick="setLanguage('ru')">
             </div>
 
             <!-- Titolo -->
@@ -43,7 +43,7 @@
             <!-- Visitors + Analytics -->
             <div class="header-right">
                 <div id="visitorLabel" class="visitor-count">👥 Visitors: <span id="visitorCounter">0</span></div>
-                <div class="analytics-link"><a href="/analytics" id="analyticsLink" target="_blank">📊 Analytics</a></div>
+                <div class="analytics-link"><a href="/analytics.html" id="analyticsLink" target="_blank">📊 Analytics</a></div>
             </div>
         </div>
     </header>
@@ -188,6 +188,6 @@
         </div>
     </footer>
 
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="home.js"></script>
 </body>
 </html>

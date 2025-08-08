@@ -1,24 +1,19 @@
-from flask import Flask, request, jsonify, render_template, send_from_directory
+from flask import Flask, request, jsonify, send_from_directory, redirect, render_template
 from flask_cors import CORS
-from livereload import Server
-import json
 import os
+import json
 import datetime
 
-app = Flask(__name__, template_folder="templates", static_folder="static")
+app = Flask(__name__, static_folder="static")
 CORS(app)
 
-# === Percorsi
+# === Percorsi dati
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 DATA_DIR = os.path.join(BASE_DIR, 'data')
 LANG_RESPONSES_DIR = os.path.join(DATA_DIR, 'lang_responses')
 COUNT_FILE = os.path.join(DATA_DIR, 'visitor_count.txt')
 RATING_FILE = os.path.join(DATA_DIR, 'rating_counts.json')
 FEEDBACK_LOG = os.path.join(DATA_DIR, 'feedback.json')
-MENUS_HTML = os.path.join(BASE_DIR, 'templates', 'menus.html')
-RESTAURANT_HTML = os.path.join(BASE_DIR, 'templates', 'restaurant.html')
-GALLERY_HTML = os.path.join(BASE_DIR, 'templates', 'gallery.html')
-
 
 # === Crea cartelle se mancano
 os.makedirs(DATA_DIR, exist_ok=True)
@@ -63,34 +58,37 @@ if not os.path.exists(FEEDBACK_LOG):
     with open(FEEDBACK_LOG, 'w') as f:
         f.write('[]')
 
-# === Rotte
+# === Rotte principali statiche
 @app.route('/')
-def home():
-    return render_template('index.html')
+def root():
+    return redirect('home/index.html')
 
-@app.route('/chat', methods=['POST'])
-def chat():
-    data = request.get_json()
-    user_message = data.get('message', '').strip().lower()
-    lang = data.get('lang', 'es').lower()
+@app.route('/gallery')
+def gallery():
+    return send_from_directory('gallery', 'index.html')
 
-    if not user_message:
-        return jsonify({'response': get_fallback(lang)})
+@app.route('/menus')
+def menus():
+    return send_from_directory('menus', 'index.html')
 
-    knowledge = KNOWLEDGE_BASES.get(lang)
-    if not knowledge:
-        return jsonify({'response': "Idioma no soportado / Language not supported"}), 400
+@app.route('/restaurant')
+def restaurant():
+    return send_from_directory('restaurant', 'index.html')
 
-    for entry in knowledge.values():
-        if entry['domanda'].lower() in user_message or user_message in entry['domanda'].lower():
-            return jsonify({'response': entry['risposta']})
+# === Rotte per servire CSS, JS, IMG da cartelle proprie
+@app.route('/<folder>/<path:filename>')
+def serve_static_folder_file(folder, filename):
+    allowed = ['home', 'gallery', 'menus', 'restaurant']
+    if folder in allowed:
+        return send_from_directory(folder, filename)
+    return "Accesso negato", 403
 
-    return jsonify({'response': get_fallback(lang)})
-
+# === JSON lingua
 @app.route('/data/lang.json')
 def serve_lang_json():
     return send_from_directory(DATA_DIR, 'lang.json')
 
+# === Contatore visitatori
 @app.route('/data/visitor-count', methods=['GET'])
 def serve_visitor_count():
     with open(COUNT_FILE, 'r+') as f:
@@ -104,6 +102,7 @@ def serve_visitor_count():
         f.truncate()
     return jsonify({'count': count})
 
+# === Feedback emoji
 @app.route('/rate', methods=['POST'])
 def rate():
     data = request.get_json()
@@ -143,6 +142,27 @@ def rate():
 
     return jsonify({'success': True})
 
+# === Chat
+@app.route('/chat', methods=['POST'])
+def chat():
+    data = request.get_json()
+    user_message = data.get('message', '').strip().lower()
+    lang = data.get('lang', 'es').lower()
+
+    if not user_message:
+        return jsonify({'response': get_fallback(lang)})
+
+    knowledge = KNOWLEDGE_BASES.get(lang)
+    if not knowledge:
+        return jsonify({'response': "Idioma no soportado / Language not supported"}), 400
+
+    for entry in knowledge.values():
+        if entry['domanda'].lower() in user_message or user_message in entry['domanda'].lower():
+            return jsonify({'response': entry['risposta']})
+
+    return jsonify({'response': get_fallback(lang)})
+
+
 @app.route('/analytics')
 def analytics():
     token = request.args.get('token')
@@ -159,20 +179,6 @@ def analytics():
         feedback_list = json.load(f)
 
     return render_template('analytics.html', visitors=visitor_count, ratings=ratings, feedback=feedback_list)
-
-@app.route('/menus')
-def menus():
-    return render_template('menus.html')  # creeremo menus.html
-    
-
-@app.route('/restaurant')
-def restaurant():
-    return render_template('restaurant.html')  # creeremo restaurant.html
-
-@app.route('/gallery')
-def gallery():
-    return render_template('gallery.html')  # creeremo gallery.html
-
 
 # === Avvio
 if __name__ == '__main__':

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menuria One</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/menus/menus.css">
+    <script src="/menus/menus.js" defer></script>
+    <body>
+    <header class="top-header">
+  <div class="top-row">
+    <div class="left-section language-flags">
+      <img src="/static/img/flags/Spain-flag.png" alt="ES" onclick="setLanguage('es')" class="active">
+      <img src="/static/img/flags/UK-flag.png" alt="EN" onclick="setLanguage('en')">
+      <img src="/static/img/flags/Italy-flag.png" alt="IT" onclick="setLanguage('it')">
+      <img src="/static/img/flags/France-flag.png" alt="FR" onclick="setLanguage('fr')">
+      <img src="/static/img/flags/Germany-flag.png" alt="DE" onclick="setLanguage('de')">
+      <img src="/static/img/flags/Portugal-flag.png" alt="PT" onclick="setLanguage('pt')">
+      <img src="/static/img/flags/Russia-flag.png" alt="RU" onclick="setLanguage('ru')">
+    </div>
+    <div class="center-section">
+      <h1 class="main-title">Restaurante La Casita del Nazareno</h1>
+    </div>
+    <div class="right-section">
+  <a href="/home/index.html" class="home-button">🏠 Home</a>
+</div>
+</div>
+</header>
+<div class="header-spacer"></div>
+<section>
+    <div class="container" id="menuContainer">
+        <div class="logo">
+            <img src="static/img/lacasitabackgrnd.png" alt="Logo La Casita" />
+        </div>
+        <div class="menu-title" id="menuTitle"></div>
+        <div class="menu-note" id="menuNote"></div>
+        <table id="menuTable"></table>
+        <div class="menu-nav">
+            <button class="arrow-btn" id="prevBtn" title="Menú anterior">&#8592;</button>
+            <span id="menuIndicator" style="font-weight:700;color:#3f5d77;"></span>
+            <button class="arrow-btn" id="nextBtn" title="Menú siguiente">&#8594;</button>
+        </div>
+        <div class="note">
+            Precios IVA incluido · Ambiente familiar y casero
+        </div>
+    </div>
+</section>
+    </body>
+     <!-- Footer Ristorante -->
+    <footer class="restaurant-footer">
+        <h3 id="rFoot1">Contactanos - Restaurante La Casita del Nazareno</h3>
+        <div class="social-links">
+            <a href="https://facebook.com">👍</a>
+            <a href="https://instagram.com">📸</a>
+            <a href="https://twitter.com">🐦</a>
+        </div>
+    </footer>
+
+    <!-- Footer Menuria -->
+    <footer class="menuria-footer">
+        <h3 id="rFoot2">Contactanos - Menuria</h3>
+        <div class="social-links">
+            <a href="https://facebook.com">👍</a>
+            <a href="https://instagram.com">📸</a>
+            <a href="https://twitter.com">🐦</a>
+        </div>
+    </footer>
+    
+</html>
