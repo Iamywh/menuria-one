@@ -37,37 +37,37 @@
 
             <!-- Titolo -->
             <div class="center-section">
-                <h1 id="titolo">Restaurante La Casita del Nazareno</h1>
+                <h1 id="titolo" data-i18n="home_title">Restaurante La Casita del Nazareno</h1>
             </div>
 
             <!-- Visitors + Analytics -->
             <div class="header-right">
-                <div id="visitorLabel" class="visitor-count">👥 Visitors: <span id="visitorCounter">0</span></div>
-                <div class="analytics-link"><a href="/analytics.html" id="analyticsLink" target="_blank">📊 Analytics</a></div>
+                <div id="visitorLabel" class="visitor-count" data-i18n="visitors">👥 Visitantes: <span id="visitorCounter">0</span></div>
+                <div class="analytics-link"><a href="/analytics.html" id="analyticsLink" target="_blank" data-i18n="analytics">📊 Analíticas</a></div>
             </div>
         </div>
     </header>
     <!-- Sezione Bottoni Principali -->
     <div class="menu-gallery">
         <div id="menuFrame1" class="menu-frame" onclick="window.location.href='/menus'">
-            <span>🍽️ Menù</span>
+            <span data-i18n="main_menus">🍽️ Menù</span>
         </div>
         <div id="menuFrame2" class="menu-frame" onclick="window.location.href='/restaurant'">
-            <span>🏠 Il Ristorante</span>
+            <span data-i18n="main_restaurant">🏠 El Restaurante</span>
         </div>
         <div id="menuFrame3" class="menu-frame" onclick="window.location.href='/gallery'">
-            <span>📸 Galleria</span>
+            <span data-i18n="main_gallery">📸 La Galería</span>
         </div>
     </div>
     <!-- FAQ Carousel Nuovo -->
     <section class="faq-carousel-section">
-        <h2 id="faqTitle">❓ Preguntas Frecuentes</h2>
+        <h2 id="faqTitle" data-i18n="faq_title">❓ Preguntas Frecuentes</h2>
 
         <!-- Bottoni categoria -->
         <div class="faq-categories-tabs">
-            <button id="tab_venue" class="faq-tab active" onclick="showFaqCategory('venue', this)">📍 Local</button>
-            <button id="tab_menu" class="faq-tab" onclick="showFaqCategory('menu', this)">🍽️ Menù</button>
-            <button id="tab_servizi" class="faq-tab" onclick="showFaqCategory('servizi', this)">🛎️ Servicios</button>
+            <button id="tab_venue" class="faq-tab active" onclick="showFaqCategory('venue', this)" data-i18n="faq_tab_venue">📍 Local</button>
+            <button id="tab_menu" class="faq-tab" onclick="showFaqCategory('menu', this)" data-i18n="faq_tab_menu">🍽️ Menù</button>
+            <button id="tab_servizi" class="faq-tab" onclick="showFaqCategory('servizi', this)" data-i18n="faq_tab_servizi">🛎️ Servicios</button>
         </div>
 
         <!-- Contenitori Carousel -->
@@ -83,40 +83,40 @@
             <div class="faq-carousel-box" id="faq-carousel-box">
                 <!-- Categoria: Locale -->
                 <div class="faq-category-box" id="faq-venue">
-                    <button id="faq_1" class="faq-btn" onclick="ask('¿Cuáles son los horarios de apertura?')">¿Cuáles son los horarios de apertura?</button>
-                    <button id="faq_2" class="faq-btn" onclick="ask('¿Cómo puedo reservar una mesa?')">¿Cómo puedo reservar una mesa?</button>
-                    <button id="faq_3" class="faq-btn" onclick="ask('¿Se puede reservar la terraza en la azotea?')">¿Se puede reservar la terraza en la azotea?</button>
-                    <button id="faq_4" class="faq-btn" onclick="ask('¿Cuántos asientos tiene el local?')">¿Cuántos asientos tiene el local?</button>
+                    <button id="faq_1" class="faq-btn" onclick="ask('¿Cuáles son los horarios de apertura?')" data-i18n="faq_1">¿Cuáles son los horarios de apertura?</button>
+                    <button id="faq_2" class="faq-btn" onclick="ask('¿Cómo puedo reservar una mesa?')" data-i18n="faq_2">¿Cómo puedo reservar una mesa?</button>
+                    <button id="faq_3" class="faq-btn" onclick="ask('¿Se puede reservar la terraza en la azotea?')" data-i18n="faq_3">¿Se puede reservar la terraza en la azotea?</button>
+                    <button id="faq_4" class="faq-btn" onclick="ask('¿Cuántos asientos tiene el local?')" data-i18n="faq_4">¿Cuántos asientos tiene el local?</button>
                 </div>
 
                 <!-- Categoria: Menù -->
                 <div class="faq-category-box hidden" id="faq-menu">
-                    <button id="faq_5" class="faq-btn" onclick="ask('¿Tienen menú de desayuno?')">¿Tienen menú de desayuno?</button>
-                    <button id="faq_6" class="faq-btn" onclick="ask('¿Qué tipos de café tienen?')">¿Qué tipos de café tienen?</button>
-                    <button id="faq_7" class="faq-btn" onclick="ask('¿Qué cócteles tienen?')">¿Qué cócteles tienen?</button>
-                    <button id="faq_8" class="faq-btn" onclick="ask('¿Qué hay para almorzar?')">¿Qué hay para almorzar?</button>
-                    <button id="faq_9" class="faq-btn" onclick="ask('¿Tienen pasteles o postres?')">¿Tienen pasteles o postres?</button>
-                    <button id="faq_10" class="faq-btn" onclick="ask('¿Qué bebidas tienen?')">¿Qué bebidas tienen?</button>
-                    <button id="faq_11" class="faq-btn" onclick="ask('¿Tienen opciones veganas?')">¿Tienen opciones veganas?</button>
-                    <button id="faq_12" class="faq-btn" onclick="ask('¿Tienen opciones sin gluten?')">¿Tienen opciones sin gluten?</button>
-                    <button id="faq_13" class="faq-btn" onclick="ask('¿Tienen opciones sin lactosa?')">¿Tienen opciones sin lactosa?</button>
-                    <button id="faq_14" class="faq-btn" onclick="ask('¿Tienen opciones sin nueces?')">¿Tienen opciones sin nueces?</button>
-                    <button id="faq_15" class="faq-btn" onclick="ask('¿Tienen opciones sin huevo?')">¿Tienen opciones sin huevo?</button>
-                    <button id="faq_16" class="faq-btn" onclick="ask('¿Tienen opciones sin pescado?')">¿Tienen opciones sin pescado?</button>
-                    <button id="faq_17" class="faq-btn" onclick="ask('¿Tienen opciones sin carne?')">¿Tienen opciones sin carne?</button>
-                    <button id="faq_18" class="faq-btn" onclick="ask('¿Tienen opciones sin lácteos?')">¿Tienen opciones sin lácteos?</button>
-                    <button id="faq_19" class="faq-btn" onclick="ask('¿Qué tartas suelen tener?')">¿Qué tartas suelen tener?</button>
+                    <button id="faq_5" class="faq-btn" onclick="ask('¿Tienen menú de desayuno?')" data-i18n="faq_5">¿Tienen menú de desayuno?</button>
+                    <button id="faq_6" class="faq-btn" onclick="ask('¿Qué tipos de café tienen?')" data-i18n="faq_6">¿Qué tipos de café tienen?</button>
+                    <button id="faq_7" class="faq-btn" onclick="ask('¿Qué cócteles tienen?')" data-i18n="faq_7">¿Qué cócteles tienen?</button>
+                    <button id="faq_8" class="faq-btn" onclick="ask('¿Qué hay para almorzar?')" data-i18n="faq_8">¿Qué hay para almorzar?</button>
+                    <button id="faq_9" class="faq-btn" onclick="ask('¿Tienen pasteles o postres?')" data-i18n="faq_9">¿Tienen pasteles o postres?</button>
+                    <button id="faq_10" class="faq-btn" onclick="ask('¿Qué bebidas tienen?')" data-i18n="faq_10">¿Qué bebidas tienen?</button>
+                    <button id="faq_11" class="faq-btn" onclick="ask('¿Tienen opciones veganas?')" data-i18n="faq_11">¿Tienen opciones veganas?</button>
+                    <button id="faq_12" class="faq-btn" onclick="ask('¿Tienen opciones sin gluten?')" data-i18n="faq_12">¿Tienen opciones sin gluten?</button>
+                    <button id="faq_13" class="faq-btn" onclick="ask('¿Tienen opciones sin lactosa?')" data-i18n="faq_13">¿Tienen opciones sin lactosa?</button>
+                    <button id="faq_14" class="faq-btn" onclick="ask('¿Tienen opciones sin nueces?')" data-i18n="faq_14">¿Tienen opciones sin nueces?</button>
+                    <button id="faq_15" class="faq-btn" onclick="ask('¿Tienen opciones sin huevo?')" data-i18n="faq_15">¿Tienen opciones sin huevo?</button>
+                    <button id="faq_16" class="faq-btn" onclick="ask('¿Tienen opciones sin pescado?')" data-i18n="faq_16">¿Tienen opciones sin pescado?</button>
+                    <button id="faq_17" class="faq-btn" onclick="ask('¿Tienen opciones sin carne?')" data-i18n="faq_17">¿Tienen opciones sin carne?</button>
+                    <button id="faq_18" class="faq-btn" onclick="ask('¿Tienen opciones sin lácteos?')" data-i18n="faq_18">¿Tienen opciones sin lácteos?</button>
+                    <button id="faq_19" class="faq-btn" onclick="ask('¿Qué tartas suelen tener?')" data-i18n="faq_19">¿Qué tartas suelen tener?</button>
                 </div>
 
                 <!-- Categoria: Servizi -->
                 <div class="faq-category-box hidden" id="faq-servizi">
-                    <button id="faq_20" class="faq-btn" onclick="ask('¿Puedo llevar a mi mascota?')">¿Puedo llevar a mi mascota?</button>
-                    <button id="faq_21" class="faq-btn" onclick="ask('¿tienen agua para mi mascota?')">¿tienen agua para mi mascota?</button>
-                    <button id="faq_22" class="faq-btn" onclick="ask('¿Tienen acceso para sillas de ruedas?')">¿Tienen acceso para sillas de ruedas?</button>
-                    <button id="faq_23" class="faq-btn" onclick="ask('¿Tienen servicio de entrega a domicilio?')">¿Tienen servicio de entrega a domicilio?</button>
-                    <button id="faq_24" class="faq-btn" onclick="ask('¿Tienen servicio de catering?')">¿Tienen servicio de catering?</button>
-                    <button id="faq_25" class="faq-btn" onclick="ask('¿Tienen servicio de comida para llevar?')">¿Tienen servicio de comida para llevar?</button>
-                    <button class="faq-btn" onclick="ask('¿Tienen servicio de aparcacoches?')">¿Tienen servicio de aparcacoches?</button>
+                    <button id="faq_20" class="faq-btn" onclick="ask('¿Puedo llevar a mi mascota?')" data-i18n="faq_20">¿Puedo llevar a mi mascota?</button>
+                    <button id="faq_21" class="faq-btn" onclick="ask('¿tienen agua para mi mascota?')" data-i18n="faq_21">¿tienen agua para mi mascota?</button>
+                    <button id="faq_22" class="faq-btn" onclick="ask('¿Tienen acceso para sillas de ruedas?')" data-i18n="faq_22">¿Tienen acceso para sillas de ruedas?</button>
+                    <button id="faq_23" class="faq-btn" onclick="ask('¿Tienen servicio de entrega a domicilio?')" data-i18n="faq_23">¿Tienen servicio de entrega a domicilio?</button>
+                    <button id="faq_24" class="faq-btn" onclick="ask('¿Tienen servicio de catering?')" data-i18n="faq_24">¿Tienen servicio de catering?</button>
+                    <button id="faq_25" class="faq-btn" onclick="ask('¿Tienen servicio de comida para llevar?')" data-i18n="faq_25">¿Tienen servicio de comida para llevar?</button>
+                    <button class="faq-btn" onclick="ask('¿Tienen servicio de aparcacoches?')" data-i18n="faq_26">¿Tienen servicio de aparcacoches?</button>
                 </div>
             </div>
 
@@ -132,11 +132,11 @@
     <!-- Popup benvenuto -->
     <div id="welcomePopup" class="popup-overlay" style="display: none;">
         <div class="popup-box">
-            <h2 id="popup_welcome">¡Bienvenido a Menuria!</h2>
-            <p id="popup_text_1">Somos un pequeño equipo que ama el sector hostelero y quiere mejorarla con un toque de tecnología.</p>
-            <p id="popup_text_2">Este chat está aquí para ayudarte a encontrar lo que necesitas sin reemplazar al camarero.</p>
-            <p id="popup_text_3">Si te apetece, deja un comentario después de usarlo. ¡Buen provecho!</p>
-            <button onclick="closeWelcomePopup()" id="popup_button">Cerrar</button>
+            <h2 id="popup_welcome" data-i18n="welcome_title">¡Bienvenido a Menuria!</h2>
+            <p id="popup_text_1" data-i18n="welcome_text_1">Somos un pequeño equipo que ama el sector hostelero y quiere mejorarla con un toque de tecnología.</p>
+            <p id="popup_text_2" data-i18n="welcome_text_2">Este chat está aquí para ayudarte a encontrar lo que necesitas sin reemplazar al camarero.</p>
+            <p id="popup_text_3" data-i18n="welcome_text_3">Si te apetece, deja un comentario después de usarlo. ¡Buen provecho!</p>
+            <button onclick="closeWelcomePopup()" id="popup_button" data-i18n="welcome_button">Cerrar</button>
         </div>
     </div>
 
@@ -144,23 +144,23 @@
     <section class="chatbot-container">
         <div id="chatWindow" class="chat-window">
             <div class="chat-header">
-                <h2 id="chat_titolo">Chatbot</h2>
+                <h2 id="chat_titolo" data-i18n="chat_title">Chatbot</h2>
                 <button onclick="toggleChatWindow()">🤖</button>
             </div>
             <div class="chat-body">
-                <p id="welcomeMessage">¡Hola! Soy el chatbot de La Casita del Nazareno. ¿En qué puedo ayudarte hoy?</p>
+                <p id="welcomeMessage" data-i18n="chat_welcome">¡Hola! Soy el chatbot de La Casita del Nazareno. ¿En qué puedo ayudarte hoy?</p>
                 <div id="messages"></div>
             </div>
             <div class="chat-input">
                 <input type="text" id="userInput" placeholder="Escribe tu mensaje..." />
-                <button onclick="sendMessage()" id="boton_enviar">Enviar</button>
+                <button onclick="sendMessage()" id="boton_enviar" data-i18n="chat_send">Enviar</button>
             </div>
         </div>
     </section>
 
     <!-- Customer Satisfaction Feedback -->
     <div class="satisfaction-box">
-        <p id="rating_pregunta">¿Cómo calificarías nuestro asistente?</p>
+        <p id="rating_pregunta" data-i18n="feedback_question">¿Cómo calificarías nuestro asistente?</p>
         <div class="rating-options">
             <span class="emoji emoji-happy" onclick="sendFeedback('happy')">😊</span>
             <span class="emoji emoji-neutral" onclick="sendFeedback('neutral')">😐</span>
@@ -170,7 +170,7 @@
 
     <!-- Footer Ristorante -->
     <footer class="restaurant-footer">
-        <h3 id="rFoot1">Contactanos - Restaurante La Casita del Nazareno</h3>
+        <h3 id="rFoot1" data-i18n="footer_restaurant_contact">Contactanos - Restaurante La Casita del Nazareno</h3>
         <div class="social-links">
             <a href="https://facebook.com">👍</a>
             <a href="https://instagram.com">📸</a>
@@ -180,7 +180,7 @@
 
     <!-- Footer Menuria -->
     <footer class="menuria-footer">
-        <h3 id="rFoot2">Contactanos - Menuria</h3>
+        <h3 id="rFoot2" data-i18n="footer_menuria_contact">Contactanos - Menuria</h3>
         <div class="social-links">
             <a href="https://facebook.com">👍</a>
             <a href="https://instagram.com">📸</a>
@@ -189,5 +189,7 @@
     </footer>
 
     <script src="home.js"></script>
+    <script src="/static/js/i18n.js"></script>
+
 </body>
 </html>

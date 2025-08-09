@@ -21,7 +21,7 @@
       <img src="/static/img/flags/Russia-flag.png" alt="RU" onclick="setLanguage('ru')">
     </div>
     <div class="center-section">
-      <h1 class="main-title">Restaurante La Casita del Nazareno</h1>
+      <h1 class="titolo" data-i18n="home_title">Restaurante La Casita del Nazareno</h1>
     </div>
     <div class="right-section">
   <a href="/home/index.html" class="home-button">🏠 Home</a>
@@ -30,14 +30,14 @@
 </header>
 
 <section class="gallery-header">
-  <h2>Nuestra Galería</h2>
-  <p>Descubre nuestros platos, cócteles, tartas y cafés en una experiencia visual única.</p>
+  <h2 data-i18n="gallery_title">Nuestra Galería</h2>
+  <p data-i18n="gallery_intro">Descubre nuestros platos, cócteles, tartas y cafés en una experiencia visual única.</p>
   <div class="filter-buttons">
-    <button data-filter="all" class="active">Todos</button>
-    <button data-filter="platos">Platos</button>
-    <button data-filter="cocktail">Cocktails</button>
-    <button data-filter="tartas">Tartas</button>
-    <button data-filter="cafe">Cafés</button>
+    <button data-filter="all" class="active" data-i18n="filter_all">Todos</button>
+    <button data-filter="platos" data-i18n="filter_platos">Platos</button>
+    <button data-filter="cocktail" data-i18n="filter_cocktail">Cocktails</button>
+    <button data-filter="tartas" data-i18n="filter_tartas">Tartas</button>
+    <button data-filter="cafe" data-i18n="filter_cafe">Cafés</button>
   </div>
 </section>
 
@@ -86,10 +86,12 @@
   <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script>
   <script src="/gallery/gallery.js"></script>
+  <script src="/static/js/i18n.js"></script>
+
 </body>
  <!-- Footer Ristorante -->
     <footer class="restaurant-footer">
-        <h3 id="rFoot1">Contactanos - Restaurante La Casita del Nazareno</h3>
+        <h3 id="rFoot1" data-i18n="footer_restaurant_contact">Contactanos - Restaurante La Casita del Nazareno</h3>
         <div class="social-links">
             <a href="https://facebook.com">👍</a>
             <a href="https://instagram.com">📸</a>
@@ -99,7 +101,7 @@
 
     <!-- Footer Menuria -->
     <footer class="menuria-footer">
-        <h3 id="rFoot2">Contactanos - Menuria</h3>
+        <h3 id="rFoot2" data-i18n="footer_menuria_contact">Contactanos - Menuria</h3>
         <div class="social-links">
             <a href="https://facebook.com">👍</a>
             <a href="https://instagram.com">📸</a>

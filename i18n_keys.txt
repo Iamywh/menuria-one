@@ -1,0 +1,16 @@
+Chiavi trovate: 14
+
+gallery_caffe: "Nuestros cafés"
+gallery_cocktail: "Nuestros cockteles"
+gallery_descrizione: "Explora nuestros platos, cócteles, cafés y tartas en una colección fotográfica elegante."
+gallery_piatti: "Nuestros platos"
+gallery_titolo: "Nuestra Galería de fotos"
+gallery_torte: "Nuestras tartas"
+go_home: "🏠 Home"
+promo_cubo_desc: "5 cervezas frías en un cubo con hielo + 1/2 ración de nachos.Ideal para compartir con amigos en la terraza. ¡Refrescante y a buen precio!"
+promo_cubo_titolo: "Cubo de Cerveza"
+promo_tardeo_desc: "2 cócteles + 1/2 ración de nachos.Perfecto para disfrutar de una tarde con amigos."
+promo_tardeo_titolo: "Promo Tardeo"
+promo_titolo: "Nuestras Promociones"
+ristorante_descrizione: "Bienvenidos a La Casita del Nazareno, un lugar donde cada detalle te invita a frenar, saborear y sentirte en casa. Nuestro restaurante nace de una idea sencilla pero profunda: unir la riqueza de la cocina española con la delicadeza y profundidad de la tradición asiática, creando un abrazo culinario que cuenta historias de sabores, culturas y personas.Ofrecemos una cocina fusión auténtica, donde el respeto por el ingrediente se encuentra con la creatividad de un equipo joven y dinámico. Aquí no encontrarás platos transformados por la moda, sino reinterpretaciones sinceras que celebran la esencia de cada receta. Un ramen hecho con paciencia y caldo real, tapas inspiradas en las calles de Bangkok, baos que abrazan al jamón ibérico. Cada plato es un punto de encuentro entre mundos, unidos por la pasión y la intención.Pero La Casita no es solo un restaurante. Es un hogar. Y como todo hogar de verdad, tiene un alma hecha de objetos, historias y memoria. Al pasear por su interior notarás que nada es casual. Las alacenas de madera maciza, las máquinas de coser Singer antiguas, las planchas de carbón, los cuadros vintage, el gramófono... cada pieza es original, elegida con cariño, y cuenta un tiempo donde el detalle valía más que la prisa. Es un homenaje a la lentitud, a la belleza vivida, a la nostalgia que acaricia sin doler.Y luego está la terraza. Aislada del ruido, escondida entre tejados, iluminada con luces cálidas y perfumada con hierbas aromáticas. Una burbuja de paz, donde el tiempo se dilata y el mundo exterior se apaga. Ya sea un almuerzo al sol o una cena al atardecer, la terraza de La Casita regala una atmósfera íntima y única, hecha de charlas sinceras, brindis espontáneos y silencios cómodos.Nuestra ubicación es otro pequeño secreto. A unos pasos de todo, pero protegida del caos urbano, como si la ciudad nos hubiera olvidado a propósito para dejarnos respirar. Aquí se viene a desconectar, pero también a reconectar. Ya sea una pausa rápida o una noche para recordar, La Casita te recibe sin preguntar, y te despide con gratitud.Somos jóvenes, sí. Pero creemos en la vieja idea de hospitalidad, esa que se mide con la mirada, con la atención y con el aroma de un plato que sabe a casa. En un mundo cada vez más artificial, elegimos la sinceridad. Y si después de visitarnos te sientes un poco menos solo, un poco más lleno y un poco más feliz, entonces habremos hecho bien nuestro trabajo.Bienvenido a casa.Bienvenido a La Casita del Nazareno."
+ristorante_titolo: "Nuestro Restaurante"
