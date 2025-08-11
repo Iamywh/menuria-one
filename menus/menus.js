@@ -1,4 +1,4 @@
-const menus = [
+window.menus = [
             {
                 title: { i18nKey: "menu_bebidas_title", default: "Menú de Bebidas" },
                 bg: "#f4fbff",
@@ -265,8 +265,8 @@ const menus = [
                 items: [
                     { nombre: { i18nKey: "menu_boc_del_chef", default: "DEL CHEF" }, ingredientes: "lomo, mostaza, jamón, queso", precio: "2,50 € / 3,50 €"},
                     { nombre: { i18nKey: "menu_boc_de_pata", default: "DE PATA" }, ingredientes: "pata, pimiento confitado, rucula, cebollla roja, aceite de albahaca", precio: "2,50 € / 3,80 €" },
-                    { nombre: { i18nKey: "menu_tartas_baileys", default: "STEAK HOUSE" }, ingredientes: "ternera desmenuzada, salsa barbacoa, queso", precio: "2,80 € / 4,00 €" },
-                    { nombre: { i18nKey: "menu_tartas_pie_calabaza", default: "TORTILLA" }, ingredientes: "tortilla de patata, lechuga, tomate, mayonesa", precio: "2,80 € / 4,00 €" }
+                    { nombre: { i18nKey: "menu_boc_steak_house", default: "STEAK HOUSE" }, ingredientes: "ternera desmenuzada, salsa barbacoa, queso", precio: "2,80 € / 4,00 €" },
+                    { nombre: { i18nKey: "menu_boc_tortilla", default: "TORTILLA" }, ingredientes: "tortilla de patata, lechuga, tomate, mayonesa", precio: "2,80 € / 4,00 €" }
                 ]
             },
             {
@@ -305,91 +305,252 @@ const menus = [
             }
         ];
 
-        let currentMenu = 0;
-        const menuTitle = document.getElementById("menuTitle");
-        const menuTable = document.getElementById("menuTable");
-        const menuNote = document.getElementById("menuNote");
-        const menuIndicator = document.getElementById("menuIndicator");
-        const menuContainer = document.getElementById("menuContainer");
+// ===== VERSIONE CORRETTA CON STATO GESTITO E CONTROLLI NAVIGAZIONE =====
 
-        function renderMenu(idx) {
-            const m = menus[idx];
-            
-            // Cambia sfondo
-            document.body.style.background = m.bg;
-            
-            // Cambia classe per cocktail mode
-            menuContainer.classList.remove("cocktail-mode", "menu-mode");
-            menuContainer.classList.add(m.mode || "menu-mode");
-            
-            // Titolo + slide effetto
-            menuTitle.textContent = m.title;
-            menuTitle.style.color = m.accent;
-            menuTitle.classList.remove("slide-in");
-            void menuTitle.offsetWidth; // restart animation
-            menuTitle.classList.add("slide-in");
-            
-            // Nota
-            menuNote.textContent = m.note;
-            menuNote.style.color = m.mode ? "#fff" : "#548dd3";
-            
-            // Costruisci tabella
-            const categoryHeader = m.title || "Categoría";
-            let html = `
-                <thead>
-                    <tr>
-                        <th>${categoryHeader}</th>
-                        <th class="price">Precio</th>
-                    </tr>
-                </thead>
-                <tbody>
-            `;
-            
-            for (const row of m.items) {
-                html += `<tr>
-                    <td>${row.nombre}${row.ingredientes ? `<span class="ingredientes">${row.ingredientes}</span>` : ""}</td>
-                    <td class="price">${row.precio}</td>
-                </tr>`;
-            }
-            
-            html += "</tbody>";
-            menuTable.innerHTML = html;
-            
-            // Indicatore menu
-            menuIndicator.textContent = `${idx+1} / ${menus.length}`;
+// Stato globale
+let appState = {
+    currentMenuIndex: 0,
+    viewMode: 'grid', // 'grid', 'single', 'filtered'
+    filteredData: null,
+    isFiltered: false
+};
+
+// Dati
+window.menus = Array.isArray(window.menus) ? window.menus : (typeof menus !== "undefined" ? menus : []);
+
+// Helper i18n
+function i18nText(val) { 
+    return typeof val === "object" ? (val.default || "") : (val || ""); 
+}
+function ingredientsText(val) { 
+    return typeof val === "object" ? (val.default || "") : (val || ""); 
+}
+
+// ---- RENDER: Singola sezione (modalità tabella) ----
+function renderMenuSection(section, host) {
+    const m = section || {};
+    const title = i18nText(m.title);
+    const note = i18nText(m.note);
+    const bg = m.bg || "#fff";
+    const accent = m.accent || "#2b7da9";
+    const mode = m.mode || "";
+
+    // Applica tema pagina
+    document.body.style.background = bg;
+    document.body.className = mode || "menu-mode";
+
+    // Header sezione
+    const header = document.createElement("div");
+    header.className = "menu-section-header";
+    header.innerHTML = `
+        <h2 class="menu-title" style="color:${accent}">${title || "Categoría"}</h2>
+        ${note ? `<p class="menu-note">${note}</p>` : ""}
+    `;
+    host.appendChild(header);
+
+    // Tabella voci
+    const table = document.createElement("table");
+    table.className = `menu-table ${mode}`;
+    table.innerHTML = `
+        <thead>
+            <tr>
+                <th>${title || "Categoría"}</th>
+                <th class="price">Precio</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    `;
+    const tbody = table.querySelector("tbody");
+
+    (m.items || []).forEach(row => {
+        const tr = document.createElement("tr");
+        const nombre = i18nText(row.nombre);
+        const ing = ingredientsText(row.ingredientes);
+        const precio = row.precio || "";
+        
+        // Note e avvisi per allergeni
+        let extraInfo = "";
+        if (row._notes && row._notes.length > 0) {
+            extraInfo += `<div class="allergen-notes">${row._notes.join(", ")}</div>`;
+        }
+        if (row._warnings && row._warnings.length > 0) {
+            extraInfo += `<div class="allergen-warnings">⚠️ ${row._warnings.join(", ")}</div>`;
         }
 
-        document.getElementById("prevBtn").onclick = function(){
-            currentMenu = (currentMenu - 1 + menus.length) % menus.length;
-            renderMenu(currentMenu);
-        };
-        
-        document.getElementById("nextBtn").onclick = function(){
-            currentMenu = (currentMenu + 1) % menus.length;
-            renderMenu(currentMenu);
-        };
+        tr.innerHTML = `
+            <td>
+                <strong>${nombre}</strong>
+                ${ing ? `<span class="ingredientes">${ing}</span>` : ""}
+                ${extraInfo}
+            </td>
+            <td class="price">${precio}</td>
+        `;
+        tbody.appendChild(tr);
+    });
 
-        // Swipe touch per mobile
-        let xStart = null;
-        menuTable.addEventListener('touchstart', function(e){
-            xStart = e.touches[0].clientX;
-        });
-        
-        menuTable.addEventListener('touchend', function(e){
-            if(xStart == null) return;
-            let xEnd = e.changedTouches[0].clientX;
-            if(xEnd - xStart > 40) document.getElementById("prevBtn").click();
-            if(xStart - xEnd > 40) document.getElementById("nextBtn").click();
-            xStart = null;
-        });
+    host.appendChild(table);
+}
 
-        // Funzione placeholder per setLanguage
-        function setLanguage(lang) {
-            console.log('Language selected:', lang);
-            // Qui puoi implementare la logica per cambiare lingua
-        }
+// ---- RENDER: Multiple sezioni (modalità filtri) ----
+function renderMenus(data, containerId = "menu-content") {
+    const list = Array.isArray(data) ? data : [];
+    const host = document.getElementById(containerId);
+    if (!host) return;
 
-        // Inizializzazione
-        window.onload = () => {
-            renderMenu(currentMenu);
-        };
+    host.innerHTML = "";
+    
+    if (!list.length) {
+        host.innerHTML = `<div class="menu-empty">No hay elementos para mostrar.</div>`;
+        return;
+    }
+
+    // Nascondi controlli navigazione quando mostri tutto
+    hideNavigationControls();
+    
+    // Reset tema pagina a default
+    document.body.style.background = "#f6efe7";
+    document.body.className = "menu-mode";
+
+    // Render di tutte le sezioni
+    list.forEach(section => {
+        const wrapper = document.createElement("section");
+        wrapper.className = "menu-section";
+        renderMenuSection(section, wrapper);
+        host.appendChild(wrapper);
+    });
+
+    // Aggiorna stato
+    appState.viewMode = appState.isFiltered ? 'filtered' : 'grid';
+}
+
+// ---- RENDER: Singolo menu (modalità navigazione) ----
+function renderMenu(idx, containerId = "menu-content") {
+    const menuData = appState.isFiltered ? appState.filteredData : window.menus;
+    if (!Array.isArray(menuData) || menuData.length === 0) return;
+    
+    const i = Math.max(0, Math.min(idx || 0, menuData.length - 1));
+    appState.currentMenuIndex = i;
+    appState.viewMode = 'single';
+
+    const host = document.getElementById(containerId);
+    if (!host) return;
+
+    host.innerHTML = "";
+    const section = menuData[i];
+    
+    if (!section) {
+        host.innerHTML = `<div class="menu-empty">No hay elementos para mostrar.</div>`;
+        return;
+    }
+
+    const wrapper = document.createElement("section");
+    wrapper.className = "menu-section";
+    renderMenuSection(section, wrapper);
+    host.appendChild(wrapper);
+    
+    // Mostra controlli navigazione
+    showNavigationControls(i, menuData.length);
+}
+
+// ---- CONTROLLI NAVIGAZIONE ----
+function showNavigationControls(currentIndex, totalMenus) {
+    // Mostra elementi legacy nascosti
+    const menuNav = document.querySelector('.menu-nav');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const menuIndicator = document.getElementById('menuIndicator');
+    
+    if (menuNav) menuNav.style.display = 'flex';
+    
+    if (menuIndicator) {
+        menuIndicator.textContent = `${currentIndex + 1} / ${totalMenus}`;
+    }
+    
+    // Setup event listeners
+    if (prevBtn) {
+        prevBtn.onclick = () => navigateMenu(-1);
+        prevBtn.disabled = currentIndex === 0;
+    }
+    
+    if (nextBtn) {
+        nextBtn.onclick = () => navigateMenu(1);
+        nextBtn.disabled = currentIndex === totalMenus - 1;
+    }
+}
+
+function hideNavigationControls() {
+    const menuNav = document.querySelector('.menu-nav');
+    if (menuNav) menuNav.style.display = 'none';
+}
+
+function navigateMenu(direction) {
+    const menuData = appState.isFiltered ? appState.filteredData : window.menus;
+    const newIndex = appState.currentMenuIndex + direction;
+    
+    if (newIndex >= 0 && newIndex < menuData.length) {
+        renderMenu(newIndex);
+    }
+}
+
+// ---- GRIGLIA CATEGORIE ----
+function renderMenuGrid(containerId = "menu-grid") {
+    const grid = document.getElementById(containerId);
+    if (!grid) return;
+
+    grid.innerHTML = "";
+    const menuData = appState.isFiltered ? appState.filteredData : window.menus;
+    
+    if (!Array.isArray(menuData) || !menuData.length) return;
+
+    const wrap = document.createElement("div");
+    wrap.className = "menu-grid";
+
+    menuData.forEach((section, idx) => {
+        const card = document.createElement("button");
+        card.type = "button";
+        card.className = "menu-grid-card";
+        card.innerHTML = `
+            <div class="mg-title" style="font-weight:700;margin-bottom:4px;">
+                ${i18nText(section.title) || "Sección"}
+            </div>
+        `;
+        card.addEventListener("click", () => renderMenu(idx));
+        wrap.appendChild(card);
+    });
+
+    grid.appendChild(wrap);
+}
+
+// ---- RESET A VISTA COMPLETA ----
+function resetToFullView() {
+    appState.isFiltered = false;
+    appState.filteredData = null;
+    appState.viewMode = 'grid';
+    renderMenus(window.menus, "menu-content");
+    renderMenuGrid("menu-grid");
+}
+
+// ---- EXPORT GLOBALE ----
+window.MenuUI = {
+    renderMenuGrid,
+    renderMenus,
+    renderMenu,
+    resetToFullView,
+    appState
+};
+
+// ---- BOOTSTRAP ----
+document.addEventListener("DOMContentLoaded", () => {
+    try { 
+        renderMenuGrid("menu-grid"); 
+    } catch(e) { 
+        console.error('Error rendering grid:', e); 
+    }
+    
+    try {
+        // Default: mostra primo menu
+        renderMenu(0, "menu-content");
+    } catch(e) { 
+        console.error('Error rendering initial menu:', e); 
+    }
+});
