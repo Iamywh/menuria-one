@@ -351,3 +351,34 @@ footer a:hover {
 .home-button:hover {
   background-color: #8c5a2e;
 }
+.offers-grid { display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px; }
+.rest-card { background-color: #fff8ef;
+  border: 1px solid #e0d2c2;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;}
+.rest-card:hover { transform:translateY(-2px); box-shadow:0 16px 32px rgba(0,0,0,.12); }
+.rest-img { width:50%; aspect-ratio:4/3; background-size:cover; background-position:center; position: center; }
+.rest-body { padding:12px; }
+.rest-badge { display:inline-block; font-size:12px; padding:2px 8px; border-radius:999px; background:#eef; margin-bottom:6px; }
+.rest-title { margin:6px 0; font-size:18px; }
+.rest-desc { margin:0 0 8px; color:#555; font-size:14px; }
+.rest-meta { display:flex; align-items:center; justify-content:space-between; }
+.rest-price { font-weight:700; }
+.rest-more { border:none; background:#222; color:#fff; padding:8px 10px; border-radius:8px; cursor:pointer; }
+
+/* Modal 9:16 */
+.rest-modal { position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:9999; }
+.rest-modal-backdrop { position:absolute; inset:0; background:rgba(0,0,0,.50); backdrop-filter:saturate(110%) blur(2px); }
+.rest-modal-box { position:relative; width:min(920px,92vw); display:grid; grid-template-columns: 9fr 7fr; gap:0; background:#fff; border-radius:18px; overflow:hidden; }
+.rest-modal-media { background:#000; display:flex; align-items:center; justify-content:center; }
+.rest-modal-media img { width:100%; height:100%; object-fit:cover; aspect-ratio:9/16; }
+.rest-modal-info { padding:16px; display:flex; flex-direction:column; gap:10px; }
+.rest-modal-close { position:absolute; top:8px; right:10px; background:transparent; border:none; font-size:20px; color:#fff; cursor:pointer; }
+@media (max-width: 900px){
+  .rest-modal-box { grid-template-columns:1fr; max-height:92vh; }
+  .rest-modal-media img { aspect-ratio:auto; height:auto; }
+}

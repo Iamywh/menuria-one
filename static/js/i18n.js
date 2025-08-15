@@ -1,132 +1,175 @@
-  const LANG_KEY = "menuria_lang";
-  const fallbackLang = "es";
-  let currentLang = (localStorage.getItem(LANG_KEY) || fallbackLang).toLowerCase();
+// ===================== i18n.js (clean, production-safe) =====================
+// - Usa entrambe le chiavi localStorage: LANG e lang (compat)
+// - Popup lingue: solo prima visita o con ?lang=select
+// - Checkbox "non mostrare più" (id="neverShowLangPopup")
+// - Espone window.setLanguage e window.selectLanguagePopup
 
-  const I18N = {
-    es: {
-      home_title: "Restaurante La Casita del Nazareno",
-      visitors: "👥 Visitantes:",
-      analytics: "📊 Analíticas",
-      faq_1: "¿Cómo puedo ver el menú?",
-      faq_2: "¿Cómo puedo hacer una reserva?",
-      faq_3: "¿Se puede reservar la terraza en la azotea?",
-      faq_4: "¿Cuántos asientos tiene el local?",
-      main_menus: "🍽️ Menú",
-      main_restaurant: "🏠 El Restaurante",
-      main_gallery: "📸 Galería",
-      faq_title: "❓ Preguntas Frecuentes",
-      chat_title: "Chatbot",
-      chat_placeholder: "Escribe tu mensaje...",
-      send: "Enviar",
-      rate_q: "¿Cómo calificarías nuestro asistente?",
-      foot_rest: "Contáctanos - Restaurante La Casita del Nazareno",
-      foot_men: "Contáctanos - Menuria",
+// ---- Traduzioni (solo ES per ora) ----
+window.I18N = window.I18N || {};
+window.I18N.es = Object.assign({}, window.I18N.es, {
+  // Popup idioma
+  lang_popup_title: "🌐 Elige tu idioma",
+  lang_popup_choose: "Selecciona tu idioma preferido para continuar.",
+  lang_never_again: "No volver a mostrar",
 
-      gallery_title: "Nuestra Galería",
-      gallery_intro: "Descubre nuestros platos, cócteles, tartas y cafés en una experiencia visual única.",
-      filter_all: "Todos", filter_platos: "Platos", filter_cocktail: "Cócteles", filter_tartas: "Tartas", filter_cafe: "Cafés",
+  // Filtros alergias (per menus)
+  filter_celiac: "Celíacos",
+  filter_lactose_free: "Sin lactosa",
+  filter_vegan: "Veganos",
+  filter_nuts: "Frutos secos",
+  filter_crustaceans: "Crustáceos",
+  filter_reset: "Restablecer",
 
-      menus_title: "Nuestros Menús", choose_menu: "Elige un menú:",
-      prev: "Anterior", next: "Siguiente",
-      iva_note: "Precios IVA incluido · Ambiente familiar y casero",
+  // Menús
+  menus_select_category: "Selecciona una categoría"
+});
 
-      ristorante_titolo: "Nuestro Restaurante",
-      promo_titolo: "Nuestras Promociones",
-      promo_cubo_titolo: "Cubo de Cerveza",
-      promo_tardeo_titolo: "Promo Tardeo"
-    },
-    it: {
-      home_title: "Ristorante La Casita del Nazareno",
-      visitors: "👥 Visitatori:",
-      analytics: "📊 Analytics",
-      main_menus: "🍽️ Menù",
-      main_restaurant: "🏠 Il Ristorante",
-      main_gallery: "📸 Galleria",
-      faq_title: "❓ Domande Frequenti",
-      chat_title: "Chatbot",
-      chat_placeholder: "Scrivi il tuo messaggio...",
-      send: "Invia",
-      rate_q: "Come valuteresti il nostro assistente?",
-      foot_rest: "Contattaci - Ristorante La Casita del Nazareno",
-      foot_men: "Contattaci - Menuria",
+// Prepara contenitori per altre lingue (fallback a ES)
+["en","it","fr","de","pt","ru"].forEach(k => { window.I18N[k] = window.I18N[k] || {}; });
+["fr","de","pt","ru"].forEach(k => { window.I18N[k] = Object.assign({}, window.I18N.es); });
 
-      gallery_title: "La Nostra Galleria",
-      gallery_intro: "Scopri i nostri piatti, cocktail, torte e caffè in un'esperienza visiva unica.",
-      filter_all: "Tutti", filter_platos: "Piatti", filter_cocktail: "Cocktail", filter_tartas: "Torte", filter_cafe: "Caffè",
+// ---- Storage helpers ----
+const LANG_KEYS = ["LANG","lang"];
+const FALLBACK_LANG = "es";
+const POPUP_NEVER_KEY = "i18n_popup_never";
 
-      menus_title: "I Nostri Menù", choose_menu: "Scegli un menù:",
-      prev: "Indietro", next: "Avanti",
-      iva_note: "Prezzi IVA inclusa · Ambiente familiare e casalingo",
+function getSavedLang(){
+  for (const k of LANG_KEYS){ const v = localStorage.getItem(k); if (v) return v.toLowerCase(); }
+  return null;
+}
+function saveLang(lang){ LANG_KEYS.forEach(k => localStorage.setItem(k, lang)); }
+function hasSavedLang(){ return !!getSavedLang(); }
 
-      ristorante_titolo: "Il nostro Ristorante",
-      promo_titolo: "Le nostre Promozioni",
-      promo_cubo_titolo: "Secchiello Birre",
-      promo_tardeo_titolo: "Promo Tardeo"
-    },
-    en: {
-      home_title: "La Casita del Nazareno Restaurant",
-      visitors: "👥 Visitors:",
-      analytics: "📊 Analytics",
-      main_menus: "🍽️ Menus",
-      main_restaurant: "🏠 The Restaurant",
-      main_gallery: "📸 Gallery",
-      faq_title: "❓ Frequently Asked Questions",
-      chat_title: "Chatbot",
-      chat_placeholder: "Type your message...",
-      send: "Send",
-      rate_q: "How would you rate our assistant?",
-      foot_rest: "Contact us - La Casita del Nazareno",
-      foot_men: "Contact us - Menuria",
+// ---- Stato ----
+window.currentLang = getSavedLang() || FALLBACK_LANG;
 
-      gallery_title: "Our Gallery",
-      gallery_intro: "Discover our dishes, cocktails, cakes and coffees in a unique visual experience.",
-      filter_all: "All", filter_platos: "Dishes", filter_cocktail: "Cocktails", filter_tartas: "Cakes", filter_cafe: "Coffees",
-
-      menus_title: "Our Menus", choose_menu: "Choose a menu:",
-      prev: "Prev", next: "Next",
-      iva_note: "VAT included · Cozy family atmosphere",
-
-      ristorante_titolo: "Our Restaurant",
-      promo_titolo: "Our Promotions",
-      promo_cubo_titolo: "Beer Bucket",
-      promo_tardeo_titolo: "Tardeo Promo"
-    }
-  };
-
-  function applyI18n(root = document) {
-    root.querySelectorAll("[data-i18n]").forEach(el => {
-      const key = el.getAttribute("data-i18n");
-      const txt = I18N[currentLang]?.[key] ?? I18N[fallbackLang]?.[key];
-      if (txt != null) {
-        if (el.tagName === "INPUT" && el.hasAttribute("placeholder")) el.placeholder = txt;
-        else el.innerText = txt;
-      }
-    });
-    // badge visitors/analytics se sono su una riga
-    const visLabel = document.getElementById("visitorLabel");
-    if (visLabel && visLabel.firstChild && visLabel.firstChild.nodeType === 3) {
-      visLabel.firstChild.textContent = (I18N[currentLang]?.visitors || I18N[fallbackLang].visitors) + " ";
-    }
-    const a = document.getElementById("analyticsLink");
-    if (a) a.textContent = I18N[currentLang]?.analytics || I18N[fallbackLang].analytics;
-  }
-
-  function setLanguage(lang) {
-    currentLang = (lang || fallbackLang).toLowerCase();
-    localStorage.setItem(LANG_KEY, currentLang);
-    applyI18n();
-  }
-
-  function bindFlags() {
-    document.querySelectorAll(".language-flags img[alt], .lang-switch img[alt]").forEach(img => {
-      img.addEventListener("click", () => setLanguage(img.alt));
-    });
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    bindFlags();
-    applyI18n();
+// ---- Apply & Flags ----
+function applyTranslations(){
+  const dict = (window.I18N?.[window.currentLang]) || window.I18N.es || {};
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    if (dict[key]) el.innerHTML = dict[key];
   });
+  document.documentElement.setAttribute("lang", window.currentLang);
+}
+function updateActiveFlags(){
+  const cur = window.currentLang;
+  document.querySelectorAll(".language-flags img, .flag-grid img").forEach(img => {
+    const alt = (img.getAttribute("alt") || "").toLowerCase();
+    const on = alt === cur;
+    img.classList.toggle("active", on);
+    img.classList.toggle("active-flag", on);
+  });
+}
 
-  // per popup iniziale
-  window.selectLanguagePopup = setLanguage;
+// ---- API pubblica ----
+function setLanguage(lang){
+  window.currentLang = (lang || FALLBACK_LANG).toLowerCase();
+  saveLang(window.currentLang);
+  applyTranslations();
+  updateActiveFlags();
+  const pop = document.getElementById("languagePopup");
+  if (pop) pop.style.display = "none";
+  try { window.onLanguageChange && window.onLanguageChange(window.currentLang); } catch(e){}
+}
+function selectLanguagePopup(lang){ setLanguage(lang); }
+
+window.setLanguage = setLanguage;
+window.selectLanguagePopup = selectLanguagePopup;
+
+// ---- Popup init ----
+function shouldShowLangPopup(){
+  const never = localStorage.getItem(POPUP_NEVER_KEY) === "true";
+  const force = new URLSearchParams(location.search).get("lang") === "select";
+  return force || (!hasSavedLang() && !never);
+}
+function initLangPopup(){
+  const pop = document.getElementById("languagePopup");
+  if (!pop) return;
+  pop.style.display = shouldShowLangPopup() ? "flex" : "none";
+  const cb = document.getElementById("neverShowLangPopup");
+  if (cb){
+    cb.checked = localStorage.getItem(POPUP_NEVER_KEY) === "true";
+    cb.addEventListener("change", e => {
+      localStorage.setItem(POPUP_NEVER_KEY, e.target.checked ? "true" : "false");
+    });
+  }
+}
+
+// ---- Boot ----
+document.addEventListener("DOMContentLoaded", () => {
+  initLangPopup();
+  applyTranslations();
+  updateActiveFlags();
+});
+// =====================================================================
+// --- PASTE PATCH IN i18n.js ---
+
+// consume 'force' solo una volta per pagina
+window._i18nForceConsumed = false;
+
+function clearLangForceFromURL() {
+  const url = new URL(window.location.href);
+  if (url.searchParams.has('lang')) {
+    url.searchParams.delete('lang'); // rimuovi ?lang=select
+    history.replaceState(null, '', url.toString());
+  }
+  if (url.searchParams.has('forcePopup')) {
+    url.searchParams.delete('forcePopup');
+    history.replaceState(null, '', url.toString());
+  }
+}
+
+function shouldShowLangPopup(){
+  const never = localStorage.getItem('i18n_popup_never') === 'true';
+  const hasLang = !!(localStorage.getItem('lang') || localStorage.getItem('LANG'));
+  const force = new URLSearchParams(location.search).get('lang') === 'select';
+  if (force && !_i18nForceConsumed) {
+    // lo mostri una sola volta; poi segna "consumato"
+    window._i18nForceConsumed = true;
+    return true;
+  }
+  return !hasLang && !never;
+}
+
+// CHIUSURA POPUP LINGUA (usala quando clicchi X o “Cerrar”)
+function closeLanguagePopupHard() {
+  const pop = document.getElementById('languagePopup');
+  if (pop) pop.style.display = 'none';
+  // se l’utente ha spuntato "non mostrare più", persistilo ora
+  const cb = document.getElementById('neverShowLangPopup');
+  if (cb && cb.checked) localStorage.setItem('i18n_popup_never', 'true');
+  // IMPORTANT: rimuovi il force dall’URL così non torna più
+  clearLangForceFromURL();
+}
+
+// override leggero della tua setLanguage: chiudi + pulisci URL + rispetta checkbox
+window.setLanguage = (function(prev){
+  return function(lang){
+    // chiama la precedente se esiste
+    if (typeof prev === 'function') try{ prev(lang); }catch(e){}
+    // rinforzo: chiudi e ripulisci URL
+    closeLanguagePopupHard();
+  };
+})(window.setLanguage);
+
+// se usi selectLanguagePopup nel markup, puntalo a setLanguage
+window.selectLanguagePopup = function(lang){ window.setLanguage(lang); };
+
+// inizializzazione sicura (una sola volta)
+document.addEventListener('DOMContentLoaded', () => {
+  const pop = document.getElementById('languagePopup');
+  if (pop) pop.style.display = shouldShowLangPopup() ? 'flex' : 'none';
+
+  // wire del checkbox
+  const cb = document.getElementById('neverShowLangPopup');
+  if (cb){
+    cb.checked = localStorage.getItem('i18n_popup_never') === 'true';
+    cb.addEventListener('change', e => {
+      localStorage.setItem('i18n_popup_never', e.target.checked ? 'true' : 'false');
+    });
+  }
+
+  // se il popup si è mostrato per "force", rimuovi il param dall’URL già ora
+  if (window._i18nForceConsumed) clearLangForceFromURL();
+});

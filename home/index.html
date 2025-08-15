@@ -1,65 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title id="pageTitle">Menuria One</title>
-    <link rel="stylesheet" href="home.css">
-    <link rel="icon" type="image/png" href="static/img/Menuria One Logo.jpg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="pageTitle">Menuria One</title>
+  <link rel="stylesheet" href="home.css">
+  <link rel="icon" type="image/png" href="static/img/Menuria One Logo.jpg">
 </head>
 <body>
-    <!-- 🌐 Popup di selezione lingua iniziale -->
-    <div id="languagePopup" class="popup-overlay">
-      <div class="popup-box">
-        <h2>🌐 Choose your language</h2>
-        <div class="flag-grid">
-          <img src="/static/img/flags/Spain-flag.png" alt="ES" onclick="selectLanguagePopup('es')">
-          <img src="/static/img/flags/UK-flag.png" alt="EN" onclick="selectLanguagePopup('en')">
-          <img src="/static/img/flags/Italy-flag.png" alt="IT" onclick="selectLanguagePopup('it')">
-          <img src="/static/img/flags/France-flag.png" alt="FR" onclick="selectLanguagePopup('fr')">
-          <img src="/static/img/flags/Germany-flag.png" alt="DE" onclick="selectLanguagePopup('de')">
-          <img src="/static/img/flags/Portugal-flag.png" alt="PT" onclick="selectLanguagePopup('pt')">
-          <img src="/static/img/flags/Russia-flag.png" alt="RU" onclick="selectLanguagePopup('ru')">
-        </div>
+  <!-- 🌐 Popup lingue -->
+<div id="languagePopup" class="popup-overlay" style="display:flex;">
+  <div class="popup-box">
+    <!--<h2 data-i18n="lang_popup_title">🌐 Elige tu idioma</h2>
+    <p data-i18n="lang_popup_choose">Selecciona tu idioma preferido para continuar.</p>-->
+    <h2 data-i18n="lang_popup_title">🌐 Select</h2>
+    <label style="display:flex;align-items:center;gap:8px;margin:8px 0;">
+  <input type="checkbox" id="neverShowLangPopup">
+  <span data-i18n="lang_never_again">never show again</span>
+</label>
+<button type="button" onclick="closeLanguagePopupHard()">Cerrar</button>
+
+    <div class="flag-grid">
+      <img src="/static/img/flags/Spain-flag.png"   alt="ES" onclick="selectLanguagePopup('es')">
+      <img src="/static/img/flags/UK-flag.png"      alt="EN" onclick="selectLanguagePopup('en')">
+      <img src="/static/img/flags/Italy-flag.png"   alt="IT" onclick="selectLanguagePopup('it')">
+      <img src="/static/img/flags/France-flag.png"  alt="FR" onclick="selectLanguagePopup('fr')">
+      <img src="/static/img/flags/Germany-flag.png" alt="DE" onclick="selectLanguagePopup('de')">
+      <img src="/static/img/flags/Portugal-flag.png"alt="PT" onclick="selectLanguagePopup('pt')">
+      <img src="/static/img/flags/Russia-flag.png"  alt="RU" onclick="selectLanguagePopup('ru')">
+    </div>
+  </div>
+</div>
+
+
+  <header class="top-header">
+    <div class="top-row">
+      <div class="left-section language-flags">
+        <img src="/static/img/flags/Spain-flag.png" alt="ES" onclick="setLanguage('es')" class="active">
+        <img src="/static/img/flags/UK-flag.png" alt="EN" onclick="setLanguage('en')">
+        <img src="/static/img/flags/Italy-flag.png" alt="IT" onclick="setLanguage('it')">
+        <img src="/static/img/flags/France-flag.png" alt="FR" onclick="setLanguage('fr')">
+        <img src="/static/img/flags/Germany-flag.png" alt="DE" onclick="setLanguage('de')">
+        <img src="/static/img/flags/Portugal-flag.png" alt="PT" onclick="setLanguage('pt')">
+        <img src="/static/img/flags/Russia-flag.png" alt="RU" onclick="setLanguage('ru')">
+      </div>
+
+      <div class="center-section">
+        <h1 id="titolo" data-i18n="home_title">Restaurante La Casita del Nazareno</h1>
+      </div>
+
+      <div class="header-right">
+        <!--<button class="lang-btn" onclick="openLanguagePopup()">🌐 Cambiar idioma</button>-->
+        <div id="visitorLabel" class="visitor-count" data-i18n="visitors">👥 Visitantes: <span id="visitorCounter">0</span></div>
+        <div class="analytics-link"><a href="/analytics.html" id="analyticsLink" target="_blank" data-i18n="analytics">📊 Analíticas</a></div>
       </div>
     </div>
-    <header class="top-header">
-        <div class="top-row">
-            <!-- Bandiere -->
-            <div class="left-section language-flags">
-                <img src="/static/img/flags/Spain-flag.png" alt="ES" onclick="setLanguage('es')" class="active">
-                <img src="/static/img/flags/UK-flag.png" alt="EN" onclick="setLanguage('en')">
-                <img src="/static/img/flags/Italy-flag.png" alt="IT" onclick="setLanguage('it')">
-                <img src="/static/img/flags/France-flag.png" alt="FR" onclick="setLanguage('fr')">
-                <img src="/static/img/flags/Germany-flag.png" alt="DE" onclick="setLanguage('de')">
-                <img src="/static/img/flags/Portugal-flag.png" alt="PT" onclick="setLanguage('pt')">
-                <img src="/static/img/flags/Russia-flag.png" alt="RU" onclick="setLanguage('ru')">
-            </div>
+  </header>
 
-            <!-- Titolo -->
-            <div class="center-section">
-                <h1 id="titolo" data-i18n="home_title">Restaurante La Casita del Nazareno</h1>
-            </div>
-
-            <!-- Visitors + Analytics -->
-            <div class="header-right">
-                <div id="visitorLabel" class="visitor-count" data-i18n="visitors">👥 Visitantes: <span id="visitorCounter">0</span></div>
-                <div class="analytics-link"><a href="/analytics.html" id="analyticsLink" target="_blank" data-i18n="analytics">📊 Analíticas</a></div>
-            </div>
-        </div>
-    </header>
-    <!-- Sezione Bottoni Principali -->
-    <div class="menu-gallery">
-        <div id="menuFrame1" class="menu-frame" onclick="window.location.href='/menus'">
-            <span data-i18n="main_menus">🍽️ Menù</span>
-        </div>
-        <div id="menuFrame2" class="menu-frame" onclick="window.location.href='/restaurant'">
-            <span data-i18n="main_restaurant">🏠 El Restaurante</span>
-        </div>
-        <div id="menuFrame3" class="menu-frame" onclick="window.location.href='/gallery'">
-            <span data-i18n="main_gallery">📸 La Galería</span>
-        </div>
+  <div class="menu-gallery">
+    <div id="menuFrame1" class="menu-frame" onclick="window.location.href='/menus'">
+      <span data-i18n="main_menus">🍽️ Menú</span>
     </div>
-    <!-- FAQ Carousel Nuovo -->
+    <div id="menuFrame2" class="menu-frame" onclick="window.location.href='/restaurant'">
+      <span data-i18n="main_restaurant">🏠 El Restaurante</span>
+    </div>
+    <div id="menuFrame3" class="menu-frame" onclick="window.location.href='/gallery'">
+      <span data-i18n="main_gallery">📸 La Galería</span>
+    </div>
+  </div>
+ <!-- FAQ Carousel Nuovo -->
     <section class="faq-carousel-section">
         <h2 id="faqTitle" data-i18n="faq_title">❓ Preguntas Frecuentes</h2>
 
@@ -187,9 +196,20 @@
             <a href="https://twitter.com">🐦</a>
         </div>
     </footer>
-
-    <script src="home.js"></script>
-    <script src="/static/js/i18n.js"></script>
-
+  <!-- Scripts: i18n PRIMA di home.js -->
+  <script src="/static/js/i18n.js"></script>
+  <script src="/home/home.js"></script>
 </body>
 </html>
+<script>
+  // Inicializar el contador de visitantes
+  let visitorCount = 0;
+
+  // Función para actualizar el contador de visitantes
+  function updateVisitorCount() {
+    visitorCount++;
+    document.getElementById('visitorCounter').textContent = visitorCount;
+  }
+
+  // Llamar a la función al cargar la página
+  window.onload = updateVisitorCount;

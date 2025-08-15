@@ -223,11 +223,11 @@ function toggleFAQSection() {
   if (chatWindow) chatWindow.classList.toggle("hidden");
 } */
 
-function openPDF(filename) {
+/*function openPDF(filename) {
   const lang = currentLanguage || "es";
   const path = `/static/menus/${lang}/${filename}`;
   window.open(path, '_blank');
-}
+}*/
 
 function ask(question) {
   appendMessage("👤", question);
@@ -246,7 +246,7 @@ function ask(question) {
     });
 }
 
-function loadMenuPreviews() {
+/*function loadMenuPreviews() {
   const lang = currentLanguage || "es";
   const langLabels = languageData[lang] || {};
   const menuItems = [
@@ -281,7 +281,7 @@ function loadMenuPreviews() {
     wrapper.appendChild(caption);
     gallery.appendChild(wrapper);
   });
-}
+}*/
 
 function showFaqCategory(category, btn){
   // Mostra/Nasconde i box FAQ
@@ -313,7 +313,7 @@ function selectLanguagePopup(lang) {
     currentLanguage = lang;
     loadLanguageContent();
     loadMenuPreviews();
-    document.getElementById("languagePopup").style.display = "none";
+    document.getElementById("languagePopup").style.display = "flex";
     showWelcomePopup();
   }
 
@@ -322,4 +322,14 @@ function showLanguagePopupOnLoad() {
     if (welcomePopup) welcomePopup.style.display = "none";
     const languagePopup = document.getElementById("languagePopup");
     if (languagePopup) languagePopup.style.display = "flex";
+};
+// Fallback no-op se non è stato definito altrove
+window.loadMenuPreviews = window.loadMenuPreviews || function(){
+  // opzionale: qui potremmo rigenerare le anteprime usando window.menus
+  // per ora basta evitare il crash.
+};
+
+// Se vuoi aggiornare le anteprime quando cambia lingua:
+window.onLanguageChange = window.onLanguageChange || function(){
+  try { window.loadMenuPreviews(); } catch(e){}
 };
