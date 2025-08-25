@@ -3,32 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Galería | Menuria</title>
-  <link rel="stylesheet" href="/gallery/gallery.css" />
+  <title>Gallery</title>
+
+  <!-- Font Awesome: DEVE stare in ogni pagina (o in un layout comune) -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- Stili/JS condivisi -->
+  <link rel="stylesheet" href="/static/css/header-footer.css">
+  <script src="/static/js/i18n.js"></script>
+  <script defer src="/static/js/header-footer.js"></script>
+
+  <!-- Stili/JS specifici della pagina -->
+  <link rel="stylesheet" href="/gallery/gallery.css">
+  <script defer src="/gallery/gallery.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css" />
   
 </head>
 <body>
-  <header class="top-header">
-  <div class="top-row">
-    <div class="left-section language-flags">
-      <img src="/static/img/flags/Spain-flag.png" alt="ES" onclick="setLanguage('es')" class="active">
-      <img src="/static/img/flags/UK-flag.png" alt="EN" onclick="setLanguage('en')">
-      <img src="/static/img/flags/Italy-flag.png" alt="IT" onclick="setLanguage('it')">
-      <img src="/static/img/flags/France-flag.png" alt="FR" onclick="setLanguage('fr')">
-      <img src="/static/img/flags/Germany-flag.png" alt="DE" onclick="setLanguage('de')">
-      <img src="/static/img/flags/Portugal-flag.png" alt="PT" onclick="setLanguage('pt')">
-      <img src="/static/img/flags/Russia-flag.png" alt="RU" onclick="setLanguage('ru')">
-    </div>
-    <div class="center-section">
-      <h1 class="titolo" data-i18n="home_title">Restaurante La Casita del Nazareno</h1>
-    </div>
-    <div class="right-section">
-  <a href="/home/index.html" class="home-button">🏠 Home</a>
-</div>
-  </div>
-</header>
-
+<div id="header-placeholder"></div>
 <section class="gallery-header">
   <h2 data-i18n="gallery_title">Nuestra Galería</h2>
   <p data-i18n="gallery_intro">Descubre nuestros platos, cócteles, tartas y cafés en una experiencia visual única.</p>
@@ -92,25 +85,19 @@
   <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script>
   <script src="/gallery/gallery.js"></script>
   <script src="/static/js/i18n.js"></script>
-
+<div id="footer-placeholder"></div>
 </body>
  <!-- Footer Ristorante -->
-    <footer class="restaurant-footer">
-        <h3 id="rFoot1" data-i18n="footer_restaurant_contact">Contactanos - Restaurante La Casita del Nazareno</h3>
-        <div class="social-links">
-            <a href="https://facebook.com">👍</a>
-            <a href="https://instagram.com">📸</a>
-            <a href="https://twitter.com">🐦</a>
-        </div>
-    </footer>
+<script src="/static/js/i18n.js"></script>
+ <script>
+Promise.all([
+  fetch("../templates/header.html").then(r => r.text()),
+  fetch("../templates/footer.html").then(r => r.text())
+]).then(([headerHtml, footerHtml]) => {
+  document.getElementById("header-placeholder").innerHTML = headerHtml;
+  document.getElementById("footer-placeholder").innerHTML = footerHtml;
 
-    <!-- Footer Menuria -->
-    <footer class="menuria-footer">
-        <h3 id="rFoot2" data-i18n="footer_menuria_contact">Contactanos - Menuria</h3>
-        <div class="social-links">
-            <a href="https://facebook.com">👍</a>
-            <a href="https://instagram.com">📸</a>
-            <a href="https://twitter.com">🐦</a>
-        </div>
-    </footer>
+  if (window.initHeader) window.initHeader();
+});
+</script>
 </html>

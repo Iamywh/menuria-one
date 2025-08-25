@@ -4,11 +4,17 @@ import os
 import json
 import datetime
 
-app = Flask(__name__, static_folder="static")
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+
+app = Flask(
+    __name__,
+    static_folder=os.path.join(BASE_DIR, "static"),
+    template_folder=os.path.join(BASE_DIR, "templates")
+)
+app.url_map.strict_slashes = False   # 👉 /home e /home/ sono equivalenti
 CORS(app)
 
 # === Percorsi dati
-BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 DATA_DIR = os.path.join(BASE_DIR, 'data')
 LANG_RESPONSES_DIR = os.path.join(DATA_DIR, 'lang_responses')
 COUNT_FILE = os.path.join(DATA_DIR, 'visitor_count.txt')
@@ -61,7 +67,7 @@ if not os.path.exists(FEEDBACK_LOG):
 # === Rotte principali statiche
 @app.route('/')
 def root():
-    return redirect('home/index.html')
+    return redirect('/home')
 
 @app.route('/gallery')
 def gallery():
@@ -75,10 +81,18 @@ def menus():
 def restaurant():
     return send_from_directory('restaurant', 'index.html')
 
+# ✅ Rotta generica: /home, /menus, /gallery, /restaurant
+@app.route('/<section>')
+@app.route('/<section>/')
+def section_index(section):
+    if section in ['home', 'restaurant', 'menus', 'gallery']:
+        return send_from_directory(section, 'index.html')
+    return "Not found", 404
+
 # === Rotte per servire CSS, JS, IMG da cartelle proprie
 @app.route('/<folder>/<path:filename>')
 def serve_static_folder_file(folder, filename):
-    allowed = ['home', 'gallery', 'menus', 'restaurant']
+    allowed = ['home', 'gallery', 'menus', 'restaurant', 'static', 'templates']
     if folder in allowed:
         return send_from_directory(folder, filename)
     return "Accesso negato", 403
@@ -162,7 +176,7 @@ def chat():
 
     return jsonify({'response': get_fallback(lang)})
 
-
+# === Analytics
 @app.route('/analytics')
 def analytics():
     token = request.args.get('token')

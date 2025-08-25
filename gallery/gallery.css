@@ -1,9 +1,30 @@
-/* HEADER TOP */
+/* === Header fix per mobile === */
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: nowrap; /* impedisce l'andare a capo */
+  overflow-x: auto;  /* evita rottura layout se troppo largo */
+}
+
+@media (max-width: 600px) {
+  .logo {
+    font-size: 1.3rem; /* più piccolo su smartphone */
+  }
+  .lang-switch img {
+    width: 22px;
+    height: 16px;
+  }
+}
+
+/* HEADER TOP 
 .top-header {
   width: 100%;
   background-color: #f6efe7;
   padding: 10px 20px;
-}
+}*/
 
 .top-row {
   display: grid;

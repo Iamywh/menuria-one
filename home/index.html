@@ -4,15 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title id="pageTitle">Menuria One</title>
-  <link rel="stylesheet" href="home.css">
-  <link rel="icon" type="image/png" href="static/img/Menuria One Logo.jpg">
+  <link rel="stylesheet" href="/home/home.css">
+  <link rel="icon" type="image/png" href="/static/img/Menuria One Logo.jpg">
+  <link rel="stylesheet" href="/static/css/header-footer.css">
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+  crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <script defer src="/static/js/header-footer.js"></script>
 </head>
 <body>
-  <!-- 🌐 Popup lingue -->
+  <!-- 🌐 Popup lingue 
 <div id="languagePopup" class="popup-overlay" style="display:flex;">
   <div class="popup-box">
-    <!--<h2 data-i18n="lang_popup_title">🌐 Elige tu idioma</h2>
-    <p data-i18n="lang_popup_choose">Selecciona tu idioma preferido para continuar.</p>-->
+    <h2 data-i18n="lang_popup_title">🌐 Elige tu idioma</h2>
+    <p data-i18n="lang_popup_choose">Selecciona tu idioma preferido para continuar.</p>
     <h2 data-i18n="lang_popup_title">🌐 Select</h2>
     <label style="display:flex;align-items:center;gap:8px;margin:8px 0;">
   <input type="checkbox" id="neverShowLangPopup">
@@ -50,14 +57,14 @@
       </div>
 
       <div class="header-right">
-        <!--<button class="lang-btn" onclick="openLanguagePopup()">🌐 Cambiar idioma</button>-->
+        <button class="lang-btn" onclick="openLanguagePopup()">🌐 Cambiar idioma</button>
         <div id="visitorLabel" class="visitor-count" data-i18n="visitors">👥 Visitantes: <span id="visitorCounter">0</span></div>
         <div class="analytics-link"><a href="/analytics.html" id="analyticsLink" target="_blank" data-i18n="analytics">📊 Analíticas</a></div>
       </div>
     </div>
-  </header>
-
-  <div class="menu-gallery">
+  </header> -->
+  <div id="header-placeholder"></div>
+  <!--<div class="menu-gallery">
     <div id="menuFrame1" class="menu-frame" onclick="window.location.href='/menus'">
       <span data-i18n="main_menus">🍽️ Menú</span>
     </div>
@@ -67,7 +74,7 @@
     <div id="menuFrame3" class="menu-frame" onclick="window.location.href='/gallery'">
       <span data-i18n="main_gallery">📸 La Galería</span>
     </div>
-  </div>
+  </div> -->
  <!-- FAQ Carousel Nuovo -->
     <section class="faq-carousel-section">
         <h2 id="faqTitle" data-i18n="faq_title">❓ Preguntas Frecuentes</h2>
@@ -176,8 +183,9 @@
             <span class="emoji emoji-sad" onclick="sendFeedback('sad')">😞</span>
         </div>
     </div>
-
-    <!-- Footer Ristorante -->
+    <div id="footer-placeholder"></div>
+ 
+    <!-- Footer Ristorante
     <footer class="restaurant-footer">
         <h3 id="rFoot1" data-i18n="footer_restaurant_contact">Contactanos - Restaurante La Casita del Nazareno</h3>
         <div class="social-links">
@@ -187,7 +195,7 @@
         </div>
     </footer>
 
-    <!-- Footer Menuria -->
+     Footer Menuria 
     <footer class="menuria-footer">
         <h3 id="rFoot2" data-i18n="footer_menuria_contact">Contactanos - Menuria</h3>
         <div class="social-links">
@@ -196,12 +204,25 @@
             <a href="https://twitter.com">🐦</a>
         </div>
     </footer>
-  <!-- Scripts: i18n PRIMA di home.js -->
+
+   Scripts: i18n PRIMA di home.js -->
   <script src="/static/js/i18n.js"></script>
   <script src="/home/home.js"></script>
+ <script>
+Promise.all([
+  fetch("../templates/header.html").then(r => r.text()),
+  fetch("../templates/footer.html").then(r => r.text())
+]).then(([headerHtml, footerHtml]) => {
+  document.getElementById("header-placeholder").innerHTML = headerHtml;
+  document.getElementById("footer-placeholder").innerHTML = footerHtml;
+
+  if (window.initHeader) window.initHeader();
+});
+</script>
+
 </body>
 </html>
-<script>
+<!--<script>
   // Inicializar el contador de visitantes
   let visitorCount = 0;
 
@@ -212,4 +233,4 @@
   }
 
   // Llamar a la función al cargar la página
-  window.onload = updateVisitorCount;
+  window.onload = updateVisitorCount; -->

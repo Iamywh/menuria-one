@@ -4,7 +4,7 @@ const OFFERS = [
     id: "of1",
     title_i18n: "rest_card1_title", // opzionale: se vuoi usare i18n
     title: "Cubo de Cerveza",
-    img: "static/img/galleries/Promos/promocubo.png",
+    img: "/static/img/galleries/Promos/promocubo.png",
     desc_i18n: "rest_card1_desc",
     desc: "5 cervezas frías en un cubo con hielo + 1/2 ración de nachos. Ideal para compartir con amigos en la terraza. ¡Refrescante y a buen precio!",
     price: "20,00 €",
@@ -14,10 +14,10 @@ const OFFERS = [
     id: "of2",
     title_i18n: "rest_card2_title", // opzionale: se vuoi usare i18n
     title: "Promo Tardeo",
-    img: "static/img/galleries/Promos/promotardeo.png",
+    img: "/static/img/galleries/Promos/promotardeo.png",
     desc_i18n: "rest_card2_desc",
     desc: "2 cócteles + 1/2 ración de nachos.<br> Perfecto para disfrutar de una tarde con amigos.",
-    price: "12,00 €",
+    price: "18,00 €",
     badge: "Tarde"
   }
  /* {
