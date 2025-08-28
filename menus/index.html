@@ -11,12 +11,24 @@
 
   <!-- Stili/JS condivisi -->
   <link rel="stylesheet" href="/static/css/header-footer.css">
-  <script src="/static/js/i18n.js"></script>
-  <script defer src="/static/js/header-footer.js"></script>
+<!-- 1) dizionari (se usi window.I18N inline, mettilo qui prima di i18n.js) -->
+<!-- <script>window.I18N = { es:{...}, en:{...}, ... };</script> -->
 
-  <!-- Stili/JS specifici della pagina -->
-  <link rel="stylesheet" href="/menus/menus.css">
-  <script defer src="/menus/menus.js"></script>
+<!-- 2) core i18n -->
+<script src="/i18n.js"></script>
+
+<!-- 3) eventuali utilities/ui usate da menus -->
+<script src="static/js/allergen_rules.js"></script>
+<script src="static/js/allergen_icons_ui.js"></script>
+
+<!-- 4) i dati dei menu (menus array) -->
+<script src="/menus/"></script>
+
+<!-- 5) il renderer di questa pagina -->
+<script src="menus/menus.js"></script>
+
+  <link rel="stylesheet" href="menus/menus.css">
+
 </head>
 <body>
   
@@ -33,7 +45,11 @@
       <div id="menu-grid" class="menu-grid-host" aria-label="Selezione rapida categorie"></div>
 
       <!-- 🔹 Filtri allergeni a icone -->
-      <div id="allergen-icons" class="allergen-icons-host" aria-label="Filtri allergeni"></div>
+      <div id="allergenBar" class="allergen-bar">
+      <div id="allergenFilters" class="badges"></div>
+        <button id="allergenReset" class="link-reset" type="button"></button>
+      </div>
+
 
       <!-- 🔹 Contenuto dei menu renderizzato -->
       <div id="menu-content"></div>
@@ -65,24 +81,13 @@
   <!-- Boot: griglia + icone + primo render -->
   <script>
 document.addEventListener('DOMContentLoaded', function(){
-  if (window.MenuUI && typeof MenuUI.renderMenuGrid === 'function') {
-    MenuUI.renderMenuGrid('menu-grid');
-  } else {
-    console.error('MenuUI mancante: controlla l’export in /menus/menus.js');
+  // ...
+  if (window.AllergenIcons?.mount) {
+    AllergenIcons.mount('allergenFilters','menu-content');
   }
-
-  if (window.AllergenIcons && typeof AllergenIcons.mount === 'function') {
-    AllergenIcons.mount('allergen-icons','menu-content');
-  }
-
-  // failsafe: se ancora vuoto, render completo senza filtri
-  setTimeout(function(){
-    if (!document.querySelector('#menu-content .menu-item') && window.MenuUI) {
-      MenuUI.renderMenus(window.menus || [], 'menu-content');
-    }
-  }, 0);
 });
 </script>
+
 
 
   <noscript>Per favore abilita JavaScript per visualizzare il menu.</noscript>

@@ -1,6 +1,6 @@
 window.menus = [
             {
-                title: { i18nKey: "menu_bebidas_title", default: "Menú de Bebidas" },
+                title: { i18nKey: "menu_bebidas_title", default: "Bebidas" },
                 bg: "#f4fbff",
                 accent: "#2b7da9",
                 note: { i18nKey: "menu_bebidas_note", default: "Refrescos, aguas y bebidas para todos los gustos." },
@@ -29,7 +29,7 @@ window.menus = [
                 ]
             },
             {
-                title: { i18nKey: "menu_cocktails_title", default: "Menú de Cocktails" },
+                title: { i18nKey: "menu_cocktails_title", default: "Cocktails" },
                 bg: "#222428",
                 accent: "#fff",
                 note: { i18nKey: "menu_cocktails_note", default: "Nuestros cócteles clásicos y modernos, preparados con pasión." },
@@ -57,7 +57,7 @@ window.menus = [
                 ]
             },
             {
-                title: { i18nKey: "menu_cafes", default: "Menú de Cafés" },
+                title: { i18nKey: "menu_cafes", default: "Cafés" },
                 bg: "#fff6e3",
                 accent: "#ba7b36",
                 note: { i18nKey: "menu_cafes_nota", default: "Cafés y especialidades calientes para cada momento del día." },
@@ -85,222 +85,224 @@ window.menus = [
                 ]
             },
             {
-                title: { i18nKey: "menu_batidos_titulo", default: "Menú de Batidos" },
+                title: { i18nKey: "menu_batidos_titulo", default: "Batidos" },
                 bg: "#efe3ff",
                 accent: "#aa70d0",
                 note: { i18nKey: "menu_batidos_nota", default: "Batidos frescos, cremosos y llenos de sabor." },
                 mode: "",
                 items: [
-                    { nombre: { i18nKey: "menu_batidos_oreo", default: "Oreo" }, ingredientes: {}, precio: "4,50 €" },
-                    { nombre: { i18nKey: "menu_batidos_chocolate", default: "Chocolate" }, ingredientes: {}, precio: "4,50 €" },
-                    { nombre: { i18nKey: "menu_batidos_vainilla", default: "Vainilla" }, ingredientes: {}, precio: "4,50 €" },
-                    { nombre: { i18nKey: "menu_batidos_fresa", default: "Fresa" }, ingredientes: {}, precio: "4,50 €" },
-                    { nombre: { i18nKey: "menu_batidos_mango", default: "Mango" }, ingredientes: {}, precio: "4,50 €" },
-                    { nombre: { i18nKey: "menu_batidos_gofio", default: "Gofio" }, ingredientes: {}, precio: "4,50 €" },
-                    { nombre: { i18nKey: "menu_batidos_frape_cafe", default: "Frapé de Café" }, ingredientes: {}, precio: "4,00 €" },
-                    { nombre: { i18nKey: "menu_batidos_frape_barraquito", default: "Frapé de Barraquito" }, ingredientes: {}, precio: "4,50 €" },
-                    { nombre: { i18nKey: "menu_batidos_frape_barraquito_especial", default: "Frapé de Barraquito Especial" }, ingredientes: {}, precio: "5,00 €" },
-                    { nombre: { i18nKey: "menu_batidos_frape_bayleis", default: "Frapé de Bayleis" }, ingredientes: {}, precio: "7,00 €" }
+                    { nombre: { i18nKey: "menu_batidos_oreo", default: "Oreo" }, ingredientes: {i18nKey: "menu_batidos_oreo_ing", default: "leche + helado de vainilla + galletas Oreo" }, precio: "4,50 €" },
+                    { nombre: { i18nKey: "menu_batidos_chocolate", default: "Chocolate" }, ingredientes: {i18nKey: "menu_batidos_chocolate_ing", default: "leche + helado de chocolate"}, precio: "4,50 €" },
+                    { nombre: { i18nKey: "menu_batidos_vainilla", default: "Vainilla" }, ingredientes: {i18nKey: "menu_batidos_vainilla_ing", default: "leche + helado de vainilla"}, precio: "4,50 €" },
+                    { nombre: { i18nKey: "menu_batidos_fresa", default: "Fresa" }, ingredientes: {i18nKey: "menu_batidos_fresa_ing", default: "leche + helado de fresa"}, precio: "4,50 €" },
+                    { nombre: { i18nKey: "menu_batidos_mango", default: "Mango" }, ingredientes: {i18nKey: "menu_batidos_mango_ing", default: "leche + mango + helado de vainilla"}, precio: "4,50 €" },
+                    { nombre: { i18nKey: "menu_batidos_gofio", default: "Gofio" }, ingredientes: {i18nKey: "menu_batidos_gofio_ing", default: "leche + gofio en polvo + helado de vainilla"}, precio: "4,50 €" },
+                    { nombre: { i18nKey: "menu_batidos_frape_cafe", default: "Frapé de Café" }, ingredientes: {i18nKey: "menu_batidos_frape_cafe_ing", default: "café + hielo + azúcar"}, precio: "4,00 €" },
+                    { nombre: { i18nKey: "menu_batidos_frape_barraquito", default: "Frapé de Barraquito" }, ingredientes: {i18nKey: "menu_batidos_frape_barraquito_ing", default: "café + leche + leche condensada + hielo"}, precio: "4,50 €" },
+                    { nombre: { i18nKey: "menu_batidos_frape_barraquito_especial", default: "Frapé de Barraquito Especial" }, ingredientes: {i18nKey: "menu_batidos_frape_barraquito_especial_ing", default: "café + leche + leche condensada + Licor 43 + hielo"}, precio: "5,00 €" },
+                    { nombre: { i18nKey: "menu_batidos_frape_bayleis", default: "Frapé de Bayleis" }, ingredientes: {i18nKey: "menu_batidos_frape_bayleis_ing", default: "café + Baileys + leche + hielo"}, precio: "7,00 €" }
                 ]
             },
             {
-                title: { i18nKey: "menu_smoothies_titulo", default: "Menú de Smoothies" },
+                title: { i18nKey: "menu_smoothies_titulo", default: "Smoothies" },
                 bg: "#d3f8e2",
                 accent: "#33a475",
                 note: { i18nKey: "menu_smoothies_nota", default: "Smoothies naturales con frutas y verduras frescas." },
                 mode: "",
                 items: [
-                    { nombre: { i18nKey: "menu_smoothies_berry_passion", default: "1. Berry Passion" }, ingredientes: "frambuesa, arándano, plátano", precio: "5,35 €" },
-                    { nombre: { i18nKey: "menu_smoothies_strawberry_split", default: "2. Strawberry Split" }, ingredientes: "fresa, cereza, plátano, papaya", precio: "5,35 €" },
-                    { nombre: { i18nKey: "menu_smoothies_jump_to_the_beet", default: "3. Jump to the Beet" }, ingredientes: "mango, remolacha, zanahoria", precio: "5,35 €" },
-                    { nombre: { i18nKey: "menu_smoothies_caribbean_kiss", default: "4. Caribbean Kiss" }, ingredientes: "melón, fresa, mango, limón", precio: "5,35 €" },
-                    { nombre: { i18nKey: "menu_smoothies_mango_paradise", default: "5. Mango Paradise" }, ingredientes: "mango, piña, maracuyá, limón", precio: "5,35 €" },
-                    { nombre: { i18nKey: "menu_smoothies_kiwi_cooler", default: "6. Kiwi Cooler" }, ingredientes: "melón, mango, piña, kiwi", precio: "5,35 €" },
-                    { nombre: { i18nKey: "menu_smoothies_papaya_sunrise", default: "7. Papaya Sunrise" }, ingredientes: "papaya, mango, piña, limón", precio: "5,35 €" },
-                    { nombre: { i18nKey: "menu_smoothies_tropi_colada", default: "8. Tropi Colada" }, ingredientes: "plátano, coco, piña", precio: "5,35 €" }
+                    { nombre: { i18nKey: "menu_smoothies_berry_passion", default: "1. Berry Passion" }, ingredientes: { i18nKey: "menu_smoothies_berry_passion_ing", default: "frambuesa, arándano, plátano" }, precio: "5,35 €" },
+                    { nombre: { i18nKey: "menu_smoothies_strawberry_split", default: "2. Strawberry Split" }, ingredientes: { i18nKey: "menu_smoothies_strawberry_split_ing", default: "fresa, cereza, plátano, papaya" }, precio: "5,35 €" },
+                    { nombre: { i18nKey: "menu_smoothies_jump_to_the_beet", default: "3. Jump to the Beet" }, ingredientes: { i18nKey: "menu_smoothies_jump_to_the_beet_ing", default: "mango, remolacha, zanahoria" }, precio: "5,35 €" },
+                    { nombre: { i18nKey: "menu_smoothies_caribbean_kiss", default: "4. Caribbean Kiss" }, ingredientes: { i18nKey: "menu_smoothies_caribbean_kiss_ing", default: "melón, fresa, mango, limón" }, precio: "5,35 €" },
+                    { nombre: { i18nKey: "menu_smoothies_mango_paradise", default: "5. Mango Paradise" }, ingredientes: { i18nKey: "menu_smoothies_mango_paradise_ing", default: "mango, piña, maracuyá, limón" }, precio: "5,35 €" },
+                    { nombre: { i18nKey: "menu_smoothies_kiwi_cooler", default: "6. Kiwi Cooler" }, ingredientes: { i18nKey: "menu_smoothies_kiwi_cooler_ing", default: "melón, mango, piña, kiwi" }, precio: "5,35 €" },
+                    { nombre: { i18nKey: "menu_smoothies_papaya_sunrise", default: "7. Papaya Sunrise" }, ingredientes: { i18nKey: "menu_smoothies_papaya_sunrise_ing", default: "papaya, mango, piña, limón" }, precio: "5,35 €" },
+                    { nombre: { i18nKey: "menu_smoothies_tropi_colada", default: "8. Tropi Colada" }, ingredientes: { i18nKey: "menu_smoothies_tropi_colada_ing", default: "plátano, coco, piña" }, precio: "5,35 €" }
                 ]
             },
             {
-                title: { i18nKey: "menu_zumos_naturales_titulo", default: "Menú de Zumos Naturales" },
+                title: { i18nKey: "menu_zumos_naturales_titulo", default: "Zumos Naturales" },
                 bg: "#f5ffe3",
                 accent: "#9ebe40",
                 note: { i18nKey: "menu_zumos_naturales_nota", default: "Zumos recién exprimidos, llenos de vitaminas." },
                 mode: "",
                 items: [
-                    { nombre: { i18nKey: "menu_zumos_naturales_limonada_casera", default: "Limonada casera" }, ingredientes: "", precio: "3,50 €" },
-                    { nombre: { i18nKey: "menu_zumos_naturales_zumo_de_naranja", default: "Zumo de naranja" }, ingredientes: "", precio: "4,50 €" },
-                    { nombre: { i18nKey: "menu_zumos_naturales_zumo_de_fresa", default: "Zumo de fresa" }, ingredientes: "", precio: "5,00 €" },
-                    { nombre: { i18nKey: "menu_zumos_naturales_zumo_de_mango", default: "Zumo de mango" }, ingredientes: "", precio: "5,00 €" },
-                    { nombre: { i18nKey: "menu_zumos_naturales_zumo_de_dos_frutas", default: "Zumo de 2 frutas" }, ingredientes: "", precio: "8,00 €" }
+                    { nombre: { i18nKey: "menu_zumos_naturales_limonada_casera", default: "Limonada casera" }, ingredientes: { i18nKey: "menu_zumos_naturales_limonada_casera_ing", default: "zumo de limón exprimido, azúcar liquido, agua con gas, hierba buena" }, precio: "3,50 €" },
+                    { nombre: { i18nKey: "menu_zumos_naturales_zumo_de_naranja", default: "Zumo de naranja" }, ingredientes: { i18nKey: "menu_zumos_naturales_zumo_de_naranja_ing", default: "con naranjas frescas exprimidas" }, precio: "4,50 €" },
+                    { nombre: { i18nKey: "menu_zumos_naturales_zumo_de_fresa", default: "Zumo de fresa" }, ingredientes: { i18nKey: "menu_zumos_naturales_zumo_de_fresa_ing", default: "" }, precio: "5,00 €" },
+                    { nombre: { i18nKey: "menu_zumos_naturales_zumo_de_mango", default: "Zumo de mango" }, ingredientes: { i18nKey: "menu_zumos_naturales_zumo_de_mango_ing", default: "" }, precio: "5,00 €" },
+                    { nombre: { i18nKey: "menu_zumos_naturales_zumo_de_dos_frutas", default: "Zumo de 2 frutas" }, ingredientes: { i18nKey: "menu_zumos_naturales_zumo_de_dos_frutas_ing", default: "mango/fresa, mango/naranja, fresa/naranja" }, precio: "8,00 €" }
                 ]
             },
             {
-                title: { i18nKey: "menu_entrantes_titulo", default: "Menú de Entrantes" },
+                title: { i18nKey: "menu_entrantes_titulo", default: "Entrantes" },
                 bg: "#fffaf4",
                 accent: "#2b7da9",
                 note: { i18nKey: "menu_entrantes_nota", default: "Pequeños placeres para empezar bien." },
                 mode: "",
                 items: [
-                    { nombre: { i18nKey: "menu_entrantes_saquitos", default: "Saquitos" }, ingredientes: "Langostino, manzana dulce, salsa teriyaki", precio: "2,90 €" },
-                    { nombre: { i18nKey: "menu_entrantes_croqueta_de_pollo", default: "Croqueta de pollo" }, ingredientes: "pollo y huancaina", precio: "1,90 €" },
-                    { nombre: { i18nKey: "menu_entrantes_croqueta_de_espinaca", default: "Croqueta de espinaca" }, ingredientes: "espinacas y almogrote", precio: "1,90 €" },
-                    { nombre: { i18nKey: "menu_entrantes_rollitos_de_pato", default: "Rollitos de pato" }, ingredientes: "pato confitado + salsa thai", precio: "11,90 €" },
-                    { nombre: { i18nKey: "menu_entrantes_rollitos_de_verdura", default: "Rollitos de verdura" }, ingredientes: "pimiento + zanahoria + salsa thai", precio: "11,60 €" },
-                    { nombre: { i18nKey: "menu_entrantes_ensaladilla_la_casita", default: "Ensaladilla la casita" }, ingredientes: "batata, ventresca, cebolla, langostinos salteados en salsa teriyaki", precio: "9,10 € / 13,90 €" },
-                    { nombre: { i18nKey: "menu_entrantes_nachos_la_casita", default: "Nachos la casita" }, ingredientes: "totopos, salsa cheddar, pico de gallo, judias, guacamole, jalapeños", precio: "8,70 € / 13,10 €" },
-                    { nombre: { i18nKey: "menu_entrantes_huevos_rotos_con_iberico", default: "Huevos rotos con Ibérico" }, ingredientes: "huevos + iberico + papas", precio: "14,30 €" },
-                    { nombre: { i18nKey: "menu_entrantes_ceviche_de_langostinos", default: "Ceviche de Langostinos" }, ingredientes: "langostinos + leche de tigre + mango + millo + cebolla roja", precio: "14,10 €" }
+                    { nombre: { i18nKey: "menu_entrantes_saquitos", default: "Saquitos" }, ingredientes: { i18nKey: "menu_entrantes_saquitos_ing", default: "langostino, manzana dulce, salsa teriyaki" }, precio: "2,90 €" },
+                    { nombre: { i18nKey: "menu_entrantes_croqueta_de_pollo", default: "Croqueta de pollo" }, ingredientes: { i18nKey: "menu_entrantes_croqueta_de_pollo_ing", default: "pollo, salsa huancaína" }, precio: "1,90 €" },
+                    { nombre: { i18nKey: "menu_entrantes_croqueta_de_espinaca", default: "Croqueta de espinaca" }, ingredientes: { i18nKey: "menu_entrantes_croqueta_de_espinaca_ing", default: "espinacas, almogrote" }, precio: "1,90 €" },
+                    { nombre: { i18nKey: "menu_entrantes_rollitos_de_pato", default: "Rollitos de pato" }, ingredientes: { i18nKey: "menu_entrantes_rollitos_de_pato_ing", default: "pato confitado, salsa thai" }, precio: "11,90 €" },
+                    { nombre: { i18nKey: "menu_entrantes_rollitos_de_verdura", default: "Rollitos de verdura" }, ingredientes: { i18nKey: "menu_entrantes_rollitos_de_verdura_ing", default: "pimiento, zanahoria, salsa thai" }, precio: "11,60 €" },
+                    { nombre: { i18nKey: "menu_entrantes_ensaladilla_la_casita", default: "Ensaladilla La Casita" }, ingredientes: { i18nKey: "menu_entrantes_ensaladilla_la_casita_ing", default: "batata, ventresca, cebolla, langostinos salteados en salsa teriyaki" }, precio: "9,10 € / 13,90 €" },
+                    { nombre: { i18nKey: "menu_entrantes_nachos_la_casita", default: "Nachos La Casita" }, ingredientes: { i18nKey: "menu_entrantes_nachos_la_casita_ing", default: "totopos, salsa cheddar, pico de gallo, judías, guacamole, jalapeños" }, precio: "8,70 € / 13,10 €" },
+                    { nombre: { i18nKey: "menu_entrantes_huevos_rotos_con_iberico", default: "Huevos rotos con Ibérico" }, ingredientes: { i18nKey: "menu_entrantes_huevos_rotos_con_iberico_ing", default: "huevos fritos, patatas, jamón ibérico" }, precio: "14,30 €" },
+                    { nombre: { i18nKey: "menu_entrantes_ceviche_de_langostinos", default: "Ceviche de langostinos" }, ingredientes: { i18nKey: "menu_entrantes_ceviche_de_langostinos_ing", default: "langostinos, leche de tigre, mango, millo, cebolla roja" }, precio: "14,10 €" }
                 ]
-            },
-            {
-                title: { i18nKey: "menu_tostas", default: "Menú de Tostas" },
+}
+,
+{
+                title: { i18nKey: "menu_tostas", default: "Tostas" },
                 bg: "#f3f9f3",
                 accent: "#438c4a",
                 note: { i18nKey: "menu_tostas_nota", default: "Rebanadas creativas, sabrosas y ligeras." },
                 mode: "",
                 items: [
-                    { nombre: { i18nKey: "menu_tostas_champinones", default: "Champiñones" }, ingredientes: "champiñones, calabacines, cebolla caramelizada, tomate cherry", precio: "11,40 €" },
-                    { nombre: { i18nKey: "menu_tostas_mozzarella", default: "Mozzarella" }, ingredientes: "mozzarella, tomate seco, albahaca, aceite de oliva virgen extra", precio: "11,80 €" },
-                    { nombre: { i18nKey: "menu_tostas_salmon", default: "Salmón" }, ingredientes: "salmón ahumado, salsa tártara, arucula", precio: "12,60 €" },
-                    { nombre: { i18nKey: "menu_tostas_solomillo", default: "Solomillo" }, ingredientes: "solomillo de ternera sobre una crema de pimientos dulces con cebolla caramelizada y escamas de queso", precio: "13,10 €" }
+                    { nombre: { i18nKey: "menu_tostas_champinones", default: "Champiñones" }, ingredientes: { i18nKey: "menu_tostas_champinones_ing", default: "champiñones, calabacines, cebolla caramelizada, tomate cherry" }, precio: "11,40 €" },
+                    { nombre: { i18nKey: "menu_tostas_mozzarella", default: "Mozzarella" }, ingredientes: { i18nKey: "menu_tostas_mozzarella_ing", default: "mozzarella, tomate seco, albahaca, aceite de oliva virgen extra" }, precio: "11,80 €" },
+                    { nombre: { i18nKey: "menu_tostas_salmon", default: "Salmón" }, ingredientes: { i18nKey: "menu_tostas_salmon_ing", default: "salmón ahumado, salsa tártara, rúcula" }, precio: "12,60 €" },
+                    { nombre: { i18nKey: "menu_tostas_solomillo", default: "Solomillo" }, ingredientes: { i18nKey: "menu_tostas_solomillo_ing", default: "solomillo de ternera sobre una crema de pimientos dulces con cebolla caramelizada y escamas de queso" }, precio: "13,10 €" }
                 ]
-            },
+}
+,
             {
-                title: { i18nKey: "menu_ensaladas", default: "Menú de Ensaladas" },
+                title: { i18nKey: "menu_ensaladas", default: "Ensaladas" },
                 bg: "#e5f5f8",
                 accent: "#298da8",
                 note: { i18nKey: "menu_ensaladas_nota", default: "Frescas, saludables y llenas de color." },
                 mode: "",
                 items: [
-                    { nombre: { i18nKey: "menu_ensaladas_el_chef", default: "El chef" }, ingredientes: "ventresca, vinagreta de mango, mix de lechuga, cebolla roja, tomates cherry", precio: "12,10 €" },
-                    { nombre: { i18nKey: "menu_ensaladas_la_jefa", default: "La Jefa" }, ingredientes: "rodajas de tomate con aceite de oliva virgen, mozzarella, sal, tomillo, pan tostado", precio: "12,10 €" },
-                    { nombre: { i18nKey: "menu_ensaladas_de_pollo", default: "De pollo" }, ingredientes: "tiras de pollo crujiente, mix de lechuga, parmesano, picatostes, cebolla morada y tomates cherry, salsa cesar", precio: "13,70 €" },
-                    { nombre: { i18nKey: "menu_ensaladas_thai", default: "Ensalada Thai" }, ingredientes: "langostinos, mix de lechuga, tomates cherry, fideos de arroz, cacahuetes, cebolla morada, vinagreta agripicante", precio: "14,10 €" },
-                    { nombre: { i18nKey: "menu_ensaladas_ahumados", default: "Ensalada ahumados" }, ingredientes: "salmón, atun, pez mantequilla ahumados, mix de lechugas, tomate cherry, cebolla, vinagreta de limon y cilantros", precio: "14,80 €" }
+                    { nombre: { i18nKey: "menu_ensaladas_el_chef", default: "El chef" }, ingredientes: { i18nKey: "menu_ensaladas_el_chef_ing", default: "ventresca, vinagreta de mango, mix de lechuga, cebolla roja, tomates cherry"}, precio: "12,10 €" },
+                    { nombre: { i18nKey: "menu_ensaladas_la_jefa", default: "La Jefa" }, ingredientes: { i18nKey: "menu_ensaladas_la_jefa_ing", default: "rodajas de tomate con aceite de oliva virgen, mozzarella, sal, tomillo, pan tostado"}, precio: "12,10 €" },
+                    { nombre: { i18nKey: "menu_ensaladas_de_pollo", default: "De pollo" }, ingredientes: { i18nKey: "menu_ensaladas_de_pollo_ing", default: "tiras de pollo crujiente, mix de lechuga, parmesano, picatostes, cebolla morada y tomates cherry, salsa cesar"}, precio: "13,70 €" },
+                    { nombre: { i18nKey: "menu_ensaladas_thai", default: "Ensalada Thai" }, ingredientes: { i18nKey: "menu_ensaladas_thai_ing", default: "langostinos, mix de lechuga, tomates cherry, fideos de arroz, cacahuetes, cebolla morada, vinagreta agripicante"}, precio: "14,10 €" },
+                    { nombre: { i18nKey: "menu_ensaladas_ahumados", default: "Ensalada ahumados" }, ingredientes: { i18nKey: "menu_ensaladas_ahumados_ing", default: "salmón, atun, pez mantequilla ahumados, mix de lechugas, tomate cherry, cebolla, vinagreta de limon y cilantros"}, precio: "14,80 €" }
                 ]
             },
             {
-                title: { i18nKey: "menu_burgers", default: "Menú de Burgers" },
+                title: { i18nKey: "menu_burgers", default: "Burgers" },
                 bg: "#fdf2e9",
                 accent: "#b3541e",
                 note: { i18nKey: "menu_burgers_nota", default: "Jugosas y caseras, hechas con amor." },
                 mode: "",
                 items: [
-                    { nombre: { i18nKey: "menu_burgers_calabacin", default: "Calabacín" }, ingredientes: "calabacin empanado en frutos secos, rucula, tomates secos, mayonesa de wasabi, cebolla caramelizada, papas fritas", precio: "13,10 €" },
-                    { nombre: { i18nKey: "menu_burgers_ternera", default: "Ternera" }, ingredientes: "ternera 170gr, pimiento piquillo, rucula, cebolla caramelizada, mayonesa de eneldo, papas fritas", precio: "14,10 €" },
-                    { nombre: { i18nKey: "menu_burgers_tradicional", default: "Tradicional" }, ingredientes: "ternera 170gr, cebolla morada, mix de lechuga, tomate natural, alioli casero, papas fritas", precio: "13,50 €" },
-                    { nombre: { i18nKey: "menu_burgers_de_pollo", default: "de Pollo" }, ingredientes: "pollo de corral crujiente, cebolla morada, mix de lechuga, tomate natural, alioli casero, papas fritas", precio: "13,30 €" }
+                    { nombre: { i18nKey: "menu_burgers_calabacin", default: "Calabacín" }, ingredientes: { i18nKey: "menu_burgers_calabacin_ing", default: "calabacin empanado en frutos secos, rucula, tomates secos, mayonesa de wasabi, cebolla caramelizada, papas fritas"}, precio: "13,10 €" },
+                    { nombre: { i18nKey: "menu_burgers_ternera", default: "Ternera" }, ingredientes: { i18nKey: "menu_burgers_ternera_ing", default: "ternera 170gr, pimiento piquillo, rucula, cebolla caramelizada, mayonesa de eneldo, papas fritas"}, precio: "14,10 €" },
+                    { nombre: { i18nKey: "menu_burgers_tradicional", default: "Tradicional" }, ingredientes: { i18nKey: "menu_burgers_tradicional_ing", default: "ternera 170gr, cebolla morada, mix de lechuga, tomate natural, alioli casero, papas fritas"}, precio: "13,50 €" },
+                    { nombre: { i18nKey: "menu_burgers_de_pollo", default: "de Pollo" }, ingredientes: { i18nKey: "menu_burgers_de_pollo_ing", default: "pollo de corral crujiente, cebolla morada, mix de lechuga, tomate natural, alioli casero, papas fritas"}, precio: "13,30 €" }
                 ]
             },
             {
-                title: { i18nKey: "menu_wok", default: "Menú de Wok" },
+                title: { i18nKey: "menu_wok", default: "Woks" },
                 bg: "#f9f6f1",
                 accent: "#8d4c96",
                 note: { i18nKey: "menu_wok_nota", default: "Salteados al momento, fusión de sabores." },
                 mode: "",
                 items: [
-                    { nombre: { i18nKey: "menu_wok_verduras", default: "Verduras" }, ingredientes: "salteado de verduras, salsa teriyaki, noodles de arroz", precio: "13,80 €" },
-                    { nombre: { i18nKey: "menu_wok_pollo", default: "Pollo" }, ingredientes: "salteado de verduras, salsa teriyaki, noodles de arroz, pollo crujiente", precio: "14,20 €" },
-                    { nombre: { i18nKey: "menu_wok_langostinos", default: "Langostinos" }, ingredientes: "salteado de verduras, salsa teriyaki, noodles de arroz, langostino salteado en salsa teriyaki", precio: "14,70 €" },
-                    { nombre: { i18nKey: "menu_wok_ternera", default: "Ternera" }, ingredientes: "salteado de verduras, salsa teriyaki, noodles de arroz, solomillo de ternera", precio: "15,10 €" }
+                    { nombre: { i18nKey: "menu_wok_verduras", default: "Verduras" }, ingredientes: {i18nKey: "menu_wok_verduras_ing", default: "salteado de verduras, salsa teriyaki, noodles de arroz"}, precio: "13,80 €" },
+                    { nombre: { i18nKey: "menu_wok_pollo", default: "Pollo" }, ingredientes: {i18nKey: "menu_wok_pollo_ing", default: "salteado de verduras, salsa teriyaki, noodles de arroz, pollo crujiente"}, precio: "14,20 €" },
+                    { nombre: { i18nKey: "menu_wok_langostinos", default: "Langostinos" }, ingredientes: {i18nKey: "menu_wok_langostinos_ing", default: "salteado de verduras, salsa teriyaki, noodles de arroz, langostino salteado en salsa teriyaki"}, precio: "14,70 €" },
+                    { nombre: { i18nKey: "menu_wok_ternera", default: "Ternera" }, ingredientes: {i18nKey: "menu_wok_ternera_ing", default: "salteado de verduras, salsa teriyaki, noodles de arroz, solomillo de ternera"}, precio: "15,10 €" }
                 ]
             },
             {
-                title: { i18nKey: "menu_platos_carne", default: "Menú de Platos de carne" },
+                title: { i18nKey: "menu_platos_carne", default: "Platos de carne" },
                 bg: "#fae5e9",
                 accent: "#aa2d45",
                 note: { i18nKey: "menu_platos_carne_nota", default: "Sabores intensos y texturas únicas." },
                 mode: "",
                 items: [
-                    { nombre: { i18nKey: "menu_platos_carne_huevos_rotos", default: "Huevos rotos con Ibérico" }, ingredientes: "huevos + iberico + papas", precio: "14,30 €" },
-                    { nombre: { i18nKey: "menu_platos_carne_ternera_anticucho", default: "Ternera Anticucho" }, ingredientes: "ternera salteada en salsa anticucho, papas negras, tomate cherry, manzana", precio: "15,90 €" },
-                    { nombre: { i18nKey: "menu_platos_carne_arroz_frito", default: "Arroz frito con ternera" }, ingredientes: "arroz frito, verduras salteadas, ternera, salsa de ostras, aceite de sésamo, huevo frito", precio: "14,60 €" },
-                    { nombre: { i18nKey: "menu_platos_carne_poke_bowl", default: "Poke bowl mexicano" }, ingredientes: "arroz basmati, pollo de corral marinado en chipotle, pico de gallo, guacamole, frijoles negros, cilantro, chips de plátano", precio: "13,70 €" },
-                    { nombre: { i18nKey: "menu_platos_carne_opcion_infantil", default: "Opción infantil" }, ingredientes: "pollo crujiente, papas fritas", precio: "12,90 €" }
+                    { nombre: { i18nKey: "menu_platos_carne_huevos_rotos", default: "Huevos rotos con Ibérico" }, ingredientes: {i18nKey: "menu_platos_carne_huevos_rotos_ing", default: "huevos + iberico + papas"}, precio: "14,30 €" },
+                    { nombre: { i18nKey: "menu_platos_carne_ternera_anticucho", default: "Ternera Anticucho" }, ingredientes: {i18nKey: "menu_platos_carne_ternera_anticucho_ing", default: "ternera salteada en salsa anticucho, papas negras, tomate cherry, manzana"}, precio: "15,90 €" },
+                    { nombre: { i18nKey: "menu_platos_carne_arroz_frito", default: "Arroz frito con ternera" }, ingredientes: {i18nKey: "menu_platos_carne_arroz_frito_ing", default: "arroz frito, verduras salteadas, ternera, salsa de ostras, aceite de sésamo, huevo frito"}, precio: "14,60 €" },
+                    { nombre: { i18nKey: "menu_platos_carne_poke_bowl", default: "Poke bowl mexicano" }, ingredientes: {i18nKey: "menu_platos_carne_poke_bowl_ing", default: "arroz basmati, pollo de corral marinado en chipotle, pico de gallo, guacamole, frijoles negros, cilantro, chips de plátano"}, precio: "13,70 €" },
+                    { nombre: { i18nKey: "menu_platos_carne_opcion_infantil", default: "Opción infantil" }, ingredientes: {i18nKey: "menu_platos_carne_opcion_infantil_ing", default: "pollo crujiente, papas fritas"}, precio: "12,90 €" }
                 ]
             },
             {
-                title: { i18nKey: "menu_tartas", default: "Menú de Tartas" },
+                title: { i18nKey: "menu_tartas", default: "Tartas" },
                 bg: "#b4a7d6",
                 accent: "#6a329f",
                 note: { i18nKey: "menu_tartas_nota", default: "Sabores dulces y texturas suaves." },
                 mode: "",
                 items: [
-                    { nombre: { i18nKey: "menu_tartas_maria_victoria", default: "Tarta Maria Victoria" }, ingredientes: "Fondo de Galleta, custard de limón, merenque flambeado", precio: "4,50 €" },
-                    { nombre: { i18nKey: "menu_tartas_guinness", default: "Tarta Guinness" }, ingredientes: "bizcocho de cacao 70% y cerveza Guinness, crema de queso, nata dulce", precio: "4,50 €" },
-                    { nombre: { i18nKey: "menu_tartas_baileys", default: "Tarta Baileys" }, ingredientes: "bizcocho de Baileys, crema de queso, chocolate y cafe", precio: "4,50 €" },
-                    { nombre: { i18nKey: "menu_tartas_choco_velvet", default: "Tarta Choco Velvet" }, ingredientes: "bizcocho de chocolate, crema de queso y chocolate blanco, chocolate negro", precio: "4,50 €" },
-                    { nombre: { i18nKey: "menu_tartas_red_velvet", default: "Tarta Red Velvet" }, ingredientes: "bizcocho de chocolate y red velvet, crema de queso y chocolate blanco", precio: "4,50 €" },
-                    { nombre: { i18nKey: "menu_tartas_blue_velvet", default: "Tarta Blue Velvet" }, ingredientes: "bizcocho de chocolate y blue velvet, crema de queso y chocolate blanco", precio: "4,50 €" },
-                    { nombre: { i18nKey: "menu_tartas_ferrero", default: "Tarta Ferrero" }, ingredientes: "bizcocho de chocolate, crema de queso y avellanas, avellanas trituradas", precio: "4,50 €" },
-                    { nombre: { i18nKey: "menu_tartas_kinder", default: "Tarta Kinder" }, ingredientes: "bizcocho de chocolate, crema de queso y chocolate blanco, trozos de kinder", precio: "4,50 €" },
-                    { nombre: { i18nKey: "menu_tartas_zanahoria", default: "Tarta Zanahoria y Especias" }, ingredientes: "bizcocho de zanahoria, especias, crema de queso", precio: "4,50 €" },
-                    { nombre: { i18nKey: "menu_tartas_calabaza", default: "Tarta de Calabaza y Especias" }, ingredientes: "bizcocho de calabaza, nuez, crema de queso", precio: "4,50 €" },
-                    { nombre: { i18nKey: "menu_tartas_gofio", default: "Tarta de Gofio y Naranja" }, ingredientes: "bizcocho de gofio, naranja, crema de queso y gofio", precio: "4,50 €" },
-                    { nombre: { i18nKey: "menu_tartas_manzana", default: "Tarta de Manzana" }, ingredientes: "bizcocho de manzana, canela, crema de queso", precio: "4,50 €" },
-                    { nombre: { i18nKey: "menu_tartas_maracuya", default: "Tarta de Maracuyá" }, ingredientes: "bizcocho de maracuyá, crema de queso y maracuyá", precio: "4,50 €" },
-                    { nombre: { i18nKey: "menu_tartas_yuzu", default: "Tarta de Yuzu" }, ingredientes: "bizcocho de yuzu, crema de queso y yuzu", precio: "4,50 €" },
-                    { nombre: { i18nKey: "menu_tartas_colibri", default: "Tarta Colibrí" }, ingredientes: "bizcocho de piña, platano y nueces, crema de queso y coco, coco rallado", precio: "4,50 €" },
-                    { nombre: { i18nKey: "menu_tartas_chocoframuesa", default: "Tarta de ChocoFrambuesa" }, ingredientes: "bizcocho de cacao 70%, crema de queso y frambuesa", precio: "4,50 €" },
-                    { nombre: { i18nKey: "menu_tartas_oreo", default: "Tarta de Oreo" }, ingredientes: "bizcocho de cacao 70%, crema de queso y galletas Oreo", precio: "4,50 €" },
-                    { nombre: { i18nKey: "menu_tartas_cheesecake", default: "Cheese Cake" }, ingredientes: "tarta de queso, bola de helado vainilla", precio: "4,50 €" },
-                    { nombre: { i18nKey: "menu_tartas_pistacho", default: "Pie de Pistacho" }, ingredientes: "fondo de galleta, mousse de pistacho, crema de queso, chocolate", precio: "4,50 €" },
-                    { nombre: { i18nKey: "menu_bizcochon", default: "Angel's food" }, ingredientes: "bizcocho de vainilla, clara de huevo, azúcar", precio: "2,80 €" },
-                    { nombre: { i18nKey: "menu_bizcochon_coco", default: "Bizcochón de coco" }, ingredientes: "Bizcocho de coco, clara de huevo, azúcar", precio: "2,80 €" },
-                    { nombre: { i18nKey: "menu_cookie_platano", default: "Cookie de gotas de chocolate" }, ingredientes: "Platano, avena, gotas de chocolate", precio: "2,50 €" },
-                    { nombre: { i18nKey: "menu_cookie_red_velvet", default: "Cookie Red Velvet" }, ingredientes: "cookie de chocolate y red velvet", precio: "2,50 €" },
-                    { nombre: { i18nKey: "menu_cookie_choco", default: "Cookie de Chocolate" }, ingredientes: "cookie de chocolate 70% y gotas de chocolate", precio: "2,50 €" },
-                    { nombre: { i18nKey: "menu_cookie_pistacho", default: "Cookie de Pistacho" }, ingredientes: "cookie de pistacho y chocolate blanco", precio: "2,50 €" },
-                    { nombre: { i18nKey: "menu_cinnamon", default: "Cinnamon Roll" }, ingredientes: "Rollito dulce de masa esponjosa, relleno de canela y azúcar, cubierto con glaseado.", precio: "2,80 €" },
-                    { nombre: { i18nKey: "menu_brownie_choco", default: "Brownie de Chocolate" }, ingredientes: "Brownie de chocolate intenso, con textura jugosa y corazón fundente.", precio: "2,80 €" },
-                    { nombre: { i18nKey: "menu_brownie_blanco", default: "Brownie de Chocolate Blanco" }, ingredientes: "Brownie de chocolate blanco, con textura cremosa y sabor suave.", precio: "2,80 €" }
+                    { nombre: { i18nKey: "menu_tartas_maria_victoria", default: "Tarta Maria Victoria" }, ingredientes: {i18nKey: "menu_tartas_maria_victoria_ing", default: "Fondo de Galleta, custard de limón, merenque flambeado"}, precio: "4,50 €" },
+                    { nombre: { i18nKey: "menu_tartas_guinness", default: "Tarta Guinness" }, ingredientes: {i18nKey: "menu_tartas_guinness_ing", default: "bizcocho de cacao 70% y cerveza Guinness, crema de queso, nata dulce"}, precio: "4,50 €" },
+                    { nombre: { i18nKey: "menu_tartas_baileys", default: "Tarta Baileys" }, ingredientes: {i18nKey: "menu_tartas_baileys_ing", default: "bizcocho de Baileys, crema de queso, chocolate y cafe"}, precio: "4,50 €" },
+                    { nombre: { i18nKey: "menu_tartas_choco_velvet", default: "Tarta Choco Velvet" }, ingredientes: {i18nKey: "menu_tartas_choco_velvet_ing", default: "bizcocho de chocolate, crema de queso y chocolate blanco, chocolate negro"}, precio: "4,50 €" },
+                    { nombre: { i18nKey: "menu_tartas_red_velvet", default: "Tarta Red Velvet" }, ingredientes: {i18nKey: "menu_tartas_red_velvet_ing", default: "bizcocho de chocolate y red velvet, crema de queso y chocolate blanco"}, precio: "4,50 €" },
+                    { nombre: { i18nKey: "menu_tartas_blue_velvet", default: "Tarta Blue Velvet" }, ingredientes: {i18nKey: "menu_tartas_blue_velvet_ing", default: "bizcocho de chocolate y blue velvet, crema de queso y chocolate blanco"}, precio: "4,50 €" },
+                    { nombre: { i18nKey: "menu_tartas_ferrero", default: "Tarta Ferrero" }, ingredientes: { i18nKey: "menu_tartas_ferrero_ing", default: "bizcocho de chocolate, crema de queso y avellanas, avellanas trituradas"}, precio: "4,50 €" },
+                    { nombre: { i18nKey: "menu_tartas_kinder", default: "Tarta Kinder" }, ingredientes: {i18nKey: "menu_tartas_kinder_ing", default: "bizcocho de chocolate, crema de queso y chocolate blanco, trozos de kinder"}, precio: "4,50 €" },
+                    { nombre: { i18nKey: "menu_tartas_zanahoria", default: "Tarta Zanahoria y Especias" }, ingredientes: {i18nKey: "menu_tartas_zanahoria_ing", default: "bizcocho de zanahoria, especias, crema de queso"}, precio: "4,50 €" },
+                    { nombre: { i18nKey: "menu_tartas_calabaza", default: "Tarta de Calabaza y Especias" }, ingredientes: {i18nKey: "menu_tartas_calabaza_ing", default: "bizcocho de calabaza, nuez, crema de queso"}, precio: "4,50 €" },
+                    { nombre: { i18nKey: "menu_tartas_gofio", default: "Tarta de Gofio y Naranja" }, ingredientes: {i18nKey: "menu_tartas_gofio_ing", default: "bizcocho de gofio, naranja, crema de queso y gofio"}, precio: "4,50 €" },
+                    { nombre: { i18nKey: "menu_tartas_manzana", default: "Tarta de Manzana" }, ingredientes: {i18nKey: "menu_tartas_manzana_ing", default: "bizcocho de manzana, canela, crema de queso"}, precio: "4,50 €" },
+                    { nombre: { i18nKey: "menu_tartas_maracuya", default: "Tarta de Maracuyá" }, ingredientes: {i18nKey: "menu_tartas_maracuya_ing", default: "bizcocho de maracuyá, crema de queso y maracuyá"}, precio: "4,50 €" },
+                    { nombre: { i18nKey: "menu_tartas_yuzu", default: "Tarta de Yuzu" }, ingredientes: {i18nKey: "menu_tartas_yuzu_ing", default: "bizcocho de yuzu, crema de queso y yuzu"}, precio: "4,50 €" },
+                    { nombre: { i18nKey: "menu_tartas_colibri", default: "Tarta Colibrí" }, ingredientes: {i18nKey: "menu_tartas_colibri_ing", default: "bizcocho de piña, platano y nueces, crema de queso y coco, coco rallado"}, precio: "4,50 €" },
+                    { nombre: { i18nKey: "menu_tartas_chocoframuesa", default: "Tarta de ChocoFrambuesa" }, ingredientes: {i18nKey: "menu_tartas_chocoframuesa_ing", default: "bizcocho de cacao 70%, crema de queso y frambuesa"}, precio: "4,50 €" },
+                    { nombre: { i18nKey: "menu_tartas_oreo", default: "Tarta de Oreo" }, ingredientes: {i18nKey: "menu_tartas_oreo_ing", default: "bizcocho de cacao 70%, crema de queso y galletas Oreo"}, precio: "4,50 €" },
+                    { nombre: { i18nKey: "menu_tartas_cheesecake", default: "Cheese Cake" }, ingredientes: {i18nKey: "menu_tartas_cheesecake_ing", default: "tarta de queso, bola de helado vainilla"}, precio: "4,50 €" },
+                    { nombre: { i18nKey: "menu_tartas_pistacho", default: "Pie de Pistacho" }, ingredientes: {i18nKey: "menu_tartas_pistacho_ing", default: "fondo de galleta, mousse de pistacho, crema de queso, chocolate"}, precio: "4,50 €" },
+                    { nombre: { i18nKey: "menu_bizcochon", default: "Angel's food" }, ingredientes: {i18nKey: "menu_bizcochon_ing", default: "bizcocho de vainilla, clara de huevo, azúcar"}, precio: "2,80 €" },
+                    { nombre: { i18nKey: "menu_bizcochon_coco", default: "Bizcochón de coco" }, ingredientes: {i18nKey: "menu_bizcochon_coco_ing", default: "Bizcocho de coco, clara de huevo, azúcar"}, precio: "2,80 €" },
+                    { nombre: { i18nKey: "menu_cookie_platano", default: "Cookie de gotas de chocolate" }, ingredientes: {i18nKey: "menu_cookie_platano_ing", default: "Platano, avena, gotas de chocolate"}, precio: "2,50 €" },
+                    { nombre: { i18nKey: "menu_cookie_red_velvet", default: "Cookie Red Velvet" }, ingredientes: {i18nKey: "menu_cookie_red_velvet_ing", default: "cookie de chocolate y red velvet"}, precio: "2,50 €" },
+                    { nombre: { i18nKey: "menu_cookie_choco", default: "Cookie de Chocolate" }, ingredientes: {i18nKey: "menu_cookie_choco_ing", default: "cookie de chocolate 70% y gotas de chocolate"}, precio: "2,50 €" },
+                    { nombre: { i18nKey: "menu_cookie_pistacho", default: "Cookie de Pistacho" }, ingredientes: {i18nKey: "menu_cookie_pistacho_ing", default: "cookie de pistacho y chocolate blanco"}, precio: "2,50 €" },
+                    { nombre: { i18nKey: "menu_cinnamon", default: "Cinnamon Roll" }, ingredientes: {i18nKey: "menu_cinnamon_ing", default: "Rollito dulce de masa esponjosa, relleno de canela y azúcar, cubierto con glaseado."}, precio: "2,80 €" },
+                    { nombre: { i18nKey: "menu_brownie_choco", default: "Brownie de Chocolate" }, ingredientes: {i18nKey: "menu_brownie_choco_ing", default: "Brownie de chocolate intenso, con textura jugosa y corazón fundente."}, precio: "2,80 €" },
+                    { nombre: { i18nKey: "menu_brownie_blanco", default: "Brownie de Chocolate Blanco" }, ingredientes: {i18nKey: "menu_brownie_blanco_ing", default: "Brownie de chocolate blanco, con textura cremosa y sabor suave."}, precio: "2,80 €" }
                 ]
             },
             {
-                title: { i18nKey: "menu_bocatas", default: "Menú de Pulguitas/Bocadillos" },
+                title: { i18nKey: "menu_bocatas", default: "Pulguitas/Bocadillos" },
                 bg: "#daba90ff",
                 accent: "#685b12ff",
                 note: { i18nKey: "menu_bocatas_nota", default: "Bocados rápidos, frescos y llenos de sabor." },
                 mode: "",
                 items: [
-                    { nombre: { i18nKey: "menu_boc_del_chef", default: "DEL CHEF" }, ingredientes: "lomo, mostaza, jamón, queso", precio: "2,50 € / 3,50 €"},
-                    { nombre: { i18nKey: "menu_boc_de_pata", default: "DE PATA" }, ingredientes: "pata, pimiento confitado, rucula, cebollla roja, aceite de albahaca", precio: "2,50 € / 3,80 €" },
-                    { nombre: { i18nKey: "menu_boc_steak_house", default: "STEAK HOUSE" }, ingredientes: "ternera desmenuzada, salsa barbacoa, queso", precio: "2,80 € / 4,00 €" },
-                    { nombre: { i18nKey: "menu_boc_tortilla", default: "TORTILLA" }, ingredientes: "tortilla de patata, lechuga, tomate, mayonesa", precio: "2,80 € / 4,00 €" }
+                    { nombre: { i18nKey: "menu_boc_del_chef", default: "DEL CHEF" }, ingredientes: {i18nKey: "menu_boc_del_chef_ing", default: "lomo, mostaza, jamón, queso"}, precio: "2,50 € / 3,50 €"},
+                    { nombre: { i18nKey: "menu_boc_de_pata", default: "DE PATA" }, ingredientes: {i18nKey: "menu_boc_de_pata_ing", default: "pata, pimiento confitado, rucula, cebollla roja, aceite de albahaca"}, precio: "2,50 € / 3,80 €" },
+                    { nombre: { i18nKey: "menu_boc_steak_house", default: "STEAK HOUSE" }, ingredientes: {i18nKey: "menu_boc_steak_house_ing", default: "ternera desmenuzada, salsa barbacoa, queso"}, precio: "2,80 € / 4,00 €" },
+                    { nombre: { i18nKey: "menu_boc_tortilla", default: "TORTILLA" }, ingredientes: {i18nKey: "menu_boc_tortilla_ing", default: "tortilla de patata, lechuga, tomate, mayonesa"}, precio: "2,80 € / 4,00 €" }
                 ]
             },
             {
-                title: { i18nKey: "menu_otros_desayuno", default: "Menú de Sandwiches / Tostas / Desayunos" },
+                title: { i18nKey: "menu_otros_desayuno", default: "Sandwiches / Tostas / Desayunos" },
                 bg: "#b4a7d6",
                 accent: "#6a329f",
                 note: { i18nKey: "menu_desayunos_nota", default: "Desayunos que despiertan tus mañanas." },
                 mode: "",
                 items: [
-                    { nombre: { i18nKey: "menu_sand_siempre", default: "Sandwich el de siempre" }, ingredientes: "jamón, queso", precio: "3,20 €" },
-                    { nombre: { i18nKey: "menu_sand_clasico", default: "Sandwich Clásico" }, ingredientes: "pollo desmenuzado, mayonesa, tomate, lechuga, queso", precio: "3,60 €" },
-                    { nombre: { i18nKey: "menu_sand_casita", default: "Sandwich La Casita" }, ingredientes: "pastrami, salsa tartara, pepinillo, queso", precio: "3,80 €" },
-                    { nombre: { i18nKey: "menu_tosta_tumaquin", default: "Tosta Tumaquin" }, ingredientes: "tomate, jamón serrano, rúcula", precio: "3,40 €" },
-                    { nombre: { i18nKey: "menu_tosta_campestre", default: "Tosta Campestre" }, ingredientes: "calabacín, queso curado , miel", precio: "3,30 €" },
-                    { nombre: { i18nKey: "menu_des_ingles", default: "Desayuno Inglés" }, ingredientes: "frijol rojo, tomate, huevo frito, salchicha, bacon", precio: "8,00 €" },
-                    { nombre: { i18nKey: "menu_des_tradicional", default: "Desayuno Tradicional" }, ingredientes: "tostas con mantequilla, mermelada casera, queso curado, jamón serrano", precio: "6,50 €" }
+                    { nombre: { i18nKey: "menu_sand_siempre", default: "Sandwich el de siempre" }, ingredientes: {i18nKey: "menu_sand_siempre_ing", default: "jamón, queso"}, precio: "3,20 €" },
+                    { nombre: { i18nKey: "menu_sand_clasico", default: "Sandwich Clásico" }, ingredientes: {i18nKey: "menu_sand_clasico_ing", default: "pollo desmenuzado, mayonesa, tomate, lechuga, queso"}, precio: "3,60 €" },
+                    { nombre: { i18nKey: "menu_sand_casita", default: "Sandwich La Casita" }, ingredientes: {i18nKey: "menu_sand_casita_ing", default: "pastrami, salsa tartara, pepinillo, queso"}, precio: "3,80 €" },
+                    { nombre: { i18nKey: "menu_tosta_tumaquin", default: "Tosta Tumaquin" }, ingredientes: {i18nKey: "menu_tosta_tumaquin_ing", default: "tomate, jamón serrano, rúcula"}, precio: "3,40 €" },
+                    { nombre: { i18nKey: "menu_tosta_campestre", default: "Tosta Campestre" }, ingredientes: {i18nKey: "menu_tosta_campestre_ing", default: "calabacín, queso curado , miel"}, precio: "3,30 €" },
+                    { nombre: { i18nKey: "menu_des_ingles", default: "Desayuno Inglés" }, ingredientes: {i18nKey: "menu_des_ingles_ing", default: "frijol rojo, tomate, huevo frito, salchicha, bacon"}, precio: "8,00 €" },
+                    { nombre: { i18nKey: "menu_des_tradicional", default: "Desayuno Tradicional" }, ingredientes: {i18nKey: "menu_des_tradicional_ing", default: "tostas con mantequilla, mermelada casera, queso curado, jamón serrano"}, precio: "6,50 €" }
                 ]
             },
             {
-                title: { i18nKey: "menu_Brunch", default: "Menú de Brunch" },
+                title: { i18nKey: "menu_Brunch", default: "Brunch" },
                 bg: "#b4a7d6",
                 accent: "#6a329f",
                 note: { i18nKey: "menu_Brunch_nota", default: "Un brunch delicioso para compartir." },
                 mode: "",
                 items: [
-                    { nombre: { i18nKey: "menu_brunch_panes_variados", default: "Selección de panes variados" }, ingredientes: "", precio: "" },
-                    { nombre: { i18nKey: "menu_brunch_mant_merm", default: "Mantequilla y mermelada casera" }, ingredientes: "mantequilla, mermelada", precio: "" },
-                    { nombre: { i18nKey: "menu_surtido", default: "Surtido Dulce" }, ingredientes: "Brownie, cookie, cinnamon", precio: "" },
-                    { nombre: { i18nKey: "menu_yogur", default: "Yogur con Frutas" }, ingredientes: "yogur, frutas de temporada", precio: "" },
-                    { nombre: { i18nKey: "menu_brunch_zumo", default: "Zumo Natural" }, ingredientes: "naranja, fresa, mango", precio: "" },
-                    { nombre: { i18nKey: "menu_brunch_sprit_mojito", default: "Spritzer/Mojito de vino blanco" }, ingredientes: "", precio: "" },
-                    { nombre: { i18nKey: "menu_brunch_tosta_1", default: "Tosta a elegir Opción 1" }, ingredientes: "Queso crema, crema de aguacate y huevo frito / revuelto de setas", precio: "16,00 €" },
-                    { nombre: { i18nKey: "menu_brunch_tosta_2", default: "Tosta a elegir Opción 2" }, ingredientes: "rúcula, queso manchego, huevo frito con aceite de albahaca / pata asada con pimientos de piquillo a la plancha y mayonesa de pimentón", precio: "18,00 €" },
-                    { nombre: { i18nKey: "menu_brunch_tosta_3", default: "Tosta a elegir Opción 3" }, ingredientes: "Ternera salteada en salsa teriyaki con tomates cherrys confitados y mayonesa de ají amarillo / pisto de veduras con huevo pochado", precio: "20,00 €" }
+                    { nombre: { i18nKey: "menu_brunch_panes_variados", default: "Selección de panes variados" }, ingredientes: {i18nKey: "menu_brunch_panes_variados_ing", default: ""}, precio: "" },
+                    { nombre: { i18nKey: "menu_brunch_mant_merm", default: "Mantequilla y mermelada casera" }, ingredientes: {i18nKey: "menu_brunch_mant_merm_ing", default: "mantequilla, mermelada"}, precio: "" },
+                    { nombre: { i18nKey: "menu_surtido", default: "Surtido Dulce" }, ingredientes: {i18nKey: "menu_surtido_ing", default: "Brownie, cookie, cinnamon"}, precio: "" },
+                    { nombre: { i18nKey: "menu_yogur", default: "Yogur con Frutas" }, ingredientes: {i18nKey: "menu_yogur_ing", default: "yogur, frutas de temporada"}, precio: "" },
+                    { nombre: { i18nKey: "menu_brunch_zumo", default: "Zumo Natural" }, ingredientes: {i18nKey: "menu_brunch_zumo_ing", default: "naranja, fresa, mango"}, precio: "" },
+                    { nombre: { i18nKey: "menu_brunch_sprit_mojito", default: "Spritzer/Mojito de vino blanco" }, ingredientes: {i18nKey: "menu_brunch_sprit_mojito_ing", default: ""}, precio: "" },
+                    { nombre: { i18nKey: "menu_brunch_tosta_1", default: "Tosta a elegir Opción 1" }, ingredientes: {i18nKey: "menu_brunch_tosta_1_ing", default: "Queso crema, crema de aguacate y huevo frito / revuelto de setas"}, precio: "16,00 €" },
+                    { nombre: { i18nKey: "menu_brunch_tosta_2", default: "Tosta a elegir Opción 2" }, ingredientes: {i18nKey: "menu_brunch_tosta_2_ing", default: "rúcula, queso manchego, huevo frito con aceite de albahaca / pata asada con pimientos de piquillo a la plancha y mayonesa de pimentón"}, precio: "18,00 €" },
+                    { nombre: { i18nKey: "menu_brunch_tosta_3", default: "Tosta a elegir Opción 3" }, ingredientes: {i18nKey: "menu_brunch_tosta_3_ing", default: "Ternera salteada en salsa teriyaki con tomates cherrys confitados y mayonesa de ají amarillo / pisto de veduras con huevo pochado"}, precio: "20,00 €" }
                 ]
             }
         ];
@@ -319,12 +321,20 @@ let appState = {
 window.menus = Array.isArray(window.menus) ? window.menus : (typeof menus !== "undefined" ? menus : []);
 
 // Helper i18n
-function i18nText(val) { 
-    return typeof val === "object" ? (val.default || "") : (val || ""); 
+// Helper i18n (usa T() dal tuo i18n.js)
+function i18nText(val) {
+  if (val && typeof val === "object") {
+    return val.i18nKey ? T(val.i18nKey, val.default || "") : (val.default || "");
+  }
+  return val || "";
 }
-function ingredientsText(val) { 
-    return typeof val === "object" ? (val.default || "") : (val || ""); 
+function ingredientsText(val) {
+  if (val && typeof val === "object") {
+    return val.i18nKey ? T(val.i18nKey, val.default || "") : (val.default || "");
+  }
+  return val || "";
 }
+
 
 // ---- RENDER: Singola sezione (modalità tabella) ----
 function renderMenuSection(section, host) {
@@ -553,4 +563,29 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch(e) { 
         console.error('Error rendering initial menu:', e); 
     }
+});
+
+// --- RERENDER ON LANGUAGE CHANGE ---
+function rerenderCurrentView() {
+  const containerId = "menu-content";
+  const gridId = "menu-grid";
+
+  // ricostruisci la griglia (i titoli sezione cambiano lingua)
+  renderMenuGrid(gridId);
+
+  if (appState.viewMode === 'single') {
+    renderMenu(appState.currentMenuIndex, containerId);
+  } else if (appState.viewMode === 'filtered' && appState.filteredData) {
+    renderMenus(appState.filteredData, containerId);
+  } else {
+    renderMenus(window.menus, containerId);
+  }
+}
+
+// ascolta l’evento emesso da i18n.js
+window.addEventListener("menuria:languageChanged", rerenderCurrentView);
+
+// mini refresh anche al load (dopo che i dizionari sono pronti)
+window.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => { try { rerenderCurrentView(); } catch(e){} }, 0);
 });

@@ -417,30 +417,37 @@ footer a:hover {
 }
 .allergen-btn:hover { transform:translateY(-1px); box-shadow:0 6px 16px rgba(0,0,0,.07); }
 .allergen-btn[aria-pressed="true"] { outline:2px solid #111; background:#f4f7ff; }
-.allergen-btn .ico { width:18px; height:18px; display:inline-flex; }
-.allergen-btn .lbl { font-size:14px; font-weight:600; }
+.allergen-btn .ico { width: 15px; height: 15px; display:inline-flex; }
+.allergen-btn .lbl { font-size: 12px; font-weight:600; }
 .allergen-reset { margin-left:6px; border:none; background:transparent; text-decoration:underline; cursor:pointer; font-size:13px; }
 @media (prefers-reduced-motion: reduce) {
   .allergen-btn, .allergen-btn:hover { transition:none; transform:none; box-shadow:none; }
 }
-
+/*.allergen-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:10px 0 18px}
+.badges{display:flex;flex-wrap:wrap;gap:10px}
+.badge{padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.4);backdrop-filter:blur(8px);cursor:pointer}
+.badge.active{background:rgba(255,255,255,.7);font-weight:700}
+.link-reset{background:none;border:none;text-decoration:underline;cursor:pointer;font-size:14px;opacity:.9}*/
 /* Contenitore griglia categorie */
 #menu-grid .menu-grid{
   display:grid;
-  grid-template-columns:repeat(4, 1fr); /* 4 col */
-  gap:12px;
+  grid-template-columns:repeat(4, minmax(0,1fr));
+  gap:10px;
 }
 
 /* Card */
 #menu-grid .menu-grid-card{
-  padding:12px;
+  padding:8px 10px;          /* più sottile */
   border-radius:12px;
-  border:1px solid rgba(0,0,0,.1);
+  border:1px solid rgba(0,0,0,.08);
   background:#fff;
-  text-align:left;
-  cursor:pointer;
+  min-height:32px;           /* compatta */
+  display:flex; align-items:center; justify-content:center;
 }
 
+#menu-grid .menu-grid-card .mg-title{
+  font-weight:700; margin:1px; font-size:12px; line-height:1.1;
+}
 /* Responsive */
 @media (max-width: 1024px){
   #menu-grid .menu-grid{ grid-template-columns:repeat(3, 1fr); }

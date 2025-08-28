@@ -196,6 +196,9 @@ window.loadLanguage = function loadLanguage(lang){
     autoAssignI18nAttr(document);
     applyTranslations();
     updateActiveFlags();
+    try {
+  window.dispatchEvent(new CustomEvent("menuria:languageChanged", { detail:{ lang: window.currentLang, boot:true } }));
+} catch(e){}
   }
 };
 

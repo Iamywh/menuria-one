@@ -31,15 +31,7 @@
             var wasOn = b.getAttribute('aria-pressed') === 'true';
             
             // Toggle questo bottone
-            if (wasOn) {
-                b.setAttribute('aria-pressed', 'false');
-            } else {
-                // Deseleziona altri (modalità radio)
-                bar.querySelectorAll('.allergen-btn').forEach(function(x){ 
-                    x.setAttribute('aria-pressed','false'); 
-                });
-                b.setAttribute('aria-pressed','true');
-            }
+            b.setAttribute('aria-pressed', wasOn ? 'false' : 'true');
             
             applyFilters(bar);
         });
