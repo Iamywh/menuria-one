@@ -102,5 +102,101 @@
   "valet": {
     "domanda": "Do you have valet parking?",
     "risposta": "Yes, we offer valet parking services for our customers."
+  },
+  "reservar_online_whatsapp": {
+    "domanda": "Can I book online or via WhatsApp?",
+    "risposta": "For now, please call (<a href=\"tel:+34922247851\">+34 922 24 78 51</a>). Online booking is coming soon. You can also message us on <a href=\"https://wa.me/34922247851\" target=\"_blank\" rel=\"noopener\">WhatsApp</a>."
+  },
+  "tiempo_maximo_mesa": {
+    "domanda": "What is the maximum table time?",
+    "risposta": "No fixed limit; if needed, we’ll kindly ask for the table with at least 1 hour’s notice."
+  },
+  "lista_de_espera": {
+    "domanda": "Do you have a waitlist? How does it work?",
+    "risposta": "No on regular days; during peak seasons/holidays (company dinners, Christmas, Easter, Epiphany, Carnival, etc.) we may fill up weeks in advance."
+  },
+  "grupos_grandes_eventos": {
+    "domanda": "Do you accept large groups or corporate events?",
+    "risposta": "Yes. Please book at least 1 week in advance so we can organize everything properly."
+  },
+  "deposito_reservas_grupo": {
+    "domanda": "Do you require a deposit for group bookings?",
+    "risposta": "Yes, usually 15%, payable on site by cash or card."
+  },
+  "modificar_cancelar_reserva": {
+    "domanda": "Can I modify or cancel my reservation? How far in advance?",
+    "risposta": "Yes, you can modify/cancel; we don’t enforce strict deadlines—just common sense 😊."
+  },
+  "horario_cocina": {
+    "domanda": "Are kitchen hours different from the venue’s?",
+    "risposta": "Yes. Kitchen closes at 22:30 Mon–Thu and 23:30 Fri–Sat."
+  },
+  "festivos_horarios": {
+    "domanda": "Are you open on public holidays? Any special hours?",
+    "risposta": "On holidays we open for half-day; closed on December 25 and January 1."
+  },
+  "vacaciones_cierre": {
+    "domanda": "Do you close for holidays/vacation?",
+    "risposta": "No, we don’t close for vacation."
+  },
+  "brunch": {
+    "domanda": "Do you serve brunch?",
+    "risposta": "Yes, brunch options available (48 h advance booking recommended). See <a href=\"/menus#brunch\">Menus → Brunch</a>."
+  },
+  "menu_infantil_tronas": {
+    "domanda": "Do you have a kids’ menu or high chairs?",
+    "risposta": "Yes, kids’ options and high chairs (limited number; first-come, first-served)."
+  },
+  "cambiador_bebes": {
+    "domanda": "Do you have a baby changing table?",
+    "risposta": "No dedicated changing table, but we can provide a private area if needed."
+  },
+  "opciones_sin_azucar": {
+    "domanda": "Do you offer no added sugar options?",
+    "risposta": "Yes, many items have no added sugar; sugar-free soft drinks available too."
+  },
+  "carta_vinos_cervezas": {
+    "domanda": "Can I see the wine and beer list?",
+    "risposta": "Sure, find it under <a href=\"/menus#bebidas\">Menus → Drinks</a>."
+  },
+  "cocteles_sin_alcohol": {
+    "domanda": "Do you have non-alcoholic cocktails (mocktails)?",
+    "risposta": "Yes—virgin mojito, lemonades, virgin piña colada, etc. See <a href=\"/menus#bebidas\">Menus → Drinks</a>."
+  },
+  "happy_hour_promos": {
+    "domanda": "Do you have happy hour or special promos?",
+    "risposta": "Yes, check <a href=\"/restaurant#promos\">Promos</a> on the restaurant page."
+  },
+  "precio_medio_persona": {
+    "domanda": "What’s the average price per person?",
+    "risposta": "It varies—depends on sharing style vs. individual dishes."
+  },
+  "platos_para_compartir": {
+    "domanda": "Which dishes are best for sharing?",
+    "risposta": "Starters (croquettes, parcels, etc.); also Wok, Beef with anticucho sauce, or Fried rice with beef. See <a href=\"/menus#entrantes\">Menus → Starters</a>."
+  },
+  "trazas_contaminacion_alergenos": {
+    "domanda": "Do you inform about allergen traces and cross-contamination?",
+    "risposta": "Yes—our menu lets you filter common allergens. For sensitive cases, please ask our staff. See <a href=\"/menus\">Menus</a>."
+  },
+  "tarta_cumpleanos_propia": {
+    "domanda": "Can I bring my own birthday cake? Any fee?",
+    "risposta": "Yes! Bring your cake—we’ll provide plates, cutlery and a knife at no extra cost."
+  },
+  "descorche_vino": {
+    "domanda": "Do you offer corkage if I bring my wine?",
+    "risposta": "Please call to discuss it when making your reservation."
+  },
+  "fumar_terraza": {
+    "domanda": "Is smoking allowed on the terrace?",
+    "risposta": "Yes—on the rooftop and terrace. Please keep away from children and pregnant women."
+  },
+  "wifi_clientes": {
+    "domanda": "Do you have Wi-Fi for customers?",
+    "risposta": "Yes, ask our staff for the password."
+  },
+  "metodos_de_pago": {
+    "domanda": "Which payment methods do you accept? Card, Bizum, Apple Pay, cash?",
+    "risposta": "Cash, major cards and contactless payments (Apple Pay, etc.)."
   }
 }

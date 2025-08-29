@@ -102,5 +102,101 @@
   "valet": {
     "domanda": "¿Tienen servicio de aparcacoches?",
     "risposta": "No contamos con servicio de aparcacoches, pero hay aparcamiento gratuito cerca."
+  },
+  "reservar_online_whatsapp": {
+    "domanda": "¿Puedo reservar online o por WhatsApp?",
+    "risposta": "De momento puedes reservar por teléfono (<a href=\"tel:+34922247851\">+34 922 24 78 51</a>). Pronto activaremos la reserva desde esta plataforma. También puedes escribirnos por <a href=\"https://wa.me/34922247851\" target=\"_blank\" rel=\"noopener\">WhatsApp</a>."
+  },
+  "tiempo_maximo_mesa": {
+    "domanda": "¿Cuál es el tiempo máximo de permanencia por mesa?",
+    "risposta": "No hay un tiempo máximo fijo; si la situación lo requiere, avisaremos con al menos 1 hora de antelación que necesitaremos la mesa."
+  },
+  "lista_de_espera": {
+    "domanda": "¿Tienen lista de espera? ¿Cómo funciona?",
+    "risposta": "No tenemos lista de espera en días normales; en festivos y temporadas de alta demanda (cenas de empresa, Navidad, Pascua, Reyes, Carnaval, etc.) puede llenarse con semanas de antelación."
+  },
+  "grupos_grandes_eventos": {
+    "domanda": "¿Aceptan grupos grandes o eventos de empresa?",
+    "risposta": "Sí, aceptamos grupos grandes y eventos de empresa. Recomendamos reservar con al menos 1 semana de antelación para organizarlo bien."
+  },
+  "deposito_reservas_grupo": {
+    "domanda": "¿Piden depósito para las reservas de grupo?",
+    "risposta": "Sí, normalmente solicitamos un adelanto del 15%, pagadero en el local en efectivo o tarjeta."
+  },
+  "modificar_cancelar_reserva": {
+    "domanda": "¿Puedo modificar o cancelar mi reserva? ¿Con cuánta antelación?",
+    "risposta": "Sí, puedes cancelar o modificar tu reserva; no exigimos un plazo concreto, sólo sentido común 😊."
+  },
+  "horario_cocina": {
+    "domanda": "¿La cocina tiene un horario distinto al del local?",
+    "risposta": "Sí. La cocina cierra a las 22:30 de lunes a jueves y a las 23:30 viernes y sábado."
+  },
+  "festivos_horarios": {
+    "domanda": "¿Abren en días festivos? ¿Tienen horarios especiales?",
+    "risposta": "Los días festivos abrimos media jornada; cerramos el 25 de diciembre y el 1 de enero."
+  },
+  "vacaciones_cierre": {
+    "domanda": "¿Cierran por vacaciones en alguna fecha?",
+    "risposta": "No cerramos por vacaciones."
+  },
+  "brunch": {
+    "domanda": "¿Tienen brunch?",
+    "risposta": "Sí, tenemos opciones de brunch. Recomendamos reservar con 48 h de antelación. Consulta el <a href=\"/menus#brunch\">menú de brunch</a> en la sección <a href=\"/menus\">Menús</a>."
+  },
+  "menu_infantil_tronas": {
+    "domanda": "¿Tienen menú infantil o tronas para niños?",
+    "risposta": "Disponemos de opciones para niños en Menús y de tronas (cantidad limitada; se aplica política de «primero en llegar»)."
+  },
+  "cambiador_bebes": {
+    "domanda": "¿Disponen de cambiador para bebés?",
+    "risposta": "No contamos con cambiador, pero podemos habilitar un área privada para las necesidades."
+  },
+  "opciones_sin_azucar": {
+    "domanda": "¿Ofrecen opciones sin azúcar añadido?",
+    "risposta": "Sí, la mayoría de nuestros alimentos no llevan azúcares añadidos; también tenemos bebidas refrescantes sin azúcares añadidos."
+  },
+  "carta_vinos_cervezas": {
+    "domanda": "¿Puedo ver la carta de vinos y cervezas?",
+    "risposta": "Sí, puedes verlas en <a href=\"/menus#bebidas\">Menús → Bebidas</a>."
+  },
+  "cocteles_sin_alcohol": {
+    "domanda": "¿Tienen cócteles sin alcohol (mocktails)?",
+    "risposta": "Sí, contamos con coctelería sin alcohol (mojito sin alcohol, limonadas, piña colada sin alcohol, etc.). Consulta la sección <a href=\"/menus#bebidas\">Menús → Bebidas</a>."
+  },
+  "happy_hour_promos": {
+    "domanda": "¿Hacen happy hour o promociones especiales?",
+    "risposta": "Sí, consulta las promociones en la sección <a href=\"/restaurant#promos\">Promos</a> de la página del restaurante."
+  },
+  "precio_medio_persona": {
+    "domanda": "¿Cuál es el precio medio por persona?",
+    "risposta": "No tenemos un promedio fijo; depende de si se comparten platos o se eligen individuales."
+  },
+  "platos_para_compartir": {
+    "domanda": "¿Qué platos recomiendan para compartir?",
+    "risposta": "Los entrantes (croquetas, saquitos, etc.) son ideales para compartir; también Wok, Ternera con salsa anticucho o Arroz frito con ternera. Ver <a href=\"/menus#entrantes\">Menús → Entrantes</a>."
+  },
+  "trazas_contaminacion_alergenos": {
+    "domanda": "¿Informan sobre trazas y contaminación cruzada de alérgenos?",
+    "risposta": "Sí; el menú permite filtrar por alérgenos comunes. Para casos sensibles, recomendamos consultar siempre con el personal."
+  },
+  "tarta_cumpleanos_propia": {
+    "domanda": "¿Puedo traer mi propia tarta de cumpleaños? ¿Tiene coste?",
+    "risposta": "¡Sí! Puedes traer tu tarta. Ofrecemos platos, cubiertos y cuchillo sin coste adicional."
+  },
+  "descorche_vino": {
+    "domanda": "¿Ofrecen servicio de descorche si llevo mi vino?",
+    "risposta": "Aconsejamos llamar para consultarlo al hacer la reserva."
+  },
+  "fumar_terraza": {
+    "domanda": "¿Se puede fumar en la terraza?",
+    "risposta": "Sí, se puede fumar en la azotea y en la terraza. Por favor, hazlo lejos de niños y mujeres embarazadas."
+  },
+  "wifi_clientes": {
+    "domanda": "¿Tienen Wi-Fi para clientes?",
+    "risposta": "Sí, disponemos de Wi‑Fi; pide la contraseña a nuestro personal."
+  },
+  "metodos_de_pago": {
+    "domanda": "¿Qué métodos de pago aceptan? ¿Tarjeta, Bizum, Apple Pay, efectivo?",
+    "risposta": "Aceptamos efectivo, tarjetas de todos los circuitos y pagos contactless (Apple Pay, etc.)."
   }
 }

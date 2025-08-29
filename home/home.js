@@ -85,7 +85,7 @@ function loadLanguageContent() {
     if (el && lang[key]) el.textContent = lang[key];
   });
 
-  for (let i = 1; i <= 26; i++) {
+  for (let i = 1; i <= 50; i++) {
     const faqBtn = document.getElementById(`faq_${i}`);
     const faqKey = `faq_${i}`;
     if (faqBtn && lang[faqKey]) {

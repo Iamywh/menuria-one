@@ -102,5 +102,101 @@
     "valet": {
         "domanda": "Há serviço de valet?",
         "risposta": "Não, nos não temos serviço de valet no momento, mas podes estacionar na rua."
-    }
+    },
+    "reservar_online_whatsapp": {
+    "domanda": "Posso reservar online ou via WhatsApp?",
+    "risposta": "Por agora reserva por telefone (<a href=\"tel:+34922247851\">+34 922 24 78 51</a>). Em breve ativaremos a reserva na plataforma. Também podes enviar mensagem pelo <a href=\"https://wa.me/34922247851\" target=\"_blank\" rel=\"noopener\">WhatsApp</a>."
+  },
+  "tiempo_maximo_mesa": {
+    "domanda": "Qual é o tempo máximo por mesa?",
+    "risposta": "Sem limite fixo; se necessário, avisamos com pelo menos 1 hora de antecedência."
+  },
+  "lista_de_espera": {
+    "domanda": "Têm lista de espera? Como funciona?",
+    "risposta": "Não em dias normais; em épocas de muita procura (festas, Natal, Páscoa, Reis, Carnaval, etc.) podemos esgotar com semanas de antecedência."
+  },
+  "grupos_grandes_eventos": {
+    "domanda": "Aceitam grupos grandes ou eventos corporativos?",
+    "risposta": "Sim. Reserva com pelo menos 1 semana de antecedência para organizarmos tudo."
+  },
+  "deposito_reservas_grupo": {
+    "domanda": "É necessário depósito para reservas de grupo?",
+    "risposta": "Sim, geralmente 15%, pagável no local em dinheiro ou cartão."
+  },
+  "modificar_cancelar_reserva": {
+    "domanda": "Posso alterar ou cancelar a reserva? Com que antecedência?",
+    "risposta": "Sim, podes alterar/cancelar; não impomos prazos rígidos—bom senso 😊."
+  },
+  "horario_cocina": {
+    "domanda": "O horário da cozinha é diferente do do espaço?",
+    "risposta": "Sim. A cozinha encerra às 22:30 (Seg–Qui) e às 23:30 (Sex–Sáb)."
+  },
+  "festivos_horarios": {
+    "domanda": "Abrem em feriados? Têm horários especiais?",
+    "risposta": "Nos feriados abrimos meio dia; encerrados a 25 de dezembro e 1 de janeiro."
+  },
+  "vacaciones_cierre": {
+    "domanda": "Fecham para férias?",
+    "risposta": "Não, não fechamos para férias."
+  },
+  "brunch": {
+    "domanda": "Têm brunch?",
+    "risposta": "Sim (reserva 48 h recomendada). Ver <a href=\"/menus#brunch\">Menus → Brunch</a>."
+  },
+  "menu_infantil_tronas": {
+    "domanda": "Têm menu infantil ou cadeiras altas?",
+    "risposta": "Sim, opções infantis e cadeiras altas (número limitado; por ordem de chegada)."
+  },
+  "cambiador_bebes": {
+    "domanda": "Dispõem de fraldário para bebés?",
+    "risposta": "Sem fraldário dedicado, mas podemos disponibilizar uma área privada se necessário."
+  },
+  "opciones_sin_azucar": {
+    "domanda": "Oferecem opções sem açúcar adicionado?",
+    "risposta": "Sim, muitos itens sem açúcares adicionados; também bebidas sem açúcar."
+  },
+  "carta_vinos_cervezas": {
+    "domanda": "Posso ver a carta de vinhos e cervejas?",
+    "risposta": "Claro—em <a href=\"/menus#bebidas\">Menus → Bebidas</a>."
+  },
+  "cocteles_sin_alcohol": {
+    "domanda": "Têm cocktails sem álcool (mocktails)?",
+    "risposta": "Sim—mojito sem álcool, limonadas, piña colada sem álcool, etc. Ver <a href=\"/menus#bebidas\">Menus → Bebidas</a>."
+  },
+  "happy_hour_promos": {
+    "domanda": "Fazem happy hour ou promoções especiais?",
+    "risposta": "Sim, consulta <a href=\"/restaurant#promos\">Promos</a> na página do restaurante."
+  },
+  "precio_medio_persona": {
+    "domanda": "Qual é o preço médio por pessoa?",
+    "risposta": "Depende—partilhar pratos vs. pratos individuais."
+  },
+  "platos_para_compartir": {
+    "domanda": "Que pratos recomendam para partilhar?",
+    "risposta": "Entradas (croquetes, saquinhos, etc.); também Wok, Vitela com molho anticucho ou Arroz frito com vitela. Ver <a href=\"/menus#entrantes\">Menus → Entradas</a>."
+  },
+  "trazas_contaminacion_alergenos": {
+    "domanda": "Informam sobre vestígios e contaminação cruzada de alergénios?",
+    "risposta": "Sim—filtros de alergénios no menu. Para casos sensíveis, fala com a equipa. Ver <a href=\"/menus\">Menus</a>."
+  },
+  "tarta_cumpleanos_propia": {
+    "domanda": "Posso trazer o meu bolo de aniversário? Tem custo?",
+    "risposta": "Sim! Fornecemos pratos, talheres e faca sem custos adicionais."
+  },
+  "descorche_vino": {
+    "domanda": "Têm taxa de rolha se eu trouxer o meu vinho?",
+    "risposta": "Liga-nos para combinar no momento da reserva."
+  },
+  "fumar_terraza": {
+    "domanda": "É permitido fumar na esplanada?",
+    "risposta": "Sim—na cobertura e na esplanada. Por favor, afasta-te de crianças e grávidas."
+  },
+  "wifi_clientes": {
+    "domanda": "Têm Wi-Fi para clientes?",
+    "risposta": "Sim, pede a palavra-passe à nossa equipa."
+  },
+  "metodos_de_pago": {
+    "domanda": "Que métodos de pagamento aceitam? Cartão, Bizum, Apple Pay, dinheiro?",
+    "risposta": "Dinheiro, cartões principais e pagamentos contactless (Apple Pay, etc.)."
+  }
 }

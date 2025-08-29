@@ -102,5 +102,101 @@
   "valet": {
     "domanda": "Avez-vous un service de voiturier ?",
     "risposta": "Non, nous n'avons pas de service de voiturier, mais il y a un parking à proximité."
+  },
+  "reservar_online_whatsapp": {
+    "domanda": "Puis-je réserver en ligne ou via WhatsApp ?",
+    "risposta": "Pour l’instant, réservez par téléphone (<a href=\"tel:+34922247851\">+34 922 24 78 51</a>). La réservation en ligne arrive bientôt. Vous pouvez aussi nous écrire sur <a href=\"https://wa.me/34922247851\" target=\"_blank\" rel=\"noopener\">WhatsApp</a>."
+  },
+  "tiempo_maximo_mesa": {
+    "domanda": "Quelle est la durée maximale par table ?",
+    "risposta": "Pas de limite fixe ; si besoin, nous préviendrons au moins 1 heure à l’avance."
+  },
+  "lista_de_espera": {
+    "domanda": "Avez-vous une liste d’attente ? Comment ça marche ?",
+    "risposta": "Pas les jours ordinaires ; pendant les périodes de forte demande (fêtes, Noël, Pâques, Épiphanie, Carnaval, etc.), nous pouvons être complets des semaines à l’avance."
+  },
+  "grupos_grandes_eventos": {
+    "domanda": "Acceptez-vous les grands groupes ou événements d’entreprise ?",
+    "risposta": "Oui. Merci de réserver au moins 1 semaine à l’avance pour une bonne organisation."
+  },
+  "deposito_reservas_grupo": {
+    "domanda": "Demandez-vous un acompte pour les groupes ?",
+    "risposta": "Oui, généralement 15 %, payables sur place en espèces ou carte."
+  },
+  "modificar_cancelar_reserva": {
+    "domanda": "Puis-je modifier/annuler ma réservation ? Quel préavis ?",
+    "risposta": "Oui, modification/annulation possible ; pas de délais stricts—on compte sur le bon sens 😊."
+  },
+  "horario_cocina": {
+    "domanda": "Les horaires de la cuisine diffèrent-ils ?",
+    "risposta": "Oui. La cuisine ferme à 22h30 du lun. au jeu., et à 23h30 ven.–sam."
+  },
+  "festivos_horarios": {
+    "domanda": "Ouvert les jours fériés ? Horaires spéciaux ?",
+    "risposta": "Les jours fériés, ouverture en demi-journée ; fermé le 25 décembre et le 1ᵉʳ janvier."
+  },
+  "vacaciones_cierre": {
+    "domanda": "Fermez-vous pour congés ?",
+    "risposta": "Non, pas de fermeture annuelle."
+  },
+  "brunch": {
+    "domanda": "Proposez-vous un brunch ?",
+    "risposta": "Oui (réservation 48 h conseillée). Voir <a href=\"/menus#brunch\">Menus → Brunch</a>."
+  },
+  "menu_infantil_tronas": {
+    "domanda": "Avez-vous un menu enfant ou des chaises hautes ?",
+    "risposta": "Oui, options enfant et chaises hautes (quantité limitée ; premier arrivé, premier servi)."
+  },
+  "cambiador_bebes": {
+    "domanda": "Avez-vous une table à langer ?",
+    "risposta": "Pas de table à langer dédiée, mais on peut prévoir un espace privé si besoin."
+  },
+  "opciones_sin_azucar": {
+    "domanda": "Proposez-vous des options sans sucre ajouté ?",
+    "risposta": "Oui, beaucoup d’items sans sucres ajoutés ; boissons sans sucre également."
+  },
+  "carta_vinos_cervezas": {
+    "domanda": "Puis-je voir la carte des vins et bières ?",
+    "risposta": "Bien sûr : <a href=\"/menus#bebidas\">Menus → Boissons</a>."
+  },
+  "cocteles_sin_alcohol": {
+    "domanda": "Avez-vous des cocktails sans alcool (mocktails) ?",
+    "risposta": "Oui—virgin mojito, citronnades, piña colada sans alcool, etc. Voir <a href=\"/menus#bebidas\">Menus → Boissons</a>."
+  },
+  "happy_hour_promos": {
+    "domanda": "Faites-vous un happy hour ou des promos spéciales ?",
+    "risposta": "Oui, consultez <a href=\"/restaurant#promos\">Promos</a> sur la page du restaurant."
+  },
+  "precio_medio_persona": {
+    "domanda": "Quel est le prix moyen par personne ?",
+    "risposta": "Variable—selon si l’on partage ou si l’on prend des plats individuels."
+  },
+  "platos_para_compartir": {
+    "domanda": "Quels plats recommandez-vous à partager ?",
+    "risposta": "Entrées (croquettes, beignets, etc.) ; aussi Wok, bœuf sauce anticucho, riz frit au bœuf. Voir <a href=\"/menus#entrantes\">Menus → Entrées</a>."
+  },
+  "trazas_contaminacion_alergenos": {
+    "domanda": "Informez-vous sur les traces d’allergènes et contaminations croisées ?",
+    "risposta": "Oui—filtres allergènes disponibles dans le menu. Pour les cas sensibles, demandez à l’équipe. Voir <a href=\"/menus\">Menus</a>."
+  },
+  "tarta_cumpleanos_propia": {
+    "domanda": "Puis-je apporter mon gâteau d’anniversaire ? Des frais ?",
+    "risposta": "Oui ! Nous fournissons assiettes, couverts et couteau sans frais supplémentaires."
+  },
+  "descorche_vino": {
+    "domanda": "Proposez-vous un droit de bouchon si j’apporte mon vin ?",
+    "risposta": "Merci d’appeler pour en discuter lors de la réservation."
+  },
+  "fumar_terraza": {
+    "domanda": "Peut-on fumer en terrasse ?",
+    "risposta": "Oui—sur le toit-terrasse et la terrasse. Merci de rester éloigné des enfants et femmes enceintes."
+  },
+  "wifi_clientes": {
+    "domanda": "Avez-vous du Wi-Fi pour les clients ?",
+    "risposta": "Oui, demandez le mot de passe à notre équipe."
+  },
+  "metodos_de_pago": {
+    "domanda": "Quels moyens de paiement acceptez-vous ? Carte, Bizum, Apple Pay, espèces ?",
+    "risposta": "Espèces, cartes principales et paiements sans contact (Apple Pay, etc.)."
   }
 }
