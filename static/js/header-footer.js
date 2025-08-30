@@ -36,10 +36,8 @@ window.initHeader = function initHeader() {
     const routeMap = {
       'home': 'home',
       'restaurant': 'restaurant', 
-      'menu': 'menus',
       'menus': 'menus',
       'gallery': 'gallery',
-      'galeria': 'gallery'
     };
     
     return routeMap[firstSegment] || 'home';
