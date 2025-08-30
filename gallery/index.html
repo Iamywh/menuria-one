@@ -9,15 +9,15 @@
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-  <!-- Stili/JS condivisi -->
-  <link rel="stylesheet" href="/static/css/header-footer.css">
-  <script src="/static/js/i18n.js"></script>
-  <script defer src="/static/js/header-footer.js"></script>
-
   <!-- Stili/JS specifici della pagina -->
   <link rel="stylesheet" href="/gallery/gallery.css">
-  <script defer src="/gallery/gallery.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/css/lightgallery-bundle.min.css" />
+
+  <!-- Stili/JS condivisi -->
+  <link rel="stylesheet" href="/static/css/header-footer.css">
+  <script defer src="/static/js/header-footer.js"></script>
+
+  
   
 </head>
 <body>
@@ -83,12 +83,12 @@
   <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/lightgallery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/thumbnail/lg-thumbnail.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.1/plugins/zoom/lg-zoom.min.js"></script>
-  <script src="/gallery/gallery.js"></script>
-  <script src="/static/js/i18n.js"></script>
+  
 <div id="footer-placeholder"></div>
 </body>
  <!-- Footer Ristorante -->
 <script src="/static/js/i18n.js"></script>
+<script src="/gallery/gallery.js"></script>
  <script>
 Promise.all([
   fetch("../templates/header.html").then(r => r.text()),

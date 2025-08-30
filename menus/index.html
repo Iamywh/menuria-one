@@ -11,12 +11,6 @@
 
   <!-- Stili/JS condivisi -->
   <link rel="stylesheet" href="/static/css/header-footer.css">
-<!-- 1) dizionari (se usi window.I18N inline, mettilo qui prima di i18n.js) -->
-<!-- <script>window.I18N = { es:{...}, en:{...}, ... };</script> -->
-
-<!-- 2) core i18n -->
-
-<script src="/static/js/i18n.js"></script>
 
 <!-- 3) eventuali utilities/ui usate da menus -->
 <script src="static/js/allergen_rules.js"></script>
@@ -74,7 +68,7 @@
   <!-- Footer Ristorante -->
  
 
-<script src="/menus/menus.js"></script>        <!-- espone window.menus + MenuUI -->
+        <!-- espone window.menus + MenuUI -->
 <script src="/static/js/allergen_rules.js"></script>
 <script src="/static/js/allergen_icons_ui.js"></script>
 
@@ -93,6 +87,9 @@ document.addEventListener('DOMContentLoaded', function(){
 
   <noscript>Per favore abilita JavaScript per visualizzare il menu.</noscript>
 </body>
+
+<script src="/static/js/i18n.js"></script>
+<script src="/menus/menus.js"></script>
 
  <script>
 Promise.all([

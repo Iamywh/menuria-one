@@ -188,15 +188,15 @@ window.initHeader = function initHeader() {
       const scrollDelta = Math.abs(scrollTop - lastScrollTop);
 
       // Solo se lo scroll è significativo
-      if (scrollDelta > scrollThreshold) {
+     /* if (scrollDelta > scrollThreshold) {
         if (scrollTop > lastScrollTop && scrollTop > 100) {
           // Scroll down e siamo oltre i primi 100px: nascondi
-          header.classList.add('hidden');
+      //    header.classList.add('hidden');
         } else {
           // Scroll up: mostra
-          header.classList.remove('hidden');
+       //   header.classList.remove('hidden');
         }
-      }
+      } */
 
       lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
     };

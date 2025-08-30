@@ -123,3 +123,41 @@ function safeRender(){
 document.addEventListener("DOMContentLoaded", safeRender);
 // al cambio lingua (incluso boot dopo patch a i18n) ri-renderizza
 window.addEventListener("menuria:languageChanged", safeRender);
+// === Descrizione ristorante (5 paragrafi) ===
+function getCurrentLang(){
+  // prova varie sorgenti + fallback a localStorage + ES
+  return (window.currentLang || window.currentLanguage || localStorage.getItem("lang") || "es").toLowerCase();
+}
+
+function applyRestaurantDescriptionFrom(dict){
+  for (let i=1; i<=5; i++){
+    const el  = document.getElementById(`restaurant_description_${i}`);
+    const key = `restaurant_description_${i}`;
+    if (el) el.textContent = (dict && dict[key]) ? dict[key] : "";
+  }
+}
+
+async function applyRestaurantDescription(){
+  const lang = getCurrentLang();
+  // Se i18n già caricato globalmente, usalo
+  if (window.I18N && (I18N[lang] || I18N.es)){
+    applyRestaurantDescriptionFrom(I18N[lang] || I18N.es);
+    return;
+  }
+  // Altrimenti carica il dizionario al volo
+  try{
+    const res = await fetch("/data/lang.json");
+    const data = await res.json();
+    applyRestaurantDescriptionFrom((data && (data[lang] || data.es)) || {});
+  }catch(e){
+    console.error("i18n load error:", e);
+  }
+}
+
+// boot + reagisci al cambio lingua
+document.addEventListener("DOMContentLoaded", () => {
+  applyRestaurantDescription();
+});
+window.addEventListener("menuria:languageChanged", () => {
+  applyRestaurantDescription();
+});

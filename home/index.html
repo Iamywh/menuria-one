@@ -64,17 +64,15 @@
     </div>
   </header> -->
   <div id="header-placeholder"></div>
-  <!--<div class="menu-gallery">
-    <div id="menuFrame1" class="menu-frame" onclick="window.location.href='/menus'">
-      <span data-i18n="main_menus">🍽️ Menú</span>
-    </div>
-    <div id="menuFrame2" class="menu-frame" onclick="window.location.href='/restaurant'">
-      <span data-i18n="main_restaurant">🏠 El Restaurante</span>
-    </div>
-    <div id="menuFrame3" class="menu-frame" onclick="window.location.href='/gallery'">
-      <span data-i18n="main_gallery">📸 La Galería</span>
-    </div>
-  </div> -->
+  <!-- Highlight Box -->
+<div id="highlightBox" class="highlight-box">
+  <span id="highlightClose" class="highlight-close">&times;</span>
+  <h3 data-i18n="welcome_title">¡Bienvenido a la página de La Casita de Nazareno (powered by Menuria!)</h3>
+  <p data-i18n="welcome_text_1">Somos un pequeño equipo que ama el sector hostelero y quiere mejorarla con un toque de tecnología.</p>
+  <p data-i18n="welcome_text_2">Este chat está aquí para ayudarte a encontrar lo que necesitas sin reemplazar al camarero.</p>
+  <p data-i18n="welcome_text_3">Si te apetece, deja un comentario después de usarlo. ¡Buen provecho!</p>
+</div>
+
  <!-- FAQ Carousel Nuovo -->
     <section class="faq-carousel-section">
         <h2 id="faqTitle" data-i18n="faq_title">❓ Preguntas Frecuentes</h2>
@@ -174,7 +172,7 @@
     <!-- Popup benvenuto -->
     <div id="welcomePopup" class="popup-overlay" style="display: none;">
         <div class="popup-box">
-            <h2 id="popup_welcome" data-i18n="welcome_title">¡Bienvenido a Menuria!</h2>
+            <h2 id="popup_welcome" data-i18n="welcome_title">¡Bienvenido a la página de La Casita de Nazareno (powered by Menuria!)</h2>
             <p id="popup_text_1" data-i18n="welcome_text_1">Somos un pequeño equipo que ama el sector hostelero y quiere mejorarla con un toque de tecnología.</p>
             <p id="popup_text_2" data-i18n="welcome_text_2">Este chat está aquí para ayudarte a encontrar lo que necesitas sin reemplazar al camarero.</p>
             <p id="popup_text_3" data-i18n="welcome_text_3">Si te apetece, deja un comentario después de usarlo. ¡Buen provecho!</p>
@@ -183,32 +181,72 @@
     </div>
 
     <!-- Chatbot Interface -->
-    <section class="chatbot-container">
-        <div id="chatWindow" class="chat-window">
-            <div class="chat-header">
-                <h2 id="chat_titolo" data-i18n="chat_title">Chatbot</h2>
-                <button onclick="toggleChatWindow()">🤖</button>
-            </div>
-            <div class="chat-body">
-                <p id="welcomeMessage" data-i18n="chat_welcome">¡Hola! Soy el chatbot de La Casita del Nazareno. ¿En qué puedo ayudarte hoy?</p>
-                <div id="messages"></div>
-            </div>
-            <div class="chat-input">
-                <input type="text" id="userInput" placeholder="Escribe tu mensaje..." />
-                <button onclick="sendMessage()" id="boton_enviar" data-i18n="chat_send">Enviar</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Customer Satisfaction Feedback -->
-    <div class="satisfaction-box">
-        <p id="rating_pregunta" data-i18n="feedback_question">¿Cómo calificarías nuestro asistente?</p>
-        <div class="rating-options">
-            <span class="emoji emoji-happy" onclick="sendFeedback('happy')">😊</span>
-            <span class="emoji emoji-neutral" onclick="sendFeedback('neutral')">😐</span>
-            <span class="emoji emoji-sad" onclick="sendFeedback('sad')">😞</span>
-        </div>
+<section class="chatbot-container">
+  <div class="chat-window">
+    <div class="chat-header">
+      <h2 data-i18n="chat_title">🤖 Asistente Virtual</h2>
     </div>
+
+    <div class="chat-body">
+      <div class="chat-welcome">
+        <strong data-i18n="chat_welcome_strong">¡Hola! Soy el asistente virtual de La Casita del Nazareno.</strong><br>
+        <span data-i18n="chat_welcome_sub">Te ayudo a encontrar información sobre nuestro restaurante.</span>
+      </div>
+
+      <div class="chat-suggestion">
+        <div class="chat-suggestion-title">
+          <span>👆</span>
+          <span data-i18n="chat_try_above">¡Prueba las preguntas de arriba!</span>
+        </div>
+        <div class="chat-suggestion-text" data-i18n="chat_click_faq">
+          Haz clic en cualquier pregunta frecuente para obtener respuestas instantáneas
+        </div>
+      </div>
+
+      <div class="chat-disabled-notice">
+        ⚠️ <strong data-i18n="chat_disabled_title">Nota:</strong>
+        <span data-i18n="chat_disabled_text">El chat directo está temporalmente desactivado. Usa las preguntas frecuentes para obtener información.</span>
+      </div>
+
+      <div id="messages"></div>
+    </div>
+
+    <div class="chat-input">
+      <input
+        type="text"
+        id="userInput"
+        placeholder="Chat temporalmente desactivado - usa las FAQ arriba"
+        disabled
+        aria-disabled="true"
+      />
+      <button class="send-btn" id="boton_enviar" disabled aria-disabled="true" data-i18n="chat_send">Enviar</button>
+    </div>
+  </div>
+</section>
+
+<!-- Customer Satisfaction Feedback -->
+<div class="satisfaction-box">
+  <p id="rating_pregunta" data-i18n="rating_pregunta">¿Cómo calificarías nuestro asistente?</p>
+
+  <div class="rating-options">
+    <button class="emoji emoji-happy" type="button" onclick="sendFeedback('happy')" aria-label="Happy">😊</button>
+    <button class="emoji emoji-neutral" type="button" onclick="sendFeedback('neutral')" aria-label="Neutral">😐</button>
+    <button class="emoji emoji-sad" type="button" onclick="sendFeedback('sad')" aria-label="Sad">😞</button>
+  </div>
+
+  <!-- Comment Section -->
+  <div class="comment-section">
+    <label class="comment-label" for="userComment">💬 <span data-i18n="feedback_comment_label">Deja un comentario sobre tu experiencia:</span></label>
+    <textarea
+      class="comment-textarea"
+      id="userComment"
+      placeholder="Comparte tus comentarios, sugerencias o experiencia con nosotros..."
+      maxlength="500"
+    ></textarea>
+    <button class="comment-submit" type="button" onclick="submitComment()" data-i18n="feedback_send_comment">Enviar Comentario</button>
+  </div>
+</div>
+
     <div id="footer-placeholder"></div>
  
     <!-- Footer Ristorante
@@ -234,17 +272,17 @@
    Scripts: i18n PRIMA di home.js -->
   <script src="/static/js/i18n.js"></script>
   <script src="/home/home.js"></script>
- <script>
+<script>
 Promise.all([
-  fetch("../templates/header.html").then(r => r.text()),
-  fetch("../templates/footer.html").then(r => r.text())
+  fetch("/templates/header.html").then(r => r.text()),
+  fetch("/templates/footer.html").then(r => r.text())
 ]).then(([headerHtml, footerHtml]) => {
   document.getElementById("header-placeholder").innerHTML = headerHtml;
   document.getElementById("footer-placeholder").innerHTML = footerHtml;
-
   if (window.initHeader) window.initHeader();
 });
 </script>
+
 
 </body>
 </html>

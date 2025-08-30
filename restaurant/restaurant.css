@@ -382,3 +382,69 @@ footer a:hover {
   .rest-modal-box { grid-template-columns:1fr; max-height:92vh; }
   .rest-modal-media img { aspect-ratio:auto; height:auto; }
 }
+
+/* Sezione descrizione ristorante */
+.restaurant-description {
+  max-width: 900px;         /* larghezza massima */
+  margin: 50px auto;        /* centrato e con spazio sopra/sotto */
+  padding: 0 20px;          /* un po’ di respiro ai lati */
+  font-family: "Georgia", "Times New Roman", serif;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #2b2b2b;
+}
+
+/* Paragrafi */
+.restaurant-description p {
+  margin-bottom: 18px;
+  text-align: justify;
+}
+
+/* Primo paragrafo: leggermente più grande */
+.restaurant-description p:first-child {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+/* Ultimo paragrafo: in evidenza */
+.restaurant-description p:last-child {
+  margin-top: 25px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-align: center;
+  color: #533411; /* colore brand */
+}
+
+/* Stile responsive */
+@media (max-width: 768px) {
+  .restaurant-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 30px auto;
+  }
+  .restaurant-description p:last-child {
+    font-size: 1.1rem;
+  }
+}
+
+.restaurant-description p {
+  position: relative;
+  padding-left: 10px;
+}
+
+.restaurant-description p:hover {
+  background: rgba(255, 217, 74, 0.1); /* giallo tenue */
+  transition: background 0.3s ease;
+}
+
+.restaurant-description p:hover::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #facc15; /* giallo evidenziatore */
+  border-radius: 2px;
+}

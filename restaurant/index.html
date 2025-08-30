@@ -9,14 +9,15 @@
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-  <!-- Stili/JS condivisi -->
-  <link rel="stylesheet" href="/static/css/header-footer.css">
-  <script src="/static/js/i18n.js"></script>
-  <script defer src="/static/js/header-footer.js"></script>
-
   <!-- Stili/JS specifici della pagina -->
   <link rel="stylesheet" href="/restaurant/restaurant.css">
-  <script defer src="/restaurant/restaurant.js"></script>
+
+  <!-- Stili/JS condivisi -->
+  <link rel="stylesheet" href="/static/css/header-footer.css">
+<!--  <script src="/static/js/i18n.js"></script> -->
+  <script defer src="/static/js/header-footer.js"></script>
+
+  
 </head>
 <body>
   <div id="header-placeholder"></div>
@@ -27,23 +28,14 @@
 
   <!-- PARAGRAFO CENTRALE DESCRITTIVO -->
   <section class="intro-section">
-    <h1 data-i18n="ristorante_titolo" data-i18n="our_restaurant">Nuestro Restaurante</h1>
-    <p data-i18n="restaurant_description">
-      Bienvenidos a La Casita del Nazareno, un lugar donde cada detalle te invita a frenar, saborear y sentirte en casa. Nuestro restaurante nace de una idea sencilla pero profunda: unir la riqueza de la cocina española con la delicadeza y profundidad de la tradición asiática, creando un abrazo culinario que cuenta historias de sabores, culturas y personas.<br>
-
-Ofrecemos una cocina fusión auténtica, donde el respeto por el ingrediente se encuentra con la creatividad de un equipo joven y dinámico. Aquí no encontrarás platos transformados por la moda, sino reinterpretaciones sinceras que celebran la esencia de cada receta. Un ramen hecho con paciencia y caldo real, tapas inspiradas en las calles de Bangkok, baos que abrazan al jamón ibérico. Cada plato es un punto de encuentro entre mundos, unidos por la pasión y la intención.<br>
-
-Pero La Casita no es solo un restaurante. Es un hogar. Y como todo hogar de verdad, tiene un alma hecha de objetos, historias y memoria. Al pasear por su interior notarás que nada es casual. Las alacenas de madera maciza, las máquinas de coser Singer antiguas, las planchas de carbón, los cuadros vintage, el gramófono... cada pieza es original, elegida con cariño, y cuenta un tiempo donde el detalle valía más que la prisa. Es un homenaje a la lentitud, a la belleza vivida, a la nostalgia que acaricia sin doler.<br>
-
-Y luego está la terraza. Aislada del ruido, escondida entre tejados, iluminada con luces cálidas y perfumada con hierbas aromáticas. Una burbuja de paz, donde el tiempo se dilata y el mundo exterior se apaga. Ya sea un almuerzo al sol o una cena al atardecer, la terraza de La Casita regala una atmósfera íntima y única, hecha de charlas sinceras, brindis espontáneos y silencios cómodos.<br>
-
-Nuestra ubicación es otro pequeño secreto. A unos pasos de todo, pero protegida del caos urbano, como si la ciudad nos hubiera olvidado a propósito para dejarnos respirar. Aquí se viene a desconectar, pero también a reconectar. Ya sea una pausa rápida o una noche para recordar, La Casita te recibe sin preguntar, y te despide con gratitud.<br>
-
-Somos jóvenes, sí. Pero creemos en la vieja idea de hospitalidad, esa que se mide con la mirada, con la atención y con el aroma de un plato que sabe a casa. En un mundo cada vez más artificial, elegimos la sinceridad. Y si después de visitarnos te sientes un poco menos solo, un poco más lleno y un poco más feliz, entonces habremos hecho bien nuestro trabajo.<br>
-
-Bienvenido a casa.<br>
-Bienvenido a La Casita del Nazareno.
-    </p>
+    <h1 data-i18n="ristorante_titolo" >Nuestro Restaurante</h1>
+    <section class="restaurant-description">
+      <p data-i18n="restaurant_description_1">La Casita del Nazareno está en el corazón de Santa Cruz de Tenerife, a un paso de la Plaza Weyler y la Calle Castillo.</p>
+      <p data-i18n="restaurant_description_2">Somos un equipo dinámico que combina experiencia y frescura para ofrecer una cocina cercana y auténtica. En nuestra carta encontrarás saquitos crujientes, woks llenos de sabor, tapas reinventadas, cócteles frescos y tartas caseras que cambian cada día.</p>
+      <p data-i18n="restaurant_description_3">Nuestra terraza escondida y el ambiente acogedor del local hacen de La Casita un punto de encuentro ideal para almorzar al sol, cenar con amigos o desconectar en pleno centro.</p>
+      <p data-i18n="restaurant_description_4">Aquí no hay prisas, solo buen ambiente, hospitalidad sincera y platos que saben a casa.</p>
+      <p data-i18n="restaurant_description_5">Bienvenido a La Casita del Nazareno.</p>
+    </section>
   </section>
 
   <!-- MAPPA E RECENSIONI -->
@@ -109,6 +101,7 @@ Bienvenido a La Casita del Nazareno.
     <div id="footer-placeholder"></div>
   </body>
     <script src="/static/js/i18n.js"></script>
+    <script defer src="/restaurant/restaurant.js"></script>
  <script>
 Promise.all([
   fetch("../templates/header.html").then(r => r.text()),

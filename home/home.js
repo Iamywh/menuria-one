@@ -8,6 +8,8 @@ fetch("/data/lang.json")
   .then(data => {
     languageData = data;
     loadLanguageContent();
+    renderHighlightBox();
+    showFaqCategory('venue');
   })
   .catch(error => {
     console.error("Errore nel caricamento delle traduzioni:", error);
@@ -15,6 +17,27 @@ fetch("/data/lang.json")
 
   localStorage.setItem("lang", "es"); // es, it, en, etc.
 
+function renderHighlightBox() {
+  const box = document.getElementById("esHighlight");
+  if (!box) return;
+
+  if (currentLanguage === "es" && languageData.es) {
+    const L = languageData.es;
+    const title = L.popup_welcome || "¡Bienvenido a Menuria!";
+    const t1 = L.popup_text_1 || "";
+    const t2 = L.popup_text_2 || "";
+    const t3 = L.popup_text_3 || "";
+    box.innerHTML = `
+      <div class="hb-title">🎉 ${title}</div>
+      <p>${t1}</p>
+      <p>${t2}</p>
+      <p>${t3}</p>
+    `;
+    box.style.display = "block";
+  } else {
+    box.style.display = "none";
+  }
+}
 
 function loadLanguageContent() {
   if (!languageData[currentLanguage]) return;
@@ -98,13 +121,19 @@ function loadLanguageContent() {
 window.addEventListener("DOMContentLoaded", () => {
   loadVisitorCount();
   loadMenuPreviews();
+  showFaqCategory('venue');
+  renderHighlightBox();
 });
 
 function setLanguage(lang) {
   currentLanguage = lang;
   loadLanguageContent();
   loadMenuPreviews();
-  if (languageData[currentLanguage]) {
+  showFaqCategory('venue');
+  renderHighlightBox();
+
+  if (languageData[currentLanguage] && currentLanguage !== "es") {
+    // per lingue diverse da ES, mostri il popup come da tua logica
     showWelcomePopup();
   }
 }
@@ -333,3 +362,52 @@ window.loadMenuPreviews = window.loadMenuPreviews || function(){
 window.onLanguageChange = window.onLanguageChange || function(){
   try { window.loadMenuPreviews(); } catch(e){}
 };
+
+function renderHighlightBox() {
+  const box = document.getElementById("esHighlight");
+  if (!box) return;
+
+  const L = (languageData && languageData[currentLanguage]) ? languageData[currentLanguage] : {};
+  const title = L.popup_welcome || "¡Bienvenido!";
+  const t1 = L.popup_text_1 || "";
+  const t2 = L.popup_text_2 || "";
+  const t3 = L.popup_text_3 || "";
+
+  box.innerHTML = `
+    <div class="hb-title">🎉 ${title}</div>
+    ${t1 ? `<p>${t1}</p>` : ""}
+    ${t2 ? `<p>${t2}</p>` : ""}
+    ${t3 ? `<p>${t3}</p>` : ""}
+  `;
+  box.style.display = "block";
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const closeBtn = document.getElementById("highlightClose");
+  const highlight = document.getElementById("highlightBox");
+  if (closeBtn && highlight) {
+    closeBtn.addEventListener("click", () => {
+      highlight.style.display = "none";
+    });
+  }
+});
+// === Bind descrizione ristorante (5 paragrafi) ===
+function applyRestaurantDescription() {
+  // prova a leggere la lingua da i18n, poi fallback
+  const lang = (window.currentLang || window.currentLanguage || "es").toLowerCase();
+  const dict = (window.I18N && (I18N[lang] || I18N.es)) || {};
+
+  for (let i = 1; i <= 5; i++) {
+    const el = document.getElementById(`restaurant_description_${i}`);
+    const key = `restaurant_description_${i}`;
+    if (el) el.innerText = (dict[key] || "");
+  }
+}
+
+// al boot e ad ogni cambio lingua
+document.addEventListener("DOMContentLoaded", () => {
+  applyRestaurantDescription();
+});
+window.addEventListener("menuria:languageChanged", () => {
+  applyRestaurantDescription();
+});
