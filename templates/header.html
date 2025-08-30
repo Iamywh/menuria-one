@@ -1,29 +1,72 @@
-<nav class="site-header" role="navigation" aria-label="Primary">
+<nav class="site-header" role="navigation" aria-label="Primary navigation">
   <div class="hdr-left">
     <div class="dropdown" id="mainMenu">
-      <button class="dropbtn" aria-haspopup="true" aria-expanded="false">☰ Menu</button>
-      <div class="dropdown-content" role="menu">
-        <!-- Pagine -->
-        <a href="/home"       data-route="home" data-i18n="nav_home">🏠 Home</a>
-        <a href="/restaurant" data-route="restaurant" data-i18n="nav_restaurant">🍴 Restaurant</a>
-        <a href="/menus"      data-route="menus" data-i18n="nav_menus">📜 Menus</a>
-        <a href="/gallery"    data-route="gallery" data-i18n="nav_gallery">📸 Gallery</a>
+      <button 
+        class="dropbtn" 
+        aria-expanded="false" 
+        aria-controls="mainMenuContent" 
+        aria-haspopup="true"
+        aria-label="Apri menu principale"
+        type="button"
+      >
+        ☰ Menu
+      </button>
+      
+      <div 
+        class="dropdown-content" 
+        id="mainMenuContent"
+        role="menu" 
+        aria-labelledby="mainMenu"
+      >
+        <!-- Pagine principali -->
+        <a href="/home" data-route="home" data-i18n="nav_home" role="menuitem">
+          🏠 Home
+        </a>
+        <a href="/restaurant" data-route="restaurant" data-i18n="nav_restaurant" role="menuitem">
+          🍴 Restaurant
+        </a>
+        <a href="/menus" data-route="menus" data-i18n="nav_menus" role="menuitem">
+          📜 Menus
+        </a>
+        <a href="/gallery" data-route="gallery" data-i18n="nav_gallery" role="menuitem">
+          📸 Gallery
+        </a>
 
         <div class="menu-divider" aria-hidden="true"></div>
 
-        <!-- Impostazioni -> Idiomas -->
+        <!-- Sottomenu Lingue -->
         <div class="submenu">
-          <button class="submenu-btn" aria-haspopup="true" aria-expanded="false" id="langMenuBtn">
+          <button 
+            class="submenu-btn" 
+            aria-haspopup="true" 
+            aria-expanded="false" 
+            id="langMenuBtn"
+            type="button"
+          >
             🌐 <span data-i18n="nav_languages">Idiomas</span>
           </button>
-          <div class="submenu-content" role="menu">
-            <button class="lang-item" onclick="setLanguage('es')" data-lang="es" aria-label="Español">🇪🇸 ES</button>
-            <button class="lang-item" onclick="setLanguage('en')" data-lang="en" aria-label="English">🇬🇧 EN</button>
-            <button class="lang-item" onclick="setLanguage('de')" data-lang="de" aria-label="Deutsch">🇩🇪 DE</button>
-            <button class="lang-item" onclick="setLanguage('fr')" data-lang="fr" aria-label="Français">🇫🇷 FR</button>
-            <button class="lang-item" onclick="setLanguage('it')" data-lang="it" aria-label="Italiano">🇮🇹 IT</button>
-            <button class="lang-item" onclick="setLanguage('pt')" data-lang="pt" aria-label="Português">🇵🇹 PT</button>
-            <button class="lang-item" onclick="setLanguage('ru')" data-lang="ru" aria-label="Русский">🇷🇺 RU</button>
+          <div class="submenu-content" role="menu" aria-labelledby="langMenuBtn">
+            <button class="lang-item" onclick="setLanguage('es')"  data-lang="es" aria-label="Cambiar a Español" type="button" role="menuitem">
+              🇪🇸 ES
+            </button>
+            <button class="lang-item" onclick="setLanguage('en')"  data-lang="en" aria-label="Switch to English" type="button" role="menuitem">
+              🇬🇧 EN
+            </button>
+            <button class="lang-item" onclick="setLanguage('de')"  data-lang="de" aria-label="Auf Deutsch wechseln" type="button" role="menuitem">
+              🇩🇪 DE
+            </button>
+            <button class="lang-item" onclick="setLanguage('fr')"  data-lang="fr" aria-label="Passer au Français" type="button" role="menuitem">
+              🇫🇷 FR
+            </button>
+            <button class="lang-item" onclick="setLanguage('it')"  data-lang="it" aria-label="Cambia in Italiano" type="button" role="menuitem">
+              🇮🇹 IT
+            </button>
+            <button class="lang-item" onclick="setLanguage('pt')"  data-lang="pt" aria-label="Mudar para Português" type="button" role="menuitem">
+              🇵🇹 PT
+            </button>
+            <button class="lang-item" onclick="setLanguage('ru')"  data-lang="ru" aria-label="Переключить на Русский" type="button" role="menuitem">
+              🇷🇺 RU
+            </button>
           </div>
         </div>
       </div>
@@ -31,12 +74,31 @@
   </div>
 
   <div class="hdr-center">
-    <img class="brand-logo" src="/static/img/lacasitabackgrnd.png" alt="Restaurant Logo" />
-    <span class="brand-name" id="restaurantTitle" data-i18n="home_title">La Casita del Nazareno</span>
+    <img 
+      class="brand-logo" 
+      src="/static/img/lacasitabackgrnd.png" 
+      alt="Logo del Restaurante La Casita del Nazareno" 
+    />
+    <span 
+      class="brand-name" 
+      id="restaurantTitle" 
+      data-i18n="home_title"
+    >
+      La Casita del Nazareno
+    </span>
   </div>
 
   <div class="hdr-right">
-    <span class="visitors-label" data-i18n="visitors_label">👥 Visitors:</span>
-    <span id="visitorCount" class="visitors-count" aria-live="polite">—</span>
+    <span class="visitors-label" data-i18n="visitors_label">
+      👥 Visitors:
+    </span>
+    <span 
+      id="visitorCount" 
+      class="visitors-count" 
+      aria-live="polite"
+      aria-label="Número de visitantes"
+    >
+      —
+    </span>
   </div>
 </nav>
