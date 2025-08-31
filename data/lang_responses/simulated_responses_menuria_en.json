@@ -101,7 +101,7 @@
   },
   "valet": {
     "domanda": "Do you have valet parking?",
-    "risposta": "Yes, we offer valet parking services for our customers."
+    "risposta": "No we do not offer valet parking service, but there are nearby public parking options available."
   },
   "reservar_online_whatsapp": {
     "domanda": "Can I book online or via WhatsApp?",

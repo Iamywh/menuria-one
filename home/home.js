@@ -1,5 +1,5 @@
 // === Variabili globali
-let currentLanguage = "es";
+let currentLanguage = (localStorage.getItem("menuria_lang") || localStorage.getItem("lang") || "es").toLowerCase();
 let languageData = {};
 
 // === Carica traduzioni da lang.json
@@ -11,11 +11,18 @@ fetch("/data/lang.json")
     renderHighlightBox();
     showFaqCategory('venue');
   })
-  .catch(error => {
-    console.error("Errore nel caricamento delle traduzioni:", error);
-  });
+  .catch(error => console.error("Errore nel caricamento delle traduzioni:", error));
 
-  localStorage.setItem("lang", "es"); // es, it, en, etc.
+
+function getLang() {
+  return (currentLanguage || localStorage.getItem("menuria_lang") || localStorage.getItem("lang") || "es").toLowerCase();
+}
+function setLang(lang) {
+  currentLanguage = (lang || "es").toLowerCase();
+  localStorage.setItem("menuria_lang", currentLanguage);
+  localStorage.setItem("lang", currentLanguage); // compat vecchio codice
+}
+
 
 function renderHighlightBox() {
   const box = document.getElementById("esHighlight");
@@ -42,6 +49,9 @@ function renderHighlightBox() {
 function loadLanguageContent() {
   if (!languageData[currentLanguage]) return;
   const lang = languageData[currentLanguage];
+
+  const clearBtn = document.getElementById("clearChatBtn");
+  if (clearBtn && lang.clear_chat) clearBtn.innerText = lang.clear_chat;
 
   const titolo = document.getElementById("titolo");
   if (titolo && lang.titolo) titolo.innerText = lang.titolo;
@@ -113,7 +123,8 @@ function loadLanguageContent() {
     const faqKey = `faq_${i}`;
     if (faqBtn && lang[faqKey]) {
       faqBtn.innerText = lang[faqKey];
-      faqBtn.setAttribute("onclick", `ask('${lang[faqKey]}')`);
+faqBtn.dataset.faqKey = faqKey;
+faqBtn.onclick = () => askFAQ(faqKey);
     }
   }
 }
@@ -125,18 +136,27 @@ window.addEventListener("DOMContentLoaded", () => {
   renderHighlightBox();
 });
 
-function setLanguage(lang) {
-  currentLanguage = lang;
+// L'header dispatcha menuria:languageChanged con {detail:{lang:'..'}}
+window.addEventListener("menuria:languageChanged", (e) => {
+  if (e && e.detail && e.detail.lang) setLang(e.detail.lang);
   loadLanguageContent();
   loadMenuPreviews();
   showFaqCategory('venue');
   renderHighlightBox();
+});
 
-  if (languageData[currentLanguage] && currentLanguage !== "es") {
-    // per lingue diverse da ES, mostri il popup come da tua logica
-    showWelcomePopup();
-  }
+
+function setLanguage(lang) {
+  setLang(lang);
+  loadLanguageContent();
+  loadMenuPreviews();
+  showFaqCategory('venue');
+  renderHighlightBox();
+  // niente popup qui
+  window.dispatchEvent(new Event('menuria:languageChanged'));
 }
+
+
 
 function showWelcomePopup() {
   const popup = document.getElementById("welcomePopup");
@@ -177,22 +197,26 @@ function sendMessage() {
   const message = input.value.trim();
   if (!message) return;
   appendMessage("👤", message);
+
   input.value = "";
 
   fetch("/chat", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ message, lang: currentLanguage || "es" })
-  })
-    .then(res => res.json())
-    .then(data => {
-      appendMessage("🤖", data.response);
+    body: JSON.stringify({
+      message,
+      lang: getLang(),          // ✅ lingua attuale vera
+      source: "free_text"
     })
-    .catch(error => {
-      console.error("Errore nella chat:", error);
-      appendMessage("🤖", "⚠️ Error connecting to the server.");
-    });
+  })
+  .then(res => res.json())
+  .then(data => appendMessage("🤖", data.response))
+  .catch(err => {
+    console.error("Errore nella chat:", err);
+    appendMessage("🤖", "⚠️ Error connecting to the server.");
+  });
 }
+
 
 function appendMessage(sender, text) {
   const messages = document.getElementById("messages");
@@ -227,17 +251,6 @@ function sendFeedback(rating) {
     });
 }
 
-/*document.getElementById("clearChatBtn").addEventListener("click", function() {
-  const chatBox = document.getElementById("messages");
-  if (chatBox) {
-    chatBox.innerHTML = "";
-    const systemMsg = document.createElement("div");
-    systemMsg.className = "system-msg";
-    systemMsg.innerText = "Chat reset!";
-    chatBox.appendChild(systemMsg);
-  }
-}); */
-
 function toggleFAQ() {
   const faq = document.getElementById("faq");
   if (faq) faq.classList.toggle("hidden");
@@ -247,23 +260,50 @@ function toggleFAQSection() {
   toggleFAQ();
 }
 
-/*function toggleChatWindow() {
-  const chatWindow = document.getElementById("chatWindow");
-  if (chatWindow) chatWindow.classList.toggle("hidden");
-} */
-
-/*function openPDF(filename) {
-  const lang = currentLanguage || "es";
-  const path = `/static/menus/${lang}/${filename}`;
-  window.open(path, '_blank');
-}*/
-
 function ask(question) {
-  appendMessage("👤", question);
+  appendMessage("👤", question); // mostra quello localizzato che l’utente ha cliccato
+
   fetch("/chat", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ message: question, lang: currentLanguage || "es" })
+    body: JSON.stringify({
+      message: question,        // testo localizzato
+      lang: getLang(),          // ✅ lingua attuale vera
+      source: "faq_click"
+    })
+  })
+  .then(res => res.json())
+  .then(data => appendMessage("🤖", data.response))
+  .catch(error => {
+    console.error("Errore nella FAQ:", error);
+    appendMessage("🤖", "⚠️ Error de conexión.");
+  });
+}
+
+
+function askFAQ(faqKey) {
+  const lang = (currentLanguage || "es").toLowerCase();
+  const L = languageData[lang] || {};
+  const LES = (languageData.es || {});
+  const questionLocalized = L[faqKey] || "";     // testo mostrato all’utente
+  const questionES        = LES[faqKey] || "";   // fallback per il backend
+
+  // Mostra in chat ciò che l’utente ha cliccato (nella sua lingua)
+  appendMessage("👤", questionLocalized || `[${faqKey}]`);
+
+  fetch("/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      // per compat: tieni anche "message" localizzato
+      message: questionLocalized || questionES || faqKey,
+      // passa la lingua corrente
+      lang,
+      // passa un ID STABILE per il routing lato server
+      faq_key: faqKey,
+      // e il testo ES come “ancora” per i matcher esistenti
+      message_es: questionES
+    })
   })
     .then(res => res.json())
     .then(data => {
@@ -275,42 +315,6 @@ function ask(question) {
     });
 }
 
-/*function loadMenuPreviews() {
-  const lang = currentLanguage || "es";
-  const langLabels = languageData[lang] || {};
-  const menuItems = [
-    { name: langLabels.menu_desayunos || "Desayunos", file: "menu_desayunos_es" },
-    { name: langLabels.menu_comida || "Comida", file: "menu_comida_es" },
-    { name: langLabels.menu_bebidas || "Bebidas", file: "menu_bebidas_es" },
-    { name: langLabels.menu_cafes || "Cafés y Frappés", file: "menu_cafes_frapes_es" }
-  ];
-
-  const gallery = document.getElementById("menuGallery");
-  if (!gallery) return;
-  gallery.innerHTML = "";
-
-  menuItems.forEach(item => {
-    const wrapper = document.createElement("div");
-    wrapper.className = "menu-wrapper";
-
-    const frame = document.createElement("div");
-    frame.className = "menu-frame";
-    frame.onclick = () => openPDF(item.file + ".pdf");
-
-    const iframe = document.createElement("iframe");
-    iframe.src = `/static/menus/${lang}/${item.file}.pdf#toolbar=0&navpanes=0&scrollbar=0`;
-    iframe.className = "menu-preview";
-
-    const caption = document.createElement("p");
-    caption.className = "menu-caption";
-    caption.textContent = item.name;
-
-    frame.appendChild(iframe);
-    wrapper.appendChild(frame);
-    wrapper.appendChild(caption);
-    gallery.appendChild(wrapper);
-  });
-}*/
 
 function showFaqCategory(category, btn){
   // Mostra/Nasconde i box FAQ
@@ -410,4 +414,47 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 window.addEventListener("menuria:languageChanged", () => {
   applyRestaurantDescription();
+});
+
+function clearChat(confirmAsk = true){
+  const messages = document.getElementById("messages");
+  if (!messages) return;
+
+  if (confirmAsk){
+    const lang = (currentLanguage || "es").toLowerCase();
+    const msg = {
+      es: "¿Vaciar el chat?",
+      it: "Svuotare la chat?",
+      en: "Clear the chat?",
+      fr: "Vider le chat ?",
+      de: "Chat leeren?",
+      pt: "Limpar o chat?",
+      ru: "Очистить чат?"
+    }[lang] || "Clear the chat?";
+    if (!window.confirm(msg)) return;
+  }
+
+  messages.innerHTML = "";
+  const systemMsg = document.createElement("div");
+  systemMsg.className = "system-msg";
+  systemMsg.textContent = "— chat resettata —";
+  messages.appendChild(systemMsg);
+  messages.scrollTop = messages.scrollHeight;
+}
+
+// bind al click + scorciatoia tastiera
+document.addEventListener("DOMContentLoaded", () => {
+  const clearBtn = document.getElementById("clearChatBtn");
+  if (clearBtn){
+    clearBtn.addEventListener("click", () => clearChat(true));
+  }
+
+  // Ctrl/Cmd + K per pulire (come molti editor)
+  document.addEventListener("keydown", (e)=>{
+    const ctrlOrCmd = e.ctrlKey || e.metaKey;
+    if (ctrlOrCmd && e.key.toLowerCase() === "k"){
+      e.preventDefault();
+      clearChat(false);
+    }
+  });
 });

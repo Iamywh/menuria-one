@@ -978,5 +978,16 @@ footer a:hover {
     transform: translateY(0);
   }
 }
+.clear-btn{
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 0;
+  font-weight: 700;
+  background: rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: filter .15s ease, transform .12s ease;
+}
+.clear-btn:hover{ filter: brightness(0.95); transform: translateY(-1px); }
+.menuria-dark .clear-btn{ background: rgba(255,255,255,0.12); color: #eaeaea; }
 
 
