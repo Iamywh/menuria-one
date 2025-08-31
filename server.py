@@ -44,6 +44,7 @@ def get_fallback(lang):
         "it": "Mi dispiace, non ho una risposta per questo.",
         "fr": "Désolé, je n’ai pas de réponse à cela.",
         "de": "Es tut mir leid, ich habe keine Antwort darauf.",
+        "pt": "Desculpe, não tenho uma resposta para isso.",
         "ru": "Извините, у меня нет ответа на это."
     }
     return fallback.get(lang, fallback["en"])
@@ -155,6 +156,39 @@ def rate():
             json.dump([entry], f, indent=2)
 
     return jsonify({'success': True})
+
+# === Feedback commenti
+@app.route('/feedback', methods=['POST'])
+def feedback():
+    data = request.get_json()
+    comment = data.get('comment', '').strip()
+    lang = data.get('lang', 'unknown')
+    url = data.get('url', '/')
+    timestamp = datetime.datetime.now().isoformat()
+
+    if not comment:
+        return jsonify({'error': 'Empty comment'}), 400
+
+    entry = {
+        'timestamp': timestamp,
+        'comment': comment,
+        'language': lang,
+        'url': url
+    }
+
+    try:
+        with open(FEEDBACK_LOG, 'r+', encoding='utf-8') as f:
+            feedback_list = json.load(f)
+            feedback_list.append(entry)
+            f.seek(0)
+            json.dump(feedback_list, f, indent=2, ensure_ascii=False)
+            f.truncate()
+    except:
+        with open(FEEDBACK_LOG, 'w', encoding='utf-8') as f:
+            json.dump([entry], f, indent=2, ensure_ascii=False)
+
+    return jsonify({'success': True})
+
 
 # === Chat
 @app.route('/chat', methods=['POST'])

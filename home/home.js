@@ -240,7 +240,7 @@ function loadVisitorCount() {
     });
 }
 
-function sendFeedback(rating) {
+/*function sendFeedback(rating) {
   fetch("/rate", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -249,7 +249,7 @@ function sendFeedback(rating) {
     .catch(error => {
       console.error("Errore nell'invio del feedback:", error);
     });
-}
+} */
 
 function toggleFAQ() {
   const faq = document.getElementById("faq");
@@ -458,3 +458,120 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+// Carica e mostra i contatori (opzionale: mostrali in badge vicino alle emoji)
+async function renderRatingCounts() {
+  try {
+    const res = await fetch('/data/rating_counts.json', { cache: 'no-store' });
+    if (!res.ok) return;
+    const counts = await res.json(); // { happy: 12, neutral: 5, sad: 3 }
+    // Se vuoi, aggiorna badge in DOM (aggiungi <span class="count"> nel markup)
+    const map = { happy: '.emoji-happy', neutral: '.emoji-neutral', sad: '.emoji-sad' };
+    Object.entries(map).forEach(([k, sel]) => {
+      const btn = document.querySelector(sel);
+      if (!btn) return;
+      let badge = btn.querySelector('.count');
+      if (!badge) {
+        badge = document.createElement('span');
+        badge.className = 'count';
+        badge.style.marginLeft = '6px';
+        badge.style.opacity = '0.7';
+        btn.appendChild(badge);
+      }
+      if (counts && typeof counts[k] !== 'undefined') badge.textContent = counts[k];
+    });
+  } catch (_) {}
+}
+
+// Evita doppio voto per sessione
+function canVote() {
+  return !localStorage.getItem('menuria_voted');
+}
+function markVoted() {
+  localStorage.setItem('menuria_voted', String(Date.now()));
+}
+
+// === Utility per messaggi tradotti
+function t(key, fallback) {
+  const lang = (currentLanguage || 'es').toLowerCase();
+  const dict = languageData[lang] || {};
+  return dict[key] || fallback;
+}
+
+// === Toast popup
+function showToast(message, ms=3000){
+  const el = document.getElementById('menuriaToast');
+  if(!el) return;
+  el.textContent = message;
+  el.classList.add('show');
+  clearTimeout(showToast._t);
+  showToast._t = setTimeout(()=> el.classList.remove('show'), ms);
+}
+
+// === Feedback con emoji
+function sendFeedback(rating) {
+  if (!canVote()) {
+    appendMessage('ℹ️', t('feedback_already', 'Feedback già inviato in questa sessione.'));
+    return;
+  }
+  fetch('/rate', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      rating, 
+      lang: (currentLanguage || 'unknown').toLowerCase(),
+      url: location.pathname
+    })
+  })
+  .then(r => {
+    if (!r.ok) throw new Error('rate failed');
+    markVoted();
+    appendMessage('🤖', t('feedback_thanks', 'Grazie per il tuo feedback!'));
+    showToast(t('toast_thanks_rating', '¡Gracias por tu valoración!'));
+    renderRatingCounts();
+  })
+  .catch(err => {
+    console.error('Errore nell\'invio del feedback:', err);
+    appendMessage('🤖', t('feedback_error', '⚠️ Problema con il salvataggio del feedback.'));
+  });
+}
+
+// === Commenti testuali
+function submitComment() {
+  const ta = document.getElementById('userComment');
+  if (!ta) return;
+  const text = (ta.value || '').trim();
+  if (!text) {
+    appendMessage('ℹ️', t('feedback_write_first', 'Scrivi un commento prima di inviare.'));
+    return;
+  }
+  const payload = {
+    comment: text,
+    lang: (currentLanguage || 'es').toLowerCase(),
+    url: location.pathname,
+    ts: new Date().toISOString()
+  };
+
+  fetch('/feedback', {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify(payload)
+  })
+  .then(r => {
+    if (!r.ok) throw new Error('feedback failed');
+    ta.value = '';
+    appendMessage('🤖', t('feedback_comment_received', 'Grazie! Commento ricevuto.'));
+    showToast(
+      t('toast_thanks_comment', 
+        "Gracias por tu comentario, es muy importante para nosotros conocer tu opinión.")
+    );
+  })
+  .catch(err => {
+    console.error('Errore nell\'invio del commento:', err);
+    appendMessage('🤖', t('feedback_comment_error', '⚠️ Non sono riuscito a salvare il commento.'));
+  });
+}
+
+
+
+

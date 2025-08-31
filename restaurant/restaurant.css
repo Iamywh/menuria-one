@@ -224,8 +224,8 @@
 }
 
 .promo-card img {
-  width: 100%;
-  height: 160px;
+  width: auto;
+  height: auto;
   object-fit: cover;
 }
 
@@ -447,4 +447,97 @@ footer a:hover {
   width: 4px;
   background: #facc15; /* giallo evidenziatore */
   border-radius: 2px;
+}
+/* === Promo: layout base */
+.promo-card,
+.promo-item,
+.promo-box {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+/* Mobile: impila immagine sopra testo */
+@media (max-width: 768px) {
+  .promo-card,
+  .promo-item,
+  .promo-box {
+    flex-direction: column;
+  }
+}
+
+/* Immagine: niente altezza fissa, visibile tutta */
+.promo-card img,
+.promo-item img,
+.promo-box img,
+.promo-image img {
+  width: 100%;
+  height: auto !important;      /* evita tagli */
+  max-width: 100%;
+  object-fit: contain !important; /* mostra tutta l’immagine */
+  aspect-ratio: auto !important;  /* niente proporzioni forzate */
+  display: block;
+}
+
+/* Se usi un DIV con background come immagine promo */
+.promo-image,
+.promo-cover {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain !important; /* mostra tutta l’immagine */
+  /* opzionale: garantisce spazio senza fissare height */
+  padding-top: 56%; /* 16:9; modifica se serve */
+}
+
+/* Testo: assicurati che sia visibile su mobile */
+.promo-text,
+.promo-body,
+.promo-content,
+.promo-description {
+  display: block !important;
+  position: static !important;
+  max-width: 100%;
+  white-space: normal;
+  overflow: visible;
+  color: inherit; /* evita testo bianco su fondo chiaro/scuro */
+  line-height: 1.5;
+}
+
+/* Se il testo era sotto l’immagine ma tagliato da un contenitore */
+.promo-card .content,
+.promo-item .content,
+.promo-box .content {
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+/* Evita che qualche media query nasconda il testo su mobile */
+@media (max-width: 768px) {
+  .promo-text,
+  .promo-body,
+  .promo-content,
+  .promo-description {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}
+
+/* Modali promo (se apri in overlay) */
+.promo-modal .modal-content {
+  max-height: 80vh;
+  overflow: auto;
+  padding: 16px;
+}
+.promo-modal img {
+  width: 100%;
+  height: auto !important;
+  object-fit: contain !important;
+}
+/* Desktop (default) */
+.promo-card img { object-fit: cover; }
+
+/* Mobile override */
+@media (max-width: 768px) {
+  .promo-card img { object-fit: contain; }
 }
