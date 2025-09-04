@@ -82,6 +82,10 @@ def menus():
 def restaurant():
     return send_from_directory('restaurant', 'index.html')
 
+@app.route('/bookings')
+def bookings():
+    return render_template('bookings.html')
+
 # ✅ Rotta generica: /home, /menus, /gallery, /restaurant
 @app.route('/<section>')
 @app.route('/<section>/')
@@ -227,6 +231,142 @@ def analytics():
         feedback_list = json.load(f)
 
     return render_template('analytics.html', visitors=visitor_count, ratings=ratings, feedback=feedback_list)
+
+# =============== PRENOTAZIONI + TELEGRAM ======================
+from urllib.parse import quote
+import uuid, threading, time, re, requests
+
+RESERVATIONS_FILE = os.path.join(DATA_DIR, 'reservations.json')
+os.makedirs(DATA_DIR, exist_ok=True)
+if not os.path.exists(RESERVATIONS_FILE):
+    with open(RESERVATIONS_FILE, 'w', encoding='utf-8') as f:
+        json.dump([], f, ensure_ascii=False, indent=2)
+
+LOCK = threading.Lock()
+CLOSED_SLOTS = {"22:30"}   # cucina chiusa a quest’ora
+MAX_GUESTS   = 20
+
+def _load_reservations():
+    with LOCK:
+        with open(RESERVATIONS_FILE, 'r', encoding='utf-8') as f:
+            return json.load(f)
+
+def _save_reservations(rows):
+    with LOCK:
+        with open(RESERVATIONS_FILE, 'w', encoding='utf-8') as f:
+            json.dump(rows, f, ensure_ascii=False, indent=2)
+
+def _send_telegram(text):
+    token = os.getenv("7597380720:AAFG45u2V6gM4ldoYmdAwzAgHodu8Ci7My4")  # metti in ENV
+    chat  = os.getenv("Assistant_LaCasita_bot")    # metti in ENV
+    if not token or not chat:
+        return
+    try:
+        requests.post(
+            f"https://api.telegram.org/bot{token}/sendMessage",
+            json={"chat_id": chat, "text": text, "parse_mode": "HTML"},
+            timeout=6
+        )
+    except Exception as e:
+        app.logger.error(f"Telegram error: {e}")
+
+def _overlaps_slot(a, b):   # stessa mezz’ora => conflitto
+    return a == b
+
+@app.get("/api/reservations")
+def list_reservations():
+    date = request.args.get("date")
+    time_hm = request.args.get("time")
+    rows = _load_reservations()
+    if date:
+        rows = [r for r in rows if r["date"] == date]
+    if time_hm:
+        rows = [r for r in rows if _overlaps_slot(r["time"], time_hm)]
+    return jsonify(rows)
+
+@app.post("/api/reservations")
+def create_reservation():
+    p = request.get_json(force=True)
+
+    # campi minimi
+    for k in ("date","time","firstName","lastName","phone","guests"):
+        if not p.get(k):
+            return jsonify({"error":"missing_fields"}), 400
+
+    if p["time"] in CLOSED_SLOTS:
+        return jsonify({"error":"kitchen_closed"}), 400
+
+    guests = int(p["guests"])
+    if guests < 1 or guests > MAX_GUESTS:
+        return jsonify({"error":"max_guests_exceeded"}), 400
+
+    table_id = p.get("tableId")
+    # per <=6 obbligo scelta tavolo
+    if guests <= 6 and not table_id:
+        return jsonify({"error":"table_required_for_small_groups"}), 400
+
+    rows = _load_reservations()
+
+    # conflitto: stesso tavolo stesso slot
+    if table_id:
+        for r in rows:
+            if r["date"] == p["date"] and r.get("tableId") == table_id and _overlaps_slot(r["time"], p["time"]):
+                return jsonify({"error":"table_already_booked"}), 409
+
+    res = {
+        "id": str(uuid.uuid4()),
+        "date": p["date"],
+        "time": p["time"],
+        "firstName": p["firstName"].strip(),
+        "lastName": p["lastName"].strip(),
+        "phone": p["phone"].strip(),
+        "guests": guests,
+        "tableId": table_id,                         # null per >6
+        "allergies": (p.get("allergies") or "").strip(),
+        "highchair": bool(p.get("highchair", False)),
+        "roofExclusive": bool(p.get("roofExclusive", False)),
+        "createdAt": int(time.time()),
+        "status": "pending"
+    }
+    rows.append(res)
+    _save_reservations(rows)
+
+    # Sala dedotta da prefisso ID
+    sala = ("Terraza" if table_id and table_id.startswith("T") else
+            "Sala Interna" if table_id and (table_id.startswith("S") or table_id.startswith("C")) else
+            "Azotea" if table_id and table_id.startswith("A") else
+            "Assegnare")
+
+    # --- WhatsApp link (senza f-string annidati) ---
+    wa_phone = re.sub(r"\D", "", res["phone"])
+    table_part = f", tavolo {res['tableId']}" if res.get("tableId") else ""
+    wa_msg = (
+        f"¡Hola {res['firstName']}! Soy La Casita del Nazareno. "
+        f"Hemos recibido tu solicitud: {res['date']} {res['time']}, "
+        f"{res['guests']} personas{table_part}. "
+        "Te confirmaremos pronto por WhatsApp. ¡Gracias!"
+    )
+    wa_link = f"https://wa.me/{wa_phone}?text={quote(wa_msg)}"
+
+    # Messaggio Telegram
+    txt = (
+        f"📅 <b>Nuova prenotazione</b>\n"
+        f"• Data/Ora: {res['date']} {res['time']}\n"
+        f"• Nome: {res['firstName']} {res['lastName']}\n"
+        f"• Tel: {res['phone']}\n"
+        f"• Persone: {res['guests']}\n"
+        f"• Tavolo: {res['tableId'] or '—'} ({sala})\n"
+        f"• Seggiolone: {'Sì' if res['highchair'] else 'No'}\n"
+        f"• Terrazza esclusiva: {'Sì' if res['roofExclusive'] else 'No'}\n"
+        f"• Allergie: {res['allergies'] or '—'}\n"
+        f"• WhatsApp: {wa_link}\n"
+        f"ID: {res['id']}"
+    )
+    _send_telegram(txt)
+
+    return jsonify(res), 201
+# ==============================================================
+
 
 # === Avvio
 if __name__ == '__main__':

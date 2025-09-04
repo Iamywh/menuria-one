@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prenotazioni · La Casita</title>
+  <!-- Font Awesome: DEVE stare in ogni pagina (o in un layout comune) -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="/static/css/header-footer.css" />
+  <script defer src="/static/js/header-footer.js"></script>
+    <link rel="stylesheet" href="/static/css/bookings.css" />
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <main class="wrap">
+    <div class="topbar card glow">
+      <div class="pill"><span>🍽️</span><strong data-i18n="booking_title">Prenotazioni</strong></div>
+      <div class="badge"><span data-i18n="today_total">Prenotazioni di oggi:</span> <strong id="totals">0</strong></div>
+    </div>
+
+    <div class="grid cols-2">
+      <!-- COLONNA MAPPE -->
+      <section class="card glow" style="padding:16px">
+        <div class="tabs">
+          <button class="tab active" data-tab="terrazzo" data-i18n="tab_terrace">Terrazzo Principale</button>
+          <button class="tab" data-tab="interna" data-i18n="tab_inside">Sala Interna</button>
+          <button class="tab" data-tab="tetto" data-i18n="tab_roof">Terrazza sul Tetto</button>
+        </div>
+        <div id="table-hint" class="hint" style="padding:0 14px 8px 14px"></div>
+        <div class="map-shell">
+          <div id="mapBg" class="map-bg"></div>
+          <div id="mapHotspots"></div>
+        </div>
+        <div class="hint" style="padding:8px 14px 0 14px" id="calibHelp"></div>
+      </section>
+
+      <!-- COLONNA FORM -->
+      <section class="card glow" style="padding:16px">
+        <form id="reserveForm">
+          <div class="row">
+            <div>
+              <label data-i18n="date_label">Fecha</label>
+              <input id="date" name="date" type="date" required />
+            </div>
+            <div>
+              <label data-i18n="time_label">Hora</label>
+              <select id="time" name="time" required></select>
+            </div>
+          </div>
+
+          <div class="row" style="margin-top:12px">
+            <div>
+              <label data-i18n="first_name">Nombre</label>
+              <input name="firstName" required />
+            </div>
+            <div>
+              <label data-i18n="last_name">Apellido</label>
+              <input name="lastName" required />
+            </div>
+          </div>
+
+          <div class="row" style="margin-top:12px">
+            <div>
+              <label data-i18n="phone">Telefono</label>
+              <input name="phone" inputmode="tel" placeholder="+34 6XX XXX XXX" required />
+            </div>
+            <div>
+              <label data-i18n="guests">N. personas</label>
+              <input id="guests" name="guests" type="number" min="1" max="20" value="2" required />
+            </div>
+          </div>
+
+          <div style="margin-top:12px">
+            <label data-i18n="allergies">Alergias (opcional</label>
+            <textarea name="allergies" rows="2" placeholder="Es: glutine, frutta a guscio..."></textarea>
+          </div>
+
+          <div class="row" style="margin-top:12px">
+            <label class="pill">
+              <input type="checkbox" name="highchair" />
+              <span data-i18n="highchair">Sirve trona</span>
+            </label>
+            <label class="pill" title="Uso esclusivo Terrazza Superiore a 90€">
+              <input type="checkbox" name="roofExclusive" />
+              <span data-i18n="roof_exclusive">Terraza superior exclusiva (90€)</span>
+            </label>
+          </div>
+
+          <div style="display:flex; justify-content:flex-end; margin-top:16px">
+            <button id="submitBtn" class="btn" type="submit" disabled data-i18n="submit">Prenota</button>
+          </div>
+        </form>
+        <div class="hint" style="margin-top:8px" id="whatsHint"></div>
+      </section>
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <div id="toast" class="toast"></div>
+
+</body>
+<script src="/static/js/i18n.js"></script>
+  <script src="/static/js/bookings.js"></script>
+  <script>
+Promise.all([
+  fetch("../templates/header.html").then(r => r.text()),
+  fetch("../templates/footer.html").then(r => r.text())
+]).then(([headerHtml, footerHtml]) => {
+  document.getElementById("header-placeholder").innerHTML = headerHtml;
+  document.getElementById("footer-placeholder").innerHTML = footerHtml;
+
+  if (window.initHeader) window.initHeader();
+});
+</script>
+</html>

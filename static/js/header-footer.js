@@ -38,6 +38,7 @@ window.initHeader = function initHeader() {
       'restaurant': 'restaurant', 
       'menus': 'menus',
       'gallery': 'gallery',
+      'bookings': 'bookings',
     };
     
     return routeMap[firstSegment] || 'home';
