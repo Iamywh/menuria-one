@@ -1,1 +1,17 @@
-[]
+[
+  {
+    "id": "c033fa32-7a62-43f8-8d55-6b9a9d0eb7d5",
+    "date": "2025-09-05",
+    "time": "14:00",
+    "firstName": "Ivo",
+    "lastName": "Iorio",
+    "phone": "+34685274301",
+    "guests": 4,
+    "tableId": "A21",
+    "allergies": "",
+    "highchair": false,
+    "roofExclusive": false,
+    "createdAt": 1757034197,
+    "status": "pending"
+  }
+]

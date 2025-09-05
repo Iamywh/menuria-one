@@ -1,42 +1,49 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="es"></html>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Prenotazioni · La Casita</title>
-  <!-- Font Awesome: DEVE stare in ogni pagina (o in un layout comune) -->
+  <title>Reservas · La Casita</title>
+
+  <!-- Font Awesome (si el footer usa los iconos) -->
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
   <link rel="stylesheet" href="/static/css/header-footer.css" />
   <script defer src="/static/js/header-footer.js"></script>
-    <link rel="stylesheet" href="/static/css/bookings.css" />
+
+  
+
+  <link rel="stylesheet" href="/static/css/bookings.css" />
 </head>
 <body>
   <div id="header-placeholder"></div>
 
   <main class="wrap">
     <div class="topbar card glow">
-      <div class="pill"><span>🍽️</span><strong data-i18n="booking_title">Prenotazioni</strong></div>
-      <div class="badge"><span data-i18n="today_total">Prenotazioni di oggi:</span> <strong id="totals">0</strong></div>
+      <div class="pill"><span>🍽️</span><strong data-i18n="booking_title">Reservas</strong></div>
+      <div class="badge"><span data-i18n="today_total">Reservas de hoy:</span> <strong id="totals">0</strong></div>
     </div>
 
     <div class="grid cols-2">
-      <!-- COLONNA MAPPE -->
+      <!-- COLUMNA MAPAS -->
       <section class="card glow" style="padding:16px">
         <div class="tabs">
-          <button class="tab active" data-tab="terrazzo" data-i18n="tab_terrace">Terrazzo Principale</button>
-          <button class="tab" data-tab="interna" data-i18n="tab_inside">Sala Interna</button>
-          <button class="tab" data-tab="tetto" data-i18n="tab_roof">Terrazza sul Tetto</button>
+          <button class="tab active" data-tab="terrazzo" data-i18n="tab_terrace">Terraza Principal</button>
+          <button class="tab" data-tab="interna" data-i18n="tab_inside">Sala Interior</button>
+          <button class="tab" data-tab="tetto" data-i18n="tab_roof">Terraza en la Azotea</button>
         </div>
         <div id="table-hint" class="hint" style="padding:0 14px 8px 14px"></div>
+
         <div class="map-shell">
-          <div id="mapBg" class="map-bg"></div>
-          <div id="mapHotspots"></div>
+          <div id="mapBg" class="map-bg"></div>   <!-- opcional; no usado con SVG -->
+          <div id="mapHotspots"></div>            <!-- host del SVG -->
         </div>
+
         <div class="hint" style="padding:8px 14px 0 14px" id="calibHelp"></div>
       </section>
 
-      <!-- COLONNA FORM -->
+      <!-- COLUMNA FORMULARIO -->
       <section class="card glow" style="padding:16px">
         <form id="reserveForm">
           <div class="row">
@@ -63,33 +70,41 @@
 
           <div class="row" style="margin-top:12px">
             <div>
-              <label data-i18n="phone">Telefono</label>
+              <label data-i18n="phone">Teléfono</label>
               <input name="phone" inputmode="tel" placeholder="+34 6XX XXX XXX" required />
             </div>
             <div>
-              <label data-i18n="guests">N. personas</label>
+              <label data-i18n="guests">Nº personas</label>
               <input id="guests" name="guests" type="number" min="1" max="20" value="2" required />
             </div>
           </div>
 
+          <!-- Campo mesa (solo para <=6) -->
+          <div class="row" id="tableRow" style="margin-top:12px; display:none">
+            <div>
+              <label data-i18n="table_label">Mesa</label>
+              <input id="tableField" name="tableId" readonly placeholder="—" />
+            </div>
+          </div>
+
           <div style="margin-top:12px">
-            <label data-i18n="allergies">Alergias (opcional</label>
-            <textarea name="allergies" rows="2" placeholder="Es: glutine, frutta a guscio..."></textarea>
+            <label data-i18n="allergies">Alergias (opcional)</label>
+            <textarea name="allergies" rows="2" placeholder="Ej: gluten, frutos secos..."></textarea>
           </div>
 
           <div class="row" style="margin-top:12px">
             <label class="pill">
               <input type="checkbox" name="highchair" />
-              <span data-i18n="highchair">Sirve trona</span>
+              <span data-i18n="highchair">Necesita trona</span>
             </label>
-            <label class="pill" title="Uso esclusivo Terrazza Superiore a 90€">
+            <label class="pill" title="Uso exclusivo Terraza Superior por 90€">
               <input type="checkbox" name="roofExclusive" />
               <span data-i18n="roof_exclusive">Terraza superior exclusiva (90€)</span>
             </label>
           </div>
 
           <div style="display:flex; justify-content:flex-end; margin-top:16px">
-            <button id="submitBtn" class="btn" type="submit" disabled data-i18n="submit">Prenota</button>
+            <button id="submitBtn" class="btn" type="submit" disabled data-i18n="submit">Reservar</button>
           </div>
         </form>
         <div class="hint" style="margin-top:8px" id="whatsHint"></div>
@@ -101,18 +116,19 @@
 
   <div id="toast" class="toast"></div>
 
-</body>
-<script src="/static/js/i18n.js"></script>
+  <script src="/static/js/i18n.js"></script>
+  <!-- Renderizador SVG del mapa: debe ir ANTES de bookings.js -->
+  <script src="/static/js/booking-map-svg.js"></script>
   <script src="/static/js/bookings.js"></script>
   <script>
-Promise.all([
-  fetch("../templates/header.html").then(r => r.text()),
-  fetch("../templates/footer.html").then(r => r.text())
-]).then(([headerHtml, footerHtml]) => {
-  document.getElementById("header-placeholder").innerHTML = headerHtml;
-  document.getElementById("footer-placeholder").innerHTML = footerHtml;
-
-  if (window.initHeader) window.initHeader();
-});
-</script>
+  Promise.all([
+    fetch("/templates/header.html").then(r => r.text()),
+    fetch("/templates/footer.html").then(r => r.text())
+  ]).then(([headerHtml, footerHtml]) => {
+    document.getElementById("header-placeholder").innerHTML = headerHtml;
+    document.getElementById("footer-placeholder").innerHTML = footerHtml;
+    if (window.initHeader) window.initHeader();
+  });
+  </script>
+</body>
 </html>
