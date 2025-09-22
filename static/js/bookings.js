@@ -295,10 +295,10 @@ async function onSubmit(e){
 
       // Link WhatsApp
       const msg = encodeURIComponent(
-        `Ciao ${payload.firstName}! Sono La Casita del Nazareno. ` +
-        `Abbiamo ricevuto la tua richiesta: ${payload.date} ${payload.time}, ` +
-        `${payload.guests} pax${payload.tableId ? `, tavolo ${payload.tableId}` : ''}. ` +
-        `Ti confermiamo a breve qui su WhatsApp. Grazie!`
+        `Hola ${payload.firstName}! Soy La Casita de Nazareno. ` +
+        `Hemos recibido tu solicitud: ${payload.date} ${payload.time}, ` +
+        `${payload.guests} pax${payload.tableId ? `, mesa ${payload.tableId}` : ''}. ` +
+        `Te confirmamos en breve aquí por WhatsApp. ¡Gracias!`
       );
       const wa = `https://wa.me/${payload.phone.replace(/\D/g,'')}?text=${msg}`;
       const hint = document.getElementById('whatsHint');
@@ -307,13 +307,13 @@ async function onSubmit(e){
       alert(out.error || 'Errore nel salvataggio della prenotazione');
     }
   } catch (error) {
-    console.error('Errore nella richiesta:', error);
-    alert('Errore di connessione. Riprova.');
+    console.error('Error en la solicitud:', error);
+    alert('Error de conexión. Inténtalo de nuevo.');
   }
 }
 
 function onDateChange(v){ 
-  console.log('Cambio data:', v);
+  console.log('Cambio fecha:', v);
   state.date = v; 
   renderSlots(); 
   fetchTotals(); 
@@ -321,14 +321,14 @@ function onDateChange(v){
 }
 
 function onTimeChange(v){ 
-  console.log('Cambio orario:', v);
+  console.log('Cambio horario:', v);
   state.time = v; 
   fetchBusyForSlot();
   updateSubmitState();
 }
 
 function onGuestsChange(v){
-  console.log('Cambio ospiti:', v);
+  console.log('Cambio huespedes:', v);
   state.guests = +v;
   if(state.guests > 6) state.selectedTable = null;
   renderHint(); 

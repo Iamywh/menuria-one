@@ -3,6 +3,9 @@ from flask_cors import CORS
 import os
 import json
 import datetime
+# --- aggiunte ---
+import threading  # se non è già importato sopra
+
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
@@ -13,6 +16,17 @@ app = Flask(
 )
 app.url_map.strict_slashes = False   # 👉 /home e /home/ sono equivalenti
 CORS(app)
+
+TAKEAWAY_DIR = os.path.join(BASE_DIR, 'takeaway')
+os.makedirs(TAKEAWAY_DIR, exist_ok=True)
+
+USERS_FILE = os.path.join(TAKEAWAY_DIR, 'UserDatabase.json')
+if not os.path.exists(USERS_FILE):
+    with open(USERS_FILE, 'w', encoding='utf-8') as f:
+        json.dump({"version": 1, "users": []}, f, ensure_ascii=False, indent=2)
+
+USERS_LOCK = threading.Lock()
+
 
 # === Percorsi dati
 DATA_DIR = os.path.join(BASE_DIR, 'data')
@@ -86,18 +100,22 @@ def restaurant():
 def bookings():
     return render_template('bookings.html')
 
+@app.route('/takeaway')
+def takeaway():
+    return send_from_directory('takeaway', 'index.html')
+
 # ✅ Rotta generica: /home, /menus, /gallery, /restaurant
 @app.route('/<section>')
 @app.route('/<section>/')
 def section_index(section):
-    if section in ['home', 'restaurant', 'menus', 'gallery']:
+    if section in ['home', 'restaurant', 'menus', 'gallery','bookings','takeaway']:
         return send_from_directory(section, 'index.html')
     return "Not found", 404
 
 # === Rotte per servire CSS, JS, IMG da cartelle proprie
 @app.route('/<folder>/<path:filename>')
 def serve_static_folder_file(folder, filename):
-    allowed = ['home', 'gallery', 'menus', 'restaurant', 'static', 'templates']
+    allowed = ['home', 'gallery', 'menus', 'restaurant', 'static', 'templates', 'takeaway']
     if folder in allowed:
         return send_from_directory(folder, filename)
     return "Accesso negato", 403

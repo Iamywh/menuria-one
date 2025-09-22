@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>La Casita · Takeaway</title>
+
+  <!-- Shared styles/scripts -->
+  <link rel="stylesheet" href="/static/css/header-footer.css">
+  <link rel="stylesheet" href="/takeaway/takeaway.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <script src="/menus/menus.js"></script>
+
+  <script defer src="/static/js/header-footer.js"></script>
+  
+</head>
+<body>
+  <!-- Header placeholder (real header injected at runtime) -->
+  <div id="header-placeholder"></div>
+
+  <!-- USER BAR -->
+  <section class="user-bar">
+    <div class="user-info">
+      <i class="fa-solid fa-user"></i>
+      <span>Tel: <b id="userPhone">+34 XXX XXX XXX</b></span>
+      <span>· Email: <b id="userEmail">guest@example.com</b></span>
+    </div>
+    <div class="user-actions">
+      <button class="mini-btn" onclick="openUserModal()"><i class="fa-regular fa-pen-to-square"></i> Edit</button>
+      <button class="mini-btn" onclick="openCart()">🛒 <span id="cart-count">0</span></button>
+    </div>
+  </section>
+
+  <main class="wrap">
+    <div class="toolbar">
+      <div class="segmented" role="tablist" aria-label="Tipo di ordine">
+        <button id="btnTakeaway" class="active" onclick="setMode('takeaway')" role="tab">🥡 Para llevar</button>
+        <button id="btnDelivery" disabled onclick="setMode('delivery')" role="tab">🚚 Entrega</button>
+      </div>
+      <label class="search" aria-label="Buscar platos">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input id="search" type="search" placeholder="Busca un plato..." oninput="renderGrid()" />
+      </label>
+    </div>
+
+    <div class="notice-bar">
+      <span class="pill warn">🚫 Entrega temporalmente deshabilitada</span>
+      <span class="pill">🥡 Precios de takeaway +30%</span>
+    </div>
+
+    <!-- GRID -->
+    <div id="grid" class="grid" aria-live="polite"></div>
+  </main>
+
+  <!-- CART FAB (mobile) -->
+  <button class="cart-fab" onclick="openCart()" aria-label="Abrir carrito">
+    <i class="fa-solid fa-bag-shopping"></i>
+    <span>Carrito</span>
+    <span class="badge" id="fab-count">0</span>
+  </button>
+
+  <!-- CART PANEL -->
+  <aside id="cart" class="cart" aria-label="Carrito">
+    <header>
+      <h3>Tu carrito</h3>
+      <button class="mini-btn" onclick="closeCart()">Cerrar ✕</button>
+    </header>
+    <div class="items" id="cartItems"></div>
+    <footer>
+      <div class="opt" role="tablist" aria-label="Modo de pedido">
+        <button id="optTakeaway" class="active" onclick="setMode('takeaway')" role="tab">🥡 Para llevar</button>
+        <button id="optDelivery" disabled onclick="setMode('delivery')" role="tab">🚚 Entrega</button>
+      </div>
+      <div class="field" id="addressField" style="display:none">
+        <label for="addr">Dirección de entrega</label>
+        <textarea id="addr" rows="2" placeholder="C/ Jesús Nazareno, 14, Santa Cruz..." oninput="saveAddress()"></textarea>
+      </div>
+      <div class="field">
+        <label for="note">Nota para cocina / rider</label>
+        <input id="note" type="text" placeholder="Sin cebolla, llámame al llegar..." oninput="saveNote()" />
+      </div>
+      <div class="totrow">
+        <span>Total</span>
+        <b id="total">0,00 €</b>
+      </div>
+      <button class="primary" onclick="checkout()">Finalizar pedido</button>
+    </footer>
+  </aside>
+
+  <!-- USER MODAL -->
+  <div id="userModal" class="modal-mask" style="display:none">
+    <div class="modal">
+      <h3>Perfil del cliente</h3>
+      <p class="muted">Tus datos se guardarán localmente en este dispositivo para agilizar futuros pedidos.</p>
+      <div class="grid-2">
+        <label class="field"><span>Nombre</span><input id="u_first" type="text" placeholder="Nombre"></label>
+        <label class="field"><span>Apellido</span><input id="u_last" type="text" placeholder="Apellido"></label>
+        <label class="field full"><span>Email</span><input id="u_email" type="email" placeholder="tu@email.com"></label>
+        <label class="field"><span>Teléfono</span><input id="u_phone" type="tel" placeholder="+34 ..."></label>
+        <label class="field"><span>Fecha de nacimiento</span><input id="u_dob" type="date"></label>
+        <label class="field full"><span>Dirección</span><textarea id="u_addr" rows="2" placeholder="C/ Jesús Nazareno, 14, 38003 Santa Cruz"></textarea></label>
+      </div>
+      <div class="modal-actions">
+        <button class="mini-btn" onclick="closeUserModal()">Cancelar</button>
+        <button class="mini-btn" onclick="saveUserFromForm()">Guardar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer placeholder (real footer injected at runtime) -->
+  <div id="footer-placeholder"></div>
+</body>
+<script src="/static/js/i18n.js"></script>
+<script src="/takeaway/takeaway.js"></script>
+
+ <script>
+Promise.all([
+  fetch("../templates/header.html").then(r => r.text()),
+  fetch("../templates/footer.html").then(r => r.text())
+]).then(([headerHtml, footerHtml]) => {
+  document.getElementById("header-placeholder").innerHTML = headerHtml;
+  document.getElementById("footer-placeholder").innerHTML = footerHtml;
+
+  if (window.initHeader) window.initHeader();
+});
+</script>
+</html>
+</html>
